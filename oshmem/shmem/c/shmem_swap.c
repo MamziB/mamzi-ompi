@@ -88,6 +88,7 @@
 
 #pragma weak shmemx_int32_swap = pshmemx_int32_swap
 #pragma weak shmemx_int64_swap = pshmemx_int64_swap
+
 #include "oshmem/shmem/c/profile/defines.h"
 #endif
 
