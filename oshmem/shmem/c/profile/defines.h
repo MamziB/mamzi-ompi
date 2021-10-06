@@ -129,6 +129,143 @@
 #define shmemx_int64_p               pshmemx_int64_p
 
 /*
+ * Signaled put routines
+ */
+#define shmem_ctx_char_put_signal             pshmem_ctx_char_put_signal
+#define shmem_ctx_short_put_signal            pshmem_ctx_short_put_signal
+#define shmem_ctx_int_put_signal              pshmem_ctx_int_put_signal
+#define shmem_ctx_long_put_signal             pshmem_ctx_long_put_signal
+#define shmem_ctx_float_put_signal            pshmem_ctx_float_put_signal
+#define shmem_ctx_double_put_signal           pshmem_ctx_double_put_signal
+#define shmem_ctx_longlong_put_signal         pshmem_ctx_longlong_put_signal
+#define shmem_ctx_schar_put_signal            pshmem_ctx_schar_put_signal
+#define shmem_ctx_uchar_put_signal            pshmem_ctx_uchar_put_signal
+#define shmem_ctx_ushort_put_signal           pshmem_ctx_ushort_put_signal
+#define shmem_ctx_uint_put_signal             pshmem_ctx_uint_put_signal
+#define shmem_ctx_ulong_put_signal            pshmem_ctx_ulong_put_signal
+#define shmem_ctx_ulonglong_put_signal        pshmem_ctx_ulonglong_put_signal
+#define shmem_ctx_longdouble_put_signal       pshmem_ctx_longdouble_put_signal
+#define shmem_ctx_int8_put_signal             pshmem_ctx_int8_put_signal
+#define shmem_ctx_int16_put_signal            pshmem_ctx_int16_put_signal
+#define shmem_ctx_int32_put_signal            pshmem_ctx_int32_put_signal
+#define shmem_ctx_int64_put_signal            pshmem_ctx_int64_put_signal
+#define shmem_ctx_uint8_put_signal            pshmem_ctx_uint8_put_signal
+#define shmem_ctx_uint16_put_signal           pshmem_ctx_uint16_put_signal
+#define shmem_ctx_uint32_put_signal           pshmem_ctx_uint32_put_signal
+#define shmem_ctx_uint64_put_signal           pshmem_ctx_uint64_put_signal
+#define shmem_ctx_size_put_signal             pshmem_ctx_size_put_signal
+#define shmem_ctx_ptrdiff_put_signal          pshmem_ctx_ptrdiff_put_signal
+
+#define shmem_char_put_signal                 pshmem_char_put_signal
+#define shmem_short_put_signal                pshmem_short_put_signal
+#define shmem_int_put_signal                  pshmem_int_put_signal
+#define shmem_long_put_signal                 pshmem_long_put_signal
+#define shmem_float_put_signal                pshmem_float_put_signal
+#define shmem_double_put_signal               pshmem_double_put_signal
+#define shmem_longlong_put_signal             pshmem_longlong_put_signal
+#define shmem_schar_put_signal                pshmem_schar_put_signal
+#define shmem_uchar_put_signal                pshmem_uchar_put_signal
+#define shmem_ushort_put_signal               pshmem_ushort_put_signal
+#define shmem_uint_put_signal                 pshmem_uint_put_signal
+#define shmem_ulong_put_signal                pshmem_ulong_put_signal
+#define shmem_ulonglong_put_signal            pshmem_ulonglong_put_signal
+#define shmem_longdouble_put_signal           pshmem_longdouble_put_signal
+#define shmem_int8_put_signal                 pshmem_int8_put_signal
+#define shmem_int16_put_signal                pshmem_int16_put_signal
+#define shmem_int32_put_signal                pshmem_int32_put_signal
+#define shmem_int64_put_signal                pshmem_int64_put_signal
+#define shmem_uint8_put_signal                pshmem_uint8_put_signal
+#define shmem_uint16_put_signal               pshmem_uint16_put_signal
+#define shmem_uint32_put_signal               pshmem_uint32_put_signal
+#define shmem_uint64_put_signal               pshmem_uint64_put_signal
+#define shmem_size_put_signal                 pshmem_size_put_signal
+#define shmem_ptrdiff_put_signal              pshmem_ptrdiff_put_signal
+
+#define shmem_put8_signal                     pshmem_put8_signal
+#define shmem_put16_signal                    pshmem_put16_signal
+#define shmem_put32_signal                    pshmem_put32_signal
+#define shmem_put64_signal                    pshmem_put64_signal
+#define shmem_put128_signal                   pshmem_put128_signal
+
+#define shmem_ctx_put8_signal                 pshmem_ctx_put8_signal
+#define shmem_ctx_put16_signal                pshmem_ctx_put16_signal
+#define shmem_ctx_put32_signal                pshmem_ctx_put32_signal
+#define shmem_ctx_put64_signal                pshmem_ctx_put64_signal
+#define shmem_ctx_put128_signal               pshmem_ctx_put128_signal
+
+#define pshmem_putmem_signal                  pshmem_putmem_signal
+#define pshmem_ctx_putmem_signal              pshmem_ctx_putmem_signal
+
+/*
+ * Nonblocking signaled put routines
+ */
+#define shmem_ctx_char_put_signal_nbi             pshmem_ctx_char_put_signal_nbi
+#define shmem_ctx_short_put_signal_nbi            pshmem_ctx_short_put_signal_nbi
+#define shmem_ctx_int_put_signal_nbi              pshmem_ctx_int_put_signal_nbi
+#define shmem_ctx_long_put_signal_nbi             pshmem_ctx_long_put_signal_nbi
+#define shmem_ctx_float_put_signal_nbi            pshmem_ctx_float_put_signal_nbi
+#define shmem_ctx_double_put_signal_nbi           pshmem_ctx_double_put_signal_nbi
+#define shmem_ctx_longlong_put_signal_nbi         pshmem_ctx_longlong_put_signal_nbi
+#define shmem_ctx_schar_put_signal_nbi            pshmem_ctx_schar_put_signal_nbi
+#define shmem_ctx_uchar_put_signal_nbi            pshmem_ctx_uchar_put_signal_nbi
+#define shmem_ctx_ushort_put_signal_nbi           pshmem_ctx_ushort_put_signal_nbi
+#define shmem_ctx_uint_put_signal_nbi             pshmem_ctx_uint_put_signal_nbi
+#define shmem_ctx_ulong_put_signal_nbi            pshmem_ctx_ulong_put_signal_nbi
+#define shmem_ctx_ulonglong_put_signal_nbi        pshmem_ctx_ulonglong_put_signal_nbi
+#define shmem_ctx_longdouble_put_signal_nbi       pshmem_ctx_longdouble_put_signal_nbi
+#define shmem_ctx_int8_put_signal_nbi             pshmem_ctx_int8_put_signal_nbi
+#define shmem_ctx_int16_put_signal_nbi            pshmem_ctx_int16_put_signal_nbi
+#define shmem_ctx_int32_put_signal_nbi            pshmem_ctx_int32_put_signal_nbi
+#define shmem_ctx_int64_put_signal_nbi            pshmem_ctx_int64_put_signal_nbi
+#define shmem_ctx_uint8_put_signal_nbi            pshmem_ctx_uint8_put_signal_nbi
+#define shmem_ctx_uint16_put_signal_nbi           pshmem_ctx_uint16_put_signal_nbi
+#define shmem_ctx_uint32_put_signal_nbi           pshmem_ctx_uint32_put_signal_nbi
+#define shmem_ctx_uint64_put_signal_nbi           pshmem_ctx_uint64_put_signal_nbi
+#define shmem_ctx_size_put_signal_nbi             pshmem_ctx_size_put_signal_nbi
+#define shmem_ctx_ptrdiff_put_signal_nbi          pshmem_ctx_ptrdiff_put_signal_nbi
+
+#define shmem_char_put_signal_nbi                 pshmem_char_put_signal_nbi
+#define shmem_short_put_signal_nbi                pshmem_short_put_signal_nbi
+#define shmem_int_put_signal_nbi                  pshmem_int_put_signal_nbi
+#define shmem_long_put_signal_nbi                 pshmem_long_put_signal_nbi
+#define shmem_float_put_signal_nbi                pshmem_float_put_signal_nbi
+#define shmem_double_put_signal_nbi               pshmem_double_put_signal_nbi
+#define shmem_longlong_put_signal_nbi             pshmem_longlong_put_signal_nbi
+#define shmem_schar_put_signal_nbi                pshmem_schar_put_signal_nbi
+#define shmem_uchar_put_signal_nbi                pshmem_uchar_put_signal_nbi
+#define shmem_ushort_put_signal_nbi               pshmem_ushort_put_signal_nbi
+#define shmem_uint_put_signal_nbi                 pshmem_uint_put_signal_nbi
+#define shmem_ulong_put_signal_nbi                pshmem_ulong_put_signal_nbi
+#define shmem_ulonglong_put_signal_nbi            pshmem_ulonglong_put_signal_nbi
+#define shmem_longdouble_put_signal_nbi           pshmem_longdouble_put_signal_nbi
+#define shmem_int8_put_signal_nbi                 pshmem_int8_put_signal_nbi
+#define shmem_int16_put_signal_nbi                pshmem_int16_put_signal_nbi
+#define shmem_int32_put_signal_nbi                pshmem_int32_put_signal_nbi
+#define shmem_int64_put_signal_nbi                pshmem_int64_put_signal_nbi
+#define shmem_uint8_put_signal_nbi                pshmem_uint8_put_signal_nbi
+#define shmem_uint16_put_signal_nbi               pshmem_uint16_put_signal_nbi
+#define shmem_uint32_put_signal_nbi               pshmem_uint32_put_signal_nbi
+#define shmem_uint64_put_signal_nbi               pshmem_uint64_put_signal_nbi
+#define shmem_size_put_signal_nbi                 pshmem_size_put_signal_nbi
+#define shmem_ptrdiff_put_signal_nbi              pshmem_ptrdiff_put_signal_nbi
+
+#define shmem_put8_signal_nbi                     pshmem_put8_signal_nbi
+#define shmem_put16_signal_nbi                    pshmem_put16_signal_nbi
+#define shmem_put32_signal_nbi                    pshmem_put32_signal_nbi
+#define shmem_put64_signal_nbi                    pshmem_put64_signal_nbi
+#define shmem_put128_signal_nbi                   pshmem_put128_signal_nbi
+
+#define shmem_ctx_put8_signal_nbi                 pshmem_ctx_put8_signal_nbi
+#define shmem_ctx_put16_signal_nbi                pshmem_ctx_put16_signal_nbi
+#define shmem_ctx_put32_signal_nbi                pshmem_ctx_put32_signal_nbi
+#define shmem_ctx_put64_signal_nbi                pshmem_ctx_put64_signal_nbi
+#define shmem_ctx_put128_signal_nbi               pshmem_ctx_put128_signal_nbi
+
+#define pshmem_putmem_signal_nbi                  pshmem_putmem_signal_nbi
+#define pshmem_ctx_putmem_signal_nbi              pshmem_ctx_putmem_signal_nbi
+
+
+/*
  * Block data put routines
  */
 #define shmem_ctx_char_put           pshmem_ctx_char_put
@@ -194,6 +331,7 @@
 #define shmem_put64                  pshmem_put64
 #define shmem_put128                 pshmem_put128
 #define shmem_putmem                 pshmem_putmem
+
 
 /*
  * Strided put routines

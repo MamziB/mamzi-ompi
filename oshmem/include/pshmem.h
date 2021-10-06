@@ -458,6 +458,213 @@ OSHMEM_DECLSPEC  void pshmem_put64_nbi(void *target, const void *source, size_t 
 OSHMEM_DECLSPEC  void pshmem_put128_nbi(void *target, const void *source, size_t len, int pe);
 OSHMEM_DECLSPEC  void pshmem_putmem_nbi(void *target, const void *source, size_t len, int pe);
 
+
+/*
+ * Signaled put routines
+ */
+OSHMEM_DECLSPEC  void pshmem_ctx_char_put_signal(shmem_ctx_t ctx, char *dest, const char *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_short_put_signal(shmem_ctx_t ctx, short *dest, const short *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_int_put_signal(shmem_ctx_t ctx, int *dest, const int *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_long_put_signal(shmem_ctx_t ctx, long *dest, const long *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_float_put_signal(shmem_ctx_t ctx, float *dest, const float *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_double_put_signal(shmem_ctx_t ctx, double *dest, const double *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_longlong_put_signal(shmem_ctx_t ctx, long long *dest, const long long *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_schar_put_signal(shmem_ctx_t ctx, signed char *dest, const signed char *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_uchar_put_signal(shmem_ctx_t ctx, unsigned char *dest, const unsigned char *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_ushort_put_signal(shmem_ctx_t ctx, unsigned short *dest, const unsigned short *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_uint_put_signal(shmem_ctx_t ctx, unsigned int *dest, const unsigned int *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_ulong_put_signal(shmem_ctx_t ctx, unsigned long *dest, const unsigned long *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_ulonglong_put_signal(shmem_ctx_t ctx, unsigned long long *dest, const unsigned long long *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_longdouble_put_signal(shmem_ctx_t ctx, long double *dest, const long double *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_int8_put_signal(shmem_ctx_t ctx, int8_t *dest, const int8_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_int16_put_signal(shmem_ctx_t ctx, int16_t *dest, const int16_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_int32_put_signal(shmem_ctx_t ctx, int32_t *dest, const int32_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_int64_put_signal(shmem_ctx_t ctx, int64_t *dest, const int64_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_uint8_put_signal(shmem_ctx_t ctx, uint8_t *dest, const uint8_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_uint16_put_signal(shmem_ctx_t ctx, uint16_t *dest, const uint16_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_uint32_put_signal(shmem_ctx_t ctx, uint32_t *dest, const uint32_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_uint64_put_signal(shmem_ctx_t ctx, uint64_t *dest, const uint64_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_size_put_signal(shmem_ctx_t ctx, size_t *dest, const size_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_ptrdiff_put_signal(shmem_ctx_t ctx, ptrdiff_t *dest, const ptrdiff_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+
+OSHMEM_DECLSPEC  void pshmem_char_put_signal(char *dest, const char *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_short_put_signal(short *dest, const short *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_int_put_signal(int *dest, const int *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_long_put_signal(long *dest, const long *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_float_put_signal(float *dest, const float *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_double_put_signal(double *dest, const double *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_longlong_put_signal(long long *dest, const long long *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_schar_put_signal(signed char *dest, const signed char *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_uchar_put_signal(unsigned char *dest, const unsigned char *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ushort_put_signal(unsigned short *dest, const unsigned short *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_uint_put_signal(unsigned int *dest, const unsigned int *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ulong_put_signal(unsigned long *dest, const unsigned long *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ulonglong_put_signal(unsigned long long *dest, const unsigned long long *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_longdouble_put_signal(long double *dest, const long double *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_int8_put_signal(int8_t *dest, const int8_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_int16_put_signal(int16_t *dest, const int16_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_int32_put_signal(int32_t *dest, const int32_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_int64_put_signal(int64_t *dest, const int64_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_uint8_put_signal(uint8_t *dest, const uint8_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_uint16_put_signal(uint16_t *dest, const uint16_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_uint32_put_signal(uint32_t *dest, const uint32_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_uint64_put_signal(uint64_t *dest, const uint64_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_size_put_signal(size_t *dest, const size_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ptrdiff_put_signal(ptrdiff_t *dest, const ptrdiff_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+
+#if OSHMEM_HAVE_C11
+#define pshmem_put_signal(...)                                                \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                     \
+            shmem_ctx_t:  _Generic((__OSHMEM_VAR_ARG2(__VA_ARGS__)), \
+                char*:       pshmem_ctx_char_put_signal,                      \
+                short*:      pshmem_ctx_short_put_signal,                     \
+                int*:        pshmem_ctx_int_put_signal,                       \
+                long*:       pshmem_ctx_long_put_signal,                      \
+                long long*:  pshmem_ctx_longlong_put_signal,                  \
+                signed char*:        pshmem_ctx_schar_put_signal,             \
+                unsigned char*:      pshmem_ctx_uchar_put_signal,             \
+                unsigned short*:     pshmem_ctx_ushort_put_signal,            \
+                unsigned int*:       pshmem_ctx_uint_put_signal,              \
+                unsigned long*:      pshmem_ctx_ulong_put_signal,             \
+                unsigned long long*: pshmem_ctx_ulonglong_put_signal,         \
+                float*:       pshmem_ctx_float_put_signal,                    \
+                double*:      pshmem_ctx_double_put_signal,                   \
+                long double*: pshmem_ctx_longdouble_put_signal,               \
+                default:      __opshmem_datatype_ignore),            \
+            char*:       pshmem_char_put_signal,                              \
+            short*:      pshmem_short_put_signal,                             \
+            int*:        pshmem_int_put_signal,                               \
+            long*:       pshmem_long_put_signal,                              \
+            long long*:  pshmem_longlong_put_signal,                          \
+            signed char*:        pshmem_schar_put_signal,                     \
+            unsigned char*:      pshmem_uchar_put_signal,                     \
+            unsigned short*:     pshmem_ushort_put_signal,                    \
+            unsigned int*:       pshmem_uint_put_signal,                      \
+            unsigned long*:      pshmem_ulong_put_signal,                     \
+            unsigned long long*: pshmem_ulonglong_put_signal,                 \
+            float*:       pshmem_float_put_signal,                            \
+            double*:      pshmem_double_put_signal,                           \
+            long double*: pshmem_longdouble_put_signal)(__VA_ARGS__)
+#endif
+
+OSHMEM_DECLSPEC void pshmem_put8_signal(void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+OSHMEM_DECLSPEC void pshmem_put16_signal(void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+OSHMEM_DECLSPEC void pshmem_put32_signal(void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+OSHMEM_DECLSPEC void pshmem_put64_signal(void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+OSHMEM_DECLSPEC void pshmem_put128_signal(void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+
+OSHMEM_DECLSPEC void pshmem_ctx_put8_signal(shmem_ctx_t ctx, void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_put16_signal(shmem_ctx_t ctx, void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_put32_signal(shmem_ctx_t ctx, void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_put64_signal(shmem_ctx_t ctx, void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_put128_signal(shmem_ctx_t ctx, void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+
+OSHMEM_DECLSPEC void pshmem_putmem_signal(void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_putmem_signal(shmem_ctx_t ctx, void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+
+/*
+ * Nonblocking signaled put routines
+ */
+OSHMEM_DECLSPEC  void pshmem_ctx_char_put_signal_nbi(shmem_ctx_t ctx, char *dest, const char *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_short_put_signal_nbi(shmem_ctx_t ctx, short *dest, const short *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_int_put_signal_nbi(shmem_ctx_t ctx, int *dest, const int *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_long_put_signal_nbi(shmem_ctx_t ctx, long *dest, const long *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_float_put_signal_nbi(shmem_ctx_t ctx, float *dest, const float *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_double_put_signal_nbi(shmem_ctx_t ctx, double *dest, const double *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_longlong_put_signal_nbi(shmem_ctx_t ctx, long long *dest, const long long *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_schar_put_signal_nbi(shmem_ctx_t ctx, signed char *dest, const signed char *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_uchar_put_signal_nbi(shmem_ctx_t ctx, unsigned char *dest, const unsigned char *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_ushort_put_signal_nbi(shmem_ctx_t ctx, unsigned short *dest, const unsigned short *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_uint_put_signal_nbi(shmem_ctx_t ctx, unsigned int *dest, const unsigned int *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_ulong_put_signal_nbi(shmem_ctx_t ctx, unsigned long *dest, const unsigned long *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_ulonglong_put_signal_nbi(shmem_ctx_t ctx, unsigned long long *dest, const unsigned long long *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_longdouble_put_signal_nbi(shmem_ctx_t ctx, long double *dest, const long double *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_int8_put_signal_nbi(shmem_ctx_t ctx, int8_t *dest, const int8_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_int16_put_signal_nbi(shmem_ctx_t ctx, int16_t *dest, const int16_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_int32_put_signal_nbi(shmem_ctx_t ctx, int32_t *dest, const int32_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_int64_put_signal_nbi(shmem_ctx_t ctx, int64_t *dest, const int64_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_uint8_put_signal_nbi(shmem_ctx_t ctx, uint8_t *dest, const uint8_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_uint16_put_signal_nbi(shmem_ctx_t ctx, uint16_t *dest, const uint16_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_uint32_put_signal_nbi(shmem_ctx_t ctx, uint32_t *dest, const uint32_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_uint64_put_signal_nbi(shmem_ctx_t ctx, uint64_t *dest, const uint64_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_size_put_signal_nbi(shmem_ctx_t ctx, size_t *dest, const size_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ctx_ptrdiff_put_signal_nbi(shmem_ctx_t ctx, ptrdiff_t *dest, const ptrdiff_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+
+OSHMEM_DECLSPEC  void pshmem_char_put_signal_nbi(char *dest, const char *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_short_put_signal_nbi(short *dest, const short *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_int_put_signal_nbi(int *dest, const int *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_long_put_signal_nbi(long *dest, const long *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_float_put_signal_nbi(float *dest, const float *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_double_put_signal_nbi(double *dest, const double *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_longlong_put_signal_nbi(long long *dest, const long long *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_schar_put_signal_nbi(signed char *dest, const signed char *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_uchar_put_signal_nbi(unsigned char *dest, const unsigned char *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ushort_put_signal_nbi(unsigned short *dest, const unsigned short *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_uint_put_signal_nbi(unsigned int *dest, const unsigned int *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ulong_put_signal_nbi(unsigned long *dest, const unsigned long *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ulonglong_put_signal_nbi(unsigned long long *dest, const unsigned long long *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_longdouble_put_signal_nbi(long double *dest, const long double *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_int8_put_signal_nbi(int8_t *dest, const int8_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_int16_put_signal_nbi(int16_t *dest, const int16_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_int32_put_signal_nbi(int32_t *dest, const int32_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_int64_put_signal_nbi(int64_t *dest, const int64_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_uint8_put_signal_nbi(uint8_t *dest, const uint8_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_uint16_put_signal_nbi(uint16_t *dest, const uint16_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_uint32_put_signal_nbi(uint32_t *dest, const uint32_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_uint64_put_signal_nbi(uint64_t *dest, const uint64_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_size_put_signal_nbi(size_t *dest, const size_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+OSHMEM_DECLSPEC  void pshmem_ptrdiff_put_signal_nbi(ptrdiff_t *dest, const ptrdiff_t *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe); 
+
+#if OSHMEM_HAVE_C11
+#define pshmem_put_signal_nbi(...)                                                \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                     \
+            shmem_ctx_t:  _Generic((__OSHMEM_VAR_ARG2(__VA_ARGS__)), \
+                char*:       pshmem_ctx_char_put_signal_nbi,                      \
+                short*:      pshmem_ctx_short_put_signal_nbi,                     \
+                int*:        pshmem_ctx_int_put_signal_nbi,                       \
+                long*:       pshmem_ctx_long_put_signal_nbi,                      \
+                long long*:  pshmem_ctx_longlong_put_signal_nbi,                  \
+                signed char*:        pshmem_ctx_schar_put_signal_nbi,             \
+                unsigned char*:      pshmem_ctx_uchar_put_signal_nbi,             \
+                unsigned short*:     pshmem_ctx_ushort_put_signal_nbi,            \
+                unsigned int*:       pshmem_ctx_uint_put_signal_nbi,              \
+                unsigned long*:      pshmem_ctx_ulong_put_signal_nbi,             \
+                unsigned long long*: pshmem_ctx_ulonglong_put_signal_nbi,         \
+                float*:       pshmem_ctx_float_put_signal_nbi,                    \
+                double*:      pshmem_ctx_double_put_signal_nbi,                   \
+                long double*: pshmem_ctx_longdouble_put_signal_nbi,               \
+                default:      __opshmem_datatype_ignore),            \
+            char*:       pshmem_char_put_signal_nbi,                              \
+            short*:      pshmem_short_put_signal_nbi,                             \
+            int*:        pshmem_int_put_signal_nbi,                               \
+            long*:       pshmem_long_put_signal_nbi,                              \
+            long long*:  pshmem_longlong_put_signal_nbi,                          \
+            signed char*:        pshmem_schar_put_signal_nbi,                     \
+            unsigned char*:      pshmem_uchar_put_signal_nbi,                     \
+            unsigned short*:     pshmem_ushort_put_signal_nbi,                    \
+            unsigned int*:       pshmem_uint_put_signal_nbi,                      \
+            unsigned long*:      pshmem_ulong_put_signal_nbi,                     \
+            unsigned long long*: pshmem_ulonglong_put_signal_nbi,                 \
+            float*:       pshmem_float_put_signal_nbi,                            \
+            double*:      pshmem_double_put_signal_nbi,                           \
+            long double*: pshmem_longdouble_put_signal_nbi)(__VA_ARGS__)
+#endif
+
+OSHMEM_DECLSPEC void pshmem_put8_signal_nbi(void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+OSHMEM_DECLSPEC void pshmem_put16_signal_nbi(void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+OSHMEM_DECLSPEC void pshmem_put32_signal_nbi(void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+OSHMEM_DECLSPEC void pshmem_put64_signal_nbi(void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+OSHMEM_DECLSPEC void pshmem_put128_signal_nbi(void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+
+OSHMEM_DECLSPEC void pshmem_ctx_put8_signal_nbi(shmem_ctx_t ctx, void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_put16_signal_nbi(shmem_ctx_t ctx, void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_put32_signal_nbi(shmem_ctx_t ctx, void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_put64_signal_nbi(shmem_ctx_t ctx, void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_put128_signal_nbi(shmem_ctx_t ctx, void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+
+OSHMEM_DECLSPEC void pshmem_putmem_signal_nbi(void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_putmem_signal_nbi(shmem_ctx_t ctx, void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+
 /*
  * Elemental get routines
  */
