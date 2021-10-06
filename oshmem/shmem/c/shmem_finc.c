@@ -85,6 +85,7 @@
 
 #pragma weak shmemx_int32_finc = pshmemx_int32_finc
 #pragma weak shmemx_int64_finc = pshmemx_int64_finc
+
 #include "oshmem/shmem/c/profile/defines.h"
 #endif
 

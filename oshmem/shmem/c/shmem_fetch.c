@@ -91,7 +91,12 @@
 
 #pragma weak shmemx_int32_fetch = pshmemx_int32_fetch
 #pragma weak shmemx_int64_fetch = pshmemx_int64_fetch
+
 #include "oshmem/shmem/c/profile/defines.h"
+
+
+
+
 #endif
 
 SHMEM_CTX_TYPE_ATOMIC_FETCH(_int, int, shmem)
