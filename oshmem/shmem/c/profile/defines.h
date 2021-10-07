@@ -1125,23 +1125,6 @@
 #define shmemx_int32_wait_until      pshmemx_int32_wait_until
 #define shmemx_int64_wait_until      pshmemx_int64_wait_until
 
-#define shmem_short_test             pshmem_short_test
-#define shmem_int_test               pshmem_int_test
-#define shmem_long_test              pshmem_long_test
-#define shmem_longlong_test          pshmem_longlong_test
-#define shmem_ushort_test            pshmem_ushort_test
-#define shmem_uint_test              pshmem_uint_test
-#define shmem_ulong_test             pshmem_ulong_test
-#define shmem_ulonglong_test         pshmem_ulonglong_test
-#define shmem_int32_test             pshmem_int32_test
-#define shmem_int64_test             pshmem_int64_test
-#define shmem_uint32_test            pshmem_uint32_test
-#define shmem_uint64_test            pshmem_uint64_test
-#define shmem_size_test              pshmem_size_test
-#define shmem_ptrdiff_test           pshmem_ptrdiff_test
-
-///// Mamzi STARTS wait_until
-
 #define shmem_int_wait_until_all         pshmem_int_wait_until_all
 #define shmem_long_wait_until_all        pshmem_long_wait_until_all
 #define shmem_longlong_wait_until_all    pshmem_longlong_wait_until_all
@@ -1226,12 +1209,104 @@
 #define shmem_ptrdiff_wait_until_some_vector     pshmem_ptrdiff_wait_until_some_vector
 
 
+#define shmem_short_test             pshmem_short_test
+#define shmem_int_test               pshmem_int_test
+#define shmem_long_test              pshmem_long_test
+#define shmem_longlong_test          pshmem_longlong_test
+#define shmem_ushort_test            pshmem_ushort_test
+#define shmem_uint_test              pshmem_uint_test
+#define shmem_ulong_test             pshmem_ulong_test
+#define shmem_ulonglong_test         pshmem_ulonglong_test
+#define shmem_int32_test             pshmem_int32_test
+#define shmem_int64_test             pshmem_int64_test
+#define shmem_uint32_test            pshmem_uint32_test
+#define shmem_uint64_test            pshmem_uint64_test
+#define shmem_size_test              pshmem_size_test
+#define shmem_ptrdiff_test           pshmem_ptrdiff_test
 
 
-//// Mamzi ENDS wait_until
+#define shmem_int_test_all         pshmem_int_test_all
+#define shmem_long_test_all        pshmem_long_test_all
+#define shmem_longlong_test_all    pshmem_longlong_test_all
+#define shmem_uint_test_all        pshmem_uint_test_all
+#define shmem_ulong_test_all       pshmem_ulong_test_all
+#define shmem_ulonglong_test_all   pshmem_ulonglong_test_all
+#define shmem_int32_test_all       pshmem_int32_test_all
+#define shmem_int64_test_all       pshmem_int64_test_all
+#define shmem_uint32_test_all      pshmem_uint32_test_all
+#define shmem_uint64_test_all      pshmem_uint64_test_all
+#define shmem_size_test_all        pshmem_size_test_all
+#define shmem_ptrdiff_test_all     pshmem_ptrdiff_test_all
 
 
+#define shmem_int_test_any         pshmem_int_test_any
+#define shmem_long_test_any        pshmem_long_test_any
+#define shmem_longlong_test_any    pshmem_longlong_test_any
+#define shmem_uint_test_any        pshmem_uint_test_any
+#define shmem_ulong_test_any       pshmem_ulong_test_any
+#define shmem_ulonglong_test_any   pshmem_ulonglong_test_any
+#define shmem_int32_test_any       pshmem_int32_test_any
+#define shmem_int64_test_any       pshmem_int64_test_any
+#define shmem_uint32_test_any      pshmem_uint32_test_any
+#define shmem_uint64_test_any      pshmem_uint64_test_any
+#define shmem_size_test_any        pshmem_size_test_any
+#define shmem_ptrdiff_test_any     pshmem_ptrdiff_test_any
 
+
+#define shmem_int_test_some         pshmem_int_test_some
+#define shmem_long_test_some        pshmem_long_test_some
+#define shmem_longlong_test_some    pshmem_longlong_test_some
+#define shmem_uint_test_some        pshmem_uint_test_some
+#define shmem_ulong_test_some       pshmem_ulong_test_some
+#define shmem_ulonglong_test_some   pshmem_ulonglong_test_some
+#define shmem_int32_test_some       pshmem_int32_test_some
+#define shmem_int64_test_some       pshmem_int64_test_some
+#define shmem_uint32_test_some      pshmem_uint32_test_some
+#define shmem_uint64_test_some      pshmem_uint64_test_some
+#define shmem_size_test_some        pshmem_size_test_some
+#define shmem_ptrdiff_test_some     pshmem_ptrdiff_test_some
+
+
+#define shmem_int_test_all_vector         pshmem_int_test_all_vector
+#define shmem_long_test_all_vector        pshmem_long_test_all_vector
+#define shmem_longlong_test_all_vector    pshmem_longlong_test_all_vector
+#define shmem_uint_test_all_vector        pshmem_uint_test_all_vector
+#define shmem_ulong_test_all_vector       pshmem_ulong_test_all_vector
+#define shmem_ulonglong_test_all_vector   pshmem_ulonglong_test_all_vector
+#define shmem_int32_test_all_vector       pshmem_int32_test_all_vector
+#define shmem_int64_test_all_vector       pshmem_int64_test_all_vector
+#define shmem_uint32_test_all_vector      pshmem_uint32_test_all_vector
+#define shmem_uint64_test_all_vector      pshmem_uint64_test_all_vector
+#define shmem_size_test_all_vector        pshmem_size_test_all_vector
+#define shmem_ptrdiff_test_all_vector     pshmem_ptrdiff_test_all_vector
+
+
+#define shmem_int_test_any_vector         pshmem_int_test_any_vector
+#define shmem_long_test_any_vector        pshmem_long_test_any_vector
+#define shmem_longlong_test_any_vector    pshmem_longlong_test_any_vector
+#define shmem_uint_test_any_vector        pshmem_uint_test_any_vector
+#define shmem_ulong_test_any_vector       pshmem_ulong_test_any_vector
+#define shmem_ulonglong_test_any_vector   pshmem_ulonglong_test_any_vector
+#define shmem_int32_test_any_vector       pshmem_int32_test_any_vector
+#define shmem_int64_test_any_vector       pshmem_int64_test_any_vector
+#define shmem_uint32_test_any_vector      pshmem_uint32_test_any_vector
+#define shmem_uint64_test_any_vector      pshmem_uint64_test_any_vector
+#define shmem_size_test_any_vector        pshmem_size_test_any_vector
+#define shmem_ptrdiff_test_any_vector     pshmem_ptrdiff_test_any_vector
+
+
+#define shmem_int_test_some_vector         pshmem_int_test_some_vector
+#define shmem_long_test_some_vector        pshmem_long_test_some_vector
+#define shmem_longlong_test_some_vector    pshmem_longlong_test_some_vector
+#define shmem_uint_test_some_vector        pshmem_uint_test_some_vector
+#define shmem_ulong_test_some_vector       pshmem_ulong_test_some_vector
+#define shmem_ulonglong_test_some_vector   pshmem_ulonglong_test_some_vector
+#define shmem_int32_test_some_vector       pshmem_int32_test_some_vector
+#define shmem_int64_test_some_vector       pshmem_int64_test_some_vector
+#define shmem_uint32_test_some_vector      pshmem_uint32_test_some_vector
+#define shmem_uint64_test_some_vector      pshmem_uint64_test_some_vector
+#define shmem_size_test_some_vector        pshmem_size_test_some_vector
+#define shmem_ptrdiff_test_some_vector     pshmem_ptrdiff_test_some_vector
 
 /*
  * Barrier sync routines
