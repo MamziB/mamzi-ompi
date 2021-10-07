@@ -194,8 +194,8 @@
 #define shmem_ctx_put64_signal                pshmem_ctx_put64_signal
 #define shmem_ctx_put128_signal               pshmem_ctx_put128_signal
 
-#define pshmem_putmem_signal                  pshmem_putmem_signal
-#define pshmem_ctx_putmem_signal              pshmem_ctx_putmem_signal
+#define shmem_putmem_signal                  pshmem_putmem_signal
+#define shmem_ctx_putmem_signal              pshmem_ctx_putmem_signal
 
 /*
  * Nonblocking signaled put routines
@@ -262,8 +262,8 @@
 #define shmem_ctx_put64_signal_nbi                pshmem_ctx_put64_signal_nbi
 #define shmem_ctx_put128_signal_nbi               pshmem_ctx_put128_signal_nbi
 
-#define pshmem_putmem_signal_nbi                  pshmem_putmem_signal_nbi
-#define pshmem_ctx_putmem_signal_nbi              pshmem_ctx_putmem_signal_nbi
+#define shmem_putmem_signal_nbi                  pshmem_putmem_signal_nbi
+#define shmem_ctx_putmem_signal_nbi              pshmem_ctx_putmem_signal_nbi
 
 
 /*
