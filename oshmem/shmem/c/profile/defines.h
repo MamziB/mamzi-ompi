@@ -72,6 +72,18 @@
 #define shmem_ctx_create             pshmem_ctx_create
 #define shmem_ctx_destroy            pshmem_ctx_destroy
 
+
+/*
+ * Team management routines
+ */
+#define shmem_team_my_pe             pshmem_team_my_pe
+#define shmem_team_n_pes             pshmem_team_n_pes
+#define shmem_team_get_config        pshmem_team_get_config
+#define shmem_team_translate_pe      pshmem_team_translate_pe
+#define shmem_team_split_strided     pshmem_team_split_strided
+#define shmem_team_split_2d          pshmem_team_split_2d
+#define shmem_team_destroy           pshmem_team_destroy
+
 /*
  * Elemental put routines
  */

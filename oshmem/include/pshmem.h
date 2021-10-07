@@ -73,6 +73,28 @@ OSHMEM_DECLSPEC int pshmem_ctx_create(long options, shmem_ctx_t *ctx);
 OSHMEM_DECLSPEC void pshmem_ctx_destroy(shmem_ctx_t ctx);
 
 /*
+ * Team management operations
+ */
+
+struct shmem_team {
+    uint64_t handle;
+};
+typedef struct shmem_team shmem_team_t;
+
+struct shmem_team_config {
+    int num_contexts;
+};
+typedef struct shmem_team_config shmem_team_config_t;
+
+OSHMEM_DECLSPEC int pshmem_team_my_pe(shmem_team_t team);
+OSHMEM_DECLSPEC int pshmem_team_n_pes(shmem_team_t team);
+OSHMEM_DECLSPEC int pshmem_team_get_config(shmem_team_t team, long config_mask, shmem_team_config_t *config);
+OSHMEM_DECLSPEC int pshmem_team_translate_pe(shmem_team_t src_team, int src_pe, shmem_team_t dest_team);
+OSHMEM_DECLSPEC int pshmem_team_split_strided(shmem_team_t parent_team, int start, int stride, int size, const shmem_team_config_t *config, long config_mask, shmem_team_t *new_team);
+OSHMEM_DECLSPEC int pshmem_team_split_2d(shmem_team_t parent_team, int xrange, const shmem_team_config_t *xaxis_config, long xaxis_mask, shmem_team_t *xaxis_team, const shmem_team_config_t *yaxis_config, long yaxis_mask, shmem_team_t *yaxis_team);
+OSHMEM_DECLSPEC void pshmem_team_destroy(shmem_team_t team);
+
+/*
  * Elemental put routines
  */
 OSHMEM_DECLSPEC  void pshmem_ctx_char_p(shmem_ctx_t ctx, char* addr, char value, int pe);
