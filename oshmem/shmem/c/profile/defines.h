@@ -1140,6 +1140,99 @@
 #define shmem_size_test              pshmem_size_test
 #define shmem_ptrdiff_test           pshmem_ptrdiff_test
 
+///// Mamzi STARTS wait_until
+
+#define shmem_int_wait_until_all         pshmem_int_wait_until_all
+#define shmem_long_wait_until_all        pshmem_long_wait_until_all
+#define shmem_longlong_wait_until_all    pshmem_longlong_wait_until_all
+#define shmem_uint_wait_until_all        pshmem_uint_wait_until_all
+#define shmem_ulong_wait_until_all       pshmem_ulong_wait_until_all
+#define shmem_ulonglong_wait_until_all   pshmem_ulonglong_wait_until_all
+#define shmem_int32_wait_until_all       pshmem_int32_wait_until_all
+#define shmem_int64_wait_until_all       pshmem_int64_wait_until_all
+#define shmem_uint32_wait_until_all      pshmem_uint32_wait_until_all
+#define shmem_uint64_wait_until_all      pshmem_uint64_wait_until_all
+#define shmem_size_wait_until_all        pshmem_size_wait_until_all
+#define shmem_ptrdiff_wait_until_all     pshmem_ptrdiff_wait_until_all
+
+
+#define shmem_int_wait_until_any         pshmem_int_wait_until_any
+#define shmem_long_wait_until_any        pshmem_long_wait_until_any
+#define shmem_longlong_wait_until_any    pshmem_longlong_wait_until_any
+#define shmem_uint_wait_until_any        pshmem_uint_wait_until_any
+#define shmem_ulong_wait_until_any       pshmem_ulong_wait_until_any
+#define shmem_ulonglong_wait_until_any   pshmem_ulonglong_wait_until_any
+#define shmem_int32_wait_until_any       pshmem_int32_wait_until_any
+#define shmem_int64_wait_until_any       pshmem_int64_wait_until_any
+#define shmem_uint32_wait_until_any      pshmem_uint32_wait_until_any
+#define shmem_uint64_wait_until_any      pshmem_uint64_wait_until_any
+#define shmem_size_wait_until_any        pshmem_size_wait_until_any
+#define shmem_ptrdiff_wait_until_any     pshmem_ptrdiff_wait_until_any
+
+
+#define shmem_int_wait_until_some         pshmem_int_wait_until_some
+#define shmem_long_wait_until_some        pshmem_long_wait_until_some
+#define shmem_longlong_wait_until_some    pshmem_longlong_wait_until_some
+#define shmem_uint_wait_until_some        pshmem_uint_wait_until_some
+#define shmem_ulong_wait_until_some       pshmem_ulong_wait_until_some
+#define shmem_ulonglong_wait_until_some   pshmem_ulonglong_wait_until_some
+#define shmem_int32_wait_until_some       pshmem_int32_wait_until_some
+#define shmem_int64_wait_until_some       pshmem_int64_wait_until_some
+#define shmem_uint32_wait_until_some      pshmem_uint32_wait_until_some
+#define shmem_uint64_wait_until_some      pshmem_uint64_wait_until_some
+#define shmem_size_wait_until_some        pshmem_size_wait_until_some
+#define shmem_ptrdiff_wait_until_some     pshmem_ptrdiff_wait_until_some
+
+
+#define shmem_int_wait_until_all_vector         pshmem_int_wait_until_all_vector
+#define shmem_long_wait_until_all_vector        pshmem_long_wait_until_all_vector
+#define shmem_longlong_wait_until_all_vector    pshmem_longlong_wait_until_all_vector
+#define shmem_uint_wait_until_all_vector        pshmem_uint_wait_until_all_vector
+#define shmem_ulong_wait_until_all_vector       pshmem_ulong_wait_until_all_vector
+#define shmem_ulonglong_wait_until_all_vector   pshmem_ulonglong_wait_until_all_vector
+#define shmem_int32_wait_until_all_vector       pshmem_int32_wait_until_all_vector
+#define shmem_int64_wait_until_all_vector       pshmem_int64_wait_until_all_vector
+#define shmem_uint32_wait_until_all_vector      pshmem_uint32_wait_until_all_vector
+#define shmem_uint64_wait_until_all_vector      pshmem_uint64_wait_until_all_vector
+#define shmem_size_wait_until_all_vector        pshmem_size_wait_until_all_vector
+#define shmem_ptrdiff_wait_until_all_vector     pshmem_ptrdiff_wait_until_all_vector
+
+
+#define shmem_int_wait_until_any_vector         pshmem_int_wait_until_any_vector
+#define shmem_long_wait_until_any_vector        pshmem_long_wait_until_any_vector
+#define shmem_longlong_wait_until_any_vector    pshmem_longlong_wait_until_any_vector
+#define shmem_uint_wait_until_any_vector        pshmem_uint_wait_until_any_vector
+#define shmem_ulong_wait_until_any_vector       pshmem_ulong_wait_until_any_vector
+#define shmem_ulonglong_wait_until_any_vector   pshmem_ulonglong_wait_until_any_vector
+#define shmem_int32_wait_until_any_vector       pshmem_int32_wait_until_any_vector
+#define shmem_int64_wait_until_any_vector       pshmem_int64_wait_until_any_vector
+#define shmem_uint32_wait_until_any_vector      pshmem_uint32_wait_until_any_vector
+#define shmem_uint64_wait_until_any_vector      pshmem_uint64_wait_until_any_vector
+#define shmem_size_wait_until_any_vector        pshmem_size_wait_until_any_vector
+#define shmem_ptrdiff_wait_until_any_vector     pshmem_ptrdiff_wait_until_any_vector
+
+
+#define shmem_int_wait_until_some_vector         pshmem_int_wait_until_some_vector
+#define shmem_long_wait_until_some_vector        pshmem_long_wait_until_some_vector
+#define shmem_longlong_wait_until_some_vector    pshmem_longlong_wait_until_some_vector
+#define shmem_uint_wait_until_some_vector        pshmem_uint_wait_until_some_vector
+#define shmem_ulong_wait_until_some_vector       pshmem_ulong_wait_until_some_vector
+#define shmem_ulonglong_wait_until_some_vector   pshmem_ulonglong_wait_until_some_vector
+#define shmem_int32_wait_until_some_vector       pshmem_int32_wait_until_some_vector
+#define shmem_int64_wait_until_some_vector       pshmem_int64_wait_until_some_vector
+#define shmem_uint32_wait_until_some_vector      pshmem_uint32_wait_until_some_vector
+#define shmem_uint64_wait_until_some_vector      pshmem_uint64_wait_until_some_vector
+#define shmem_size_wait_until_some_vector        pshmem_size_wait_until_some_vector
+#define shmem_ptrdiff_wait_until_some_vector     pshmem_ptrdiff_wait_until_some_vector
+
+
+
+
+//// Mamzi ENDS wait_until
+
+
+
+
 /*
  * Barrier sync routines
  */

@@ -1785,6 +1785,183 @@ OSHMEM_DECLSPEC  int pshmem_ptrdiff_test(volatile ptrdiff_t *addr, int cmp, ptrd
         unsigned long long*:   pshmem_longlong_test)(addr, cmp, value)
 #endif
 
+OSHMEM_DECLSPEC  void pshmem_int_wait_until_all(volatile int *ivars, size_t nelems, const int *status, int cmp, int value);
+OSHMEM_DECLSPEC  void pshmem_long_wait_until_all(volatile long *ivars, size_t nelems, const int *status, int cmp, long value);
+OSHMEM_DECLSPEC  void pshmem_longlong_wait_until_all(volatile long long *ivars, size_t nelems, const int *status, int cmp, long long value);
+OSHMEM_DECLSPEC  void pshmem_uint_wait_until_all(volatile unsigned int *ivars, size_t nelems, const int *status, int cmp, unsigned int value);
+OSHMEM_DECLSPEC  void pshmem_ulong_wait_until_all(volatile unsigned long *ivars, size_t nelems, const int *status, int cmp, unsigned long value);
+OSHMEM_DECLSPEC  void pshmem_ulonglong_wait_until_all(volatile unsigned long long *ivars, size_t nelems, const int *status, int cmp, unsigned long long value);
+OSHMEM_DECLSPEC  void pshmem_int32_wait_until_all(volatile int32_t *ivars, size_t nelems, const int *status, int cmp, int32_t value);
+OSHMEM_DECLSPEC  void pshmem_int64_wait_until_all(volatile int64_t *ivars, size_t nelems, const int *status, int cmp, int64_t value);
+OSHMEM_DECLSPEC  void pshmem_uint32_wait_until_all(volatile uint32_t *ivars, size_t nelems, const int *status, int cmp, uint32_t value);
+OSHMEM_DECLSPEC  void pshmem_uint64_wait_until_all(volatile uint64_t *ivars, size_t nelems, const int *status, int cmp, uint64_t value);
+OSHMEM_DECLSPEC  void pshmem_size_wait_until_all(volatile size_t *ivars, size_t nelems, const int *status, int cmp, size_t value);
+OSHMEM_DECLSPEC  void pshmem_ptrdiff_wait_until_all(volatile ptrdiff_t *ivars, size_t nelems, const int *status, int cmp, ptrdiff_t value);
+#if OSHMEM_HAVE_C11
+#define pshmem_wait_until_all(ivars, nelems, status, cmp, value)          \
+    _Generic(&*(ivars),                                                   \
+        int*:                  pshmem_int_wait_until_all,                 \
+        long*:                 pshmem_long_wait_until_all,                \
+        long long*:            pshmem_longlong_wait_until_all,            \
+        unsigned int*:         pshmem_uint_wait_until_all,                \
+        unsigned long*:        pshmem_ulong_wait_until_all,               \
+        unsigned long long*:   pshmem_ulonglong_wait_until_all,           \
+        int32_t*:              pshmem_int32_wait_until_all,               \
+        int64_t*:              pshmem_int64_wait_until_all,               \
+        uint32_t*:             pshmem_uint32_wait_until_all,              \
+        uint64_t*:             pshmem_uint64_wait_until_all,              \
+        size_t*:               pshmem_size_wait_until_all,                \
+        ptrdiff_t*:            pshmem_ptrdiff_wait_until_all)(ivars, nelems, status, cmp, value)
+#endif
+
+OSHMEM_DECLSPEC  void pshmem_int_wait_until_any(volatile int *ivars, size_t nelems, const int *status, int cmp, int value);
+OSHMEM_DECLSPEC  void pshmem_long_wait_until_any(volatile long *ivars, size_t nelems, const int *status, int cmp, long value);
+OSHMEM_DECLSPEC  void pshmem_longlong_wait_until_any(volatile long long *ivars, size_t nelems, const int *status, int cmp, long long value);
+OSHMEM_DECLSPEC  void pshmem_uint_wait_until_any(volatile unsigned int *ivars, size_t nelems, const int *status, int cmp, unsigned int value);
+OSHMEM_DECLSPEC  void pshmem_ulong_wait_until_any(volatile unsigned long *ivars, size_t nelems, const int *status, int cmp, unsigned long value);
+OSHMEM_DECLSPEC  void pshmem_ulonglong_wait_until_any(volatile unsigned long long *ivars, size_t nelems, const int *status, int cmp, unsigned long long value);
+OSHMEM_DECLSPEC  void pshmem_int32_wait_until_any(volatile int32_t *ivars, size_t nelems, const int *status, int cmp, int32_t value);
+OSHMEM_DECLSPEC  void pshmem_int64_wait_until_any(volatile int64_t *ivars, size_t nelems, const int *status, int cmp, int64_t value);
+OSHMEM_DECLSPEC  void pshmem_uint32_wait_until_any(volatile uint32_t *ivars, size_t nelems, const int *status, int cmp, uint32_t value);
+OSHMEM_DECLSPEC  void pshmem_uint64_wait_until_any(volatile uint64_t *ivars, size_t nelems, const int *status, int cmp, uint64_t value);
+OSHMEM_DECLSPEC  void pshmem_size_wait_until_any(volatile size_t *ivars, size_t nelems, const int *status, int cmp, size_t value);
+OSHMEM_DECLSPEC  void pshmem_ptrdiff_wait_until_any(volatile ptrdiff_t *ivars, size_t nelems, const int *status, int cmp, ptrdiff_t value);
+#if OSHMEM_HAVE_C11
+#define pshmem_wait_until_any(ivars, nelems, status, cmp, value)          \
+    _Generic(&*(ivars),                                                   \
+        int*:                  pshmem_int_wait_until_any,                 \
+        long*:                 pshmem_long_wait_until_any,                \
+        long long*:            pshmem_longlong_wait_until_any,            \
+        unsigned int*:         pshmem_uint_wait_until_any,                \
+        unsigned long*:        pshmem_ulong_wait_until_any,               \
+        unsigned long long*:   pshmem_ulonglong_wait_until_any,           \
+        int32_t*:              pshmem_int32_wait_until_any,               \
+        int64_t*:              pshmem_int64_wait_until_any,               \
+        uint32_t*:             pshmem_uint32_wait_until_any,              \
+        uint64_t*:             pshmem_uint64_wait_until_any,              \
+        size_t*:               pshmem_size_wait_until_any,                \
+        ptrdiff_t*:            pshmem_ptrdiff_wait_until_any)(ivars, nelems, status, cmp, value)
+#endif
+
+OSHMEM_DECLSPEC  void pshmem_int_wait_until_some(volatile int *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int value);
+OSHMEM_DECLSPEC  void pshmem_long_wait_until_some(volatile long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, long value);
+OSHMEM_DECLSPEC  void pshmem_longlong_wait_until_some(volatile long long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, long long value);
+OSHMEM_DECLSPEC  void pshmem_uint_wait_until_some(volatile unsigned int *ivars, size_t nelems, size_t *indices, const int *status, int cmp, unsigned int value);
+OSHMEM_DECLSPEC  void pshmem_ulong_wait_until_some(volatile unsigned long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, unsigned long value);
+OSHMEM_DECLSPEC  void pshmem_ulonglong_wait_until_some(volatile unsigned long long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, unsigned long long value);
+OSHMEM_DECLSPEC  void pshmem_int32_wait_until_some(volatile int32_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int32_t value);
+OSHMEM_DECLSPEC  void pshmem_int64_wait_until_some(volatile int64_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int64_t value);
+OSHMEM_DECLSPEC  void pshmem_uint32_wait_until_some(volatile uint32_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, uint32_t value);
+OSHMEM_DECLSPEC  void pshmem_uint64_wait_until_some(volatile uint64_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, uint64_t value);
+OSHMEM_DECLSPEC  void pshmem_size_wait_until_some(volatile size_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, size_t value);
+OSHMEM_DECLSPEC  void pshmem_ptrdiff_wait_until_some(volatile ptrdiff_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, ptrdiff_t value);
+#if OSHMEM_HAVE_C11
+#define pshmem_wait_until_some(ivars, nelems, indices, status, cmp, value)          \
+    _Generic(&*(ivars),                                                    \
+        int*:                  pshmem_int_wait_until_some,                 \
+        long*:                 pshmem_long_wait_until_some,                \
+        long long*:            pshmem_longlong_wait_until_some,            \
+        unsigned int*:         pshmem_uint_wait_until_some,                \
+        unsigned long*:        pshmem_ulong_wait_until_some,               \
+        unsigned long long*:   pshmem_ulonglong_wait_until_some,           \
+        int32_t*:              pshmem_int32_wait_until_some,               \
+        int64_t*:              pshmem_int64_wait_until_some,               \
+        uint32_t*:             pshmem_uint32_wait_until_some,              \
+        uint64_t*:             pshmem_uint64_wait_until_some,              \
+        size_t*:               pshmem_size_wait_until_some,                \
+        ptrdiff_t*:            pshmem_ptrdiff_wait_until_some)(ivars, nelems, indices, status, cmp, value)
+#endif
+
+OSHMEM_DECLSPEC  void pshmem_int_wait_until_all_vector(volatile int *ivars, size_t nelems, const int *status, int cmp, int value);
+OSHMEM_DECLSPEC  void pshmem_long_wait_until_all_vector(volatile long *ivars, size_t nelems, const int *status, int cmp, long value);
+OSHMEM_DECLSPEC  void pshmem_longlong_wait_until_all_vector(volatile long long *ivars, size_t nelems, const int *status, int cmp, long long value);
+OSHMEM_DECLSPEC  void pshmem_uint_wait_until_all_vector(volatile unsigned int *ivars, size_t nelems, const int *status, int cmp, unsigned int value);
+OSHMEM_DECLSPEC  void pshmem_ulong_wait_until_all_vector(volatile unsigned long *ivars, size_t nelems, const int *status, int cmp, unsigned long value);
+OSHMEM_DECLSPEC  void pshmem_ulonglong_wait_until_all_vector(volatile unsigned long long *ivars, size_t nelems, const int *status, int cmp, unsigned long long value);
+OSHMEM_DECLSPEC  void pshmem_int32_wait_until_all_vector(volatile int32_t *ivars, size_t nelems, const int *status, int cmp, int32_t value);
+OSHMEM_DECLSPEC  void pshmem_int64_wait_until_all_vector(volatile int64_t *ivars, size_t nelems, const int *status, int cmp, int64_t value);
+OSHMEM_DECLSPEC  void pshmem_uint32_wait_until_all_vector(volatile uint32_t *ivars, size_t nelems, const int *status, int cmp, uint32_t value);
+OSHMEM_DECLSPEC  void pshmem_uint64_wait_until_all_vector(volatile uint64_t *ivars, size_t nelems, const int *status, int cmp, uint64_t value);
+OSHMEM_DECLSPEC  void pshmem_size_wait_until_all_vector(volatile size_t *ivars, size_t nelems, const int *status, int cmp, size_t value);
+OSHMEM_DECLSPEC  void pshmem_ptrdiff_wait_until_all_vector(volatile ptrdiff_t *ivars, size_t nelems, const int *status, int cmp, ptrdiff_t value);
+#if OSHMEM_HAVE_C11
+#define pshmem_wait_until_all_vector(ivars, nelems, status, cmp, value)          \
+    _Generic(&*(ivars),                                                   \
+        int*:                  pshmem_int_wait_until_all_vector,                 \
+        long*:                 pshmem_long_wait_until_all_vector,                \
+        long long*:            pshmem_longlong_wait_until_all_vector,            \
+        unsigned int*:         pshmem_uint_wait_until_all_vector,                \
+        unsigned long*:        pshmem_ulong_wait_until_all_vector,               \
+        unsigned long long*:   pshmem_ulonglong_wait_until_all_vector,           \
+        int32_t*:              pshmem_int32_wait_until_all_vector,               \
+        int64_t*:              pshmem_int64_wait_until_all_vector,               \
+        uint32_t*:             pshmem_uint32_wait_until_all_vector,              \
+        uint64_t*:             pshmem_uint64_wait_until_all_vector,              \
+        size_t*:               pshmem_size_wait_until_all_vector,                \
+        ptrdiff_t*:            pshmem_ptrdiff_wait_until_all_vector)(ivars, nelems, status, cmp, value)
+#endif
+
+
+OSHMEM_DECLSPEC  void pshmem_int_wait_until_any_vector(volatile int *ivars, size_t nelems, const int *status, int cmp, int value);
+OSHMEM_DECLSPEC  void pshmem_long_wait_until_any_vector(volatile long *ivars, size_t nelems, const int *status, int cmp, long value);
+OSHMEM_DECLSPEC  void pshmem_longlong_wait_until_any_vector(volatile long long *ivars, size_t nelems, const int *status, int cmp, long long value);
+OSHMEM_DECLSPEC  void pshmem_uint_wait_until_any_vector(volatile unsigned int *ivars, size_t nelems, const int *status, int cmp, unsigned int value);
+OSHMEM_DECLSPEC  void pshmem_ulong_wait_until_any_vector(volatile unsigned long *ivars, size_t nelems, const int *status, int cmp, unsigned long value);
+OSHMEM_DECLSPEC  void pshmem_ulonglong_wait_until_any_vector(volatile unsigned long long *ivars, size_t nelems, const int *status, int cmp, unsigned long long value);
+OSHMEM_DECLSPEC  void pshmem_int32_wait_until_any_vector(volatile int32_t *ivars, size_t nelems, const int *status, int cmp, int32_t value);
+OSHMEM_DECLSPEC  void pshmem_int64_wait_until_any_vector(volatile int64_t *ivars, size_t nelems, const int *status, int cmp, int64_t value);
+OSHMEM_DECLSPEC  void pshmem_uint32_wait_until_any_vector(volatile uint32_t *ivars, size_t nelems, const int *status, int cmp, uint32_t value);
+OSHMEM_DECLSPEC  void pshmem_uint64_wait_until_any_vector(volatile uint64_t *ivars, size_t nelems, const int *status, int cmp, uint64_t value);
+OSHMEM_DECLSPEC  void pshmem_size_wait_until_any_vector(volatile size_t *ivars, size_t nelems, const int *status, int cmp, size_t value);
+OSHMEM_DECLSPEC  void pshmem_ptrdiff_wait_until_any_vector(volatile ptrdiff_t *ivars, size_t nelems, const int *status, int cmp, ptrdiff_t value);
+#if OSHMEM_HAVE_C11
+#define pshmem_wait_until_any_vector(ivars, nelems, status, cmp, value)          \
+    _Generic(&*(ivars),                                                   \
+        int*:                  pshmem_int_wait_until_any_vector,                 \
+        long*:                 pshmem_long_wait_until_any_vector,                \
+        long long*:            pshmem_longlong_wait_until_any_vector,            \
+        unsigned int*:         pshmem_uint_wait_until_any_vector,                \
+        unsigned long*:        pshmem_ulong_wait_until_any_vector,               \
+        unsigned long long*:   pshmem_ulonglong_wait_until_any_vector,           \
+        int32_t*:              pshmem_int32_wait_until_any_vector,               \
+        int64_t*:              pshmem_int64_wait_until_any_vector,               \
+        uint32_t*:             pshmem_uint32_wait_until_any_vector,              \
+        uint64_t*:             pshmem_uint64_wait_until_any_vector,              \
+        size_t*:               pshmem_size_wait_until_any_vector,                \
+        ptrdiff_t*:            pshmem_ptrdiff_wait_until_any_vector)(ivars, nelems, status, cmp, value)
+#endif
+
+
+OSHMEM_DECLSPEC  void pshmem_int_wait_until_some_vector(volatile int *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int value);
+OSHMEM_DECLSPEC  void pshmem_long_wait_until_some_vector(volatile long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, long value);
+OSHMEM_DECLSPEC  void pshmem_longlong_wait_until_some_vector(volatile long long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, long long value);
+OSHMEM_DECLSPEC  void pshmem_uint_wait_until_some_vector(volatile unsigned int *ivars, size_t nelems, size_t *indices, const int *status, int cmp, unsigned int value);
+OSHMEM_DECLSPEC  void pshmem_ulong_wait_until_some_vector(volatile unsigned long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, unsigned long value);
+OSHMEM_DECLSPEC  void pshmem_ulonglong_wait_until_some_vector(volatile unsigned long long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, unsigned long long value);
+OSHMEM_DECLSPEC  void pshmem_int32_wait_until_some_vector(volatile int32_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int32_t value);
+OSHMEM_DECLSPEC  void pshmem_int64_wait_until_some_vector(volatile int64_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int64_t value);
+OSHMEM_DECLSPEC  void pshmem_uint32_wait_until_some_vector(volatile uint32_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, uint32_t value);
+OSHMEM_DECLSPEC  void pshmem_uint64_wait_until_some_vector(volatile uint64_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, uint64_t value);
+OSHMEM_DECLSPEC  void pshmem_size_wait_until_some_vector(volatile size_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, size_t value);
+OSHMEM_DECLSPEC  void pshmem_ptrdiff_wait_until_some_vector(volatile ptrdiff_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, ptrdiff_t value);
+#if OSHMEM_HAVE_C11
+#define pshmem_wait_until_some_vector(ivars, nelems, indices, status, cmp, value)          \
+    _Generic(&*(ivars),                                                    \
+        int*:                  pshmem_int_wait_until_some_vector,                 \
+        long*:                 pshmem_long_wait_until_some_vector,                \
+        long long*:            pshmem_longlong_wait_until_some_vector,            \
+        unsigned int*:         pshmem_uint_wait_until_some_vector,                \
+        unsigned long*:        pshmem_ulong_wait_until_some_vector,               \
+        unsigned long long*:   pshmem_ulonglong_wait_until_some_vector,           \
+        int32_t*:              pshmem_int32_wait_until_some_vector,               \
+        int64_t*:              pshmem_int64_wait_until_some_vector,               \
+        uint32_t*:             pshmem_uint32_wait_until_some_vector,              \
+        uint64_t*:             pshmem_uint64_wait_until_some_vector,              \
+        size_t*:               pshmem_size_wait_until_some_vector,                \
+        ptrdiff_t*:            pshmem_ptrdiff_wait_until_some_vector)(ivars, nelems, indices, status, cmp, value)
+#endif
+
+
 /*
  * Barrier sync routines
  */
