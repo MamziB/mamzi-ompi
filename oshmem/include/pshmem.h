@@ -57,7 +57,9 @@ OSHMEM_DECLSPEC  void* pshmem_malloc(size_t size);
 OSHMEM_DECLSPEC  void* pshmem_calloc(size_t count, size_t size);
 OSHMEM_DECLSPEC  void* pshmem_align(size_t align, size_t size);
 OSHMEM_DECLSPEC  void* pshmem_realloc(void *ptr, size_t size);
+OSHMEM_DECLSPEC  void* pshmem_malloc_with_hints(size_t size, long hints);
 OSHMEM_DECLSPEC  void pshmem_free(void* ptr);
+
 
 /*
  * Remote pointer operations

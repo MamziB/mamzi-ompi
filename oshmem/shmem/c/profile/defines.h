@@ -52,6 +52,7 @@
 #define shmem_calloc                 pshmem_calloc
 #define shmem_align                  pshmem_align
 #define shmem_realloc                pshmem_realloc
+#define shmem_malloc_with_hints      pshmem_malloc_with_hints
 #define shmem_free                   pshmem_free
 #define shmalloc                     pshmalloc /* shmem-compat.h */
 #define shmemalign                   pshmemalign /* shmem-compat.h */
