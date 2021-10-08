@@ -75,17 +75,6 @@ OSHMEM_DECLSPEC void pshmem_ctx_destroy(shmem_ctx_t ctx);
 /*
  * Team management operations
  */
-
-struct shmem_team {
-    uint64_t handle;
-};
-typedef struct shmem_team shmem_team_t;
-
-struct shmem_team_config {
-    int num_contexts;
-};
-typedef struct shmem_team_config shmem_team_config_t;
-
 OSHMEM_DECLSPEC int pshmem_team_my_pe(shmem_team_t team);
 OSHMEM_DECLSPEC int pshmem_team_n_pes(shmem_team_t team);
 OSHMEM_DECLSPEC int pshmem_team_get_config(shmem_team_t team, long config_mask, shmem_team_config_t *config);
