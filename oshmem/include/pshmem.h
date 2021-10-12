@@ -1729,6 +1729,437 @@ OSHMEM_DECLSPEC void pshmem_longlong_inc(long long *target, int pe);
 #endif
 
 /*
+ * Nonblocking atomic memory operations
+ */
+
+
+/* Atomic Nonblocking Fetch */
+OSHMEM_DECLSPEC void pshmem_ctx_int_atomic_fetch_nbi(shmem_ctx_t ctx, int *fetch, const int *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_long_atomic_fetch_nbi(shmem_ctx_t ctx, long *fetch, const long *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_longlong_atomic_fetch_nbi(shmem_ctx_t ctx, long long *fetch, const long long *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint_atomic_fetch_nbi(shmem_ctx_t ctx, unsigned int *fetch, const unsigned int *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ulong_atomic_fetch_nbi(shmem_ctx_t ctx, unsigned long *fetch,  const unsigned long *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ulonglong_atomic_fetch_nbi(shmem_ctx_t ctx, unsigned long long *fetch, const unsigned long long *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_float_atomic_fetch_nbi(shmem_ctx_t ctx, float *fetch, const float *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_double_atomic_fetch_nbi(shmem_ctx_t ctx, double *fetch, const double *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int32_atomic_fetch_nbi(shmem_ctx_t ctx, int32_t *fetch, const int32_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int64_atomic_fetch_nbi(shmem_ctx_t ctx, int64_t *fetch, const int64_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint32_atomic_fetch_nbi(shmem_ctx_t ctx, uint32_t *fetch, const uint32_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint64_atomic_fetch_nbi(shmem_ctx_t ctx, uint64_t *fetch, const uint64_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_size_atomic_fetch_nbi(shmem_ctx_t ctx, size_t *fetch, const size_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ptrdiff_atomic_fetch_nbi(shmem_ctx_t ctx, ptrdiff_t *fetch, const ptrdiff_t *target, int pe);
+
+OSHMEM_DECLSPEC void pshmem_int_atomic_fetch_nbi(int *fetch, const int *target, int pe);
+OSHMEM_DECLSPEC void pshmem_long_atomic_fetch_nbi(long *fetch, const long *target, int pe);
+OSHMEM_DECLSPEC void pshmem_longlong_atomic_fetch_nbi(long long *fetch, const long long *target, int pe);
+OSHMEM_DECLSPEC void pshmem_uint_atomic_fetch_nbi(unsigned int *fetch, const unsigned int *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ulong_atomic_fetch_nbi(unsigned long *fetch, const unsigned long *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ulonglong_atomic_fetch_nbi(unsigned long long *fetch, const unsigned long long *target, int pe);
+OSHMEM_DECLSPEC void pshmem_float_atomic_fetch_nbi(float *fetch, const float *target, int pe);
+OSHMEM_DECLSPEC void pshmem_double_atomic_fetch_nbi(double *fetch, const double *target, int pe);
+OSHMEM_DECLSPEC void pshmem_int32_atomic_fetch_nbi(int32_t *fetch, const int32_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_int64_atomic_fetch_nbi(int64_t *fetch, const int64_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_uint32_atomic_fetch_nbi(uint32_t *fetch, const uint32_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_uint64_atomic_fetch_nbi(uint64_t *fetch, const uint64_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_size_atomic_fetch_nbi(size_t *fetch, const size_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ptrdiff_atomic_fetch_nbi(ptrdiff_t *fetch, const ptrdiff_t *target, int pe);
+
+#if OSHMEM_HAVE_C11
+#define pshmem_atomic_fetch_nbi(...)                                        \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                        \
+            shmem_ctx_t:  _Generic((__OSHMEM_VAR_ARG2(__VA_ARGS__)),    \
+                int*:         pshmem_ctx_int_atomic_fetch_nbi,              \
+                long*:        pshmem_ctx_long_atomic_fetch_nbi,             \
+                long long*:   pshmem_ctx_longlong_atomic_fetch_nbi,         \
+                unsigned int*:       pshmem_ctx_uint_atomic_fetch_nbi,      \
+                unsigned long*:      pshmem_ctx_ulong_atomic_fetch_nbi,     \
+                unsigned long long*: pshmem_ctx_ulonglong_atomic_fetch_nbi, \
+                float*:       pshmem_ctx_float_atomic_fetch_nbi,            \
+                double*:      pshmem_ctx_double_atomic_fetch_nbi,           \
+                int32_t*:      pshmem_ctx_int32_atomic_fetch_nbi,           \
+                int64_t*:      pshmem_ctx_int64_atomic_fetch_nbi,           \
+                uint32_t*:      pshmem_ctx_uint32_atomic_fetch_nbi,           \
+                uint64_t*:      pshmem_ctx_uint64_atomic_fetch_nbi,           \
+                size_t*:      pshmem_ctx_size_atomic_fetch_nbi,           \
+                ptrdiff_t*:      pshmem_ctx_ptrdiff_atomic_fetch_nbi,           \
+                default:      __opshmem_datatype_ignore),               \
+            int*:        pshmem_int_atomic_fetch_nbi,                       \
+            long*:       pshmem_long_atomic_fetch_nbi,                      \
+            long long*:  pshmem_longlong_atomic_fetch_nbi,                  \
+            unsigned int*:       pshmem_uint_atomic_fetch_nbi,              \
+            unsigned long*:      pshmem_ulong_atomic_fetch_nbi,             \
+            unsigned long long*: pshmem_ulonglong_atomic_fetch_nbi,         \
+            float*:       pshmem_float_atomic_fetch_nbi,                    \
+            double*:      pshmem_double_atomic_fetch_nbi,                    \
+            int32_t*:      pshmem_int32_atomic_fetch_nbi,                    \
+            int64_t*:      pshmem_int64_atomic_fetch_nbi,                    \
+            uint32_t*:      pshmem_uint32_atomic_fetch_nbi,                    \
+            uint64_t*:      pshmem_uint64_atomic_fetch_nbi,                    \
+            size_t*:      pshmem_size_atomic_fetch_nbi,                    \
+            ptrdiff_t*:      pshmem_ptrdiff_atomic_fetch_nbi)(__VA_ARGS__)
+#endif
+
+
+/* Atomic Nonblocking Compare and Swap */
+OSHMEM_DECLSPEC void pshmem_ctx_int_atomic_compare_swap_nbi(shmem_ctx_t ctx, int *fetch, int *target, int cond, int value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_long_atomic_compare_swap_nbi(shmem_ctx_t ctx, long *fetch, long *target, long cond, long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_longlong_atomic_compare_swap_nbi(shmem_ctx_t ctx, long long *fetch, long long *target, long long cond, long long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint_atomic_compare_swap_nbi(shmem_ctx_t ctx, unsigned int *fetch, unsigned int *target, unsigned int cond, unsigned int value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ulong_atomic_compare_swap_nbi(shmem_ctx_t ctx, unsigned long *fetch, unsigned long *target, unsigned long cond, unsigned long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ulonglong_atomic_compare_swap_nbi(shmem_ctx_t ctx, unsigned long long *fetch, unsigned long long *target, unsigned long long cond, unsigned long long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int32_atomic_compare_swap_nbi(shmem_ctx_t ctx, int32_t *fetch, int32_t *target, int32_t cond, int32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int64_atomic_compare_swap_nbi(shmem_ctx_t ctx, int64_t *fetch, int64_t *target, int64_t cond, int64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint32_atomic_compare_swap_nbi(shmem_ctx_t ctx, uint32_t *fetch, uint32_t *target, uint32_t cond, uint32_t value, uint32_t pe);;
+OSHMEM_DECLSPEC void pshmem_ctx_uint64_atomic_compare_swap_nbi(shmem_ctx_t ctx, uint64_t *fetch, uint64_t *target, uint64_t cond, uint64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_size_atomic_compare_swap_nbi(shmem_ctx_t ctx, size_t *fetch, size_t *target, size_t cond, size_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ptrdiff_atomic_compare_swap_nbi(shmem_ctx_t ctx, ptrdiff_t *fetch, ptrdiff_t *target, ptrdiff_t cond, ptrdiff_t value, int pe);
+
+OSHMEM_DECLSPEC void pshmem_int_atomic_compare_swap_nbi(int *fetch, int *target, int cond, int value, int pe);
+OSHMEM_DECLSPEC void pshmem_long_atomic_compare_swap_nbi(long *fetch, long *target, long cond, long value, int pe);
+OSHMEM_DECLSPEC void pshmem_longlong_atomic_compare_swap_nbi(long long *fetch, long long *target, long long cond, long long value, int pe);
+OSHMEM_DECLSPEC void pshmem_uint_atomic_compare_swap_nbi(unsigned int *fetch, unsigned int *target, unsigned int cond, unsigned int value, int pe);
+OSHMEM_DECLSPEC void pshmem_ulong_atomic_compare_swap_nbi(unsigned long *fetch, unsigned long *target, unsigned long cond, unsigned long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ulonglong_atomic_compare_swap_nbi(unsigned long long *fetch, unsigned long long *target, unsigned long long cond, unsigned long long value, int pe);
+OSHMEM_DECLSPEC void pshmem_int32_atomic_compare_swap_nbi(int32_t *fetch, int32_t *target, int32_t cond, int32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_int64_atomic_compare_swap_nbi(int64_t *fetch, int64_t *target, int64_t cond, int64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_uint32_atomic_compare_swap_nbi(uint32_t *fetch, uint32_t *target, uint32_t cond, uint32_t value, int pe);;
+OSHMEM_DECLSPEC void pshmem_uint64_atomic_compare_swap_nbi(uint64_t *fetch, uint64_t *target, uint64_t cond, uint64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_size_atomic_compare_swap_nbi(size_t *fetch, size_t *target, size_t cond, size_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ptrdiff_atomic_compare_swap_nbi(ptrdiff_t *fetch, ptrdiff_t *target, ptrdiff_t cond, ptrdiff_t value, int pe);
+
+#if OSHMEM_HAVE_C11
+#define pshmem_atomic_compare_swap_nbi(...)                                        \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                        \
+            shmem_ctx_t:  _Generic((__OSHMEM_VAR_ARG2(__VA_ARGS__)),    \
+                int*:         pshmem_ctx_int_atomic_compare_swap_nbi,              \
+                long*:        pshmem_ctx_long_atomic_compare_swap_nbi,             \
+                long long*:   pshmem_ctx_longlong_atomic_compare_swap_nbi,         \
+                unsigned int*:       pshmem_ctx_uint_atomic_compare_swap_nbi,      \
+                unsigned long*:      pshmem_ctx_ulong_atomic_compare_swap_nbi,     \
+                unsigned long long*: pshmem_ctx_ulonglong_atomic_compare_swap_nbi, \
+                int32_t*:      pshmem_ctx_int32_atomic_compare_swap_nbi,           \
+                int64_t*:      pshmem_ctx_int64_atomic_compare_swap_nbi,           \
+                uint32_t*:      pshmem_ctx_uint32_atomic_compare_swap_nbi,           \
+                uint64_t*:      pshmem_ctx_uint64_atomic_compare_swap_nbi,           \
+                size_t*:      pshmem_ctx_size_atomic_compare_swap_nbi,           \
+                ptrdiff_t*:      pshmem_ctx_ptrdiff_atomic_compare_swap_nbi,           \
+                default:      __opshmem_datatype_ignore),               \
+            int*:        pshmem_int_atomic_compare_swap_nbi,                       \
+            long*:       pshmem_long_atomic_compare_swap_nbi,                      \
+            long long*:  pshmem_longlong_atomic_compare_swap_nbi,                  \
+            unsigned int*:       pshmem_uint_atomic_compare_swap_nbi,              \
+            unsigned long*:      pshmem_ulong_atomic_compare_swap_nbi,             \
+            unsigned long long*: pshmem_ulonglong_atomic_compare_swap_nbi,         \
+            int32_t*:      pshmem_int32_atomic_compare_swap_nbi,                    \
+            int64_t*:      pshmem_int64_atomic_compare_swap_nbi,                    \
+            uint32_t*:      pshmem_uint32_atomic_compare_swap_nbi,                    \
+            uint64_t*:      pshmem_uint64_atomic_compare_swap_nbi,                    \
+            size_t*:      pshmem_size_atomic_compare_swap_nbi,                    \
+            ptrdiff_t*:      pshmem_ptrdiff_atomic_compare_swap_nbi)(__VA_ARGS__)
+#endif
+
+/* Atomic Nonblocking Swap */
+OSHMEM_DECLSPEC void pshmem_ctx_int_atomic_swap_nbi(shmem_ctx_t ctx, int *fetch, int *target, int value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_long_atomic_swap_nbi(shmem_ctx_t ctx, long *fetch, long *target, long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_longlong_atomic_swap_nbi(shmem_ctx_t ctx, long long *fetch, long long *target, long long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint_atomic_swap_nbi(shmem_ctx_t ctx, unsigned int *fetch, unsigned int *target, unsigned int value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ulong_atomic_swap_nbi(shmem_ctx_t ctx, unsigned long *fetch, unsigned long *target, unsigned long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ulonglong_atomic_swap_nbi(shmem_ctx_t ctx, unsigned long long *fetch, unsigned long long *target, unsigned long long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_float_atomic_swap_nbi(shmem_ctx_t ctx, float *fetch, float *target, float value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_double_atomic_swap_nbi(shmem_ctx_t ctx, double *fetch, double *target, double value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int32_atomic_swap_nbi(shmem_ctx_t ctx, int32_t *fetch, int32_t *target, int32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int64_atomic_swap_nbi(shmem_ctx_t ctx, int64_t *fetch, int64_t *target, int64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint32_atomic_swap_nbi(shmem_ctx_t ctx, uint32_t *fetch, uint32_t *target, uint32_t value, uint32_t pe);;
+OSHMEM_DECLSPEC void pshmem_ctx_uint64_atomic_swap_nbi(shmem_ctx_t ctx, uint64_t *fetch, uint64_t *target, uint64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_size_atomic_swap_nbi(shmem_ctx_t ctx, size_t *fetch, size_t *target, size_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ptrdiff_atomic_swap_nbi(shmem_ctx_t ctx, ptrdiff_t *fetch, ptrdiff_t *target,  ptrdiff_t value, int pe);
+
+OSHMEM_DECLSPEC void pshmem_int_atomic_swap_nbi(int *fetch, int *target, int value, int pe);
+OSHMEM_DECLSPEC void pshmem_long_atomic_swap_nbi(long *fetch, long *target, long value, int pe);
+OSHMEM_DECLSPEC void pshmem_longlong_atomic_swap_nbi(long long *fetch, long long *target, long long value, int pe);
+OSHMEM_DECLSPEC void pshmem_uint_atomic_swap_nbi(unsigned int *fetch, unsigned int *target, unsigned int value, int pe);
+OSHMEM_DECLSPEC void pshmem_ulong_atomic_swap_nbi(unsigned long *fetch, unsigned long *target, unsigned long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ulonglong_atomic_swap_nbi(unsigned long long *fetch, unsigned long long *target, unsigned long long value, int pe);
+OSHMEM_DECLSPEC void pshmem_float_atomic_swap_nbi(float *fetch, float *target, float value, int pe);
+OSHMEM_DECLSPEC void pshmem_double_atomic_swap_nbi(double *fetch, double *target, double value, int pe);
+OSHMEM_DECLSPEC void pshmem_int32_atomic_swap_nbi(int32_t *fetch, int32_t *target, int32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_int64_atomic_swap_nbi(int64_t *fetch, int64_t *target, int64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_uint32_atomic_swap_nbi(uint32_t *fetch, uint32_t *target, uint32_t value, int pe);;
+OSHMEM_DECLSPEC void pshmem_uint64_atomic_swap_nbi(uint64_t *fetch, uint64_t *target, uint64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_size_atomic_swap_nbi(size_t *fetch, size_t *target, size_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ptrdiff_atomic_swap_nbi(ptrdiff_t *fetch, ptrdiff_t *target, ptrdiff_t value, int pe);
+
+#if OSHMEM_HAVE_C11
+#define pshmem_atomic_swap_nbi(...)                                        \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                        \
+            shmem_ctx_t:  _Generic((__OSHMEM_VAR_ARG2(__VA_ARGS__)),    \
+                int*:         pshmem_ctx_int_atomic_swap_nbi,              \
+                long*:        pshmem_ctx_long_atomic_swap_nbi,             \
+                long long*:   pshmem_ctx_longlong_atomic_swap_nbi,         \
+                unsigned int*:       pshmem_ctx_uint_atomic_swap_nbi,      \
+                unsigned long*:      pshmem_ctx_ulong_atomic_swap_nbi,     \
+                unsigned long long*: pshmem_ctx_ulonglong_atomic_swap_nbi, \
+                float*:      pshmem_ctx_ptrdiff_atomic_swap_nbi,           \
+                double*:      pshmem_ctx_ptrdiff_atomic_swap_nbi,           \
+                int32_t*:      pshmem_ctx_int32_atomic_swap_nbi,           \
+                int64_t*:      pshmem_ctx_int64_atomic_swap_nbi,           \
+                uint32_t*:      pshmem_ctx_uint32_atomic_swap_nbi,           \
+                uint64_t*:      pshmem_ctx_uint64_atomic_swap_nbi,           \
+                size_t*:      pshmem_ctx_size_atomic_swap_nbi,           \
+                ptrdiff_t*:      pshmem_ctx_ptrdiff_atomic_swap_nbi,           \
+                default:      __opshmem_datatype_ignore),               \
+            int*:        pshmem_int_atomic_swap_nbi,                       \
+            long*:       pshmem_long_atomic_swap_nbi,                      \
+            long long*:  pshmem_longlong_atomic_swap_nbi,                  \
+            unsigned int*:       pshmem_uint_atomic_swap_nbi,              \
+            unsigned long*:      pshmem_ulong_atomic_swap_nbi,             \
+            unsigned long long*: pshmem_ulonglong_atomic_swap_nbi,         \
+            float*:      pshmem_int32_atomic_swap_nbi,                    \
+            double*:      pshmem_int32_atomic_swap_nbi,                    \
+            int32_t*:      pshmem_int32_atomic_swap_nbi,                    \
+            int64_t*:      pshmem_int64_atomic_swap_nbi,                    \
+            uint32_t*:      pshmem_uint32_atomic_swap_nbi,                    \
+            uint64_t*:      pshmem_uint64_atomic_swap_nbi,                    \
+            size_t*:      pshmem_size_atomic_swap_nbi,                    \
+            ptrdiff_t*:      pshmem_ptrdiff_atomic_swap_nbi)(__VA_ARGS__)
+#endif
+
+
+
+/* Atomic Nonblocking Fetch and Increment */
+OSHMEM_DECLSPEC void pshmem_ctx_int_atomic_fetch_inc_nbi(shmem_ctx_t ctx, int *fetch, int *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_long_atomic_fetch_inc_nbi(shmem_ctx_t ctx, long *fetch, long *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_longlong_atomic_fetch_inc_nbi(shmem_ctx_t ctx, long long *fetch, long long *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint_atomic_fetch_inc_nbi(shmem_ctx_t ctx, unsigned int *fetch, unsigned int *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ulong_atomic_fetch_inc_nbi(shmem_ctx_t ctx, unsigned long *fetch,  unsigned long *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ulonglong_atomic_fetch_inc_nbi(shmem_ctx_t ctx, unsigned long long *fetch, unsigned long long *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int32_atomic_fetch_inc_nbi(shmem_ctx_t ctx, int32_t *fetch, int32_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int64_atomic_fetch_inc_nbi(shmem_ctx_t ctx, int64_t *fetch, int64_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint32_atomic_fetch_inc_nbi(shmem_ctx_t ctx, uint32_t *fetch, uint32_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint64_atomic_fetch_inc_nbi(shmem_ctx_t ctx, uint64_t *fetch, uint64_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_size_atomic_fetch_inc_nbi(shmem_ctx_t ctx, size_t *fetch, size_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ptrdiff_atomic_fetch_inc_nbi(shmem_ctx_t ctx, ptrdiff_t *fetch, ptrdiff_t *target, int pe);
+
+OSHMEM_DECLSPEC void pshmem_int_atomic_fetch_inc_nbi(int *fetch, int *target, int pe);
+OSHMEM_DECLSPEC void pshmem_long_atomic_fetch_inc_nbi(long *fetch, long *target, int pe);
+OSHMEM_DECLSPEC void pshmem_longlong_atomic_fetch_inc_nbi(long long *fetch, long long *target, int pe);
+OSHMEM_DECLSPEC void pshmem_uint_atomic_fetch_inc_nbi(unsigned int *fetch, unsigned int *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ulong_atomic_fetch_inc_nbi(unsigned long *fetch, unsigned long *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ulonglong_atomic_fetch_inc_nbi(unsigned long long *fetch, unsigned long long *target, int pe);
+OSHMEM_DECLSPEC void pshmem_int32_atomic_fetch_inc_nbi(int32_t *fetch, int32_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_int64_atomic_fetch_inc_nbi(int64_t *fetch, int64_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_uint32_atomic_fetch_inc_nbi(uint32_t *fetch, uint32_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_uint64_atomic_fetch_inc_nbi(uint64_t *fetch, uint64_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_size_atomic_fetch_inc_nbi(size_t *fetch, size_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ptrdiff_atomic_fetch_inc_nbi(ptrdiff_t *fetch, ptrdiff_t *target, int pe);
+
+#if OSHMEM_HAVE_C11
+#define pshmem_atomic_fetch_inc_nbi(...)                                        \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                        \
+            shmem_ctx_t:  _Generic((__OSHMEM_VAR_ARG2(__VA_ARGS__)),    \
+                int*:         pshmem_ctx_int_atomic_fetch_inc_nbi,              \
+                long*:        pshmem_ctx_long_atomic_fetch_inc_nbi,             \
+                long long*:   pshmem_ctx_longlong_atomic_fetch_inc_nbi,         \
+                unsigned int*:       pshmem_ctx_uint_atomic_fetch_inc_nbi,      \
+                unsigned long*:      pshmem_ctx_ulong_atomic_fetch_inc_nbi,     \
+                unsigned long long*: pshmem_ctx_ulonglong_atomic_fetch_inc_nbi, \
+                int32_t*:      pshmem_ctx_int32_atomic_fetch_inc_nbi,           \
+                int64_t*:      pshmem_ctx_int64_atomic_fetch_inc_nbi,           \
+                uint32_t*:      pshmem_ctx_uint32_atomic_fetch_inc_nbi,           \
+                uint64_t*:      pshmem_ctx_uint64_atomic_fetch_inc_nbi,           \
+                size_t*:      pshmem_ctx_size_atomic_fetch_inc_nbi,           \
+                ptrdiff_t*:      pshmem_ctx_ptrdiff_atomic_fetch_inc_nbi,           \
+                default:      __opshmem_datatype_ignore),               \
+            int*:        pshmem_int_atomic_fetch_inc_nbi,                       \
+            long*:       pshmem_long_atomic_fetch_inc_nbi,                      \
+            long long*:  pshmem_longlong_atomic_fetch_inc_nbi,                  \
+            unsigned int*:       pshmem_uint_atomic_fetch_inc_nbi,              \
+            unsigned long*:      pshmem_ulong_atomic_fetch_inc_nbi,             \
+            unsigned long long*: pshmem_ulonglong_atomic_fetch_inc_nbi,         \
+            int32_t*:      pshmem_int32_atomic_fetch_inc_nbi,                    \
+            int64_t*:      pshmem_int64_atomic_fetch_inc_nbi,                    \
+            uint32_t*:      pshmem_uint32_atomic_fetch_inc_nbi,                    \
+            uint64_t*:      pshmem_uint64_atomic_fetch_inc_nbi,                    \
+            size_t*:      pshmem_size_atomic_fetch_inc_nbi,                    \
+            ptrdiff_t*:      pshmem_ptrdiff_atomic_fetch_inc_nbi)(__VA_ARGS__)
+#endif
+
+
+/* Atomic Nonblocking Fetch and Add */
+OSHMEM_DECLSPEC void pshmem_ctx_int_atomic_fetch_add_nbi(shmem_ctx_t ctx, int *fetch, int *target, int value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_long_atomic_fetch_add_nbi(shmem_ctx_t ctx, long *fetch, long *target, long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_longlong_atomic_fetch_add_nbi(shmem_ctx_t ctx, long long *fetch, long long *target, long long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint_atomic_fetch_add_nbi(shmem_ctx_t ctx, unsigned int *fetch, unsigned int *target, unsigned int value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ulong_atomic_fetch_add_nbi(shmem_ctx_t ctx, unsigned long *fetch,  unsigned long *target, unsigned long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ulonglong_atomic_fetch_add_nbi(shmem_ctx_t ctx, unsigned long long *fetch, unsigned long long *target, unsigned long long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int32_atomic_fetch_add_nbi(shmem_ctx_t ctx, int32_t *fetch, int32_t *target, int32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int64_atomic_fetch_add_nbi(shmem_ctx_t ctx, int64_t *fetch, int64_t *target, int64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint32_atomic_fetch_add_nbi(shmem_ctx_t ctx, uint32_t *fetch, uint32_t *target, uint32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint64_atomic_fetch_add_nbi(shmem_ctx_t ctx, uint64_t *fetch, uint64_t *target, uint64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_size_atomic_fetch_add_nbi(shmem_ctx_t ctx, size_t *fetch, size_t *target, size_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ptrdiff_atomic_fetch_add_nbi(shmem_ctx_t ctx, ptrdiff_t *fetch, ptrdiff_t *target, ptrdiff_t value, int pe);
+
+OSHMEM_DECLSPEC void pshmem_int_atomic_fetch_add_nbi(int *fetch, int *target, int value, int pe);
+OSHMEM_DECLSPEC void pshmem_long_atomic_fetch_add_nbi(long *fetch, long *target, long value, int pe);
+OSHMEM_DECLSPEC void pshmem_longlong_atomic_fetch_add_nbi(long long *fetch, long long *target, long long value, int pe);
+OSHMEM_DECLSPEC void pshmem_uint_atomic_fetch_add_nbi(unsigned int *fetch, unsigned int *target, unsigned int value, int pe);
+OSHMEM_DECLSPEC void pshmem_ulong_atomic_fetch_add_nbi(unsigned long *fetch, unsigned long *target, unsigned long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ulonglong_atomic_fetch_add_nbi(unsigned long long *fetch, unsigned long long *target, unsigned long long value, int pe);
+OSHMEM_DECLSPEC void pshmem_int32_atomic_fetch_add_nbi(int32_t *fetch, int32_t *target, int32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_int64_atomic_fetch_add_nbi(int64_t *fetch, int64_t *target, int64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_uint32_atomic_fetch_add_nbi(uint32_t *fetch, uint32_t *target, uint32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_uint64_atomic_fetch_add_nbi(uint64_t *fetch, uint64_t *target, uint64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_size_atomic_fetch_add_nbi(size_t *fetch, size_t *target, size_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ptrdiff_atomic_fetch_add_nbi(ptrdiff_t *fetch, ptrdiff_t *target, ptrdiff_t value, int pe);
+
+#if OSHMEM_HAVE_C11
+#define pshmem_atomic_fetch_add_nbi(...)                                        \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                        \
+            shmem_ctx_t:  _Generic((__OSHMEM_VAR_ARG2(__VA_ARGS__)),    \
+                int*:         pshmem_ctx_int_atomic_fetch_add_nbi,              \
+                long*:        pshmem_ctx_long_atomic_fetch_add_nbi,             \
+                long long*:   pshmem_ctx_longlong_atomic_fetch_add_nbi,         \
+                unsigned int*:       pshmem_ctx_uint_atomic_fetch_add_nbi,      \
+                unsigned long*:      pshmem_ctx_ulong_atomic_fetch_add_nbi,     \
+                unsigned long long*: pshmem_ctx_ulonglong_atomic_fetch_add_nbi, \
+                int32_t*:      pshmem_ctx_int32_atomic_fetch_add_nbi,           \
+                int64_t*:      pshmem_ctx_int64_atomic_fetch_add_nbi,           \
+                uint32_t*:      pshmem_ctx_uint32_atomic_fetch_add_nbi,           \
+                uint64_t*:      pshmem_ctx_uint64_atomic_fetch_add_nbi,           \
+                size_t*:      pshmem_ctx_size_atomic_fetch_add_nbi,           \
+                ptrdiff_t*:      pshmem_ctx_ptrdiff_atomic_fetch_add_nbi,           \
+                default:      __opshmem_datatype_ignore),               \
+            int*:        pshmem_int_atomic_fetch_add_nbi,                       \
+            long*:       pshmem_long_atomic_fetch_add_nbi,                      \
+            long long*:  pshmem_longlong_atomic_fetch_add_nbi,                  \
+            unsigned int*:       pshmem_uint_atomic_fetch_add_nbi,              \
+            unsigned long*:      pshmem_ulong_atomic_fetch_add_nbi,             \
+            unsigned long long*: pshmem_ulonglong_atomic_fetch_add_nbi,         \
+            int32_t*:      pshmem_int32_atomic_fetch_add_nbi,                    \
+            int64_t*:      pshmem_int64_atomic_fetch_add_nbi,                    \
+            uint32_t*:      pshmem_uint32_atomic_fetch_add_nbi,                    \
+            uint64_t*:      pshmem_uint64_atomic_fetch_add_nbi,                    \
+            size_t*:      pshmem_size_atomic_fetch_add_nbi,                    \
+            ptrdiff_t*:      pshmem_ptrdiff_atomic_fetch_add_nbi)(__VA_ARGS__)
+#endif
+
+
+/* Atomic Nonblocking Fetch and And */
+OSHMEM_DECLSPEC void pshmem_ctx_uint_atomic_fetch_and_nbi(shmem_ctx_t ctx, unsigned int *fetch, unsigned int *target, unsigned int value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ulong_atomic_fetch_and_nbi(shmem_ctx_t ctx, unsigned long *fetch,  unsigned long *target, unsigned long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ulonglong_atomic_fetch_and_nbi(shmem_ctx_t ctx, unsigned long long *fetch, unsigned long long *target, unsigned long long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int32_atomic_fetch_and_nbi(shmem_ctx_t ctx, int32_t *fetch, int32_t *target, int32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int64_atomic_fetch_and_nbi(shmem_ctx_t ctx, int64_t *fetch, int64_t *target, int64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint32_atomic_fetch_and_nbi(shmem_ctx_t ctx, uint32_t *fetch, uint32_t *target, uint32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint64_atomic_fetch_and_nbi(shmem_ctx_t ctx, uint64_t *fetch, uint64_t *target, uint64_t value, int pe);
+
+OSHMEM_DECLSPEC void pshmem_uint_atomic_fetch_and_nbi(unsigned int *fetch, unsigned int *target, unsigned int value, int pe);
+OSHMEM_DECLSPEC void pshmem_ulong_atomic_fetch_and_nbi(unsigned long *fetch, unsigned long *target, unsigned long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ulonglong_atomic_fetch_and_nbi(unsigned long long *fetch, unsigned long long *target, unsigned long long value, int pe);
+OSHMEM_DECLSPEC void pshmem_int32_atomic_fetch_and_nbi(int32_t *fetch, int32_t *target, int32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_int64_atomic_fetch_and_nbi(int64_t *fetch, int64_t *target, int64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_uint32_atomic_fetch_and_nbi(uint32_t *fetch, uint32_t *target, uint32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_uint64_atomic_fetch_and_nbi(uint64_t *fetch, uint64_t *target, uint64_t value, int pe);
+
+#if OSHMEM_HAVE_C11
+#define pshmem_atomic_fetch_and_nbi(...)                                        \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                        \
+            shmem_ctx_t:  _Generic((__OSHMEM_VAR_ARG2(__VA_ARGS__)),    \
+                unsigned int*:       pshmem_ctx_uint_atomic_fetch_and_nbi,      \
+                unsigned long*:      pshmem_ctx_ulong_atomic_fetch_and_nbi,     \
+                unsigned long long*: pshmem_ctx_ulonglong_atomic_fetch_and_nbi, \
+                int32_t*:      pshmem_ctx_int32_atomic_fetch_and_nbi,           \
+                int64_t*:      pshmem_ctx_int64_atomic_fetch_and_nbi,           \
+                uint32_t*:      pshmem_ctx_uint32_atomic_fetch_and_nbi,           \
+                uint64_t*:      pshmem_ctx_uint64_atomic_fetch_and_nbi,           \
+                default:      __opshmem_datatype_ignore),               \
+            unsigned int*:       pshmem_uint_atomic_fetch_and_nbi,              \
+            unsigned long*:      pshmem_ulong_atomic_fetch_and_nbi,             \
+            unsigned long long*: pshmem_ulonglong_atomic_fetch_and_nbi,         \
+            int32_t*:      pshmem_int32_atomic_fetch_and_nbi,                    \
+            int64_t*:      pshmem_int64_atomic_fetch_and_nbi,                    \
+            uint32_t*:      pshmem_uint32_atomic_fetch_and_nbi,                    \
+            uint64_t*:      pshmem_uint64_atomic_fetch_and_nbi)(__VA_ARGS__)
+#endif
+
+/* Atomic Nonblocking Fetch and OR */
+OSHMEM_DECLSPEC void pshmem_ctx_uint_atomic_fetch_or_nbi(shmem_ctx_t ctx, unsigned int *fetch, unsigned int *target, unsigned int value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ulong_atomic_fetch_or_nbi(shmem_ctx_t ctx, unsigned long *fetch,  unsigned long *target, unsigned long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ulonglong_atomic_fetch_or_nbi(shmem_ctx_t ctx, unsigned long long *fetch, unsigned long long *target, unsigned long long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int32_atomic_fetch_or_nbi(shmem_ctx_t ctx, int32_t *fetch, int32_t *target, int32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int64_atomic_fetch_or_nbi(shmem_ctx_t ctx, int64_t *fetch, int64_t *target, int64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint32_atomic_fetch_or_nbi(shmem_ctx_t ctx, uint32_t *fetch, uint32_t *target, uint32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint64_atomic_fetch_or_nbi(shmem_ctx_t ctx, uint64_t *fetch, uint64_t *target, uint64_t value, int pe);
+
+OSHMEM_DECLSPEC void pshmem_uint_atomic_fetch_or_nbi(unsigned int *fetch, unsigned int *target, unsigned int value, int pe);
+OSHMEM_DECLSPEC void pshmem_ulong_atomic_fetch_or_nbi(unsigned long *fetch, unsigned long *target, unsigned long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ulonglong_atomic_fetch_or_nbi(unsigned long long *fetch, unsigned long long *target, unsigned long long value, int pe);
+OSHMEM_DECLSPEC void pshmem_int32_atomic_fetch_or_nbi(int32_t *fetch, int32_t *target, int32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_int64_atomic_fetch_or_nbi(int64_t *fetch, int64_t *target, int64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_uint32_atomic_fetch_or_nbi(uint32_t *fetch, uint32_t *target, uint32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_uint64_atomic_fetch_or_nbi(uint64_t *fetch, uint64_t *target, uint64_t value, int pe);
+
+#if OSHMEM_HAVE_C11
+#define pshmem_atomic_fetch_or_nbi(...)                                        \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                        \
+            shmem_ctx_t:  _Generic((__OSHMEM_VAR_ARG2(__VA_ARGS__)),    \
+                unsigned int*:       pshmem_ctx_uint_atomic_fetch_or_nbi,      \
+                unsigned long*:      pshmem_ctx_ulong_atomic_fetch_or_nbi,     \
+                unsigned long long*: pshmem_ctx_ulonglong_atomic_fetch_or_nbi, \
+                int32_t*:      pshmem_ctx_int32_atomic_fetch_or_nbi,           \
+                int64_t*:      pshmem_ctx_int64_atomic_fetch_or_nbi,           \
+                uint32_t*:      pshmem_ctx_uint32_atomic_fetch_or_nbi,           \
+                uint64_t*:      pshmem_ctx_uint64_atomic_fetch_or_nbi,           \
+                default:      __opshmem_datatype_ignore),               \
+            unsigned int*:       pshmem_uint_atomic_fetch_or_nbi,              \
+            unsigned long*:      pshmem_ulong_atomic_fetch_or_nbi,             \
+            unsigned long long*: pshmem_ulonglong_atomic_fetch_or_nbi,         \
+            int32_t*:      pshmem_int32_atomic_fetch_or_nbi,                    \
+            int64_t*:      pshmem_int64_atomic_fetch_or_nbi,                    \
+            uint32_t*:      pshmem_uint32_atomic_fetch_or_nbi,                    \
+            uint64_t*:      pshmem_uint64_atomic_fetch_or_nbi)(__VA_ARGS__)
+#endif
+
+
+/* Atomic Nonblocking Fetch and XOR */
+OSHMEM_DECLSPEC void pshmem_ctx_uint_atomic_fetch_xor_nbi(shmem_ctx_t ctx, unsigned int *fetch, unsigned int *target, unsigned int value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ulong_atomic_fetch_xor_nbi(shmem_ctx_t ctx, unsigned long *fetch,  unsigned long *target, unsigned long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ulonglong_atomic_fetch_xor_nbi(shmem_ctx_t ctx, unsigned long long *fetch, unsigned long long *target, unsigned long long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int32_atomic_fetch_xor_nbi(shmem_ctx_t ctx, int32_t *fetch, int32_t *target, int32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int64_atomic_fetch_xor_nbi(shmem_ctx_t ctx, int64_t *fetch, int64_t *target, int64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint32_atomic_fetch_xor_nbi(shmem_ctx_t ctx, uint32_t *fetch, uint32_t *target, uint32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint64_atomic_fetch_xor_nbi(shmem_ctx_t ctx, uint64_t *fetch, uint64_t *target, uint64_t value, int pe);
+
+OSHMEM_DECLSPEC void pshmem_uint_atomic_fetch_xor_nbi(unsigned int *fetch, unsigned int *target, unsigned int value, int pe);
+OSHMEM_DECLSPEC void pshmem_ulong_atomic_fetch_xor_nbi(unsigned long *fetch, unsigned long *target, unsigned long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ulonglong_atomic_fetch_xor_nbi(unsigned long long *fetch, unsigned long long *target, unsigned long long value, int pe);
+OSHMEM_DECLSPEC void pshmem_int32_atomic_fetch_xor_nbi(int32_t *fetch, int32_t *target, int32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_int64_atomic_fetch_xor_nbi(int64_t *fetch, int64_t *target, int64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_uint32_atomic_fetch_xor_nbi(uint32_t *fetch, uint32_t *target, uint32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_uint64_atomic_fetch_xor_nbi(uint64_t *fetch, uint64_t *target, uint64_t value, int pe);
+
+#if OSHMEM_HAVE_C11
+#define pshmem_atomic_fetch_xor_nbi(...)                                        \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                        \
+            shmem_ctx_t:  _Generic((__OSHMEM_VAR_ARG2(__VA_ARGS__)),    \
+                unsigned int*:       pshmem_ctx_uint_atomic_fetch_xor_nbi,      \
+                unsigned long*:      pshmem_ctx_ulong_atomic_fetch_xor_nbi,     \
+                unsigned long long*: pshmem_ctx_ulonglong_atomic_fetch_xor_nbi, \
+                int32_t*:      pshmem_ctx_int32_atomic_fetch_xor_nbi,           \
+                int64_t*:      pshmem_ctx_int64_atomic_fetch_xor_nbi,           \
+                uint32_t*:      pshmem_ctx_uint32_atomic_fetch_xor_nbi,           \
+                uint64_t*:      pshmem_ctx_uint64_atomic_fetch_xor_nbi,           \
+                default:      __opshmem_datatype_ignxore),               \
+            unsigned int*:       pshmem_uint_atomic_fetch_xor_nbi,              \
+            unsigned long*:      pshmem_ulong_atomic_fetch_xor_nbi,             \
+            unsigned long long*: pshmem_ulonglong_atomic_fetch_xor_nbi,         \
+            int32_t*:      pshmem_int32_atomic_fetch_xor_nbi,                    \
+            int64_t*:      pshmem_int64_atomic_fetch_xor_nbi,                    \
+            uint32_t*:      pshmem_uint32_atomic_fetch_xor_nbi,                    \
+            uint64_t*:      pshmem_uint64_atomic_fetch_xor_nbi)(__VA_ARGS__)
+#endif
+
+/*
  * Lock functions
  */
 OSHMEM_DECLSPEC void pshmem_set_lock(volatile long *lock);
