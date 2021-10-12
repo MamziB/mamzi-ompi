@@ -53,6 +53,24 @@
 #pragma weak shmemx_int64_atomic_fetch_xor    = pshmemx_int64_atomic_fetch_xor
 #pragma weak shmemx_uint32_atomic_fetch_xor   = pshmemx_uint32_atomic_fetch_xor
 #pragma weak shmemx_uint64_atomic_fetch_xor   = pshmemx_uint64_atomic_fetch_xor
+
+/* Nonblocking Atomic Fetch and XOR */
+#pragma weak shmem_ctx_uint_atomic_fetch_xor_nbi              = pshmem_ctx_uint_atomic_fetch_xor_nbi
+#pragma weak shmem_ctx_ulong_atomic_fetch_xor_nbi             = pshmem_ctx_ulong_atomic_fetch_xor_nbi
+#pragma weak shmem_ctx_ulonglong_atomic_fetch_xor_nbi         = pshmem_ctx_ulonglong_atomic_fetch_xor_nbi
+#pragma weak shmem_ctx_int32_atomic_fetch_xor_nbi             = pshmem_ctx_int32_atomic_fetch_xor_nbi
+#pragma weak shmem_ctx_int64_atomic_fetch_xor_nbi             = pshmem_ctx_int64_atomic_fetch_xor_nbi
+#pragma weak shmem_ctx_uint32_atomic_fetch_xor_nbi            = pshmem_ctx_uint32_atomic_fetch_xor_nbi
+#pragma weak shmem_ctx_uint64_atomic_fetch_xor_nbi            = pshmem_ctx_uint64_atomic_fetch_xor_nbi
+
+#pragma weak shmem_uint_atomic_fetch_xor_nbi       			  = pshmem_uint_atomic_fetch_xor_nbi
+#pragma weak shmem_ulong_atomic_fetch_xor_nbi      			  = pshmem_ulong_atomic_fetch_xor_nbi
+#pragma weak shmem_ulonglong_atomic_fetch_xor_nbi  			  = pshmem_ulonglong_atomic_fetch_xor_nbi
+#pragma weak shmem_int32_atomic_fetch_xor_nbi      			  = pshmem_int32_atomic_fetch_xor_nbi
+#pragma weak shmem_int64_atomic_fetch_xor_nbi      			  = pshmem_int64_atomic_fetch_xor_nbi
+#pragma weak shmem_uint32_atomic_fetch_xor_nbi     			  = pshmem_uint32_atomic_fetch_xor_nbi
+#pragma weak shmem_uint64_atomic_fetch_xor_nbi     			  = pshmem_uint64_atomic_fetch_xor_nbi
+
 #include "oshmem/shmem/c/profile/defines.h"
 #endif
 
