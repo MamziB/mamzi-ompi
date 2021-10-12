@@ -1102,6 +1102,207 @@
 #define shmemx_int32_inc             pshmemx_int32_inc
 #define shmemx_int64_inc             pshmemx_int64_inc
 
+/* Nonblocking Atomic Fetch */
+#define shmem_ctx_double_atomic_fetch_nbi           pshmem_ctx_double_atomic_fetch_nbi
+#define shmem_ctx_float_atomic_fetch_nbi            pshmem_ctx_float_atomic_fetch_nbi
+#define shmem_ctx_int_atomic_fetch_nbi              pshmem_ctx_int_atomic_fetch_nbi
+#define shmem_ctx_long_atomic_fetch_nbi             pshmem_ctx_long_atomic_fetch_nbi
+#define shmem_ctx_longlong_atomic_fetch_nbi         pshmem_ctx_longlong_atomic_fetch_nbi
+#define shmem_ctx_uint_atomic_fetch_nbi             pshmem_ctx_uint_atomic_fetch_nbi
+#define shmem_ctx_ulong_atomic_fetch_nbi            pshmem_ctx_ulong_atomic_fetch_nbi
+#define shmem_ctx_ulonglong_atomic_fetch_nbi        pshmem_ctx_ulonglong_atomic_fetch_nbi
+#define shmem_ctx_int32_atomic_fetch_nbi            pshmem_ctx_int32_atomic_fetch_nbi
+#define shmem_ctx_int64_atomic_fetch_nbi            pshmem_ctx_int64_atomic_fetch_nbi
+#define shmem_ctx_uint32_atomic_fetch_nbi           pshmem_ctx_uint32_atomic_fetch_nbi
+#define shmem_ctx_uint64_atomic_fetch_nbi           pshmem_ctx_uint64_atomic_fetch_nbi
+#define shmem_ctx_size_atomic_fetch_nbi             pshmem_ctx_size_atomic_fetch_nbi
+#define shmem_ctx_ptrdiff_atomic_fetch_nbi          pshmem_ctx_ptrdiff_atomic_fetch_nbi
+
+#define shmem_double_atomic_fetch_nbi     			pshmem_double_atomic_fetch_nbi
+#define shmem_float_atomic_fetch_nbi      			pshmem_float_atomic_fetch_nbi
+#define shmem_int_atomic_fetch_nbi        			pshmem_int_atomic_fetch_nbi
+#define shmem_long_atomic_fetch_nbi       			pshmem_long_atomic_fetch_nbi
+#define shmem_longlong_atomic_fetch_nbi   			pshmem_longlong_atomic_fetch_nbi
+#define shmem_uint_atomic_fetch_nbi       			pshmem_uint_atomic_fetch_nbi
+#define shmem_ulong_atomic_fetch_nbi      			pshmem_ulong_atomic_fetch_nbi
+#define shmem_ulonglong_atomic_fetch_nbi  			pshmem_ulonglong_atomic_fetch_nbi
+#define shmem_int32_atomic_fetch_nbi      			pshmem_int32_atomic_fetch_nbi
+#define shmem_int64_atomic_fetch_nbi      			pshmem_int64_atomic_fetch_nbi
+#define shmem_uint32_atomic_fetch_nbi     			pshmem_uint32_atomic_fetch_nbi
+#define shmem_uint64_atomic_fetch_nbi     			pshmem_uint64_atomic_fetch_nbi
+#define shmem_size_atomic_fetch_nbi       			pshmem_size_atomic_fetch_nbi
+#define shmem_ptrdiff_atomic_fetch_nbi    			pshmem_ptrdiff_atomic_fetch_nbi
+
+
+/* Nonblocking Atomic Compare Swap */
+#define shmem_ctx_int_atomic_compare_swap_nbi               pshmem_ctx_int_atomic_compare_swap_nbi
+#define shmem_ctx_long_atomic_compare_swap_nbi              pshmem_ctx_long_atomic_compare_swap_nbi
+#define shmem_ctx_longlong_atomic_compare_swap_nbi          pshmem_ctx_longlong_atomic_compare_swap_nbi
+#define shmem_ctx_uint_atomic_compare_swap_nbi              pshmem_ctx_uint_atomic_compare_swap_nbi
+#define shmem_ctx_ulong_atomic_compare_swap_nbi             pshmem_ctx_ulong_atomic_compare_swap_nbi
+#define shmem_ctx_ulonglong_atomic_compare_swap_nbi         pshmem_ctx_ulonglong_atomic_compare_swap_nbi
+#define shmem_ctx_int32_atomic_compare_swap_nbi             pshmem_ctx_int32_atomic_compare_swap_nbi
+#define shmem_ctx_int64_atomic_compare_swap_nbi             pshmem_ctx_int64_atomic_compare_swap_nbi
+#define shmem_ctx_uint32_atomic_compare_swap_nbi            pshmem_ctx_uint32_atomic_compare_swap_nbi
+#define shmem_ctx_uint64_atomic_compare_swap_nbi            pshmem_ctx_uint64_atomic_compare_swap_nbi
+#define shmem_ctx_size_atomic_compare_swap_nbi              pshmem_ctx_size_atomic_compare_swap_nbi
+#define shmem_ctx_ptrdiff_atomic_compare_swap_nbi           pshmem_ctx_ptrdiff_atomic_compare_swap_nbi
+
+#define shmem_int_atomic_compare_swap_nbi        			pshmem_int_atomic_compare_swap_nbi
+#define shmem_long_atomic_compare_swap_nbi       			pshmem_long_atomic_compare_swap_nbi
+#define shmem_longlong_atomic_compare_swap_nbi   			pshmem_longlong_atomic_compare_swap_nbi
+#define shmem_uint_atomic_compare_swap_nbi       			pshmem_uint_atomic_compare_swap_nbi
+#define shmem_ulong_atomic_compare_swap_nbi      			pshmem_ulong_atomic_compare_swap_nbi
+#define shmem_ulonglong_atomic_compare_swap_nbi  			pshmem_ulonglong_atomic_compare_swap_nbi
+#define shmem_int32_atomic_compare_swap_nbi      			pshmem_int32_atomic_compare_swap_nbi
+#define shmem_int64_atomic_compare_swap_nbi      			pshmem_int64_atomic_compare_swap_nbi
+#define shmem_uint32_atomic_compare_swap_nbi     			pshmem_uint32_atomic_compare_swap_nbi
+#define shmem_uint64_atomic_compare_swap_nbi     			pshmem_uint64_atomic_compare_swap_nbi
+#define shmem_size_atomic_compare_swap_nbi       			pshmem_size_atomic_compare_swap_nbi
+#define shmem_ptrdiff_atomic_compare_swap_nbi    			pshmem_ptrdiff_atomic_compare_swap_nbi
+
+
+/* Nonblocking Atomic Swap */
+#define shmem_ctx_double_atomic_swap_nbi            pshmem_ctx_double_atomic_swap_nbi
+#define shmem_ctx_float_atomic_swap_nbi             pshmem_ctx_float_atomic_swap_nbi
+#define shmem_ctx_int_atomic_swap_nbi               pshmem_ctx_int_atomic_swap_nbi
+#define shmem_ctx_long_atomic_swap_nbi              pshmem_ctx_long_atomic_swap_nbi
+#define shmem_ctx_longlong_atomic_swap_nbi          pshmem_ctx_longlong_atomic_swap_nbi
+#define shmem_ctx_uint_atomic_swap_nbi              pshmem_ctx_uint_atomic_swap_nbi
+#define shmem_ctx_ulong_atomic_swap_nbi             pshmem_ctx_ulong_atomic_swap_nbi
+#define shmem_ctx_ulonglong_atomic_swap_nbi         pshmem_ctx_ulonglong_atomic_swap_nbi
+#define shmem_ctx_int32_atomic_swap_nbi             pshmem_ctx_int32_atomic_swap_nbi
+#define shmem_ctx_int64_atomic_swap_nbi             pshmem_ctx_int64_atomic_swap_nbi
+#define shmem_ctx_uint32_atomic_swap_nbi            pshmem_ctx_uint32_atomic_swap_nbi
+#define shmem_ctx_uint64_atomic_swap_nbi            pshmem_ctx_uint64_atomic_swap_nbi
+#define shmem_ctx_size_atomic_swap_nbi              pshmem_ctx_size_atomic_swap_nbi
+#define shmem_ctx_ptrdiff_atomic_swap_nbi           pshmem_ctx_ptrdiff_atomic_swap_nbi
+
+#define shmem_double_atomic_swap_nbi     			pshmem_double_atomic_swap_nbi
+#define shmem_float_atomic_swap_nbi      			pshmem_float_atomic_swap_nbi
+#define shmem_int_atomic_swap_nbi        			pshmem_int_atomic_swap_nbi
+#define shmem_long_atomic_swap_nbi       			pshmem_long_atomic_swap_nbi
+#define shmem_longlong_atomic_swap_nbi   			pshmem_longlong_atomic_swap_nbi
+#define shmem_uint_atomic_swap_nbi       			pshmem_uint_atomic_swap_nbi
+#define shmem_ulong_atomic_swap_nbi      			pshmem_ulong_atomic_swap_nbi
+#define shmem_ulonglong_atomic_swap_nbi  			pshmem_ulonglong_atomic_swap_nbi
+#define shmem_int32_atomic_swap_nbi      			pshmem_int32_atomic_swap_nbi
+#define shmem_int64_atomic_swap_nbi      			pshmem_int64_atomic_swap_nbi
+#define shmem_uint32_atomic_swap_nbi     			pshmem_uint32_atomic_swap_nbi
+#define shmem_uint64_atomic_swap_nbi     			pshmem_uint64_atomic_swap_nbi
+#define shmem_size_atomic_swap_nbi       			pshmem_size_atomic_swap_nbi
+#define shmem_ptrdiff_atomic_swap_nbi    			pshmem_ptrdiff_atomic_swap_nbi
+
+
+/* Nonblocking Atomic Fetch and Increment */
+#define shmem_ctx_int_atomic_fetch_inc_nbi               pshmem_ctx_int_atomic_fetch_inc_nbi
+#define shmem_ctx_long_atomic_fetch_inc_nbi              pshmem_ctx_long_atomic_fetch_inc_nbi
+#define shmem_ctx_longlong_atomic_fetch_inc_nbi          pshmem_ctx_longlong_atomic_fetch_inc_nbi
+#define shmem_ctx_uint_atomic_fetch_inc_nbi              pshmem_ctx_uint_atomic_fetch_inc_nbi
+#define shmem_ctx_ulong_atomic_fetch_inc_nbi             pshmem_ctx_ulong_atomic_fetch_inc_nbi
+#define shmem_ctx_ulonglong_atomic_fetch_inc_nbi         pshmem_ctx_ulonglong_atomic_fetch_inc_nbi
+#define shmem_ctx_int32_atomic_fetch_inc_nbi             pshmem_ctx_int32_atomic_fetch_inc_nbi
+#define shmem_ctx_int64_atomic_fetch_inc_nbi             pshmem_ctx_int64_atomic_fetch_inc_nbi
+#define shmem_ctx_uint32_atomic_fetch_inc_nbi            pshmem_ctx_uint32_atomic_fetch_inc_nbi
+#define shmem_ctx_uint64_atomic_fetch_inc_nbi            pshmem_ctx_uint64_atomic_fetch_inc_nbi
+#define shmem_ctx_size_atomic_fetch_inc_nbi              pshmem_ctx_size_atomic_fetch_inc_nbi
+#define shmem_ctx_ptrdiff_atomic_fetch_inc_nbi           pshmem_ctx_ptrdiff_atomic_fetch_inc_nbi
+
+#define shmem_int_atomic_fetch_inc_nbi        			 pshmem_int_atomic_fetch_inc_nbi
+#define shmem_long_atomic_fetch_inc_nbi       			 pshmem_long_atomic_fetch_inc_nbi
+#define shmem_longlong_atomic_fetch_inc_nbi   			 pshmem_longlong_atomic_fetch_inc_nbi
+#define shmem_uint_atomic_fetch_inc_nbi       			 pshmem_uint_atomic_fetch_inc_nbi
+#define shmem_ulong_atomic_fetch_inc_nbi      			 pshmem_ulong_atomic_fetch_inc_nbi
+#define shmem_ulonglong_atomic_fetch_inc_nbi  			 pshmem_ulonglong_atomic_fetch_inc_nbi
+#define shmem_int32_atomic_fetch_inc_nbi      			 pshmem_int32_atomic_fetch_inc_nbi
+#define shmem_int64_atomic_fetch_inc_nbi      			 pshmem_int64_atomic_fetch_inc_nbi
+#define shmem_uint32_atomic_fetch_inc_nbi     			 pshmem_uint32_atomic_fetch_inc_nbi
+#define shmem_uint64_atomic_fetch_inc_nbi     			 pshmem_uint64_atomic_fetch_inc_nbi
+#define shmem_size_atomic_fetch_inc_nbi       			 pshmem_size_atomic_fetch_inc_nbi
+#define shmem_ptrdiff_atomic_fetch_inc_nbi    			 pshmem_ptrdiff_atomic_fetch_inc_nbi
+
+
+/* Nonblocking Atomic Fetch and Add */
+#define shmem_ctx_int_atomic_fetch_add_nbi               pshmem_ctx_int_atomic_fetch_add_nbi
+#define shmem_ctx_long_atomic_fetch_add_nbi              pshmem_ctx_long_atomic_fetch_add_nbi
+#define shmem_ctx_longlong_atomic_fetch_add_nbi          pshmem_ctx_longlong_atomic_fetch_add_nbi
+#define shmem_ctx_uint_atomic_fetch_add_nbi              pshmem_ctx_uint_atomic_fetch_add_nbi
+#define shmem_ctx_ulong_atomic_fetch_add_nbi             pshmem_ctx_ulong_atomic_fetch_add_nbi
+#define shmem_ctx_ulonglong_atomic_fetch_add_nbi         pshmem_ctx_ulonglong_atomic_fetch_add_nbi
+#define shmem_ctx_int32_atomic_fetch_add_nbi             pshmem_ctx_int32_atomic_fetch_add_nbi
+#define shmem_ctx_int64_atomic_fetch_add_nbi             pshmem_ctx_int64_atomic_fetch_add_nbi
+#define shmem_ctx_uint32_atomic_fetch_add_nbi            pshmem_ctx_uint32_atomic_fetch_add_nbi
+#define shmem_ctx_uint64_atomic_fetch_add_nbi            pshmem_ctx_uint64_atomic_fetch_add_nbi
+#define shmem_ctx_size_atomic_fetch_add_nbi              pshmem_ctx_size_atomic_fetch_add_nbi
+#define shmem_ctx_ptrdiff_atomic_fetch_add_nbi           pshmem_ctx_ptrdiff_atomic_fetch_add_nbi
+
+#define shmem_int_atomic_fetch_add_nbi        			 pshmem_int_atomic_fetch_add_nbi
+#define shmem_long_atomic_fetch_add_nbi       			 pshmem_long_atomic_fetch_add_nbi
+#define shmem_longlong_atomic_fetch_add_nbi   			 pshmem_longlong_atomic_fetch_add_nbi
+#define shmem_uint_atomic_fetch_add_nbi       			 pshmem_uint_atomic_fetch_add_nbi
+#define shmem_ulong_atomic_fetch_add_nbi      			 pshmem_ulong_atomic_fetch_add_nbi
+#define shmem_ulonglong_atomic_fetch_add_nbi  			 pshmem_ulonglong_atomic_fetch_add_nbi
+#define shmem_int32_atomic_fetch_add_nbi      			 pshmem_int32_atomic_fetch_add_nbi
+#define shmem_int64_atomic_fetch_add_nbi      			 pshmem_int64_atomic_fetch_add_nbi
+#define shmem_uint32_atomic_fetch_add_nbi     			 pshmem_uint32_atomic_fetch_add_nbi
+#define shmem_uint64_atomic_fetch_add_nbi     			 pshmem_uint64_atomic_fetch_add_nbi
+#define shmem_size_atomic_fetch_add_nbi       			 pshmem_size_atomic_fetch_add_nbi
+#define shmem_ptrdiff_atomic_fetch_add_nbi    			 pshmem_ptrdiff_atomic_fetch_add_nbi
+
+
+/* Nonblocking Atomic Fetch and And */
+#define shmem_ctx_uint_atomic_fetch_and_nbi              pshmem_ctx_uint_atomic_fetch_and_nbi
+#define shmem_ctx_ulong_atomic_fetch_and_nbi             pshmem_ctx_ulong_atomic_fetch_and_nbi
+#define shmem_ctx_ulonglong_atomic_fetch_and_nbi         pshmem_ctx_ulonglong_atomic_fetch_and_nbi
+#define shmem_ctx_int32_atomic_fetch_and_nbi             pshmem_ctx_int32_atomic_fetch_and_nbi
+#define shmem_ctx_int64_atomic_fetch_and_nbi             pshmem_ctx_int64_atomic_fetch_and_nbi
+#define shmem_ctx_uint32_atomic_fetch_and_nbi            pshmem_ctx_uint32_atomic_fetch_and_nbi
+#define shmem_ctx_uint64_atomic_fetch_and_nbi            pshmem_ctx_uint64_atomic_fetch_and_nbi
+
+#define shmem_uint_atomic_fetch_and_nbi       			 pshmem_uint_atomic_fetch_and_nbi
+#define shmem_ulong_atomic_fetch_and_nbi      			 pshmem_ulong_atomic_fetch_and_nbi
+#define shmem_ulonglong_atomic_fetch_and_nbi  			 pshmem_ulonglong_atomic_fetch_and_nbi
+#define shmem_int32_atomic_fetch_and_nbi      			 pshmem_int32_atomic_fetch_and_nbi
+#define shmem_int64_atomic_fetch_and_nbi      			 pshmem_int64_atomic_fetch_and_nbi
+#define shmem_uint32_atomic_fetch_and_nbi     			 pshmem_uint32_atomic_fetch_and_nbi
+#define shmem_uint64_atomic_fetch_and_nbi     			 pshmem_uint64_atomic_fetch_and_nbi
+
+
+/* Nonblocking Atomic Fetch and OR */
+#define shmem_ctx_uint_atomic_fetch_or_nbi              pshmem_ctx_uint_atomic_fetch_or_nbi
+#define shmem_ctx_ulong_atomic_fetch_or_nbi             pshmem_ctx_ulong_atomic_fetch_or_nbi
+#define shmem_ctx_ulonglong_atomic_fetch_or_nbi         pshmem_ctx_ulonglong_atomic_fetch_or_nbi
+#define shmem_ctx_int32_atomic_fetch_or_nbi             pshmem_ctx_int32_atomic_fetch_or_nbi
+#define shmem_ctx_int64_atomic_fetch_or_nbi             pshmem_ctx_int64_atomic_fetch_or_nbi
+#define shmem_ctx_uint32_atomic_fetch_or_nbi            pshmem_ctx_uint32_atomic_fetch_or_nbi
+#define shmem_ctx_uint64_atomic_fetch_or_nbi            pshmem_ctx_uint64_atomic_fetch_or_nbi
+
+#define shmem_uint_atomic_fetch_or_nbi       			pshmem_uint_atomic_fetch_or_nbi
+#define shmem_ulong_atomic_fetch_or_nbi      			pshmem_ulong_atomic_fetch_or_nbi
+#define shmem_ulonglong_atomic_fetch_or_nbi  			pshmem_ulonglong_atomic_fetch_or_nbi
+#define shmem_int32_atomic_fetch_or_nbi      			pshmem_int32_atomic_fetch_or_nbi
+#define shmem_int64_atomic_fetch_or_nbi      			pshmem_int64_atomic_fetch_or_nbi
+#define shmem_uint32_atomic_fetch_or_nbi     			pshmem_uint32_atomic_fetch_or_nbi
+#define shmem_uint64_atomic_fetch_or_nbi     			pshmem_uint64_atomic_fetch_or_nbi
+
+
+/* Nonblocking Atomic Fetch and XOR */
+#define shmem_ctx_uint_atomic_fetch_xor_nbi              pshmem_ctx_uint_atomic_fetch_xor_nbi
+#define shmem_ctx_ulong_atomic_fetch_xor_nbi             pshmem_ctx_ulong_atomic_fetch_xor_nbi
+#define shmem_ctx_ulonglong_atomic_fetch_xor_nbi         pshmem_ctx_ulonglong_atomic_fetch_xor_nbi
+#define shmem_ctx_int32_atomic_fetch_xor_nbi             pshmem_ctx_int32_atomic_fetch_xor_nbi
+#define shmem_ctx_int64_atomic_fetch_xor_nbi             pshmem_ctx_int64_atomic_fetch_xor_nbi
+#define shmem_ctx_uint32_atomic_fetch_xor_nbi            pshmem_ctx_uint32_atomic_fetch_xor_nbi
+#define shmem_ctx_uint64_atomic_fetch_xor_nbi            pshmem_ctx_uint64_atomic_fetch_xor_nbi
+
+#define shmem_uint_atomic_fetch_xor_nbi       			 pshmem_uint_atomic_fetch_xor_nbi
+#define shmem_ulong_atomic_fetch_xor_nbi      			 pshmem_ulong_atomic_fetch_xor_nbi
+#define shmem_ulonglong_atomic_fetch_xor_nbi  			 pshmem_ulonglong_atomic_fetch_xor_nbi
+#define shmem_int32_atomic_fetch_xor_nbi      			 pshmem_int32_atomic_fetch_xor_nbi
+#define shmem_int64_atomic_fetch_xor_nbi      			 pshmem_int64_atomic_fetch_xor_nbi
+#define shmem_uint32_atomic_fetch_xor_nbi     			 pshmem_uint32_atomic_fetch_xor_nbi
+#define shmem_uint64_atomic_fetch_xor_nbi     			 pshmem_uint64_atomic_fetch_xor_nbi
+
 /*
  * Lock functions
  */
