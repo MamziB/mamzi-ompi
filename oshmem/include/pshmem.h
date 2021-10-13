@@ -84,6 +84,658 @@ OSHMEM_DECLSPEC int pshmem_team_split_2d(shmem_team_t parent_team, int xrange, c
 OSHMEM_DECLSPEC void pshmem_team_destroy(shmem_team_t team);
 
 /*
+ * Teams-based Collectives
+ */
+
+/* Teams sync */
+OSHMEM_DECLSPEC  void pshmem_team_sync(shmem_team_t team);
+#if OSHMEM_HAVE_C11
+#define pshmem_sync(team)               \
+            pshmem_team_sync(team)
+#endif
+
+/* Teams alltoall */
+OSHMEM_DECLSPEC  int pshmem_char_alltoall(shmem_team_t team, char *target, const char *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_short_alltoall(shmem_team_t team, short *target, const short *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_int_alltoall(shmem_team_t team, int *target, const int *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_long_alltoall(shmem_team_t team, long *target, const long *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_float_alltoall(shmem_team_t team, float *target, const float *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_double_alltoall(shmem_team_t team, double *target, const double *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_longlong_alltoall(shmem_team_t team, long long *target, const long long *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_schar_alltoall(shmem_team_t team, signed char *target, const signed char *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uchar_alltoall(shmem_team_t team, unsigned char *target, const unsigned char *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_ushort_alltoall(shmem_team_t team, unsigned short *target, const unsigned short *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uint_alltoall(shmem_team_t team, unsigned int *target, const unsigned int *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_ulong_alltoall(shmem_team_t team, unsigned long *target, const unsigned long *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_ulonglong_alltoall(shmem_team_t team, unsigned long long *target, const unsigned long long *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_longdouble_alltoall(shmem_team_t team, long double *target, const long double *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_int8_alltoall(shmem_team_t team, int8_t *target, const int8_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_int16_alltoall(shmem_team_t team, int16_t *target, const int16_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_int32_alltoall(shmem_team_t team, int32_t *target, const int32_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_int64_alltoall(shmem_team_t team, int64_t *target, const int64_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uint8_alltoall(shmem_team_t team, uint8_t *target, const uint8_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uint16_alltoall(shmem_team_t team, uint16_t *target, const uint16_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uint32_alltoall(shmem_team_t team, uint32_t *target, const uint32_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uint64_alltoall(shmem_team_t team, uint64_t *target, const uint64_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_size_alltoall(shmem_team_t team, size_t *target, const size_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_ptrdiff_alltoall(shmem_team_t team, ptrdiff_t *target, const ptrdiff_t *source, size_t nelems);
+#if OSHMEM_HAVE_C11
+#define pshmem_alltoall(...)                                          \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                     \
+            shmem_team_t: _Generic(&*(__OSHMEM_VAR_ARG2(__VA_ARGS__)),\
+                char*:        pshmem_char_alltoall,               \
+                short*:       pshmem_short_alltoall,              \
+                int*:         pshmem_int_alltoall,                \
+                long*:        pshmem_long_alltoall,               \
+                long long*:   pshmem_longlong_alltoall,           \
+                signed char*:        pshmem_schar_alltoall,       \
+                unsigned char*:      pshmem_uchar_alltoall,       \
+                unsigned short*:     pshmem_ushort_alltoall,      \
+                unsigned int*:       pshmem_uint_alltoall,        \
+                unsigned long*:      pshmem_ulong_alltoall,       \
+                unsigned long long*: pshmem_ulonglong_alltoall,   \
+                float*:       pshmem_float_alltoall,              \
+                double*:      pshmem_double_alltoall,             \
+                long double*: pshmem_longdouble_alltoall,         \
+                int8_t*: pshmem_int8_alltoall,         \
+                int16_t*: pshmem_int16_alltoall,         \
+                int32_t*: pshmem_int32_alltoall,         \
+                int64_t*: pshmem_int64_alltoall,         \
+                uint8_t*: pshmem_uint8_alltoall,         \
+                uint16_t*: pshmem_uint16_alltoall,         \
+                uint32_t*: pshmem_uint32_alltoall,         \
+                uint64_t*: pshmem_uint64_alltoall,         \
+                size_t*: pshmem_size_alltoall,         \
+                ptrdiff_t*: pshmem_ptrdiff_alltoall,         \
+                default:      __opshmem_datatype_ignore))(__VA_ARGS__)
+#endif
+
+OSHMEM_DECLSPEC  int pshmem_alltoallmem(shmem_team_t team, void *target, const void *source, size_t nelems);
+
+/* Teams alltoalls */
+OSHMEM_DECLSPEC  int pshmem_char_alltoalls(shmem_team_t team, char *target, const char *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_short_alltoalls(shmem_team_t team, short *target, const short *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_int_alltoalls(shmem_team_t team, int *target, const int *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_long_alltoalls(shmem_team_t team, long *target, const long *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_float_alltoalls(shmem_team_t team, float *target, const float *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_double_alltoalls(shmem_team_t team, double *target, const double *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_longlong_alltoalls(shmem_team_t team, long long *target, const long long *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_schar_alltoalls(shmem_team_t team, signed char *target, const signed char *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uchar_alltoalls(shmem_team_t team, unsigned char *target, const unsigned char *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_ushort_alltoalls(shmem_team_t team, unsigned short *target, const unsigned short *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uint_alltoalls(shmem_team_t team, unsigned int *target, const unsigned int *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_ulong_alltoalls(shmem_team_t team, unsigned long *target, const unsigned long *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_ulonglong_alltoalls(shmem_team_t team, unsigned long long *target, const unsigned long long *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_longdouble_alltoalls(shmem_team_t team, long double *target, const long double *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_int8_alltoalls(shmem_team_t team, int8_t *target, const int8_t *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_int16_alltoalls(shmem_team_t team, int16_t *target, const int16_t *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_int32_alltoalls(shmem_team_t team, int32_t *target, const int32_t *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_int64_alltoalls(shmem_team_t team, int64_t *target, const int64_t *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uint8_alltoalls(shmem_team_t team, uint8_t *target, const uint8_t *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uint16_alltoalls(shmem_team_t team, uint16_t *target, const uint16_t *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uint32_alltoalls(shmem_team_t team, uint32_t *target, const uint32_t *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uint64_alltoalls(shmem_team_t team, uint64_t *target, const uint64_t *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_size_alltoalls(shmem_team_t team, size_t *target, const size_t *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_ptrdiff_alltoalls(shmem_team_t team, ptrdiff_t *target, const ptrdiff_t *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+#if OSHMEM_HAVE_C11
+#define pshmem_alltoalls(...)                                          \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                     \
+            shmem_team_t: _Generic(&*(__OSHMEM_VAR_ARG2(__VA_ARGS__)),\
+                char*:        pshmem_char_alltoalls,               \
+                short*:       pshmem_short_alltoalls,              \
+                int*:         pshmem_int_alltoalls,                \
+                long*:        pshmem_long_alltoalls,               \
+                long long*:   pshmem_longlong_alltoalls,           \
+                signed char*:        pshmem_schar_alltoalls,       \
+                unsigned char*:      pshmem_uchar_alltoalls,       \
+                unsigned short*:     pshmem_ushort_alltoalls,      \
+                unsigned int*:       pshmem_uint_alltoalls,        \
+                unsigned long*:      pshmem_ulong_alltoalls,       \
+                unsigned long long*: pshmem_ulonglong_alltoalls,   \
+                float*:       pshmem_float_alltoalls,              \
+                double*:      pshmem_double_alltoalls,             \
+                long double*: pshmem_longdouble_alltoalls,         \
+                int8_t*: pshmem_int8_alltoalls,         \
+                int16_t*: pshmem_int16_alltoalls,         \
+                int32_t*: pshmem_int32_alltoalls,         \
+                int64_t*: pshmem_int64_alltoalls,         \
+                uint8_t*: pshmem_uint8_alltoalls,         \
+                uint16_t*: pshmem_uint16_alltoalls,         \
+                uint32_t*: pshmem_uint32_alltoalls,         \
+                uint64_t*: pshmem_uint64_alltoalls,         \
+                size_t*: pshmem_size_alltoalls,         \
+                ptrdiff_t*: pshmem_ptrdiff_alltoalls,         \
+                default:      __opshmem_datatype_ignore))(__VA_ARGS__)
+#endif
+
+OSHMEM_DECLSPEC  int pshmem_alltoallsmem(shmem_team_t team, void *target, const void *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems);
+
+
+/* Teams broadcast */
+OSHMEM_DECLSPEC  int pshmem_char_broadcast(shmem_team_t team, char *target, const char *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_short_broadcast(shmem_team_t team, short *target, const short *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_int_broadcast(shmem_team_t team, int *target, const int *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_long_broadcast(shmem_team_t team, long *target, const long *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_float_broadcast(shmem_team_t team, float *target, const float *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_double_broadcast(shmem_team_t team, double *target, const double *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_longlong_broadcast(shmem_team_t team, long long *target, const long long *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_schar_broadcast(shmem_team_t team, signed char *target, const signed char *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_uchar_broadcast(shmem_team_t team, unsigned char *target, const unsigned char *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_ushort_broadcast(shmem_team_t team, unsigned short *target, const unsigned short *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_uint_broadcast(shmem_team_t team, unsigned int *target, const unsigned int *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_ulong_broadcast(shmem_team_t team, unsigned long *target, const unsigned long *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_ulonglong_broadcast(shmem_team_t team, unsigned long long *target, const unsigned long long *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_longdouble_broadcast(shmem_team_t team, long double *target, const long double *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_int8_broadcast(shmem_team_t team, int8_t *target, const int8_t *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_int16_broadcast(shmem_team_t team, int16_t *target, const int16_t *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_int32_broadcast(shmem_team_t team, int32_t *target, const int32_t *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_int64_broadcast(shmem_team_t team, int64_t *target, const int64_t *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_uint8_broadcast(shmem_team_t team, uint8_t *target, const uint8_t *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_uint16_broadcast(shmem_team_t team, uint16_t *target, const uint16_t *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_uint32_broadcast(shmem_team_t team, uint32_t *target, const uint32_t *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_uint64_broadcast(shmem_team_t team, uint64_t *target, const uint64_t *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_size_broadcast(shmem_team_t team, size_t *target, const size_t *source, size_t nelems, int PE_root);
+OSHMEM_DECLSPEC  int pshmem_ptrdiff_broadcast(shmem_team_t team, ptrdiff_t *target, const ptrdiff_t *source, size_t nelems, int PE_root);
+#if OSHMEM_HAVE_C11
+#define pshmem_broadcast(...)                                          \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                     \
+            shmem_team_t: _Generic(&*(__OSHMEM_VAR_ARG2(__VA_ARGS__)),\
+                char*:        pshmem_char_broadcast,               \
+                short*:       pshmem_short_broadcast,              \
+                int*:         pshmem_int_broadcast,                \
+                long*:        pshmem_long_broadcast,               \
+                long long*:   pshmem_longlong_broadcast,           \
+                signed char*:        pshmem_schar_broadcast,       \
+                unsigned char*:      pshmem_uchar_broadcast,       \
+                unsigned short*:     pshmem_ushort_broadcast,      \
+                unsigned int*:       pshmem_uint_broadcast,        \
+                unsigned long*:      pshmem_ulong_broadcast,       \
+                unsigned long long*: pshmem_ulonglong_broadcast,   \
+                float*:       pshmem_float_broadcast,              \
+                double*:      pshmem_double_broadcast,             \
+                long double*: pshmem_longdouble_broadcast,         \
+                int8_t*: pshmem_int8_broadcast,         \
+                int16_t*: pshmem_int16_broadcast,         \
+                int32_t*: pshmem_int32_broadcast,         \
+                int64_t*: pshmem_int64_broadcast,         \
+                uint8_t*: pshmem_uint8_broadcast,         \
+                uint16_t*: pshmem_uint16_broadcast,         \
+                uint32_t*: pshmem_uint32_broadcast,         \
+                uint64_t*: pshmem_uint64_broadcast,         \
+                size_t*: pshmem_size_broadcast,         \
+                ptrdiff_t*: pshmem_ptrdiff_broadcast,         \
+                default:      __opshmem_datatype_ignore))(__VA_ARGS__)
+#endif
+
+OSHMEM_DECLSPEC  int pshmem_broadcastmem(shmem_team_t team, void *target, const void *source, size_t nelems, int PE_root);
+
+/* Teams collect */
+OSHMEM_DECLSPEC  int pshmem_char_collect(shmem_team_t team, char *target, const char *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_short_collect(shmem_team_t team, short *target, const short *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_int_collect(shmem_team_t team, int *target, const int *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_long_collect(shmem_team_t team, long *target, const long *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_float_collect(shmem_team_t team, float *target, const float *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_double_collect(shmem_team_t team, double *target, const double *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_longlong_collect(shmem_team_t team, long long *target, const long long *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_schar_collect(shmem_team_t team, signed char *target, const signed char *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uchar_collect(shmem_team_t team, unsigned char *target, const unsigned char *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_ushort_collect(shmem_team_t team, unsigned short *target, const unsigned short *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uint_collect(shmem_team_t team, unsigned int *target, const unsigned int *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_ulong_collect(shmem_team_t team, unsigned long *target, const unsigned long *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_ulonglong_collect(shmem_team_t team, unsigned long long *target, const unsigned long long *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_longdouble_collect(shmem_team_t team, long double *target, const long double *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_int8_collect(shmem_team_t team, int8_t *target, const int8_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_int16_collect(shmem_team_t team, int16_t *target, const int16_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_int32_collect(shmem_team_t team, int32_t *target, const int32_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_int64_collect(shmem_team_t team, int64_t *target, const int64_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uint8_collect(shmem_team_t team, uint8_t *target, const uint8_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uint16_collect(shmem_team_t team, uint16_t *target, const uint16_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uint32_collect(shmem_team_t team, uint32_t *target, const uint32_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uint64_collect(shmem_team_t team, uint64_t *target, const uint64_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_size_collect(shmem_team_t team, size_t *target, const size_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_ptrdiff_collect(shmem_team_t team, ptrdiff_t *target, const ptrdiff_t *source, size_t nelems);
+#if OSHMEM_HAVE_C11
+#define pshmem_collect(...)                                          \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                     \
+            shmem_team_t: _Generic(&*(__OSHMEM_VAR_ARG2(__VA_ARGS__)),\
+                char*:        pshmem_char_collect,               \
+                short*:       pshmem_short_collect,              \
+                int*:         pshmem_int_collect,                \
+                long*:        pshmem_long_collect,               \
+                long long*:   pshmem_longlong_collect,           \
+                signed char*:        pshmem_schar_collect,       \
+                unsigned char*:      pshmem_uchar_collect,       \
+                unsigned short*:     pshmem_ushort_collect,      \
+                unsigned int*:       pshmem_uint_collect,        \
+                unsigned long*:      pshmem_ulong_collect,       \
+                unsigned long long*: pshmem_ulonglong_collect,   \
+                float*:       pshmem_float_collect,              \
+                double*:      pshmem_double_collect,             \
+                long double*: pshmem_longdouble_collect,         \
+                int8_t*: pshmem_int8_collect,         \
+                int16_t*: pshmem_int16_collect,         \
+                int32_t*: pshmem_int32_collect,         \
+                int64_t*: pshmem_int64_collect,         \
+                uint8_t*: pshmem_uint8_collect,         \
+                uint16_t*: pshmem_uint16_collect,         \
+                uint32_t*: pshmem_uint32_collect,         \
+                uint64_t*: pshmem_uint64_collect,         \
+                size_t*: pshmem_size_collect,         \
+                ptrdiff_t*: pshmem_ptrdiff_collect,         \
+                default:      __opshmem_datatype_ignore))(__VA_ARGS__)
+#endif
+
+
+OSHMEM_DECLSPEC  int pshmem_collectmem(shmem_team_t team, void *target, const void *source, size_t nelems);
+
+/* Teams fcollect */
+OSHMEM_DECLSPEC  int pshmem_char_fcollect(shmem_team_t team, char *target, const char *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_short_fcollect(shmem_team_t team, short *target, const short *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_int_fcollect(shmem_team_t team, int *target, const int *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_long_fcollect(shmem_team_t team, long *target, const long *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_float_fcollect(shmem_team_t team, float *target, const float *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_double_fcollect(shmem_team_t team, double *target, const double *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_longlong_fcollect(shmem_team_t team, long long *target, const long long *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_schar_fcollect(shmem_team_t team, signed char *target, const signed char *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uchar_fcollect(shmem_team_t team, unsigned char *target, const unsigned char *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_ushort_fcollect(shmem_team_t team, unsigned short *target, const unsigned short *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uint_fcollect(shmem_team_t team, unsigned int *target, const unsigned int *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_ulong_fcollect(shmem_team_t team, unsigned long *target, const unsigned long *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_ulonglong_fcollect(shmem_team_t team, unsigned long long *target, const unsigned long long *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_longdouble_fcollect(shmem_team_t team, long double *target, const long double *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_int8_fcollect(shmem_team_t team, int8_t *target, const int8_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_int16_fcollect(shmem_team_t team, int16_t *target, const int16_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_int32_fcollect(shmem_team_t team, int32_t *target, const int32_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_int64_fcollect(shmem_team_t team, int64_t *target, const int64_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uint8_fcollect(shmem_team_t team, uint8_t *target, const uint8_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uint16_fcollect(shmem_team_t team, uint16_t *target, const uint16_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uint32_fcollect(shmem_team_t team, uint32_t *target, const uint32_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_uint64_fcollect(shmem_team_t team, uint64_t *target, const uint64_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_size_fcollect(shmem_team_t team, size_t *target, const size_t *source, size_t nelems);
+OSHMEM_DECLSPEC  int pshmem_ptrdiff_fcollect(shmem_team_t team, ptrdiff_t *target, const ptrdiff_t *source, size_t nelems);
+#if OSHMEM_HAVE_C11
+#define pshmem_fcollect(...)                                          \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                     \
+            shmem_team_t: _Generic(&*(__OSHMEM_VAR_ARG2(__VA_ARGS__)),\
+                char*:        pshmem_char_fcollect,               \
+                short*:       pshmem_short_fcollect,              \
+                int*:         pshmem_int_fcollect,                \
+                long*:        pshmem_long_fcollect,               \
+                long long*:   pshmem_longlong_fcollect,           \
+                signed char*:        pshmem_schar_fcollect,       \
+                unsigned char*:      pshmem_uchar_fcollect,       \
+                unsigned short*:     pshmem_ushort_fcollect,      \
+                unsigned int*:       pshmem_uint_fcollect,        \
+                unsigned long*:      pshmem_ulong_fcollect,       \
+                unsigned long long*: pshmem_ulonglong_fcollect,   \
+                float*:       pshmem_float_fcollect,              \
+                double*:      pshmem_double_fcollect,             \
+                long double*: pshmem_longdouble_fcollect,         \
+                int8_t*: pshmem_int8_fcollect,         \
+                int16_t*: pshmem_int16_fcollect,         \
+                int32_t*: pshmem_int32_fcollect,         \
+                int64_t*: pshmem_int64_fcollect,         \
+                uint8_t*: pshmem_uint8_fcollect,         \
+                uint16_t*: pshmem_uint16_fcollect,         \
+                uint32_t*: pshmem_uint32_fcollect,         \
+                uint64_t*: pshmem_uint64_fcollect,         \
+                size_t*: pshmem_size_fcollect,         \
+                ptrdiff_t*: pshmem_ptrdiff_fcollect,         \
+                default:      __opshmem_datatype_ignore))(__VA_ARGS__)
+#endif
+
+OSHMEM_DECLSPEC  int pshmem_fcollectmem(shmem_team_t team, void *target, const void *source, size_t nelems);
+
+
+
+/* Teams reduction: AND */
+OSHMEM_DECLSPEC  int pshmem_uchar_and_reduce(shmem_team_t team, unsigned char *target, const unsigned char *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ushort_and_reduce(shmem_team_t team, unsigned short *target, const unsigned short *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint_and_reduce(shmem_team_t team, unsigned int *target, const unsigned int *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ulong_and_reduce(shmem_team_t team, unsigned long *target, const unsigned long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ulonglong_and_reduce(shmem_team_t team, unsigned long long *target, const unsigned long long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int8_and_reduce(shmem_team_t team, int8_t *target, const int8_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int16_and_reduce(shmem_team_t team, int16_t *target, const int16_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int32_and_reduce(shmem_team_t team, int32_t *target, const int32_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int64_and_reduce(shmem_team_t team, int64_t *target, const int64_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint8_and_reduce(shmem_team_t team, uint8_t *target, const uint8_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint16_and_reduce(shmem_team_t team, uint16_t *target, const uint16_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint32_and_reduce(shmem_team_t team, uint32_t *target, const uint32_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint64_and_reduce(shmem_team_t team, uint64_t *target, const uint64_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_size_and_reduce(shmem_team_t team, size_t *target, const size_t *source, size_t nreduce);
+#if OSHMEM_HAVE_C11
+#define pshmem_and_reduce(...)                                          \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                     \
+            shmem_team_t: _Generic(&*(__OSHMEM_VAR_ARG2(__VA_ARGS__)),\
+                unsigned char*:      pshmem_uchar_and_reduce,       \
+                unsigned short*:     pshmem_ushort_and_reduce,      \
+                unsigned int*:       pshmem_uint_and_reduce,        \
+                unsigned long*:      pshmem_ulong_and_reduce,       \
+                unsigned long long*: pshmem_ulonglong_and_reduce,   \
+                int8_t*: pshmem_int8_and_reduce,         \
+                int16_t*: pshmem_int16_and_reduce,         \
+                int32_t*: pshmem_int32_and_reduce,         \
+                int64_t*: pshmem_int64_and_reduce,         \
+                uint8_t*: pshmem_uint8_and_reduce,         \
+                uint16_t*: pshmem_uint16_and_reduce,         \
+                uint32_t*: pshmem_uint32_and_reduce,         \
+                uint64_t*: pshmem_uint64_and_reduce,         \
+                size_t*: pshmem_size_and_reduce,         \
+                default:      __opshmem_datatype_ignore))(__VA_ARGS__)
+#endif
+
+
+/* Teams reduction: OR */
+OSHMEM_DECLSPEC  int pshmem_uchar_or_reduce(shmem_team_t team, unsigned char *target, const unsigned char *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ushort_or_reduce(shmem_team_t team, unsigned short *target, const unsigned short *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint_or_reduce(shmem_team_t team, unsigned int *target, const unsigned int *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ulong_or_reduce(shmem_team_t team, unsigned long *target, const unsigned long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ulonglong_or_reduce(shmem_team_t team, unsigned long long *target, const unsigned long long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int8_or_reduce(shmem_team_t team, int8_t *target, const int8_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int16_or_reduce(shmem_team_t team, int16_t *target, const int16_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int32_or_reduce(shmem_team_t team, int32_t *target, const int32_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int64_or_reduce(shmem_team_t team, int64_t *target, const int64_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint8_or_reduce(shmem_team_t team, uint8_t *target, const uint8_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint16_or_reduce(shmem_team_t team, uint16_t *target, const uint16_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint32_or_reduce(shmem_team_t team, uint32_t *target, const uint32_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint64_or_reduce(shmem_team_t team, uint64_t *target, const uint64_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_size_or_reduce(shmem_team_t team, size_t *target, const size_t *source, size_t nreduce);
+#if OSHMEM_HAVE_C11
+#define pshmem_or_reduce(...)                                          \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                     \
+            shmem_team_t: _Generic(&*(__OSHMEM_VAR_ARG2(__VA_ARGS__)),\
+                unsigned char*:      pshmem_uchar_or_reduce,       \
+                unsigned short*:     pshmem_ushort_or_reduce,      \
+                unsigned int*:       pshmem_uint_or_reduce,        \
+                unsigned long*:      pshmem_ulong_or_reduce,       \
+                unsigned long long*: pshmem_ulonglong_or_reduce,   \
+                int8_t*: pshmem_int8_or_reduce,         \
+                int16_t*: pshmem_int16_or_reduce,         \
+                int32_t*: pshmem_int32_or_reduce,         \
+                int64_t*: pshmem_int64_or_reduce,         \
+                uint8_t*: pshmem_uint8_or_reduce,         \
+                uint16_t*: pshmem_uint16_or_reduce,         \
+                uint32_t*: pshmem_uint32_or_reduce,         \
+                uint64_t*: pshmem_uint64_or_reduce,         \
+                size_t*: pshmem_size_or_reduce,         \
+                default:      __opshmem_datatype_ignore))(__VA_ARGS__)
+#endif
+
+
+
+/* Teams reduction: XOR */
+OSHMEM_DECLSPEC  int pshmem_uchar_xor_reduce(shmem_team_t team, unsigned char *target, const unsigned char *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ushort_xor_reduce(shmem_team_t team, unsigned short *target, const unsigned short *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint_xor_reduce(shmem_team_t team, unsigned int *target, const unsigned int *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ulong_xor_reduce(shmem_team_t team, unsigned long *target, const unsigned long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ulonglong_xor_reduce(shmem_team_t team, unsigned long long *target, const unsigned long long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int8_xor_reduce(shmem_team_t team, int8_t *target, const int8_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int16_xor_reduce(shmem_team_t team, int16_t *target, const int16_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int32_xor_reduce(shmem_team_t team, int32_t *target, const int32_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int64_xor_reduce(shmem_team_t team, int64_t *target, const int64_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint8_xor_reduce(shmem_team_t team, uint8_t *target, const uint8_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint16_xor_reduce(shmem_team_t team, uint16_t *target, const uint16_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint32_xor_reduce(shmem_team_t team, uint32_t *target, const uint32_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint64_xor_reduce(shmem_team_t team, uint64_t *target, const uint64_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_size_xor_reduce(shmem_team_t team, size_t *target, const size_t *source, size_t nreduce);
+#if OSHMEM_HAVE_C11
+#define pshmem_xor_reduce(...)                                          \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                     \
+            shmem_team_t: _Generic(&*(__OSHMEM_VAR_ARG2(__VA_ARGS__)),\
+                unsigned char*:      pshmem_uchar_xor_reduce,       \
+                unsigned short*:     pshmem_ushort_xor_reduce,      \
+                unsigned int*:       pshmem_uint_xor_reduce,        \
+                unsigned long*:      pshmem_ulong_xor_reduce,       \
+                unsigned long long*: pshmem_ulonglong_xor_reduce,   \
+                int8_t*: pshmem_int8_xor_reduce,         \
+                int16_t*: pshmem_int16_xor_reduce,         \
+                int32_t*: pshmem_int32_xor_reduce,         \
+                int64_t*: pshmem_int64_xor_reduce,         \
+                uint8_t*: pshmem_uint8_xor_reduce,         \
+                uint16_t*: pshmem_uint16_xor_reduce,         \
+                uint32_t*: pshmem_uint32_xor_reduce,         \
+                uint64_t*: pshmem_uint64_xor_reduce,         \
+                size_t*: pshmem_size_xor_reduce,         \
+                default:      __opshmem_datatype_ignore))(__VA_ARGS__)
+#endif
+
+/* Teams reduction: MAX */
+OSHMEM_DECLSPEC  int pshmem_char_max_reduce(shmem_team_t team, char *target, const char *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_short_max_reduce(shmem_team_t team, short *target, const short *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int_max_reduce(shmem_team_t team, int *target, const int *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_long_max_reduce(shmem_team_t team, long *target, const long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_float_max_reduce(shmem_team_t team, float *target, const float *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_double_max_reduce(shmem_team_t team, double *target, const double *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_longlong_max_reduce(shmem_team_t team, long long *target, const long long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_schar_max_reduce(shmem_team_t team, signed char *target, const signed char *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uchar_max_reduce(shmem_team_t team, unsigned char *target, const unsigned char *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ushort_max_reduce(shmem_team_t team, unsigned short *target, const unsigned short *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint_max_reduce(shmem_team_t team, unsigned int *target, const unsigned int *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ulong_max_reduce(shmem_team_t team, unsigned long *target, const unsigned long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ulonglong_max_reduce(shmem_team_t team, unsigned long long *target, const unsigned long long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_longdouble_max_reduce(shmem_team_t team, long double *target, const long double *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int8_max_reduce(shmem_team_t team, int8_t *target, const int8_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int16_max_reduce(shmem_team_t team, int16_t *target, const int16_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int32_max_reduce(shmem_team_t team, int32_t *target, const int32_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int64_max_reduce(shmem_team_t team, int64_t *target, const int64_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint8_max_reduce(shmem_team_t team, uint8_t *target, const uint8_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint16_max_reduce(shmem_team_t team, uint16_t *target, const uint16_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint32_max_reduce(shmem_team_t team, uint32_t *target, const uint32_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint64_max_reduce(shmem_team_t team, uint64_t *target, const uint64_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_size_max_reduce(shmem_team_t team, size_t *target, const size_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ptrdiff_max_reduce(shmem_team_t team, ptrdiff_t *target, const ptrdiff_t *source, size_t nreduce);
+#if OSHMEM_HAVE_C11
+#define pshmem_max_reduce(...)                                          \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                     \
+            shmem_team_t: _Generic(&*(__OSHMEM_VAR_ARG2(__VA_ARGS__)),\
+                char*:        pshmem_char_max_reduce,               \
+                short*:       pshmem_short_max_reduce,              \
+                int*:         pshmem_int_max_reduce,                \
+                long*:        pshmem_long_max_reduce,               \
+                long long*:   pshmem_longlong_max_reduce,           \
+                signed char*:        pshmem_schar_max_reduce,       \
+                unsigned char*:      pshmem_uchar_max_reduce,       \
+                unsigned short*:     pshmem_ushort_max_reduce,      \
+                unsigned int*:       pshmem_uint_max_reduce,        \
+                unsigned long*:      pshmem_ulong_max_reduce,       \
+                unsigned long long*: pshmem_ulonglong_max_reduce,   \
+                float*:       pshmem_float_max_reduce,              \
+                double*:      pshmem_double_max_reduce,             \
+                long double*: pshmem_longdouble_max_reduce,         \
+                int8_t*: pshmem_int8_max_reduce,         \
+                int16_t*: pshmem_int16_max_reduce,         \
+                int32_t*: pshmem_int32_max_reduce,         \
+                int64_t*: pshmem_int64_max_reduce,         \
+                uint8_t*: pshmem_uint8_max_reduce,         \
+                uint16_t*: pshmem_uint16_max_reduce,         \
+                uint32_t*: pshmem_uint32_max_reduce,         \
+                uint64_t*: pshmem_uint64_max_reduce,         \
+                size_t*: pshmem_size_max_reduce,         \
+                ptrdiff_t*: pshmem_ptrdiff_max_reduce,         \
+                default:      __opshmem_datatype_ignore))(__VA_ARGS__)
+#endif
+
+
+/* Teams reduction: MIN */
+OSHMEM_DECLSPEC  int pshmem_char_min_reduce(shmem_team_t team, char *target, const char *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_short_min_reduce(shmem_team_t team, short *target, const short *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int_min_reduce(shmem_team_t team, int *target, const int *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_long_min_reduce(shmem_team_t team, long *target, const long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_float_min_reduce(shmem_team_t team, float *target, const float *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_double_min_reduce(shmem_team_t team, double *target, const double *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_longlong_min_reduce(shmem_team_t team, long long *target, const long long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_schar_min_reduce(shmem_team_t team, signed char *target, const signed char *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uchar_min_reduce(shmem_team_t team, unsigned char *target, const unsigned char *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ushort_min_reduce(shmem_team_t team, unsigned short *target, const unsigned short *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint_min_reduce(shmem_team_t team, unsigned int *target, const unsigned int *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ulong_min_reduce(shmem_team_t team, unsigned long *target, const unsigned long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ulonglong_min_reduce(shmem_team_t team, unsigned long long *target, const unsigned long long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_longdouble_min_reduce(shmem_team_t team, long double *target, const long double *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int8_min_reduce(shmem_team_t team, int8_t *target, const int8_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int16_min_reduce(shmem_team_t team, int16_t *target, const int16_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int32_min_reduce(shmem_team_t team, int32_t *target, const int32_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int64_min_reduce(shmem_team_t team, int64_t *target, const int64_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint8_min_reduce(shmem_team_t team, uint8_t *target, const uint8_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint16_min_reduce(shmem_team_t team, uint16_t *target, const uint16_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint32_min_reduce(shmem_team_t team, uint32_t *target, const uint32_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint64_min_reduce(shmem_team_t team, uint64_t *target, const uint64_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_size_min_reduce(shmem_team_t team, size_t *target, const size_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ptrdiff_min_reduce(shmem_team_t team, ptrdiff_t *target, const ptrdiff_t *source, size_t nreduce);
+#if OSHMEM_HAVE_C11
+#define pshmem_min_reduce(...)                                          \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                     \
+            shmem_team_t: _Generic(&*(__OSHMEM_VAR_ARG2(__VA_ARGS__)),\
+                char*:        pshmem_char_min_reduce,               \
+                short*:       pshmem_short_min_reduce,              \
+                int*:         pshmem_int_min_reduce,                \
+                long*:        pshmem_long_min_reduce,               \
+                long long*:   pshmem_longlong_min_reduce,           \
+                signed char*:        pshmem_schar_min_reduce,       \
+                unsigned char*:      pshmem_uchar_min_reduce,       \
+                unsigned short*:     pshmem_ushort_min_reduce,      \
+                unsigned int*:       pshmem_uint_min_reduce,        \
+                unsigned long*:      pshmem_ulong_min_reduce,       \
+                unsigned long long*: pshmem_ulonglong_min_reduce,   \
+                float*:       pshmem_float_min_reduce,              \
+                double*:      pshmem_double_min_reduce,             \
+                long double*: pshmem_longdouble_min_reduce,         \
+                int8_t*: pshmem_int8_min_reduce,         \
+                int16_t*: pshmem_int16_min_reduce,         \
+                int32_t*: pshmem_int32_min_reduce,         \
+                int64_t*: pshmem_int64_min_reduce,         \
+                uint8_t*: pshmem_uint8_min_reduce,         \
+                uint16_t*: pshmem_uint16_min_reduce,         \
+                uint32_t*: pshmem_uint32_min_reduce,         \
+                uint64_t*: pshmem_uint64_min_reduce,         \
+                size_t*: pshmem_size_min_reduce,         \
+                ptrdiff_t*: pshmem_ptrdiff_min_reduce,         \
+                default:      __opshmem_datatype_ignore))(__VA_ARGS__)
+#endif
+
+
+
+/* Teams reduction: SUM */
+OSHMEM_DECLSPEC  int pshmem_char_sum_reduce(shmem_team_t team, char *target, const char *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_short_sum_reduce(shmem_team_t team, short *target, const short *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int_sum_reduce(shmem_team_t team, int *target, const int *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_long_sum_reduce(shmem_team_t team, long *target, const long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_float_sum_reduce(shmem_team_t team, float *target, const float *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_double_sum_reduce(shmem_team_t team, double *target, const double *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_longlong_sum_reduce(shmem_team_t team, long long *target, const long long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_schar_sum_reduce(shmem_team_t team, signed char *target, const signed char *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uchar_sum_reduce(shmem_team_t team, unsigned char *target, const unsigned char *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ushort_sum_reduce(shmem_team_t team, unsigned short *target, const unsigned short *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint_sum_reduce(shmem_team_t team, unsigned int *target, const unsigned int *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ulong_sum_reduce(shmem_team_t team, unsigned long *target, const unsigned long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ulonglong_sum_reduce(shmem_team_t team, unsigned long long *target, const unsigned long long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_longdouble_sum_reduce(shmem_team_t team, long double *target, const long double *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int8_sum_reduce(shmem_team_t team, int8_t *target, const int8_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int16_sum_reduce(shmem_team_t team, int16_t *target, const int16_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int32_sum_reduce(shmem_team_t team, int32_t *target, const int32_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int64_sum_reduce(shmem_team_t team, int64_t *target, const int64_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint8_sum_reduce(shmem_team_t team, uint8_t *target, const uint8_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint16_sum_reduce(shmem_team_t team, uint16_t *target, const uint16_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint32_sum_reduce(shmem_team_t team, uint32_t *target, const uint32_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint64_sum_reduce(shmem_team_t team, uint64_t *target, const uint64_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_size_sum_reduce(shmem_team_t team, size_t *target, const size_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ptrdiff_sum_reduce(shmem_team_t team, ptrdiff_t *target, const ptrdiff_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_complexd_sum_reduce(shmem_team_t team, double _Complex *target, const double _Complex *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_complexf_sum_reduce(shmem_team_t team, float _Complex *target, const float _Complex *source, size_t nreduce);
+#if OSHMEM_HAVE_C11
+#define pshmem_sum_reduce(...)                                          \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                     \
+            shmem_team_t: _Generic(&*(__OSHMEM_VAR_ARG2(__VA_ARGS__)),\
+                char*:        pshmem_char_sum_reduce,               \
+                short*:       pshmem_short_sum_reduce,              \
+                int*:         pshmem_int_sum_reduce,                \
+                long*:        pshmem_long_sum_reduce,               \
+                long long*:   pshmem_longlong_sum_reduce,           \
+                signed char*:        pshmem_schar_sum_reduce,       \
+                unsigned char*:      pshmem_uchar_sum_reduce,       \
+                unsigned short*:     pshmem_ushort_sum_reduce,      \
+                unsigned int*:       pshmem_uint_sum_reduce,        \
+                unsigned long*:      pshmem_ulong_sum_reduce,       \
+                unsigned long long*: pshmem_ulonglong_sum_reduce,   \
+                float*:       pshmem_float_sum_reduce,              \
+                double*:      pshmem_double_sum_reduce,             \
+                long double*: pshmem_longdouble_sum_reduce,         \
+                int8_t*: pshmem_int8_sum_reduce,         \
+                int16_t*: pshmem_int16_sum_reduce,         \
+                int32_t*: pshmem_int32_sum_reduce,         \
+                int64_t*: pshmem_int64_sum_reduce,         \
+                uint8_t*: pshmem_uint8_sum_reduce,         \
+                uint16_t*: pshmem_uint16_sum_reduce,         \
+                uint32_t*: pshmem_uint32_sum_reduce,         \
+                uint64_t*: pshmem_uint64_sum_reduce,         \
+                size_t*: pshmem_size_sum_reduce,         \
+                ptrdiff_t*: pshmem_ptrdiff_sum_reduce,         \
+                double _Complex*: pshmem_complexd_sum_reduce,         \
+                float _Complex*: pshmem_complexf_sum_reduce,         \
+                default:      __opshmem_datatype_ignore))(__VA_ARGS__)
+#endif
+
+
+/* Teams reduction: PROD */
+OSHMEM_DECLSPEC  int pshmem_char_prod_reduce(shmem_team_t team, char *target, const char *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_short_prod_reduce(shmem_team_t team, short *target, const short *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int_prod_reduce(shmem_team_t team, int *target, const int *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_long_prod_reduce(shmem_team_t team, long *target, const long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_float_prod_reduce(shmem_team_t team, float *target, const float *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_double_prod_reduce(shmem_team_t team, double *target, const double *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_longlong_prod_reduce(shmem_team_t team, long long *target, const long long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_schar_prod_reduce(shmem_team_t team, signed char *target, const signed char *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uchar_prod_reduce(shmem_team_t team, unsigned char *target, const unsigned char *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ushort_prod_reduce(shmem_team_t team, unsigned short *target, const unsigned short *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint_prod_reduce(shmem_team_t team, unsigned int *target, const unsigned int *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ulong_prod_reduce(shmem_team_t team, unsigned long *target, const unsigned long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ulonglong_prod_reduce(shmem_team_t team, unsigned long long *target, const unsigned long long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_longdouble_prod_reduce(shmem_team_t team, long double *target, const long double *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int8_prod_reduce(shmem_team_t team, int8_t *target, const int8_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int16_prod_reduce(shmem_team_t team, int16_t *target, const int16_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int32_prod_reduce(shmem_team_t team, int32_t *target, const int32_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int64_prod_reduce(shmem_team_t team, int64_t *target, const int64_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint8_prod_reduce(shmem_team_t team, uint8_t *target, const uint8_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint16_prod_reduce(shmem_team_t team, uint16_t *target, const uint16_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint32_prod_reduce(shmem_team_t team, uint32_t *target, const uint32_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_uint64_prod_reduce(shmem_team_t team, uint64_t *target, const uint64_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_size_prod_reduce(shmem_team_t team, size_t *target, const size_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_ptrdiff_prod_reduce(shmem_team_t team, ptrdiff_t *target, const ptrdiff_t *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_complexd_prod_reduce(shmem_team_t team, double _Complex *target, const double _Complex *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_complexf_prod_reduce(shmem_team_t team, float _Complex *target, const float _Complex *source, size_t nreduce);
+#if OSHMEM_HAVE_C11
+#define pshmem_prod_reduce(...)                                          \
+    _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                     \
+            shmem_team_t: _Generic(&*(__OSHMEM_VAR_ARG2(__VA_ARGS__)),\
+                char*:        pshmem_char_prod_reduce,               \
+                short*:       pshmem_short_prod_reduce,              \
+                int*:         pshmem_int_prod_reduce,                \
+                long*:        pshmem_long_prod_reduce,               \
+                long long*:   pshmem_longlong_prod_reduce,           \
+                signed char*:        pshmem_schar_prod_reduce,       \
+                unsigned char*:      pshmem_uchar_prod_reduce,       \
+                unsigned short*:     pshmem_ushort_prod_reduce,      \
+                unsigned int*:       pshmem_uint_prod_reduce,        \
+                unsigned long*:      pshmem_ulong_prod_reduce,       \
+                unsigned long long*: pshmem_ulonglong_prod_reduce,   \
+                float*:       pshmem_float_prod_reduce,              \
+                double*:      pshmem_double_prod_reduce,             \
+                long double*: pshmem_longdouble_prod_reduce,         \
+                int8_t*: pshmem_int8_prod_reduce,         \
+                int16_t*: pshmem_int16_prod_reduce,         \
+                int32_t*: pshmem_int32_prod_reduce,         \
+                int64_t*: pshmem_int64_prod_reduce,         \
+                uint8_t*: pshmem_uint8_prod_reduce,         \
+                uint16_t*: pshmem_uint16_prod_reduce,         \
+                uint32_t*: pshmem_uint32_prod_reduce,         \
+                uint64_t*: pshmem_uint64_prod_reduce,         \
+                size_t*: pshmem_size_prod_reduce,         \
+                ptrdiff_t*: pshmem_ptrdiff_prod_reduce,         \
+                double _Complex*: pshmem_complexd_prod_reduce,         \
+                float _Complex*: pshmem_complexf_prod_reduce,         \
+                default:      __opshmem_datatype_ignore))(__VA_ARGS__)
+#endif
+
+/*
  * Elemental put routines
  */
 OSHMEM_DECLSPEC  void pshmem_ctx_char_p(shmem_ctx_t ctx, char* addr, char value, int pe);
@@ -2592,6 +3244,7 @@ OSHMEM_DECLSPEC  void pshmem_fence(void);
 OSHMEM_DECLSPEC  void pshmem_ctx_fence(shmem_ctx_t ctx);
 OSHMEM_DECLSPEC  void pshmem_quiet(void);
 OSHMEM_DECLSPEC  void pshmem_ctx_quiet(shmem_ctx_t ctx);
+
 
 /*
  * Collective routines
