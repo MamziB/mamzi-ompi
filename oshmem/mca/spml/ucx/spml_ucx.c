@@ -57,6 +57,8 @@ mca_spml_ucx_t mca_spml_ucx = {
         .spml_ctx_destroy   = mca_spml_ucx_ctx_destroy,
         .spml_put           = mca_spml_ucx_put,
         .spml_put_nb        = mca_spml_ucx_put_nb,
+        .spml_put_signal    = mca_spml_ucx_put_signal,
+        .spml_put_signal_nb = mca_spml_ucx_put_signal_nb,
         .spml_get           = mca_spml_ucx_get,
         .spml_get_nb        = mca_spml_ucx_get_nb,
         .spml_recv          = mca_spml_ucx_recv,
@@ -1435,4 +1437,19 @@ int mca_spml_ucx_put_all_nb(void *dest, const void *source, size_t size, long *c
     mca_spml_ucx_aux_unlock();
 
     return OSHMEM_SUCCESS;
+}
+
+/* This routine is not implemented */
+int mca_spml_ucx_put_signal(shmem_ctx_t ctx, void* dst_addr, size_t size, void*
+        src_addr, uint64_t *sig_addr, uint64_t signal, int sig_op, int dst)
+{
+    return OSHMEM_ERR_NOT_SUPPORTED;
+}
+
+/* This routine is not implemented */
+int mca_spml_ucx_put_signal_nb(shmem_ctx_t ctx, void* dst_addr, size_t size,
+        void* src_addr, uint64_t *sig_addr, uint64_t signal, int sig_op, int
+        dst)
+{
+    return OSHMEM_ERR_NOT_SUPPORTED;
 }

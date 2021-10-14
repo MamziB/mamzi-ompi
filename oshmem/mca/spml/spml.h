@@ -393,6 +393,9 @@ struct mca_spml_base_module_1_0_0_t {
 
     mca_spml_base_module_put_fn_t spml_put;
     mca_spml_base_module_put_nb_fn_t spml_put_nb;
+    mca_spml_base_module_put_fn_t spml_put_signal;
+    mca_spml_base_module_put_nb_fn_t spml_put_signal_nb;
+
     mca_spml_base_module_get_fn_t spml_get;
     mca_spml_base_module_get_nb_fn_t spml_get_nb;
 
