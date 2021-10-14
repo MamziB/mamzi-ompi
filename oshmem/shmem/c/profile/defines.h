@@ -85,6 +85,317 @@
 #define shmem_team_destroy           pshmem_team_destroy
 
 /*
+ * Teams-based Collectives
+ */
+
+/* Teams alltoall */
+#define shmem_char_alltoall         	pshmem_char_alltoall
+#define shmem_short_alltoall         	pshmem_short_alltoall
+#define shmem_int_alltoall         	    pshmem_int_alltoall
+#define shmem_long_alltoall         	pshmem_long_alltoall
+#define shmem_float_alltoall         	pshmem_float_alltoall
+#define shmem_double_alltoall         	pshmem_double_alltoall
+#define shmem_longlong_alltoall         pshmem_longlong_alltoall
+#define shmem_schar_alltoall         	pshmem_schar_alltoall
+#define shmem_uchar_alltoall         	pshmem_uchar_alltoall
+#define shmem_ushort_alltoall         	pshmem_ushort_alltoall
+#define shmem_uint_alltoall         	pshmem_uint_alltoall
+#define shmem_ulong_alltoall         	pshmem_ulong_alltoall
+#define shmem_ulonglong_alltoall      	pshmem_ulonglong_alltoall
+#define shmem_longdouble_alltoall       pshmem_longdouble_alltoall
+#define shmem_int8_alltoall         	pshmem_int8_alltoall
+#define shmem_int16_alltoall         	pshmem_int16_alltoall
+#define shmem_int32_alltoall         	pshmem_int32_alltoall
+#define shmem_int64_alltoall         	pshmem_int64_alltoall
+#define shmem_uint8_alltoall         	pshmem_uint8_alltoall
+#define shmem_uint16_alltoall         	pshmem_uint16_alltoall
+#define shmem_uint32_alltoall         	pshmem_uint32_alltoall
+#define shmem_uint64_alltoall         	pshmem_uint64_alltoall
+#define shmem_size_alltoall         	pshmem_size_alltoall
+#define shmem_ptrdiff_alltoall         	pshmem_ptrdiff_alltoall
+
+#define shmem_alltoallmem               pshmem_alltoallmem
+
+
+/* Teams alltoalls */
+#define shmem_char_alltoalls         	pshmem_char_alltoalls
+#define shmem_short_alltoalls         	pshmem_short_alltoalls
+#define shmem_int_alltoalls       	    pshmem_int_alltoalls
+#define shmem_long_alltoalls         	pshmem_long_alltoalls
+#define shmem_float_alltoalls         	pshmem_float_alltoalls
+#define shmem_double_alltoalls         	pshmem_double_alltoalls
+#define shmem_longlong_alltoalls        pshmem_longlong_alltoalls
+#define shmem_schar_alltoalls         	pshmem_schar_alltoalls
+#define shmem_uchar_alltoalls         	pshmem_uchar_alltoalls
+#define shmem_ushort_alltoalls         	pshmem_ushort_alltoalls
+#define shmem_uint_alltoalls         	pshmem_uint_alltoalls
+#define shmem_ulong_alltoalls         	pshmem_ulong_alltoalls
+#define shmem_ulonglong_alltoalls      	pshmem_ulonglong_alltoalls
+#define shmem_longdouble_alltoalls      pshmem_longdouble_alltoalls
+#define shmem_int8_alltoalls         	pshmem_int8_alltoalls
+#define shmem_int16_alltoalls         	pshmem_int16_alltoalls
+#define shmem_int32_alltoalls         	pshmem_int32_alltoalls
+#define shmem_int64_alltoalls         	pshmem_int64_alltoalls
+#define shmem_uint8_alltoalls         	pshmem_uint8_alltoalls
+#define shmem_uint16_alltoalls         	pshmem_uint16_alltoalls
+#define shmem_uint32_alltoalls         	pshmem_uint32_alltoalls
+#define shmem_uint64_alltoalls         	pshmem_uint64_alltoalls
+#define shmem_size_alltoalls         	pshmem_size_alltoalls
+#define shmem_ptrdiff_alltoalls        	pshmem_ptrdiff_alltoalls
+
+#define shmem_alltoallsmem              pshmem_alltoallsmem
+
+
+/* Teams broadcast */
+#define shmem_char_broadcast         	pshmem_char_broadcast
+#define shmem_short_broadcast         	pshmem_short_broadcast
+#define shmem_int_broadcast        	    pshmem_int_broadcast
+#define shmem_long_broadcast         	pshmem_long_broadcast
+#define shmem_float_broadcast         	pshmem_float_broadcast
+#define shmem_double_broadcast         	pshmem_double_broadcast
+#define shmem_longlong_broadcast        pshmem_longlong_broadcast
+#define shmem_schar_broadcast         	pshmem_schar_broadcast
+#define shmem_uchar_broadcast         	pshmem_uchar_broadcast
+#define shmem_ushort_broadcast         	pshmem_ushort_broadcast
+#define shmem_uint_broadcast         	pshmem_uint_broadcast
+#define shmem_ulong_broadcast         	pshmem_ulong_broadcast
+#define shmem_ulonglong_broadcast      	pshmem_ulonglong_broadcast
+#define shmem_longdouble_broadcast      pshmem_longdouble_broadcast
+#define shmem_int8_broadcast         	pshmem_int8_broadcast
+#define shmem_int16_broadcast         	pshmem_int16_broadcast
+#define shmem_int32_broadcast         	pshmem_int32_broadcast
+#define shmem_int64_broadcast         	pshmem_int64_broadcast
+#define shmem_uint8_broadcast         	pshmem_uint8_broadcast
+#define shmem_uint16_broadcast         	pshmem_uint16_broadcast
+#define shmem_uint32_broadcast         	pshmem_uint32_broadcast
+#define shmem_uint64_broadcast         	pshmem_uint64_broadcast
+#define shmem_size_broadcast         	pshmem_size_broadcast
+#define shmem_ptrdiff_broadcast        	pshmem_ptrdiff_broadcast
+
+#define shmem_broadcastmem              pshmem_broadcastmem
+
+  
+/* Teams collect */
+#define shmem_char_collect          	pshmem_char_collect
+#define shmem_short_collect         	pshmem_short_collect
+#define shmem_int_collect         	    pshmem_int_collect
+#define shmem_long_collect          	pshmem_long_collect
+#define shmem_float_collect         	pshmem_float_collect
+#define shmem_double_collect         	pshmem_double_collect
+#define shmem_longlong_collect          pshmem_longlong_collect
+#define shmem_schar_collect         	pshmem_schar_collect
+#define shmem_uchar_collect         	pshmem_uchar_collect
+#define shmem_ushort_collect         	pshmem_ushort_collect
+#define shmem_uint_collect          	pshmem_uint_collect
+#define shmem_ulong_collect         	pshmem_ulong_collect
+#define shmem_ulonglong_collect      	pshmem_ulonglong_collect
+#define shmem_longdouble_collect        pshmem_longdouble_collect
+#define shmem_int8_collect         	    pshmem_int8_collect
+#define shmem_int16_collect         	pshmem_int16_collect
+#define shmem_int32_collect         	pshmem_int32_collect
+#define shmem_int64_collect         	pshmem_int64_collect
+#define shmem_uint8_collect         	pshmem_uint8_collect
+#define shmem_uint16_collect         	pshmem_uint16_collect
+#define shmem_uint32_collect         	pshmem_uint32_collect
+#define shmem_uint64_collect         	pshmem_uint64_collect
+#define shmem_size_collect            	pshmem_size_collect
+#define shmem_ptrdiff_collect         	pshmem_ptrdiff_collect
+
+#define shmem_collectmem                pshmem_collectmem
+
+
+/* Teams fcollect */
+#define shmem_char_fcollect         	pshmem_char_fcollect
+#define shmem_short_fcollect         	pshmem_short_fcollect
+#define shmem_int_fcollect         	    pshmem_int_fcollect
+#define shmem_long_fcollect         	pshmem_long_fcollect
+#define shmem_float_fcollect         	pshmem_float_fcollect
+#define shmem_double_fcollect         	pshmem_double_fcollect
+#define shmem_longlong_fcollect         pshmem_longlong_fcollect
+#define shmem_schar_fcollect         	pshmem_schar_fcollect
+#define shmem_uchar_fcollect         	pshmem_uchar_fcollect
+#define shmem_ushort_fcollect         	pshmem_ushort_fcollect
+#define shmem_uint_fcollect         	pshmem_uint_fcollect
+#define shmem_ulong_fcollect         	pshmem_ulong_fcollect
+#define shmem_ulonglong_fcollect      	pshmem_ulonglong_fcollect
+#define shmem_longdouble_fcollect       pshmem_longdouble_fcollect
+#define shmem_int8_fcollect         	pshmem_int8_fcollect
+#define shmem_int16_fcollect         	pshmem_int16_fcollect
+#define shmem_int32_fcollect         	pshmem_int32_fcollect
+#define shmem_int64_fcollect         	pshmem_int64_fcollect
+#define shmem_uint8_fcollect         	pshmem_uint8_fcollect
+#define shmem_uint16_fcollect         	pshmem_uint16_fcollect
+#define shmem_uint32_fcollect         	pshmem_uint32_fcollect
+#define shmem_uint64_fcollect         	pshmem_uint64_fcollect
+#define shmem_size_fcollect         	pshmem_size_fcollect
+#define shmem_ptrdiff_fcollect         	pshmem_ptrdiff_fcollect
+
+#define shmem_fcollectmem               pshmem_fcollectmem
+
+
+/* Teams reduction: AND */
+#define shmem_uchar_and_reduce          pshmem_uchar_and_reduce
+#define shmem_ushort_and_reduce         pshmem_ushort_and_reduce
+#define shmem_uint_and_reduce           pshmem_uint_and_reduce
+#define shmem_ulong_and_reduce          pshmem_ulong_and_reduce
+#define shmem_ulonglong_and_reduce      pshmem_ulonglong_and_reduce
+#define shmem_int8_and_reduce           pshmem_int8_and_reduce
+#define shmem_int16_and_reduce          pshmem_int16_and_reduce
+#define shmem_int32_and_reduce          pshmem_int32_and_reduce
+#define shmem_int64_and_reduce          pshmem_int64_and_reduce
+#define shmem_uint8_and_reduce          pshmem_uint8_and_reduce
+#define shmem_uint16_and_reduce         pshmem_uint16_and_reduce
+#define shmem_uint32_and_reduce         pshmem_uint32_and_reduce
+#define shmem_uint64_and_reduce         pshmem_uint64_and_reduce
+#define shmem_size_and_reduce           pshmem_size_and_reduce
+
+
+/* Teams reduction: OR */
+#define shmem_uchar_or_reduce          pshmem_uchar_or_reduce
+#define shmem_ushort_or_reduce         pshmem_ushort_or_reduce
+#define shmem_uint_or_reduce           pshmem_uint_or_reduce
+#define shmem_ulong_or_reduce          pshmem_ulong_or_reduce
+#define shmem_ulonglong_or_reduce      pshmem_ulonglong_or_reduce
+#define shmem_int8_or_reduce           pshmem_int8_or_reduce
+#define shmem_int16_or_reduce          pshmem_int16_or_reduce
+#define shmem_int32_or_reduce          pshmem_int32_or_reduce
+#define shmem_int64_or_reduce          pshmem_int64_or_reduce
+#define shmem_uint8_or_reduce          pshmem_uint8_or_reduce
+#define shmem_uint16_or_reduce         pshmem_uint16_or_reduce
+#define shmem_uint32_or_reduce         pshmem_uint32_or_reduce
+#define shmem_uint64_or_reduce         pshmem_uint64_or_reduce
+#define shmem_size_or_reduce           pshmem_size_or_reduce
+
+
+/* Teams reduction: XOR */
+#define shmem_uchar_xor_reduce          pshmem_uchar_xor_reduce
+#define shmem_ushort_xor_reduce         pshmem_ushort_xor_reduce
+#define shmem_uint_xor_reduce           pshmem_uint_xor_reduce
+#define shmem_ulong_xor_reduce          pshmem_ulong_xor_reduce
+#define shmem_ulonglong_xor_reduce      pshmem_ulonglong_xor_reduce
+#define shmem_int8_xor_reduce           pshmem_int8_xor_reduce
+#define shmem_int16_xor_reduce          pshmem_int16_xor_reduce
+#define shmem_int32_xor_reduce          pshmem_int32_xor_reduce
+#define shmem_int64_xor_reduce          pshmem_int64_xor_reduce
+#define shmem_uint8_xor_reduce          pshmem_uint8_xor_reduce
+#define shmem_uint16_xor_reduce         pshmem_uint16_xor_reduce
+#define shmem_uint32_xor_reduce         pshmem_uint32_xor_reduce
+#define shmem_uint64_xor_reduce         pshmem_uint64_xor_reduce
+#define shmem_size_xor_reduce           pshmem_size_xor_reduce
+
+
+/* Teams reduction: MAX */
+#define shmem_char_max_reduce           pshmem_char_max_reduce
+#define shmem_short_max_reduce          pshmem_short_max_reduce
+#define shmem_int_max_reduce            pshmem_int_max_reduce
+#define shmem_long_max_reduce           pshmem_long_max_reduce
+#define shmem_float_max_reduce          pshmem_float_max_reduce
+#define shmem_double_max_reduce         pshmem_double_max_reduce
+#define shmem_longlong_max_reduce       pshmem_longlong_max_reduce
+#define shmem_schar_max_reduce          pshmem_schar_max_reduce
+#define shmem_longdouble_max_reduce     pshmem_longdouble_max_reduce
+#define shmem_ptrdiff_max_reduce        pshmem_ptrdiff_max_reduce
+#define shmem_uchar_max_reduce          pshmem_uchar_max_reduce
+#define shmem_ushort_max_reduce         pshmem_ushort_max_reduce
+#define shmem_uint_max_reduce           pshmem_uint_max_reduce
+#define shmem_ulong_max_reduce          pshmem_ulong_max_reduce
+#define shmem_ulonglong_max_reduce      pshmem_ulonglong_max_reduce
+#define shmem_int8_max_reduce           pshmem_int8_max_reduce
+#define shmem_int16_max_reduce          pshmem_int16_max_reduce
+#define shmem_int32_max_reduce          pshmem_int32_max_reduce
+#define shmem_int64_max_reduce          pshmem_int64_max_reduce
+#define shmem_uint8_max_reduce          pshmem_uint8_max_reduce
+#define shmem_uint16_max_reduce         pshmem_uint16_max_reduce
+#define shmem_uint32_max_reduce         pshmem_uint32_max_reduce
+#define shmem_uint64_max_reduce         pshmem_uint64_max_reduce
+#define shmem_size_max_reduce           pshmem_size_max_reduce
+
+
+/* Teams reduction: MIN */
+#define shmem_char_min_reduce           pshmem_char_min_reduce
+#define shmem_short_min_reduce          pshmem_short_min_reduce
+#define shmem_int_min_reduce            pshmem_int_min_reduce
+#define shmem_long_min_reduce           pshmem_long_min_reduce
+#define shmem_float_min_reduce          pshmem_float_min_reduce
+#define shmem_double_min_reduce         pshmem_double_min_reduce
+#define shmem_longlong_min_reduce       pshmem_longlong_min_reduce
+#define shmem_schar_min_reduce          pshmem_schar_min_reduce
+#define shmem_longdouble_min_reduce     pshmem_longdouble_min_reduce
+#define shmem_ptrdiff_min_reduce        pshmem_ptrdiff_min_reduce
+#define shmem_uchar_min_reduce          pshmem_uchar_min_reduce
+#define shmem_ushort_min_reduce         pshmem_ushort_min_reduce
+#define shmem_uint_min_reduce           pshmem_uint_min_reduce
+#define shmem_ulong_min_reduce          pshmem_ulong_min_reduce
+#define shmem_ulonglong_min_reduce      pshmem_ulonglong_min_reduce
+#define shmem_int8_min_reduce           pshmem_int8_min_reduce
+#define shmem_int16_min_reduce          pshmem_int16_min_reduce
+#define shmem_int32_min_reduce          pshmem_int32_min_reduce
+#define shmem_int64_min_reduce          pshmem_int64_min_reduce
+#define shmem_uint8_min_reduce          pshmem_uint8_min_reduce
+#define shmem_uint16_min_reduce         pshmem_uint16_min_reduce
+#define shmem_uint32_min_reduce         pshmem_uint32_min_reduce
+#define shmem_uint64_min_reduce         pshmem_uint64_min_reduce
+#define shmem_size_min_reduce           pshmem_size_min_reduce
+
+
+/* Teams reduction: SUM */
+#define shmem_char_sum_reduce           pshmem_char_sum_reduce
+#define shmem_short_sum_reduce          pshmem_short_sum_reduce
+#define shmem_int_sum_reduce            pshmem_int_sum_reduce
+#define shmem_long_sum_reduce           pshmem_long_sum_reduce
+#define shmem_float_sum_reduce          pshmem_float_sum_reduce
+#define shmem_double_sum_reduce         pshmem_double_sum_reduce
+#define shmem_longlong_sum_reduce       pshmem_longlong_sum_reduce
+#define shmem_schar_sum_reduce          pshmem_schar_sum_reduce
+#define shmem_longdouble_sum_reduce     pshmem_longdouble_sum_reduce
+#define shmem_ptrdiff_sum_reduce        pshmem_ptrdiff_sum_reduce
+#define shmem_uchar_sum_reduce          pshmem_uchar_sum_reduce
+#define shmem_ushort_sum_reduce         pshmem_ushort_sum_reduce
+#define shmem_uint_sum_reduce           pshmem_uint_sum_reduce
+#define shmem_ulong_sum_reduce          pshmem_ulong_sum_reduce
+#define shmem_ulonglong_sum_reduce      pshmem_ulonglong_sum_reduce
+#define shmem_int8_sum_reduce           pshmem_int8_sum_reduce
+#define shmem_int16_sum_reduce          pshmem_int16_sum_reduce
+#define shmem_int32_sum_reduce          pshmem_int32_sum_reduce
+#define shmem_int64_sum_reduce          pshmem_int64_sum_reduce
+#define shmem_uint8_sum_reduce          pshmem_uint8_sum_reduce
+#define shmem_uint16_sum_reduce         pshmem_uint16_sum_reduce
+#define shmem_uint32_sum_reduce         pshmem_uint32_sum_reduce
+#define shmem_uint64_sum_reduce         pshmem_uint64_sum_reduce
+#define shmem_size_sum_reduce           pshmem_size_sum_reduce
+#define shmem_complexd_sum_reduce       pshmem_complexd_sum_reduce
+#define shmem_complexf_sum_reduce       pshmem_complexf_sum_reduce
+
+
+/* Teams reduction: PROD */
+#define shmem_char_prod_reduce           pshmem_char_prod_reduce
+#define shmem_short_prod_reduce          pshmem_short_prod_reduce
+#define shmem_int_prod_reduce            pshmem_int_prod_reduce
+#define shmem_long_prod_reduce           pshmem_long_prod_reduce
+#define shmem_float_prod_reduce          pshmem_float_prod_reduce
+#define shmem_double_prod_reduce         pshmem_double_prod_reduce
+#define shmem_longlong_prod_reduce       pshmem_longlong_prod_reduce
+#define shmem_schar_prod_reduce          pshmem_schar_prod_reduce
+#define shmem_longdouble_prod_reduce     pshmem_longdouble_prod_reduce
+#define shmem_ptrdiff_prod_reduce        pshmem_ptrdiff_prod_reduce
+#define shmem_uchar_prod_reduce          pshmem_uchar_prod_reduce
+#define shmem_ushort_prod_reduce         pshmem_ushort_prod_reduce
+#define shmem_uint_prod_reduce           pshmem_uint_prod_reduce
+#define shmem_ulong_prod_reduce          pshmem_ulong_prod_reduce
+#define shmem_ulonglong_prod_reduce      pshmem_ulonglong_prod_reduce
+#define shmem_int8_prod_reduce           pshmem_int8_prod_reduce
+#define shmem_int16_prod_reduce          pshmem_int16_prod_reduce
+#define shmem_int32_prod_reduce          pshmem_int32_prod_reduce
+#define shmem_int64_prod_reduce          pshmem_int64_prod_reduce
+#define shmem_uint8_prod_reduce          pshmem_uint8_prod_reduce
+#define shmem_uint16_prod_reduce         pshmem_uint16_prod_reduce
+#define shmem_uint32_prod_reduce         pshmem_uint32_prod_reduce
+#define shmem_uint64_prod_reduce         pshmem_uint64_prod_reduce
+#define shmem_size_prod_reduce           pshmem_size_prod_reduce
+#define shmem_complexd_prod_reduce       pshmem_complexd_prod_reduce
+#define shmem_complexf_prod_reduce       pshmem_complexf_prod_reduce
+
+/*
  * Elemental put routines
  */
 #define shmem_ctx_char_p             pshmem_ctx_char_p
