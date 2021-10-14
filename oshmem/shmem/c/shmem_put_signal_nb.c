@@ -25,7 +25,7 @@
         RUNTIME_CHECK_ADDR(dest);                                 \
                                                                     \
         size = nelems * sizeof(type);                                  \
-        rc = MCA_SPML_CALL(put_signal_nbi(                                     \
+        rc = MCA_SPML_CALL(put_signal_nb(                                     \
             ctx,                                                    \
             (void*)dest,                                          \
             size,                                                   \
@@ -180,7 +180,7 @@ SHMEM_TYPE_PUT_SIGNAL_NBI(_ptrdiff, ptrdiff_t)
         RUNTIME_CHECK_ADDR(dest);                                 \
                                                                     \
         size = nelems * element_size;                               \
-        rc = MCA_SPML_CALL(put_signal(                                     \
+        rc = MCA_SPML_CALL(put_signal_nb(                                     \
             ctx,                                                    \
             (void*)dest,                                          \
             size,                                                   \
