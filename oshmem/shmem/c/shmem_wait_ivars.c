@@ -109,8 +109,8 @@
 #include "oshmem/shmem/c/profile/defines.h"
 #endif
 
-#define SHMEM_TYPE_WAIT_UNTIL_IVARS(type_name, type, code, prefix, postfix)    \
-    void prefix##type_name##_wait_until_##postfix(type *ivars, size_t nelems, const int *status, int cmp, type value)   \
+#define SHMEM_TYPE_WAIT_UNTIL_ALL(type_name, type, code, prefix)    \
+    void prefix##type_name##_wait_until_all(type *ivars, size_t nelems, const int *status, int cmp, type value)   \
     {                                                               \
         int rc = OSHMEM_SUCCESS;                                    \
                                                                     \
@@ -126,88 +126,176 @@
         return ;                                                    \
     }
 
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_int, volatile int, SHMEM_INT, shmem, all)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_long, volatile long, SHMEM_LONG, shmem, all)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_longlong, volatile long long, SHMEM_LLONG, shmem, all)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_uint, volatile unsigned int, SHMEM_INT, shmem, all)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_ulong, volatile unsigned long, SHMEM_LONG, shmem, all)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_ulonglong, volatile unsigned long long, SHMEM_LLONG, shmem, all)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_int32, volatile int32_t, SHMEM_INT32_T, shmem, all)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_int64, volatile int64_t, SHMEM_INT64_T, shmem, all)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_uint32, volatile uint32_t, SHMEM_INT32_T, shmem, all)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_uint64, volatile uint64_t, SHMEM_INT64_T, shmem, all)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_size, volatile size_t, SHMEM_LLONG, shmem, all)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_ptrdiff, volatile ptrdiff_t, SHMEM_LLONG, shmem, all)
+#define SHMEM_TYPE_WAIT_UNTIL_ANY_VECTOR(type_name, type, code, prefix)    \
+    size_t prefix##type_name##_wait_until_any_vector(type *ivars, size_t nelems, const int *status, int cmp, type *values)   \
+    {                                                               \
+        size_t rc = 0;                                    \
+                                                                    \
+        RUNTIME_CHECK_INIT();                                       \
+                                                                    \
+        rc = MCA_SPML_CALL(wait_until_##postfix(                    \
+            (void*)ivars,                                           \
+            cmp,                                                    \
+            values,                                          \
+            nelems, status, code));                                 \
+        RUNTIME_CHECK_RC(rc);                                       \
+                                                                    \
+        return rc;                                                    \
+    }
 
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_int, volatile int, SHMEM_INT, shmem, any)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_long, volatile long, SHMEM_LONG, shmem, any)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_longlong, volatile long long, SHMEM_LLONG, shmem, any)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_uint, volatile unsigned int, SHMEM_INT, shmem, any)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_ulong, volatile unsigned long, SHMEM_LONG, shmem, any)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_ulonglong, volatile unsigned long long, SHMEM_LLONG, shmem, any)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_int32, volatile int32_t, SHMEM_INT32_T, shmem, any)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_int64, volatile int64_t, SHMEM_INT64_T, shmem, any)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_uint32, volatile uint32_t, SHMEM_INT32_T, shmem, any)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_uint64, volatile uint64_t, SHMEM_INT64_T, shmem, any)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_size, volatile size_t, SHMEM_LLONG, shmem, any)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_ptrdiff, volatile ptrdiff_t, SHMEM_LLONG, shmem, any)
-
-
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_int, volatile int, SHMEM_INT, shmem, some)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_long, volatile long, SHMEM_LONG, shmem, some)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_longlong, volatile long long, SHMEM_LLONG, shmem, some)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_uint, volatile unsigned int, SHMEM_INT, shmem, some)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_ulong, volatile unsigned long, SHMEM_LONG, shmem, some)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_ulonglong, volatile unsigned long long, SHMEM_LLONG, shmem, some)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_int32, volatile int32_t, SHMEM_INT32_T, shmem, some)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_int64, volatile int64_t, SHMEM_INT64_T, shmem, some)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_uint32, volatile uint32_t, SHMEM_INT32_T, shmem, some)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_uint64, volatile uint64_t, SHMEM_INT64_T, shmem, some)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_size, volatile size_t, SHMEM_LLONG, shmem, some)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_ptrdiff, volatile ptrdiff_t, SHMEM_LLONG, shmem, some)
+#define SHMEM_TYPE_WAIT_UNTIL_SOME_VECTOR(type_name, type, code, prefix)    \
+    size_t prefix##type_name##_wait_until_some_vector(type *ivars, size_t nelems, size_t *indices, const int *status, int cmp, type *values)   \
+    {                                                               \
+        size_t rc = 0;                                              \
+                                                                    \
+        RUNTIME_CHECK_INIT();                                       \
+                                                                    \
+        rc = MCA_SPML_CALL(wait_until_##postfix(                    \
+            (void*)ivars,                                           \
+            cmp,                                                    \
+            values,                                                 \
+            nelems, indices, status, code));                        \
+        RUNTIME_CHECK_RC(rc);                                       \
+                                                                    \
+        return rc;                                                  \
+    }
 
 
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_int, volatile int, SHMEM_INT, shmem, all_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_long, volatile long, SHMEM_LONG, shmem, all_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_longlong, volatile long long, SHMEM_LLONG, shmem, all_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_uint, volatile unsigned int, SHMEM_INT, shmem, all_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_ulong, volatile unsigned long, SHMEM_LONG, shmem, all_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_ulonglong, volatile unsigned long long, SHMEM_LLONG, shmem, all_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_int32, volatile int32_t, SHMEM_INT32_T, shmem, all_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_int64, volatile int64_t, SHMEM_INT64_T, shmem, all_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_uint32, volatile uint32_t, SHMEM_INT32_T, shmem, all_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_uint64, volatile uint64_t, SHMEM_INT64_T, shmem, all_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_size, volatile size_t, SHMEM_LLONG, shmem, all_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_ptrdiff, volatile ptrdiff_t, SHMEM_LLONG, shmem, all_vector)
+#define SHMEM_TYPE_WAIT_UNTIL_ALL_VECTOR(type_name, type, code, prefix)    \
+    void prefix##type_name##_wait_until_all_vector(type *ivars, size_t nelems, const int *status, int cmp, type *values)   \
+    {                                                               \
+        int rc = OSHMEM_SUCCESS;                                    \
+                                                                    \
+        RUNTIME_CHECK_INIT();                                       \
+                                                                    \
+        rc = MCA_SPML_CALL(wait_until_##postfix(                    \
+            (void*)ivars,                                           \
+            cmp,                                                    \
+            values,                                          \
+            nelems, status, code));                                 \
+        RUNTIME_CHECK_RC(rc);                                       \
+                                                                    \
+        return ;                                                    \
+    }
+
+#define SHMEM_TYPE_WAIT_UNTIL_SOME(type_name, type, code, prefix)    \
+    size_t  prefix##type_name##_wait_until_some(type *ivars, size_t nelems, size_t *indices, const int *status, int cmp, type value)   \
+    {                                                               \
+        size_t rc = 0;                                    \
+                                                                    \
+        RUNTIME_CHECK_INIT();                                       \
+                                                                    \
+        rc = MCA_SPML_CALL(wait_until_##postfix(                    \
+            (void*)ivars,                                           \
+            cmp,                                                    \
+            (void*)&values,                                          \
+            nelems, indices, status, code));                                 \
+        RUNTIME_CHECK_RC(rc);                                       \
+                                                                    \
+        return rc;                                                    \
+    }
+
+
+#define SHMEM_TYPE_WAIT_UNTIL_ANY(type_name, type, code, prefix)    \
+    size_t prefix##type_name##_wait_until_any(type *ivars, size_t nelems, const int *status, int cmp, type value)   \
+    {                                                               \
+        size_t rc = 0;                                    \
+                                                                    \
+        RUNTIME_CHECK_INIT();                                       \
+                                                                    \
+        rc = MCA_SPML_CALL(wait_until_##postfix(                    \
+            (void*)ivars,                                           \
+            cmp,                                                    \
+            (void*)&values,                                          \
+            nelems, status, code));                                 \
+        RUNTIME_CHECK_RC(rc);                                       \
+                                                                    \
+        return rc;                                                    \
+    }
+
+
+SHMEM_TYPE_WAIT_UNTIL_ALL(_int, volatile int, SHMEM_INT, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL(_long, volatile long, SHMEM_LONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL(_longlong, volatile long long, SHMEM_LLONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL(_uint, volatile unsigned int, SHMEM_INT, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL(_ulong, volatile unsigned long, SHMEM_LONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL(_ulonglong, volatile unsigned long long, SHMEM_LLONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL(_int32, volatile int32_t, SHMEM_INT32_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL(_int64, volatile int64_t, SHMEM_INT64_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL(_uint32, volatile uint32_t, SHMEM_INT32_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL(_uint64, volatile uint64_t, SHMEM_INT64_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL(_size, volatile size_t, SHMEM_LLONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL(_ptrdiff, volatile ptrdiff_t, SHMEM_LLONG, shmem)
+
+SHMEM_TYPE_WAIT_UNTIL_ANY(_int, volatile int, SHMEM_INT, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY(_long, volatile long, SHMEM_LONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY(_longlong, volatile long long, SHMEM_LLONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY(_uint, volatile unsigned int, SHMEM_INT, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY(_ulong, volatile unsigned long, SHMEM_LONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY(_ulonglong, volatile unsigned long long, SHMEM_LLONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY(_int32, volatile int32_t, SHMEM_INT32_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY(_int64, volatile int64_t, SHMEM_INT64_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY(_uint32, volatile uint32_t, SHMEM_INT32_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY(_uint64, volatile uint64_t, SHMEM_INT64_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY(_size, volatile size_t, SHMEM_LLONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY(_ptrdiff, volatile ptrdiff_t, SHMEM_LLONG, shmem)
+
+
+SHMEM_TYPE_WAIT_UNTIL_SOME(_int, volatile int, SHMEM_INT, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME(_long, volatile long, SHMEM_LONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME(_longlong, volatile long long, SHMEM_LLONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME(_uint, volatile unsigned int, SHMEM_INT, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME(_ulong, volatile unsigned long, SHMEM_LONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME(_ulonglong, volatile unsigned long long, SHMEM_LLONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME(_int32, volatile int32_t, SHMEM_INT32_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME(_int64, volatile int64_t, SHMEM_INT64_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME(_uint32, volatile uint32_t, SHMEM_INT32_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME(_uint64, volatile uint64_t, SHMEM_INT64_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME(_size, volatile size_t, SHMEM_LLONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME(_ptrdiff, volatile ptrdiff_t, SHMEM_LLONG, shmem)
+
+
+SHMEM_TYPE_WAIT_UNTIL_ALL_VECTOR(_int, volatile int, SHMEM_INT, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL_VECTOR(_long, volatile long, SHMEM_LONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL_VECTOR(_longlong, volatile long long, SHMEM_LLONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL_VECTOR(_uint, volatile unsigned int, SHMEM_INT, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL_VECTOR(_ulong, volatile unsigned long, SHMEM_LONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL_VECTOR(_ulonglong, volatile unsigned long long, SHMEM_LLONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL_VECTOR(_int32, volatile int32_t, SHMEM_INT32_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL_VECTOR(_int64, volatile int64_t, SHMEM_INT64_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL_VECTOR(_uint32, volatile uint32_t, SHMEM_INT32_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL_VECTOR(_uint64, volatile uint64_t, SHMEM_INT64_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL_VECTOR(_size, volatile size_t, SHMEM_LLONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL_VECTOR(_ptrdiff, volatile ptrdiff_t, SHMEM_LLONG, shmem)
 
 
 
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_int, volatile int, SHMEM_INT, shmem, any_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_long, volatile long, SHMEM_LONG, shmem, any_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_longlong, volatile long long, SHMEM_LLONG, shmem, any_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_uint, volatile unsigned int, SHMEM_INT, shmem, any_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_ulong, volatile unsigned long, SHMEM_LONG, shmem, any_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_ulonglong, volatile unsigned long long, SHMEM_LLONG, shmem, any_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_int32, volatile int32_t, SHMEM_INT32_T, shmem, any_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_int64, volatile int64_t, SHMEM_INT64_T, shmem, any_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_uint32, volatile uint32_t, SHMEM_INT32_T, shmem, any_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_uint64, volatile uint64_t, SHMEM_INT64_T, shmem, any_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_size, volatile size_t, SHMEM_LLONG, shmem, any_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_ptrdiff, volatile ptrdiff_t, SHMEM_LLONG, shmem, any_vector)
+SHMEM_TYPE_WAIT_UNTIL_ANY_VECTOR(_int, volatile int, SHMEM_INT, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY_VECTOR(_long, volatile long, SHMEM_LONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY_VECTOR(_longlong, volatile long long, SHMEM_LLONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY_VECTOR(_uint, volatile unsigned int, SHMEM_INT, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY_VECTOR(_ulong, volatile unsigned long, SHMEM_LONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY_VECTOR(_ulonglong, volatile unsigned long long, SHMEM_LLONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY_VECTOR(_int32, volatile int32_t, SHMEM_INT32_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY_VECTOR(_int64, volatile int64_t, SHMEM_INT64_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY_VECTOR(_uint32, volatile uint32_t, SHMEM_INT32_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY_VECTOR(_uint64, volatile uint64_t, SHMEM_INT64_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY_VECTOR(_size, volatile size_t, SHMEM_LLONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY_VECTOR(_ptrdiff, volatile ptrdiff_t, SHMEM_LLONG, shmem)
 
 
 
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_int, volatile int, SHMEM_INT, shmem, some_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_long, volatile long, SHMEM_LONG, shmem, some_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_longlong, volatile long long, SHMEM_LLONG, shmem, some_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_uint, volatile unsigned int, SHMEM_INT, shmem, some_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_ulong, volatile unsigned long, SHMEM_LONG, shmem, some_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_ulonglong, volatile unsigned long long, SHMEM_LLONG, shmem, some_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_int32, volatile int32_t, SHMEM_INT32_T, shmem, some_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_int64, volatile int64_t, SHMEM_INT64_T, shmem, some_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_uint32, volatile uint32_t, SHMEM_INT32_T, shmem, some_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_uint64, volatile uint64_t, SHMEM_INT64_T, shmem, some_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_size, volatile size_t, SHMEM_LLONG, shmem, some_vector)
-SHMEM_TYPE_WAIT_UNTIL_IVARS(_ptrdiff, volatile ptrdiff_t, SHMEM_LLONG, shmem, some_vector)
+SHMEM_TYPE_WAIT_UNTIL_SOME_VECTOR(_int, volatile int, SHMEM_INT, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME_VECTOR(_long, volatile long, SHMEM_LONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME_VECTOR(_longlong, volatile long long, SHMEM_LLONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME_VECTOR(_uint, volatile unsigned int, SHMEM_INT, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME_VECTOR(_ulong, volatile unsigned long, SHMEM_LONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME_VECTOR(_ulonglong, volatile unsigned long long, SHMEM_LLONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME_VECTOR(_int32, volatile int32_t, SHMEM_INT32_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME_VECTOR(_int64, volatile int64_t, SHMEM_INT64_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME_VECTOR(_uint32, volatile uint32_t, SHMEM_INT32_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME_VECTOR(_uint64, volatile uint64_t, SHMEM_INT64_T, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME_VECTOR(_size, volatile size_t, SHMEM_LLONG, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME_VECTOR(_ptrdiff, volatile ptrdiff_t, SHMEM_LLONG, shmem)
 
 
