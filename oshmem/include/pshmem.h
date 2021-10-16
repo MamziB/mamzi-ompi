@@ -3057,18 +3057,18 @@ OSHMEM_DECLSPEC  int pshmem_ptrdiff_test(volatile ptrdiff_t *addr, int cmp, ptrd
         unsigned long long*:   pshmem_longlong_test)(addr, cmp, value)
 #endif
 
-OSHMEM_DECLSPEC  void pshmem_int_test_all(volatile int *ivars, size_t nelems, const int *status, int cmp, int value);
-OSHMEM_DECLSPEC  void pshmem_long_test_all(volatile long *ivars, size_t nelems, const int *status, int cmp, long value);
-OSHMEM_DECLSPEC  void pshmem_longlong_test_all(volatile long long *ivars, size_t nelems, const int *status, int cmp, long long value);
-OSHMEM_DECLSPEC  void pshmem_uint_test_all(volatile unsigned int *ivars, size_t nelems, const int *status, int cmp, unsigned int value);
-OSHMEM_DECLSPEC  void pshmem_ulong_test_all(volatile unsigned long *ivars, size_t nelems, const int *status, int cmp, unsigned long value);
-OSHMEM_DECLSPEC  void pshmem_ulonglong_test_all(volatile unsigned long long *ivars, size_t nelems, const int *status, int cmp, unsigned long long value);
-OSHMEM_DECLSPEC  void pshmem_int32_test_all(volatile int32_t *ivars, size_t nelems, const int *status, int cmp, int32_t value);
-OSHMEM_DECLSPEC  void pshmem_int64_test_all(volatile int64_t *ivars, size_t nelems, const int *status, int cmp, int64_t value);
-OSHMEM_DECLSPEC  void pshmem_uint32_test_all(volatile uint32_t *ivars, size_t nelems, const int *status, int cmp, uint32_t value);
-OSHMEM_DECLSPEC  void pshmem_uint64_test_all(volatile uint64_t *ivars, size_t nelems, const int *status, int cmp, uint64_t value);
-OSHMEM_DECLSPEC  void pshmem_size_test_all(volatile size_t *ivars, size_t nelems, const int *status, int cmp, size_t value);
-OSHMEM_DECLSPEC  void pshmem_ptrdiff_test_all(volatile ptrdiff_t *ivars, size_t nelems, const int *status, int cmp, ptrdiff_t value);
+OSHMEM_DECLSPEC  int pshmem_int_test_all(volatile int *ivars, size_t nelems, const int *status, int cmp, int value);
+OSHMEM_DECLSPEC  int pshmem_long_test_all(volatile long *ivars, size_t nelems, const int *status, int cmp, long value);
+OSHMEM_DECLSPEC  int pshmem_longlong_test_all(volatile long long *ivars, size_t nelems, const int *status, int cmp, long long value);
+OSHMEM_DECLSPEC  int pshmem_uint_test_all(volatile unsigned int *ivars, size_t nelems, const int *status, int cmp, unsigned int value);
+OSHMEM_DECLSPEC  int pshmem_ulong_test_all(volatile unsigned long *ivars, size_t nelems, const int *status, int cmp, unsigned long value);
+OSHMEM_DECLSPEC  int pshmem_ulonglong_test_all(volatile unsigned long long *ivars, size_t nelems, const int *status, int cmp, unsigned long long value);
+OSHMEM_DECLSPEC  int pshmem_int32_test_all(volatile int32_t *ivars, size_t nelems, const int *status, int cmp, int32_t value);
+OSHMEM_DECLSPEC  int pshmem_int64_test_all(volatile int64_t *ivars, size_t nelems, const int *status, int cmp, int64_t value);
+OSHMEM_DECLSPEC  int pshmem_uint32_test_all(volatile uint32_t *ivars, size_t nelems, const int *status, int cmp, uint32_t value);
+OSHMEM_DECLSPEC  int pshmem_uint64_test_all(volatile uint64_t *ivars, size_t nelems, const int *status, int cmp, uint64_t value);
+OSHMEM_DECLSPEC  int pshmem_size_test_all(volatile size_t *ivars, size_t nelems, const int *status, int cmp, size_t value);
+OSHMEM_DECLSPEC  int pshmem_ptrdiff_test_all(volatile ptrdiff_t *ivars, size_t nelems, const int *status, int cmp, ptrdiff_t value);
 #if OSHMEM_HAVE_C11
 #define pshmem_test_all(ivars, nelems, status, cmp, value)          \
     _Generic(&*(ivars),                                                   \
@@ -3086,18 +3086,18 @@ OSHMEM_DECLSPEC  void pshmem_ptrdiff_test_all(volatile ptrdiff_t *ivars, size_t 
         ptrdiff_t*:            pshmem_ptrdiff_test_all)(ivars, nelems, status, cmp, value)
 #endif
 
-OSHMEM_DECLSPEC  void pshmem_int_test_any(volatile int *ivars, size_t nelems, const int *status, int cmp, int value);
-OSHMEM_DECLSPEC  void pshmem_long_test_any(volatile long *ivars, size_t nelems, const int *status, int cmp, long value);
-OSHMEM_DECLSPEC  void pshmem_longlong_test_any(volatile long long *ivars, size_t nelems, const int *status, int cmp, long long value);
-OSHMEM_DECLSPEC  void pshmem_uint_test_any(volatile unsigned int *ivars, size_t nelems, const int *status, int cmp, unsigned int value);
-OSHMEM_DECLSPEC  void pshmem_ulong_test_any(volatile unsigned long *ivars, size_t nelems, const int *status, int cmp, unsigned long value);
-OSHMEM_DECLSPEC  void pshmem_ulonglong_test_any(volatile unsigned long long *ivars, size_t nelems, const int *status, int cmp, unsigned long long value);
-OSHMEM_DECLSPEC  void pshmem_int32_test_any(volatile int32_t *ivars, size_t nelems, const int *status, int cmp, int32_t value);
-OSHMEM_DECLSPEC  void pshmem_int64_test_any(volatile int64_t *ivars, size_t nelems, const int *status, int cmp, int64_t value);
-OSHMEM_DECLSPEC  void pshmem_uint32_test_any(volatile uint32_t *ivars, size_t nelems, const int *status, int cmp, uint32_t value);
-OSHMEM_DECLSPEC  void pshmem_uint64_test_any(volatile uint64_t *ivars, size_t nelems, const int *status, int cmp, uint64_t value);
-OSHMEM_DECLSPEC  void pshmem_size_test_any(volatile size_t *ivars, size_t nelems, const int *status, int cmp, size_t value);
-OSHMEM_DECLSPEC  void pshmem_ptrdiff_test_any(volatile ptrdiff_t *ivars, size_t nelems, const int *status, int cmp, ptrdiff_t value);
+OSHMEM_DECLSPEC  size_t pshmem_int_test_any(volatile int *ivars, size_t nelems, const int *status, int cmp, int value);
+OSHMEM_DECLSPEC  size_t pshmem_long_test_any(volatile long *ivars, size_t nelems, const int *status, int cmp, long value);
+OSHMEM_DECLSPEC  size_t pshmem_longlong_test_any(volatile long long *ivars, size_t nelems, const int *status, int cmp, long long value);
+OSHMEM_DECLSPEC  size_t pshmem_uint_test_any(volatile unsigned int *ivars, size_t nelems, const int *status, int cmp, unsigned int value);
+OSHMEM_DECLSPEC  size_t pshmem_ulong_test_any(volatile unsigned long *ivars, size_t nelems, const int *status, int cmp, unsigned long value);
+OSHMEM_DECLSPEC  size_t pshmem_ulonglong_test_any(volatile unsigned long long *ivars, size_t nelems, const int *status, int cmp, unsigned long long value);
+OSHMEM_DECLSPEC  size_t pshmem_int32_test_any(volatile int32_t *ivars, size_t nelems, const int *status, int cmp, int32_t value);
+OSHMEM_DECLSPEC  size_t pshmem_int64_test_any(volatile int64_t *ivars, size_t nelems, const int *status, int cmp, int64_t value);
+OSHMEM_DECLSPEC  size_t pshmem_uint32_test_any(volatile uint32_t *ivars, size_t nelems, const int *status, int cmp, uint32_t value);
+OSHMEM_DECLSPEC  size_t pshmem_uint64_test_any(volatile uint64_t *ivars, size_t nelems, const int *status, int cmp, uint64_t value);
+OSHMEM_DECLSPEC  size_t pshmem_size_test_any(volatile size_t *ivars, size_t nelems, const int *status, int cmp, size_t value);
+OSHMEM_DECLSPEC  size_t pshmem_ptrdiff_test_any(volatile ptrdiff_t *ivars, size_t nelems, const int *status, int cmp, ptrdiff_t value);
 #if OSHMEM_HAVE_C11
 #define pshmem_test_any(ivars, nelems, status, cmp, value)          \
     _Generic(&*(ivars),                                                   \
@@ -3115,18 +3115,18 @@ OSHMEM_DECLSPEC  void pshmem_ptrdiff_test_any(volatile ptrdiff_t *ivars, size_t 
         ptrdiff_t*:            pshmem_ptrdiff_test_any)(ivars, nelems, status, cmp, value)
 #endif
 
-OSHMEM_DECLSPEC  void pshmem_int_test_some(volatile int *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int value);
-OSHMEM_DECLSPEC  void pshmem_long_test_some(volatile long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, long value);
-OSHMEM_DECLSPEC  void pshmem_longlong_test_some(volatile long long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, long long value);
-OSHMEM_DECLSPEC  void pshmem_uint_test_some(volatile unsigned int *ivars, size_t nelems, size_t *indices, const int *status, int cmp, unsigned int value);
-OSHMEM_DECLSPEC  void pshmem_ulong_test_some(volatile unsigned long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, unsigned long value);
-OSHMEM_DECLSPEC  void pshmem_ulonglong_test_some(volatile unsigned long long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, unsigned long long value);
-OSHMEM_DECLSPEC  void pshmem_int32_test_some(volatile int32_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int32_t value);
-OSHMEM_DECLSPEC  void pshmem_int64_test_some(volatile int64_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int64_t value);
-OSHMEM_DECLSPEC  void pshmem_uint32_test_some(volatile uint32_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, uint32_t value);
-OSHMEM_DECLSPEC  void pshmem_uint64_test_some(volatile uint64_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, uint64_t value);
-OSHMEM_DECLSPEC  void pshmem_size_test_some(volatile size_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, size_t value);
-OSHMEM_DECLSPEC  void pshmem_ptrdiff_test_some(volatile ptrdiff_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, ptrdiff_t value);
+OSHMEM_DECLSPEC  size_t pshmem_int_test_some(volatile int *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int value);
+OSHMEM_DECLSPEC  size_t pshmem_long_test_some(volatile long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, long value);
+OSHMEM_DECLSPEC  size_t pshmem_longlong_test_some(volatile long long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, long long value);
+OSHMEM_DECLSPEC  size_t pshmem_uint_test_some(volatile unsigned int *ivars, size_t nelems, size_t *indices, const int *status, int cmp, unsigned int value);
+OSHMEM_DECLSPEC  size_t pshmem_ulong_test_some(volatile unsigned long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, unsigned long value);
+OSHMEM_DECLSPEC  size_t pshmem_ulonglong_test_some(volatile unsigned long long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, unsigned long long value);
+OSHMEM_DECLSPEC  size_t pshmem_int32_test_some(volatile int32_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int32_t value);
+OSHMEM_DECLSPEC  size_t pshmem_int64_test_some(volatile int64_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int64_t value);
+OSHMEM_DECLSPEC  size_t pshmem_uint32_test_some(volatile uint32_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, uint32_t value);
+OSHMEM_DECLSPEC  size_t pshmem_uint64_test_some(volatile uint64_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, uint64_t value);
+OSHMEM_DECLSPEC  size_t pshmem_size_test_some(volatile size_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, size_t value);
+OSHMEM_DECLSPEC  size_t pshmem_ptrdiff_test_some(volatile ptrdiff_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, ptrdiff_t value);
 #if OSHMEM_HAVE_C11
 #define pshmem_test_some(ivars, nelems, indices, status, cmp, value)          \
     _Generic(&*(ivars),                                                    \
@@ -3144,20 +3144,20 @@ OSHMEM_DECLSPEC  void pshmem_ptrdiff_test_some(volatile ptrdiff_t *ivars, size_t
         ptrdiff_t*:            pshmem_ptrdiff_test_some)(ivars, nelems, indices, status, cmp, value)
 #endif
 
-OSHMEM_DECLSPEC  void pshmem_int_test_all_vector(volatile int *ivars, size_t nelems, const int *status, int cmp, int value);
-OSHMEM_DECLSPEC  void pshmem_long_test_all_vector(volatile long *ivars, size_t nelems, const int *status, int cmp, long value);
-OSHMEM_DECLSPEC  void pshmem_longlong_test_all_vector(volatile long long *ivars, size_t nelems, const int *status, int cmp, long long value);
-OSHMEM_DECLSPEC  void pshmem_uint_test_all_vector(volatile unsigned int *ivars, size_t nelems, const int *status, int cmp, unsigned int value);
-OSHMEM_DECLSPEC  void pshmem_ulong_test_all_vector(volatile unsigned long *ivars, size_t nelems, const int *status, int cmp, unsigned long value);
-OSHMEM_DECLSPEC  void pshmem_ulonglong_test_all_vector(volatile unsigned long long *ivars, size_t nelems, const int *status, int cmp, unsigned long long value);
-OSHMEM_DECLSPEC  void pshmem_int32_test_all_vector(volatile int32_t *ivars, size_t nelems, const int *status, int cmp, int32_t value);
-OSHMEM_DECLSPEC  void pshmem_int64_test_all_vector(volatile int64_t *ivars, size_t nelems, const int *status, int cmp, int64_t value);
-OSHMEM_DECLSPEC  void pshmem_uint32_test_all_vector(volatile uint32_t *ivars, size_t nelems, const int *status, int cmp, uint32_t value);
-OSHMEM_DECLSPEC  void pshmem_uint64_test_all_vector(volatile uint64_t *ivars, size_t nelems, const int *status, int cmp, uint64_t value);
-OSHMEM_DECLSPEC  void pshmem_size_test_all_vector(volatile size_t *ivars, size_t nelems, const int *status, int cmp, size_t value);
-OSHMEM_DECLSPEC  void pshmem_ptrdiff_test_all_vector(volatile ptrdiff_t *ivars, size_t nelems, const int *status, int cmp, ptrdiff_t value);
+OSHMEM_DECLSPEC  int pshmem_int_test_all_vector(volatile int *ivars, size_t nelems, const int *status, int cmp, int *values);
+OSHMEM_DECLSPEC  int pshmem_long_test_all_vector(volatile long *ivars, size_t nelems, const int *status, int cmp, long *values);
+OSHMEM_DECLSPEC  int pshmem_longlong_test_all_vector(volatile long long *ivars, size_t nelems, const int *status, int cmp, long long *values);
+OSHMEM_DECLSPEC  int pshmem_uint_test_all_vector(volatile unsigned int *ivars, size_t nelems, const int *status, int cmp, unsigned int *values);
+OSHMEM_DECLSPEC  int pshmem_ulong_test_all_vector(volatile unsigned long *ivars, size_t nelems, const int *status, int cmp, unsigned long *values);
+OSHMEM_DECLSPEC  int pshmem_ulonglong_test_all_vector(volatile unsigned long long *ivars, size_t nelems, const int *status, int cmp, unsigned long long *values);
+OSHMEM_DECLSPEC  int pshmem_int32_test_all_vector(volatile int32_t *ivars, size_t nelems, const int *status, int cmp, int32_t *values);
+OSHMEM_DECLSPEC  int pshmem_int64_test_all_vector(volatile int64_t *ivars, size_t nelems, const int *status, int cmp, int64_t *values);
+OSHMEM_DECLSPEC  int pshmem_uint32_test_all_vector(volatile uint32_t *ivars, size_t nelems, const int *status, int cmp, uint32_t *values);
+OSHMEM_DECLSPEC  int pshmem_uint64_test_all_vector(volatile uint64_t *ivars, size_t nelems, const int *status, int cmp, uint64_t *values);
+OSHMEM_DECLSPEC  int pshmem_size_test_all_vector(volatile size_t *ivars, size_t nelems, const int *status, int cmp, size_t *values);
+OSHMEM_DECLSPEC  int pshmem_ptrdiff_test_all_vector(volatile ptrdiff_t *ivars, size_t nelems, const int *status, int cmp, ptrdiff_t *values);
 #if OSHMEM_HAVE_C11
-#define pshmem_test_all_vector(ivars, nelems, status, cmp, value)          \
+#define pshmem_test_all_vector(ivars, nelems, status, cmp, values)          \
     _Generic(&*(ivars),                                                   \
         int*:                  pshmem_int_test_all_vector,                 \
         long*:                 pshmem_long_test_all_vector,                \
@@ -3170,24 +3170,24 @@ OSHMEM_DECLSPEC  void pshmem_ptrdiff_test_all_vector(volatile ptrdiff_t *ivars, 
         uint32_t*:             pshmem_uint32_test_all_vector,              \
         uint64_t*:             pshmem_uint64_test_all_vector,              \
         size_t*:               pshmem_size_test_all_vector,                \
-        ptrdiff_t*:            pshmem_ptrdiff_test_all_vector)(ivars, nelems, status, cmp, value)
+        ptrdiff_t*:            pshmem_ptrdiff_test_all_vector)(ivars, nelems, status, cmp, values)
 #endif
 
 
-OSHMEM_DECLSPEC  void pshmem_int_test_any_vector(volatile int *ivars, size_t nelems, const int *status, int cmp, int value);
-OSHMEM_DECLSPEC  void pshmem_long_test_any_vector(volatile long *ivars, size_t nelems, const int *status, int cmp, long value);
-OSHMEM_DECLSPEC  void pshmem_longlong_test_any_vector(volatile long long *ivars, size_t nelems, const int *status, int cmp, long long value);
-OSHMEM_DECLSPEC  void pshmem_uint_test_any_vector(volatile unsigned int *ivars, size_t nelems, const int *status, int cmp, unsigned int value);
-OSHMEM_DECLSPEC  void pshmem_ulong_test_any_vector(volatile unsigned long *ivars, size_t nelems, const int *status, int cmp, unsigned long value);
-OSHMEM_DECLSPEC  void pshmem_ulonglong_test_any_vector(volatile unsigned long long *ivars, size_t nelems, const int *status, int cmp, unsigned long long value);
-OSHMEM_DECLSPEC  void pshmem_int32_test_any_vector(volatile int32_t *ivars, size_t nelems, const int *status, int cmp, int32_t value);
-OSHMEM_DECLSPEC  void pshmem_int64_test_any_vector(volatile int64_t *ivars, size_t nelems, const int *status, int cmp, int64_t value);
-OSHMEM_DECLSPEC  void pshmem_uint32_test_any_vector(volatile uint32_t *ivars, size_t nelems, const int *status, int cmp, uint32_t value);
-OSHMEM_DECLSPEC  void pshmem_uint64_test_any_vector(volatile uint64_t *ivars, size_t nelems, const int *status, int cmp, uint64_t value);
-OSHMEM_DECLSPEC  void pshmem_size_test_any_vector(volatile size_t *ivars, size_t nelems, const int *status, int cmp, size_t value);
-OSHMEM_DECLSPEC  void pshmem_ptrdiff_test_any_vector(volatile ptrdiff_t *ivars, size_t nelems, const int *status, int cmp, ptrdiff_t value);
+OSHMEM_DECLSPEC  size_t pshmem_int_test_any_vector(volatile int *ivars, size_t nelems, const int *status, int cmp, int *values);
+OSHMEM_DECLSPEC  size_t pshmem_long_test_any_vector(volatile long *ivars, size_t nelems, const int *status, int cmp, long *values);
+OSHMEM_DECLSPEC  size_t pshmem_longlong_test_any_vector(volatile long long *ivars, size_t nelems, const int *status, int cmp, long long *values);
+OSHMEM_DECLSPEC  size_t pshmem_uint_test_any_vector(volatile unsigned int *ivars, size_t nelems, const int *status, int cmp, unsigned int *values);
+OSHMEM_DECLSPEC  size_t pshmem_ulong_test_any_vector(volatile unsigned long *ivars, size_t nelems, const int *status, int cmp, unsigned long *values);
+OSHMEM_DECLSPEC  size_t pshmem_ulonglong_test_any_vector(volatile unsigned long long *ivars, size_t nelems, const int *status, int cmp, unsigned long long *values);
+OSHMEM_DECLSPEC  size_t pshmem_int32_test_any_vector(volatile int32_t *ivars, size_t nelems, const int *status, int cmp, int32_t *values);
+OSHMEM_DECLSPEC  size_t pshmem_int64_test_any_vector(volatile int64_t *ivars, size_t nelems, const int *status, int cmp, int64_t *values);
+OSHMEM_DECLSPEC  size_t pshmem_uint32_test_any_vector(volatile uint32_t *ivars, size_t nelems, const int *status, int cmp, uint32_t *values);
+OSHMEM_DECLSPEC  size_t pshmem_uint64_test_any_vector(volatile uint64_t *ivars, size_t nelems, const int *status, int cmp, uint64_t *values);
+OSHMEM_DECLSPEC  size_t pshmem_size_test_any_vector(volatile size_t *ivars, size_t nelems, const int *status, int cmp, size_t *values);
+OSHMEM_DECLSPEC  size_t pshmem_ptrdiff_test_any_vector(volatile ptrdiff_t *ivars, size_t nelems, const int *status, int cmp, ptrdiff_t *values);
 #if OSHMEM_HAVE_C11
-#define pshmem_test_any_vector(ivars, nelems, status, cmp, value)          \
+#define pshmem_test_any_vector(ivars, nelems, status, cmp, values)          \
     _Generic(&*(ivars),                                                   \
         int*:                  pshmem_int_test_any_vector,                 \
         long*:                 pshmem_long_test_any_vector,                \
@@ -3200,24 +3200,24 @@ OSHMEM_DECLSPEC  void pshmem_ptrdiff_test_any_vector(volatile ptrdiff_t *ivars, 
         uint32_t*:             pshmem_uint32_test_any_vector,              \
         uint64_t*:             pshmem_uint64_test_any_vector,              \
         size_t*:               pshmem_size_test_any_vector,                \
-        ptrdiff_t*:            pshmem_ptrdiff_test_any_vector)(ivars, nelems, status, cmp, value)
+        ptrdiff_t*:            pshmem_ptrdiff_test_any_vector)(ivars, nelems, status, cmp, values)
 #endif
 
 
-OSHMEM_DECLSPEC  void pshmem_int_test_some_vector(volatile int *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int value);
-OSHMEM_DECLSPEC  void pshmem_long_test_some_vector(volatile long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, long value);
-OSHMEM_DECLSPEC  void pshmem_longlong_test_some_vector(volatile long long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, long long value);
-OSHMEM_DECLSPEC  void pshmem_uint_test_some_vector(volatile unsigned int *ivars, size_t nelems, size_t *indices, const int *status, int cmp, unsigned int value);
-OSHMEM_DECLSPEC  void pshmem_ulong_test_some_vector(volatile unsigned long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, unsigned long value);
-OSHMEM_DECLSPEC  void pshmem_ulonglong_test_some_vector(volatile unsigned long long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, unsigned long long value);
-OSHMEM_DECLSPEC  void pshmem_int32_test_some_vector(volatile int32_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int32_t value);
-OSHMEM_DECLSPEC  void pshmem_int64_test_some_vector(volatile int64_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int64_t value);
-OSHMEM_DECLSPEC  void pshmem_uint32_test_some_vector(volatile uint32_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, uint32_t value);
-OSHMEM_DECLSPEC  void pshmem_uint64_test_some_vector(volatile uint64_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, uint64_t value);
-OSHMEM_DECLSPEC  void pshmem_size_test_some_vector(volatile size_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, size_t value);
-OSHMEM_DECLSPEC  void pshmem_ptrdiff_test_some_vector(volatile ptrdiff_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, ptrdiff_t value);
+OSHMEM_DECLSPEC  size_t pshmem_int_test_some_vector(volatile int *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int *values);
+OSHMEM_DECLSPEC  size_t pshmem_long_test_some_vector(volatile long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, long *values);
+OSHMEM_DECLSPEC  size_t pshmem_longlong_test_some_vector(volatile long long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, long long *values);
+OSHMEM_DECLSPEC  size_t pshmem_uint_test_some_vector(volatile unsigned int *ivars, size_t nelems, size_t *indices, const int *status, int cmp, unsigned int *values);
+OSHMEM_DECLSPEC  size_t pshmem_ulong_test_some_vector(volatile unsigned long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, unsigned long *values);
+OSHMEM_DECLSPEC  size_t pshmem_ulonglong_test_some_vector(volatile unsigned long long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, unsigned long long *values);
+OSHMEM_DECLSPEC  size_t pshmem_int32_test_some_vector(volatile int32_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int32_t *values);
+OSHMEM_DECLSPEC  size_t pshmem_int64_test_some_vector(volatile int64_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int64_t *values);
+OSHMEM_DECLSPEC  size_t pshmem_uint32_test_some_vector(volatile uint32_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, uint32_t *values);
+OSHMEM_DECLSPEC  size_t pshmem_uint64_test_some_vector(volatile uint64_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, uint64_t *values);
+OSHMEM_DECLSPEC  size_t pshmem_size_test_some_vector(volatile size_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, size_t *values);
+OSHMEM_DECLSPEC  size_t pshmem_ptrdiff_test_some_vector(volatile ptrdiff_t *ivars, size_t nelems, size_t *indices, const int *status, int cmp, ptrdiff_t *values);
 #if OSHMEM_HAVE_C11
-#define pshmem_test_some_vector(ivars, nelems, indices, status, cmp, value)          \
+#define pshmem_test_some_vector(ivars, nelems, indices, status, cmp, values)          \
     _Generic(&*(ivars),                                                    \
         int*:                  pshmem_int_test_some_vector,                 \
         long*:                 pshmem_long_test_some_vector,                \
@@ -3230,7 +3230,7 @@ OSHMEM_DECLSPEC  void pshmem_ptrdiff_test_some_vector(volatile ptrdiff_t *ivars,
         uint32_t*:             pshmem_uint32_test_some_vector,              \
         uint64_t*:             pshmem_uint64_test_some_vector,              \
         size_t*:               pshmem_size_test_some_vector,                \
-        ptrdiff_t*:            pshmem_ptrdiff_test_some_vector)(ivars, nelems, indices, status, cmp, value)
+        ptrdiff_t*:            pshmem_ptrdiff_test_some_vector)(ivars, nelems, indices, status, cmp, values)
 #endif
 
 /*
