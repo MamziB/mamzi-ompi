@@ -116,7 +116,7 @@
                                                                     \
         RUNTIME_CHECK_INIT();                                       \
                                                                     \
-        rc = MCA_SPML_CALL(wait_until_##postfix(                    \
+        rc = MCA_SPML_CALL(wait_until_all(                          \
             (void*)ivars,                                           \
             cmp,                                                    \
             (void*)&value,                                          \
@@ -126,21 +126,57 @@
         return ;                                                    \
     }
 
-#define SHMEM_TYPE_WAIT_UNTIL_ANY_VECTOR(type_name, type, code, prefix)    \
-    size_t prefix##type_name##_wait_until_any_vector(type *ivars, size_t nelems, const int *status, int cmp, type *values)   \
+
+#define SHMEM_TYPE_WAIT_UNTIL_ANY(type_name, type, code, prefix)    \
+    size_t prefix##type_name##_wait_until_any(type *ivars, size_t nelems, const int *status, int cmp, type value)   \
     {                                                               \
-        size_t rc = 0;                                    \
+        size_t rc = 0;                                              \
                                                                     \
         RUNTIME_CHECK_INIT();                                       \
                                                                     \
-        rc = MCA_SPML_CALL(wait_until_##postfix(                    \
+        rc = MCA_SPML_CALL(wait_until_any(                          \
             (void*)ivars,                                           \
             cmp,                                                    \
-            values,                                          \
+            (void*)&value,                                          \
             nelems, status, code));                                 \
         RUNTIME_CHECK_RC(rc);                                       \
                                                                     \
-        return rc;                                                    \
+        return rc;                                                  \
+    }
+
+
+#define SHMEM_TYPE_WAIT_UNTIL_SOME(type_name, type, code, prefix)    \
+    size_t  prefix##type_name##_wait_until_some(type *ivars, size_t nelems, size_t *indices, const int *status, int cmp, type value)   \
+    {                                                               \
+        size_t rc = 0;                                              \
+                                                                    \
+        RUNTIME_CHECK_INIT();                                       \
+                                                                    \
+        rc = MCA_SPML_CALL(wait_until_some(                         \
+            (void*)ivars,                                           \
+            cmp,                                                    \
+            (void*)&value,                                          \
+            nelems, indices, status, code));                        \
+        RUNTIME_CHECK_RC(rc);                                       \
+                                                                    \
+        return rc;                                                  \
+    }
+
+#define SHMEM_TYPE_WAIT_UNTIL_ANY_VECTOR(type_name, type, code, prefix)    \
+    size_t prefix##type_name##_wait_until_any_vector(type *ivars, size_t nelems, const int *status, int cmp, type *values)   \
+    {                                                               \
+        size_t rc = 0;                                              \
+                                                                    \
+        RUNTIME_CHECK_INIT();                                       \
+                                                                    \
+        rc = MCA_SPML_CALL(wait_until_any_vector(                   \
+            (void*)ivars,                                           \
+            cmp,                                                    \
+            (void*)values,                                          \
+            nelems, status, code));                                 \
+        RUNTIME_CHECK_RC(rc);                                       \
+                                                                    \
+        return rc;                                                  \
     }
 
 #define SHMEM_TYPE_WAIT_UNTIL_SOME_VECTOR(type_name, type, code, prefix)    \
@@ -150,10 +186,10 @@
                                                                     \
         RUNTIME_CHECK_INIT();                                       \
                                                                     \
-        rc = MCA_SPML_CALL(wait_until_##postfix(                    \
+        rc = MCA_SPML_CALL(wait_until_some_vector(                  \
             (void*)ivars,                                           \
             cmp,                                                    \
-            values,                                                 \
+            (void*)values,                                          \
             nelems, indices, status, code));                        \
         RUNTIME_CHECK_RC(rc);                                       \
                                                                     \
@@ -168,50 +204,16 @@
                                                                     \
         RUNTIME_CHECK_INIT();                                       \
                                                                     \
-        rc = MCA_SPML_CALL(wait_until_##postfix(                    \
+        rc = MCA_SPML_CALL(wait_until_all_vector(                   \
             (void*)ivars,                                           \
             cmp,                                                    \
-            values,                                          \
+            (void*)values,                                          \
             nelems, status, code));                                 \
         RUNTIME_CHECK_RC(rc);                                       \
                                                                     \
         return ;                                                    \
     }
 
-#define SHMEM_TYPE_WAIT_UNTIL_SOME(type_name, type, code, prefix)    \
-    size_t  prefix##type_name##_wait_until_some(type *ivars, size_t nelems, size_t *indices, const int *status, int cmp, type value)   \
-    {                                                               \
-        size_t rc = 0;                                    \
-                                                                    \
-        RUNTIME_CHECK_INIT();                                       \
-                                                                    \
-        rc = MCA_SPML_CALL(wait_until_##postfix(                    \
-            (void*)ivars,                                           \
-            cmp,                                                    \
-            (void*)&values,                                          \
-            nelems, indices, status, code));                                 \
-        RUNTIME_CHECK_RC(rc);                                       \
-                                                                    \
-        return rc;                                                    \
-    }
-
-
-#define SHMEM_TYPE_WAIT_UNTIL_ANY(type_name, type, code, prefix)    \
-    size_t prefix##type_name##_wait_until_any(type *ivars, size_t nelems, const int *status, int cmp, type value)   \
-    {                                                               \
-        size_t rc = 0;                                    \
-                                                                    \
-        RUNTIME_CHECK_INIT();                                       \
-                                                                    \
-        rc = MCA_SPML_CALL(wait_until_##postfix(                    \
-            (void*)ivars,                                           \
-            cmp,                                                    \
-            (void*)&values,                                          \
-            nelems, status, code));                                 \
-        RUNTIME_CHECK_RC(rc);                                       \
-                                                                    \
-        return rc;                                                    \
-    }
 
 
 SHMEM_TYPE_WAIT_UNTIL_ALL(_int, volatile int, SHMEM_INT, shmem)
