@@ -622,6 +622,118 @@ typedef int mca_spml_base_module_test_some_vector_fn_t(void *ivars,
                                                     size_t *indices,
                                                     const int *status,
                                                     int datatype); 
+
+//// mamzi team start
+
+/*
+ * Team management operations
+ */
+
+/*
+ *  Returns the number of the calling PE within a specified team.
+ *
+ *  @param  team       An OpenSHMEM team handle.
+ *
+ *  @return            The number of the calling PE within the specified
+ *                     team, or the value -1 if the team handle compares 
+ *                     equal to SHMEM_TEAM_INVALID
+ */
+typedef int mca_spml_base_module_team_my_pe_fn_t(shmem_team_t team);
+
+
+/*
+ *  Returns the number of PEs in a specified team.
+ *
+ *  @param  team       An OpenSHMEM team handle.
+ *
+ *  @return            The number of PEs in the specified team, or the 
+ *                     value -1 if the team handle compares equal to 
+ *                     SHMEM_TEAM_INVALID.
+ */
+typedef int mca_spml_base_module_team_n_pes_fn_t(shmem_team_t team);
+
+
+
+/*
+ *  Return the configuration parameters of a given team
+ *
+ *  @param  team            An OpenSHMEM team handle.
+ *
+ *  @param  config_mask     The bitwise mask representing the set of 
+ *                          configuration parameters to fetch from the 
+ *                          given team.
+ *
+ *  @param  config          A pointer to the configuration parameters for the
+ *                          given team.
+ *
+ *
+ *  @return                 OSHMEM_SUCCESS or failure status.
+ *
+ */
+typedef int mca_spml_base_module_team_get_config_fn_t(shmem_team_t team, long config_mask, shmem_team_config_t *config);
+
+/*
+ *  Translate a given PE number from one team to the corresponding PE number in
+ *  another team.
+ *
+ *  @param  src_team    An OpenSHMEM team handle.
+ *  @param  src_pe      A PE number in src_team.
+ *  @param  dest_team   An OpenSHMEM team handle.
+ *
+ *
+ *  @return             The specified PE’s number in the dest_team, or a value
+ *                      of -1 if any team handle arguments are invalid or the
+ *                      src_pe is not in both the source and destination teams.
+ */
+typedef int mca_spml_base_module_team_translate_pe_fn_t(shmem_team_t src_team, int src_pe, shmem_team_t dest_team);
+
+
+
+/*
+ *  Create a new OpenSHMEM team from a subset of the existing parent team PEs,
+ *  where the subset is defined by the PE triplet (start, stride, and size) 
+ *  supplied to the routine.
+ *
+ *  @param  parent_team    An OpenSHMEM team handle.
+ *  @param  start          The lowest PE number of the subset of PEs from the parent team
+ *                         that will form the new team.
+ *  @param  stride         The stride between team PE numbers in the parent team that comprise the subset
+ *                         of PEs that will form the new team.
+ *  @param  size           The number of PEs from the parent team in the subset of PEs that
+ *                         will form the new team. size must be a positive integer.
+ *  @param  config         A pointer to the configuration parameters for the new team.
+ *  @param  config_mask    The bitwise mask representing the set of configuration parameters
+ *                         to use from config.
+ *  @param  new_team       An OpenSHMEM team handle. Upon successful creation, it references an OpenSHMEM
+ *                         team that contains the subset of all PEs in the parent team 
+ *                         specified by the PE triplet provided.m
+ *
+ *
+ *  @return                OSHMEM_SUCCESS or failure status.
+ *  
+ */
+typedef int mca_spml_base_module_team_split_strided_fn_t(shmem_team_t parent_team, int start, int stride, int size, const shmem_team_config_t *config, long config_mask, shmem_team_t *new_team);
+
+
+
+
+
+
+typedef int mca_spml_base_module_team_split_2d_fn_t(shmem_team_t parent_team, int xrange, const shmem_team_config_t *xaxis_config, long xaxis_mask, shmem_team_t *xaxis_team, const shmem_team_config_t *yaxis_config, long yaxis_mask, shmem_team_t *yaxis_team);
+typedef void mca_spml_base_module_team_destroy_fn_t(shmem_team_t team);
+
+
+//// mamzi team ends
+
+
+
+
+
+
+
+
+
+
 /**
  * Blocking data transfer from remote PE.
  * Read data from remote PE.
@@ -780,14 +892,21 @@ struct mca_spml_base_module_1_0_0_t {
     mca_spml_base_module_wait_until_any_vector_fn_t  spml_wait_until_any_vector;
     mca_spml_base_module_wait_until_some_vector_fn_t spml_wait_until_some_vector;
 
-    mca_spml_base_module_test_fn_t              spml_test;
-    mca_spml_base_module_test_all_fn_t          spml_test_all;
-    mca_spml_base_module_test_any_fn_t          spml_test_any;
-    mca_spml_base_module_test_some_fn_t         spml_test_some;
-    mca_spml_base_module_test_all_vector_fn_t   spml_test_all_vector;
-    mca_spml_base_module_test_any_vector_fn_t   spml_test_any_vector;
-    mca_spml_base_module_test_some_vector_fn_t  spml_test_some_vector;
-
+    mca_spml_base_module_test_fn_t                   spml_test;
+    mca_spml_base_module_test_all_fn_t               spml_test_all;
+    mca_spml_base_module_test_any_fn_t               spml_test_any;
+    mca_spml_base_module_test_some_fn_t              spml_test_some;
+    mca_spml_base_module_test_all_vector_fn_t        spml_test_all_vector;
+    mca_spml_base_module_test_any_vector_fn_t        spml_test_any_vector;
+    mca_spml_base_module_test_some_vector_fn_t       spml_test_some_vector;
+    
+    mca_spml_base_module_team_my_pe_fn_t             spml_team_my_pe;
+    mca_spml_base_module_team_n_pes_fn_t             spml_team_n_pes;
+    mca_spml_base_module_team_get_config_fn_t        spml_team_get_config;
+    mca_spml_base_module_team_translate_pe_fn_t      spml_team_translate_pe;
+    mca_spml_base_module_team_split_strided_fn_t     spml_team_split_strided;
+    mca_spml_base_module_team_split_2d_fn_t          spml_team_split_2d;
+    mca_spml_base_module_team_destroy_fn_t           spml_team_destroy;
 
     mca_spml_base_module_fence_fn_t spml_fence;
     mca_spml_base_module_quiet_fn_t spml_quiet;
