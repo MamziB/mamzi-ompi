@@ -481,7 +481,7 @@ typedef int mca_spml_base_module_wait_until_some_vector_fn_t(void *ivars,
  *  @param  cmp_value   The value to be compared with the objects pointed to by ivars. 
  *  @param  nelems      The number of elements in the ivars array.
  *  @param  status      Local address of an optional mask array of length nelems that indicates
- *                      which elements in ivars are excluded from the wait set.
+ *                      which elements in ivars are excluded from the test set.
  *  @param  datatype    Type of the objects
  *
  *  @return             OSHMEM_SUCCESS or failure status.
@@ -506,7 +506,7 @@ typedef int mca_spml_base_module_test_all_fn_t(void *ivars,
  *  @param  cmp_value   The value to be compared with the objects pointed to by ivars. 
  *  @param  nelems      The number of elements in the ivars array.
  *  @param  status      Local address of an optional mask array of length nelems that indicates
- *                      which elements in ivars are excluded from the wait set.
+ *                      which elements in ivars are excluded from the test set.
  *  @param  datatype    Type of the objects
  *
  *  @return             OSHMEM_SUCCESS or failure status.
@@ -532,7 +532,7 @@ typedef int mca_spml_base_module_test_any_fn_t(void *ivars,
  *  @param  indices     Local address of an array of indices of length at least nelems into 
  *                      ivars that satisfied the wait condition.
  *  @param  status      Local address of an optional mask array of length nelems that indicates
- *                      which elements in ivars are excluded from the wait set.
+ *                      which elements in ivars are excluded from the test set.
  *  @param  datatype    Type of the objects
  *
  *  @return             OSHMEM_SUCCESS or failure status.
@@ -547,8 +547,8 @@ typedef int mca_spml_base_module_test_some_fn_t(void *ivars,
 
 
 /*
- *  Wait on an array of variables on the local PE until all variables meet the 
- *  specified wait conditions.
+ *  Indicate whether all variables within an array of variables on the local PE meet the 
+ *  specified test conditions.
  *
  *  @param  ivars       Symmetric address of an array of remotely accessible 
  *                      data objects. The type of ivars should match that 
@@ -559,7 +559,7 @@ typedef int mca_spml_base_module_test_some_fn_t(void *ivars,
  *                      compared with the respective objects in ivars. 
  *  @param  nelems      The number of elements in the ivars array.
  *  @param  status      Local address of an optional mask array of length nelems that indicates
- *                      which elements in ivars are excluded from the wait set.
+ *                      which elements in ivars are excluded from the test set.
  *  @param  datatype    Type of the objects
  *
  *  @return             OSHMEM_SUCCESS or failure status.
@@ -572,31 +572,32 @@ typedef int mca_spml_base_module_test_all_vector_fn_t(void *ivars,
                                                     int datatype); 
 
 /*
- *  Wait on an array of variables on the local PE until any one variable 
- *  meets the specified wait condition.
+ *  Indicate whether any one variable within an array of variables on the local PE meets 
+ *  its specified test condition.
  *
  *  @param  ivars       Symmetric address of an array of remotely accessible 
  *                      data objects. The type of ivars should match that 
  *                      implied in the SYNOPSIS section.
  *  @param  cmp         A comparison operator that compares elements of ivars with cmp_value.
- *  @param  cmp_value   The value to be compared with the objects pointed to by ivars. 
+ *  @param  cmp_values  Local address of an array of length nelems containing values to be 
+ *                      compared with the respective objects in ivars.  
  *  @param  nelems      The number of elements in the ivars array.
  *  @param  status      Local address of an optional mask array of length nelems that indicates
- *                      which elements in ivars are excluded from the wait set.
+ *                      which elements in ivars are excluded from the test set.
  *  @param  datatype    Type of the objects
  *
  *  @return             OSHMEM_SUCCESS or failure status.
  */
 typedef int mca_spml_base_module_test_any_vector_fn_t(void *ivars,
                                                     int cmp,
-                                                    void *cmp_value,
+                                                    void *cmp_values,
                                                     size_t nelems,
                                                     const int *status,
                                                     int datatype); 
 
 /*
- *  Wait on an array of variables on the local PE until at least one variable meets the
- *  its specified wait condition.
+ *  Indicate whether at least one variable within an array of variables on the local PE meets
+ *  its specified test condition.
  *
  *  @param  ivars       Symmetric address of an array of remotely accessible 
  *                      data objects. The type of ivars should match that 
@@ -609,14 +610,14 @@ typedef int mca_spml_base_module_test_any_vector_fn_t(void *ivars,
  *  @param  indices     Local address of an array of indices of length at least nelems into ivars 
  *                      that satisfied the wait condition.
  *  @param  status      Local address of an optional mask array of length nelems that indicates
- *                      which elements in ivars are excluded from the wait set.
+ *                      which elements in ivars are excluded from the test set.
  *  @param  datatype    Type of the objects
  *
  *  @return             OSHMEM_SUCCESS or failure status.
  */
 typedef int mca_spml_base_module_test_some_vector_fn_t(void *ivars,
                                                     int cmp,
-                                                    void *cmp_value,
+                                                    void *cmp_values,
                                                     size_t nelems,
                                                     size_t *indices,
                                                     const int *status,
