@@ -253,6 +253,71 @@ typedef int (*mca_spml_base_module_put_nb_fn_t)(shmem_ctx_t ctx,
                                                 int dst,
                                                 void **handle);
 
+
+
+/**
+ * The put-with-signal routines provide a method for copying data from a
+ * contiguous local data object to a data object on a specified PE and 
+ * subsequently updating a remote flag to signal completion.
+ *
+ * @param ctx      A context handle specifying the context on which to perform the
+ *                 operation. When this argument is not provided, the operation is
+ *                 performed on the default context.
+ * @param dst_addr The address in the remote PE of the object being written.
+ * @param size     The number of bytes to be written.
+ * @param src_addr An address on the local PE holdng the value to be written.
+ * @param sig_addr Symmetric address of the signal data object to be updated on the
+ *                 remote PE as a signal.
+ * @param signal   Unsigned 64-bit value that is used for updating the remote sig_addr
+ *                 signal data object.
+ * @param sig_op   Signal operator that represents the type of update to be performed 
+ *                 on the remote sig_addr signal data object.
+ * @param pe       PE number of the remote PE.
+ *
+ * @return         OSHMEM_SUCCESS or failure status.
+ */
+
+typedef int (*mca_spml_base_module_put_signal_fn_t)(shmem_ctx_t ctx, 
+                                                    void* dst_addr, 
+                                                    size_t size, 
+                                                    void* src_addr, 
+                                                    uint64_t *sig_addr, 
+                                                    uint64_t signal, 
+                                                    int sig_op, 
+                                                    int dst);
+
+
+/**
+ * The nonblocking put-with-signal routines provide a method for copying data
+ * from a contiguous local data object to a data object on a specified PE and 
+ * subsequently updating a remote flag to signal completion.
+ *
+ * @param ctx      A context handle specifying the context on which to perform the
+ *                 operation. When this argument is not provided, the operation is
+ *                 performed on the default context.
+ * @param dst_addr The address in the remote PE of the object being written.
+ * @param size     The number of bytes to be written.
+ * @param src_addr An address on the local PE holdng the value to be written.
+ * @param sig_addr Symmetric address of the signal data object to be updated on the
+ *                 remote PE as a signal.
+ * @param signal   Unsigned 64-bit value that is used for updating the remote sig_addr
+ *                 signal data object.
+ * @param sig_op   Signal operator that represents the type of update to be performed 
+ *                 on the remote sig_addr signal data object.
+ * @param pe       PE number of the remote PE.
+ *
+ * @return         OSHMEM_SUCCESS or failure status.
+ */
+typedef int (*mca_spml_base_module_put_signal_nb_fn_t) (shmem_ctx_t ctx, 
+                                            void* dst_addr, 
+                                            size_t size,
+                                            void* src_addr, 
+                                            uint64_t *sig_addr, 
+                                            uint64_t signal, 
+                                            int sig_op, 
+                                            int dst);
+
+
 /**
  * Blocking data transfer from remote PE.
  * Read data from remote PE.
@@ -393,8 +458,8 @@ struct mca_spml_base_module_1_0_0_t {
 
     mca_spml_base_module_put_fn_t spml_put;
     mca_spml_base_module_put_nb_fn_t spml_put_nb;
-    mca_spml_base_module_put_fn_t spml_put_signal;
-    mca_spml_base_module_put_nb_fn_t spml_put_signal_nb;
+    mca_spml_base_module_put_signal_fn_t spml_put_signal;
+    mca_spml_base_module_put_signal_nb_fn_t spml_put_signal_nb;
 
     mca_spml_base_module_get_fn_t spml_get;
     mca_spml_base_module_get_nb_fn_t spml_get_nb;
