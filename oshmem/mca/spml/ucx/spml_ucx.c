@@ -85,6 +85,13 @@ mca_spml_ucx_t mca_spml_ucx = {
         .spml_test_all_vector   		= mca_spml_ucx_test_all_vector,
         .spml_test_any_vector   		= mca_spml_ucx_test_any_vector,
         .spml_test_some_vector  		= mca_spml_ucx_test_some_vector,
+        .spml_team_my_pe                = mca_spml_ucx_team_my_pe,
+        .spml_team_n_pes                = mca_spml_ucx_team_n_pes,
+        .spml_team_get_config           = mca_spml_ucx_team_get_config,
+        .spml_team_translate_pe         = mca_spml_ucx_team_translate_pe,
+        .spml_team_split_strided        = mca_spml_ucx_team_split_strided,
+        .spml_team_split_2d             = mca_spml_ucx_team_split_2d,
+        .spml_team_destroy              = mca_spml_ucx_team_destroy,
         .self                           = (void*)&mca_spml_ucx
     },
 
@@ -1490,6 +1497,59 @@ int mca_spml_ucx_test_any_vector(void *ivars, int cmp, void
 int mca_spml_ucx_test_some_vector(void *ivars, int cmp, void
         *cmp_values, size_t nelems, size_t *indices, const int *status, int
         datatype) 
+{
+    return OSHMEM_ERR_NOT_SUPPORTED;
+}
+
+
+/*
+ * Team management operations
+ */
+/* This routine is not implemented */
+int mca_spml_ucx_team_my_pe(shmem_team_t team)
+{
+    return OSHMEM_ERR_NOT_SUPPORTED;
+}
+
+/* This routine is not implemented */
+int mca_spml_ucx_team_n_pes(shmem_team_t team)
+{
+    return OSHMEM_ERR_NOT_SUPPORTED;
+}
+
+/* This routine is not implemented */
+int mca_spml_ucx_team_get_config(shmem_team_t team, long config_mask,
+        shmem_team_config_t *config)
+{
+    return OSHMEM_ERR_NOT_SUPPORTED;
+}
+
+/* This routine is not implemented */
+int mca_spml_ucx_team_translate_pe(shmem_team_t src_team, int src_pe,
+        shmem_team_t dest_team)
+{
+    return OSHMEM_ERR_NOT_SUPPORTED;
+}
+
+/* This routine is not implemented */
+int mca_spml_ucx_team_split_strided(shmem_team_t parent_team, int start, int
+        stride, int size, const shmem_team_config_t *config, long config_mask,
+        shmem_team_t *new_team)
+{
+    return OSHMEM_ERR_NOT_SUPPORTED;
+}
+
+/* This routine is not implemented */
+int mca_spml_ucx_team_split_2d(shmem_team_t parent_team, int xrange, const
+        shmem_team_config_t *xaxis_config, long xaxis_mask, shmem_team_t
+        *xaxis_team, const shmem_team_config_t *yaxis_config, long yaxis_mask,
+        shmem_team_t *yaxis_team)
+{
+    return OSHMEM_ERR_NOT_SUPPORTED;
+}
+
+/* This routine is not implemented */
+void mca_spml_ucx_team_destroy(shmem_team_t team)
 {
     return OSHMEM_ERR_NOT_SUPPORTED;
 }
