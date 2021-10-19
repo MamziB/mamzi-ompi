@@ -623,12 +623,6 @@ typedef int mca_spml_base_module_test_some_vector_fn_t(void *ivars,
                                                     const int *status,
                                                     int datatype); 
 
-//// mamzi team start
-
-/*
- * Team management operations
- */
-
 /*
  *  Returns the number of the calling PE within a specified team.
  *
@@ -715,23 +709,37 @@ typedef int mca_spml_base_module_team_translate_pe_fn_t(shmem_team_t src_team, i
 typedef int mca_spml_base_module_team_split_strided_fn_t(shmem_team_t parent_team, int start, int stride, int size, const shmem_team_config_t *config, long config_mask, shmem_team_t *new_team);
 
 
-
-
-
-
+/*
+ *  Create two new teams by splitting an existing parent team into two subsets
+ *  based on a 2D Cartesian space defined by the xrange argument and a y
+ *  dimension that is derived from xrange and the parent team size.
+ *
+ *  @param  parent_team    An OpenSHMEM team handle.
+ *  @param  xrange         A positive integer representing the number of elements in the first dimension.
+ *  @param  xaxis_config   A pointer to the configuration parameters for the new x-axis team.
+ *  @param  xaxis_mask     The bitwise mask representing the set of configuration parameters to
+ *                         use from xaxis_config.
+ *  @param  xaxis_team     A new PE team handle representing a PE subset consisting of all the
+ *                         PEs that have the same coordinate along the y-axis as the calling PE..
+ *  @param  yaxis_config   A pointer to the configuration parameters for the new y-axis team.
+ *  @param  yaxis_mask     The bitwise mask representing the set of configuration parameters to use 
+ *                         from yaxis_config.
+ *  @param  yaxis_team     A new PE team handle representing a PE subset consisting of all the PEs
+ *                         that have the same coordinate along the x-axis as the calling PE.
+ *
+ *  @return                OSHMEM_SUCCESS or failure status.
+ *  
+ */
 typedef int mca_spml_base_module_team_split_2d_fn_t(shmem_team_t parent_team, int xrange, const shmem_team_config_t *xaxis_config, long xaxis_mask, shmem_team_t *xaxis_team, const shmem_team_config_t *yaxis_config, long yaxis_mask, shmem_team_t *yaxis_team);
+
+
+/*
+ *  Destroy an existing team.
+ *
+ *  @param  team           An OpenSHMEM team handle.
+ *  
+ */
 typedef void mca_spml_base_module_team_destroy_fn_t(shmem_team_t team);
-
-
-//// mamzi team ends
-
-
-
-
-
-
-
-
 
 
 /**
