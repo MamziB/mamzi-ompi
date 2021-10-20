@@ -186,6 +186,7 @@ SHMEM_TYPE_ALLTOALLS(_alltoalls64, sizeof(uint64_t))
 
 SHMEM_TYPE_TEAM_ALLTOALL(_char, char, SHMEM_CHAR, _alltoall)
 SHMEM_TYPE_TEAM_ALLTOALL(_short, short, SHMEM_SHORT, _alltoall)
+SHMEM_TYPE_TEAM_ALLTOALLS(_int, int, SHMEM_INT, _alltoall)
 SHMEM_TYPE_TEAM_ALLTOALL(_long, long, SHMEM_LONG, _alltoall)
 SHMEM_TYPE_TEAM_ALLTOALL(_float, float, SHMEM_FLOAT, _alltoall)
 SHMEM_TYPE_TEAM_ALLTOALL(_double, double, SHMEM_DOUBLE, _alltoall)
@@ -207,3 +208,49 @@ SHMEM_TYPE_TEAM_ALLTOALL(_uint32, uint32_t, SHMEM_UINT32_T, _alltoall)
 SHMEM_TYPE_TEAM_ALLTOALL(_uint64, uint64_t, SHMEM_UINT64_T, _alltoall)
 SHMEM_TYPE_TEAM_ALLTOALL(_size, size_t, SHMEM_SIZE_T, _alltoall)
 SHMEM_TYPE_TEAM_ALLTOALL(_ptrdiff, ptrdiff_t, SHMEM_PTRDIFF_T, _alltoall)
+
+SHMEM_TYPE_TEAM_ALLTOALL(, void, SHMEM_BYTE, _alltoallmem)
+
+
+#define SHMEM_TYPE_TEAM_ALLTOALLS(type_name, type, code, postfix)    \
+    int  shmem#type_name##postfix(shmem_team_t team, type *dest, const type *source, ptrdiff_t dst, ptrdiff_t sst,  size_t nelems)   \
+    {                                                               \
+        size_t rc = 0;                                              \
+                                                                    \
+        RUNTIME_CHECK_INIT();                                       \
+                                                                    \
+        rc = MCA_SPML_CALL(team_alltoalls(                          \
+            team, (void*)dest, (void*)source,                       \
+                    dst, sst, nelems, code));                       \
+        RUNTIME_CHECK_RC(rc);                                       \
+                                                                    \
+        return rc;                                                  \
+    }
+
+
+SHMEM_TYPE_TEAM_ALLTOALLS(_char, char, SHMEM_CHAR, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_short, short, SHMEM_SHORT, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_int, int, SHMEM_INT, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_long, long, SHMEM_LONG, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_float, float, SHMEM_FLOAT, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_double, double, SHMEM_DOUBLE, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_longlong, long long, SHMEM_LONGLONG, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_schar, signed char, SHMEM_SCHAR, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_uchar, unsigned char, SHMEM_UCHAR, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_ushort, unsigned short, SHMEM_USHORT, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_uint, unsigned int, SHMEM_UINT, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_ulong, unsigned long, SHMEM_ULONG, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_ulonglong, unsigned long long, SHMEM_ULLONG, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_longdouble, long double, SHMEM_LDOUBLE, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_int8, int8_t, SHMEM_INT8_T, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_int16, int16_t, SHMEM_INT16_T, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_int32, int32_t, SHMEM_INT32_T, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_int64, int64_t, SHMEM_INT64_T, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_uint8, uint8_t, SHMEM_UINT8_T, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_uint16, uint16_t, SHMEM_UINT16_T, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_uint32, uint32_t, SHMEM_UINT32_T, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_uint64, uint64_t, SHMEM_UINT64_T, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_size, size_t, SHMEM_SIZE_T, _alltoalls)
+SHMEM_TYPE_TEAM_ALLTOALLS(_ptrdiff, ptrdiff_t, SHMEM_PTRDIFF_T, _alltoalls)
+
+SHMEM_TYPE_TEAM_ALLTOALLS(, void, SHMEM_BYTE, _alltoallsmem)
