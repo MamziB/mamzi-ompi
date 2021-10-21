@@ -18,7 +18,7 @@
 #include "oshmem/mca/atomic/atomic.h"
 
 /*
- * shmem_swap performs an atomic swap operation.
+ * It performs an atomic nonblocking swap operation.
  * The atomic swap routines write value to address target on PE pe, and return the previous
  * contents of target. The operation must be completed without the possibility of another
  * process updating target between the time of the fetch and the update.
