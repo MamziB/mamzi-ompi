@@ -664,7 +664,8 @@ typedef int mca_spml_base_module_team_n_pes_fn_t(shmem_team_t team);
  *  @return                 OSHMEM_SUCCESS or failure status.
  *
  */
-typedef int mca_spml_base_module_team_get_config_fn_t(shmem_team_t team, long config_mask, shmem_team_config_t *config);
+typedef int mca_spml_base_module_team_get_config_fn_t(shmem_team_t team, long
+        config_mask, shmem_team_config_t *config);
 
 /*
  *  Translate a given PE number from one team to the corresponding PE number in
@@ -679,7 +680,8 @@ typedef int mca_spml_base_module_team_get_config_fn_t(shmem_team_t team, long co
  *                      of -1 if any team handle arguments are invalid or the
  *                      src_pe is not in both the source and destination teams.
  */
-typedef int mca_spml_base_module_team_translate_pe_fn_t(shmem_team_t src_team, int src_pe, shmem_team_t dest_team);
+typedef int mca_spml_base_module_team_translate_pe_fn_t(shmem_team_t src_team,
+        int src_pe, shmem_team_t dest_team);
 
 
 
@@ -706,7 +708,9 @@ typedef int mca_spml_base_module_team_translate_pe_fn_t(shmem_team_t src_team, i
  *  @return                OSHMEM_SUCCESS or failure status.
  *  
  */
-typedef int mca_spml_base_module_team_split_strided_fn_t(shmem_team_t parent_team, int start, int stride, int size, const shmem_team_config_t *config, long config_mask, shmem_team_t *new_team);
+typedef int mca_spml_base_module_team_split_strided_fn_t(shmem_team_t
+        parent_team, int start, int stride, int size, const shmem_team_config_t
+        *config, long config_mask, shmem_team_t *new_team);
 
 
 /*
@@ -730,16 +734,119 @@ typedef int mca_spml_base_module_team_split_strided_fn_t(shmem_team_t parent_tea
  *  @return                OSHMEM_SUCCESS or failure status.
  *  
  */
-typedef int mca_spml_base_module_team_split_2d_fn_t(shmem_team_t parent_team, int xrange, const shmem_team_config_t *xaxis_config, long xaxis_mask, shmem_team_t *xaxis_team, const shmem_team_config_t *yaxis_config, long yaxis_mask, shmem_team_t *yaxis_team);
+typedef int mca_spml_base_module_team_split_2d_fn_t(shmem_team_t parent_team,
+        int xrange, const shmem_team_config_t *xaxis_config, long xaxis_mask,
+        shmem_team_t *xaxis_team, const shmem_team_config_t *yaxis_config, long
+        yaxis_mask, shmem_team_t *yaxis_team);
 
 
 /*
  *  Destroy an existing team.
  *
  *  @param  team           An OpenSHMEM team handle.
+ *
+ *  @return                OSHMEM_SUCCESS or failure status.
  *  
  */
-typedef void mca_spml_base_module_team_destroy_fn_t(shmem_team_t team);
+typedef int  mca_spml_base_module_team_destroy_fn_t(shmem_team_t team);
+
+/*
+ *  Exchanges a fixed amount of contiguous data blocks between all pairs of 
+ *  PEs participating in the collective routine..
+ *
+ *  @param  team       An OpenSHMEM team handle.
+ *  @param  dest       Symmetric address of a data object large enough to 
+ *                     receive the combined total of nelems elements from each PE in the active set.     
+ *  @param  source     Symmetric address of a data object that contains nelems elements of data 
+ *                     for each PE in the active set, ordered according to destination PE.
+ *  @param  nelems     The number of elements to exchange for each PE. 
+ *  @param  datatype   Datatype of the elements
+ *
+ *  @return            OSHMEM_SUCCESS or failure status.
+ *
+ */
+typedef int mca_spml_base_module_team_alltoall_fn_t(shmem_team_t team, void
+        *dest, const void *source, size_t nelems, int datatype);
+
+/*
+ *  Exchanges a fixed amount of strided data blocks between all pairs of PEs 
+ *  participating in the collective routine.
+ *
+ *  @param  team       An OpenSHMEM team handle.
+ *  @param  dest       Symmetric address of a data object large enough to 
+ *                     receive the combined total of nelems elements from each PE in the active set.     
+ *  @param  source     Symmetric address of a data object that contains nelems elements of data 
+ *                     for each PE in the active set, ordered according to destination PE.
+ *  @param  dst        The stride between consecutive elements of the dest data object. The stride
+ *                     is scaled by the element size. A value of 1 indicates contiguous data.
+ *  @param  sst        The stride between consecutive elements of the source data object. The stride 
+ *                     is scaled by the element size. A value of 1 indicates contiguous data
+ *  @param  nelems     The number of elements to exchange for each PE. 
+ *  @param  datatype   Datatype of the elements
+ *
+ *  @return            OSHMEM_SUCCESS or failure status.
+ *
+ */
+typedef int mca_spml_base_module_team_alltoalls_fn_t(shmem_team_t team, void
+        *dest, const void *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems,
+        int datatype);
+
+
+/*
+ *  Broadcasts a block of data from one PE to one or more destination PEs.
+ *
+ *  @param  team       An OpenSHMEM team handle.
+ *  @param  dest       Symmetric address of destination data object. 
+ *  @param  source     Symmetric address of the source data object. 
+ *  @param  nelems     The number of elements in source and dest arrays
+ *  @param  PE_root    Zero-based ordinal of the PE, with respect to the team or
+ *                     active set, from which the data is copied.. 
+ *  @param  datatype   Datatype of the elements
+ *
+ *  @return            OSHMEM_SUCCESS or failure status.
+ *
+ */
+typedef int mca_spml_base_module_team_broadcast_fn_t(shmem_team_t team, void
+        *dest, const void *source, size_t nelems, int PE_root, int datatype);
+
+
+
+/*
+ *  Concatenates blocks of data from multiple PEs to an array in every PE participating in
+ *  the collective routine.
+ *
+ *  @param  team       An OpenSHMEM team handle.
+ *  @param  dest       Symmetric address of an array large enough to accept the 
+ *                     concatenation of the source arrays on all participating PEs.  
+ *  @param  source     Symmetric address of the source data object.  
+ *  @param  nelems     The number of elements in source array.  
+ *  @param  datatype   Datatype of the elements
+ *
+ *  @return            OSHMEM_SUCCESS or failure status.
+ *
+ */
+typedef int mca_spml_base_module_team_collect_fn_t(shmem_team_t team, void
+        *dest, const void *source, size_t nelems, int datatype);
+typedef int mca_spml_base_module_team_fcollect_fn_t(shmem_team_t team, void
+        *dest, const void *source, size_t nelems, int datatype);
+
+/*
+ *  Performs a math reduction across a set of PEs.
+ *
+ *  @param  team       An OpenSHMEM team handle.
+ *  @param  dest       Symmetric address of an array, of length nreduce elements,
+ *                     to receive the result of the reduction routines. 
+ *  @param  source     Symmetric address of an array, of length nreduce elements, that 
+ *                     contains one element for each separate reduction routine. 
+ *  @param  nreduce    The number of elements in the dest and source arrays. 
+ *  @param  operation  Operations from list of supported oshmem ops
+ *  @param  datatype   Datatype of the elements
+ *
+ *  @return            OSHMEM_SUCCESS or failure status.
+ *
+ */
+typedef int mca_spml_base_module_team_reduce_fn_t(shmem_team_t team, void
+        *dest, const void *source, size_t nreduce, int operation, int datatype);
 
 
 /**
@@ -915,6 +1022,13 @@ struct mca_spml_base_module_1_0_0_t {
     mca_spml_base_module_team_split_strided_fn_t     spml_team_split_strided;
     mca_spml_base_module_team_split_2d_fn_t          spml_team_split_2d;
     mca_spml_base_module_team_destroy_fn_t           spml_team_destroy;
+
+    mca_spml_base_module_team_alltoall_fn_t          spml_team_alltoall;
+    mca_spml_base_module_team_alltoalls_fn_t         spml_team_alltoalls;
+    mca_spml_base_module_team_broadcast_fn_t         spml_team_broadcast;
+    mca_spml_base_module_team_collect_fn_t           spml_team_collect;
+    mca_spml_base_module_team_fcollect_fn_t          spml_team_fcollect;
+    mca_spml_base_module_team_reduce_fn_t            spml_team_reduce;
 
     mca_spml_base_module_fence_fn_t spml_fence;
     mca_spml_base_module_quiet_fn_t spml_quiet;
