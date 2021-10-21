@@ -86,34 +86,6 @@
 #pragma weak shmemx_int32_cswap = pshmemx_int32_cswap
 #pragma weak shmemx_int64_cswap = pshmemx_int64_cswap
 
-/* Nonblocking Atomic Compare Swap */
-#pragma weak shmem_ctx_int_atomic_compare_swap_nbi               = pshmem_ctx_int_atomic_compare_swap_nbi
-#pragma weak shmem_ctx_long_atomic_compare_swap_nbi              = pshmem_ctx_long_atomic_compare_swap_nbi
-#pragma weak shmem_ctx_longlong_atomic_compare_swap_nbi          = pshmem_ctx_longlong_atomic_compare_swap_nbi
-#pragma weak shmem_ctx_uint_atomic_compare_swap_nbi              = pshmem_ctx_uint_atomic_compare_swap_nbi
-#pragma weak shmem_ctx_ulong_atomic_compare_swap_nbi             = pshmem_ctx_ulong_atomic_compare_swap_nbi
-#pragma weak shmem_ctx_ulonglong_atomic_compare_swap_nbi         = pshmem_ctx_ulonglong_atomic_compare_swap_nbi
-#pragma weak shmem_ctx_int32_atomic_compare_swap_nbi             = pshmem_ctx_int32_atomic_compare_swap_nbi
-#pragma weak shmem_ctx_int64_atomic_compare_swap_nbi             = pshmem_ctx_int64_atomic_compare_swap_nbi
-#pragma weak shmem_ctx_uint32_atomic_compare_swap_nbi            = pshmem_ctx_uint32_atomic_compare_swap_nbi
-#pragma weak shmem_ctx_uint64_atomic_compare_swap_nbi            = pshmem_ctx_uint64_atomic_compare_swap_nbi
-#pragma weak shmem_ctx_size_atomic_compare_swap_nbi              = pshmem_ctx_size_atomic_compare_swap_nbi
-#pragma weak shmem_ctx_ptrdiff_atomic_compare_swap_nbi           = pshmem_ctx_ptrdiff_atomic_compare_swap_nbi
-
-#pragma weak shmem_int_atomic_compare_swap_nbi        			 = pshmem_int_atomic_compare_swap_nbi
-#pragma weak shmem_long_atomic_compare_swap_nbi       			 = pshmem_long_atomic_compare_swap_nbi
-#pragma weak shmem_longlong_atomic_compare_swap_nbi   			 = pshmem_longlong_atomic_compare_swap_nbi
-#pragma weak shmem_uint_atomic_compare_swap_nbi       			 = pshmem_uint_atomic_compare_swap_nbi
-#pragma weak shmem_ulong_atomic_compare_swap_nbi      			 = pshmem_ulong_atomic_compare_swap_nbi
-#pragma weak shmem_ulonglong_atomic_compare_swap_nbi  			 = pshmem_ulonglong_atomic_compare_swap_nbi
-#pragma weak shmem_int32_atomic_compare_swap_nbi      			 = pshmem_int32_atomic_compare_swap_nbi
-#pragma weak shmem_int64_atomic_compare_swap_nbi      			 = pshmem_int64_atomic_compare_swap_nbi
-#pragma weak shmem_uint32_atomic_compare_swap_nbi     			 = pshmem_uint32_atomic_compare_swap_nbi
-#pragma weak shmem_uint64_atomic_compare_swap_nbi     			 = pshmem_uint64_atomic_compare_swap_nbi
-#pragma weak shmem_size_atomic_compare_swap_nbi       			 = pshmem_size_atomic_compare_swap_nbi
-#pragma weak shmem_ptrdiff_atomic_compare_swap_nbi    			 = pshmem_ptrdiff_atomic_compare_swap_nbi
-
-
 #include "oshmem/shmem/c/profile/defines.h"
 #endif
 
