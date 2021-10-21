@@ -72,3 +72,15 @@ int mca_atomic_ucx_cswap(shmem_ctx_t ctx,
                                         "ucp_atomic_fetch_nb");
 #endif
 }
+
+int mca_atomic_ucx_cswap_nb(shmem_ctx_t ctx,
+                         void *fetch,
+                         void *target,
+                         uint64_t *prev,
+                         uint64_t cond,
+                         uint64_t value,
+                         size_t size,
+                         int pe)
+{
+    return OSHMEM_ERR_NOT_SUPPORTED;
+}

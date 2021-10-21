@@ -252,6 +252,50 @@ struct mca_atomic_base_module_1_0_0_t {
                         uint64_t value,
                         size_t size,
                         int pe);
+    int (*atomic_fadd_nb)(shmem_ctx_t ctx,
+                       void *fetch,
+                       void *target,
+                       void *prev,
+                       uint64_t value,
+                       size_t size,
+                       int pe);
+    int (*atomic_cswap_nb)(shmem_ctx_t ctx,
+                        void *fetch,
+                        void *target,
+                        uint64_t *prev, /* prev is used internally by wrapper, we may
+                                           always use 64-bit value */
+                        uint64_t cond,
+                        uint64_t value,
+                        size_t size,
+                        int pe);
+    int (*atomic_swap_nb)(shmem_ctx_t ctx,
+                       void *fetch,
+                       void *target,
+                       void *prev,
+                       uint64_t value,
+                       size_t size,
+                       int pe);
+    int (*atomic_fand_nb)(shmem_ctx_t ctx,
+                       void *fetch,
+                       void *target,
+                       void *prev,
+                       uint64_t value,
+                       size_t size,
+                       int pe);
+    int (*atomic_for_nb)(shmem_ctx_t ctx,
+                       void *fetch,
+                      void *target,
+                      void *prev,
+                      uint64_t value,
+                      size_t size,
+                      int pe);
+    int (*atomic_fxor_nb)(shmem_ctx_t ctx,
+                       void *fetch,
+                       void *target,
+                       void *prev,
+                       uint64_t value,
+                       size_t size,
+                       int pe);
 };
 typedef struct mca_atomic_base_module_1_0_0_t mca_atomic_base_module_1_0_0_t;
 
