@@ -158,7 +158,7 @@ SHMEM_TYPE_COLLECT(_fcollect64, sizeof(uint64_t), true)
                                                                     \
         rc = MCA_SPML_CALL(team_collect(                            \
             team, (void*)dest, (void*)source,                       \
-                    dst, sst, nelems, code));                       \
+                    nelems, code));                                 \
         RUNTIME_CHECK_RC(rc);                                       \
                                                                     \
         return rc;                                                  \
@@ -204,7 +204,7 @@ SHMEM_TYPE_TEAM_COLLECT(, void, SHMEM_BYTE, _collectmem)
                                                                     \
         rc = MCA_SPML_CALL(team_fcollect(                           \
             team, (void*)dest, (void*)source,                       \
-                    dst, sst, nelems, code));                       \
+                    nelems, code));                                 \
         RUNTIME_CHECK_RC(rc);                                       \
                                                                     \
         return rc;                                                  \
