@@ -2939,6 +2939,13 @@ OSHMEM_DECLSPEC void shmem_uint64_atomic_fetch_xor_nbi(uint64_t *fetch, uint64_t
 #endif
 
 /*
+ * 
+ * Control of profiling
+ *
+ */
+OSHMEM_DECLSPEC void shmem_pcontrol(int level, ...);
+
+/*
  * Lock functions
  */
 OSHMEM_DECLSPEC void shmem_set_lock(volatile long *lock);
