@@ -214,6 +214,12 @@ OSHMEM_DECLSPEC void shmem_ctx_destroy(shmem_ctx_t ctx);
 typedef struct { int dummy; } * shmem_team_t;
 typedef struct { int dummy; } * shmem_team_config_t;
 
+#define OSHMEM_TEAM_SHARED oshmem_team_shared
+#define OSHMEM_TEAM_WORLD  oshmem_team_world
+
+extern shmem_team_t oshmem_team_shared;
+extern shmem_team_t oshmem_team_world;
+
 OSHMEM_DECLSPEC int shmem_team_my_pe(shmem_team_t team);
 OSHMEM_DECLSPEC int shmem_team_n_pes(shmem_team_t team);
 OSHMEM_DECLSPEC int shmem_team_get_config(shmem_team_t team, long config_mask, shmem_team_config_t *config);
