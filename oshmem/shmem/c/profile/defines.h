@@ -1615,6 +1615,12 @@
 #define shmem_uint64_atomic_fetch_xor_nbi     			 pshmem_uint64_atomic_fetch_xor_nbi
 
 /*
+ * Control of profile
+ */ 
+
+#define shmem_pcontrol               pshmem_pcontrol
+
+/*
  * Lock functions
  */
 #define shmem_set_lock               pshmem_set_lock
