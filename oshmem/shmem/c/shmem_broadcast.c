@@ -128,7 +128,7 @@ SHMEM_TYPE_BROADCAST(_broadcast64, sizeof(uint64_t))
 
 
 #define SHMEM_TYPE_TEAM_BROADCAST(type_name, type, code, postfix)    \
-    int  shmem#type_name##postfix(shmem_team_t team, type *dest, const type *source, size_t nelems, int PE_root)   \
+    int  shmem##type_name##postfix(shmem_team_t team, type *dest, const type *source, size_t nelems, int PE_root)   \
     {                                                               \
         size_t rc = 0;                                              \
                                                                     \

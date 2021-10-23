@@ -150,7 +150,7 @@ SHMEM_TYPE_COLLECT(_fcollect64, sizeof(uint64_t), true)
 
 
 #define SHMEM_TYPE_TEAM_COLLECT(type_name, type, code, postfix)    \
-    int  shmem#type_name##postfix(shmem_team_t team, type *dest, const type *source, size_t nelems)   \
+    int  shmem##type_name##postfix(shmem_team_t team, type *dest, const type *source, size_t nelems)   \
     {                                                               \
         size_t rc = 0;                                              \
                                                                     \
@@ -196,7 +196,7 @@ SHMEM_TYPE_TEAM_COLLECT(, void, SHMEM_BYTE, _collectmem)
 
 
 #define SHMEM_TYPE_TEAM_FCOLLECT(type_name, type, code, postfix)    \
-    int  shmem#type_name##postfix(shmem_team_t team, type *dest, const type *source,  size_t nelems)   \
+    int  shmem##type_name##postfix(shmem_team_t team, type *dest, const type *source,  size_t nelems)   \
     {                                                               \
         size_t rc = 0;                                              \
                                                                     \

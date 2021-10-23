@@ -18,6 +18,18 @@
 
 #include "oshmem/mca/spml/spml.h"
 
+int shmem_team_sync(shmem_team_t team) 
+{                                                               
+    int rc = 0;                                    
+                                                                
+    RUNTIME_CHECK_INIT();                                       
+                                                                
+    rc = MCA_SPML_CALL(team_sync(team));                                                 
+    RUNTIME_TEAM_MANAGMENT_CHECK_RC(rc);                                       
+                                                                
+    return rc;                                                    
+}
+
 int shmem_team_my_pe(shmem_team_t team) 
 {                                                               
     int rc = 0;                                    
@@ -114,6 +126,7 @@ void shmem_team_destroy(shmem_team_t team)
 /*
  * Team management routines
  */
+#pragma weak shmem_team_sync             		= pshmem_team_sync
 #pragma weak shmem_team_my_pe             		= pshmem_team_my_pe
 #pragma weak shmem_team_n_pes             		= pshmem_team_n_pes
 #pragma weak shmem_team_get_config        		= pshmem_team_get_config

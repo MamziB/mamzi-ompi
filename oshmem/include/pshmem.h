@@ -3246,7 +3246,6 @@ OSHMEM_DECLSPEC  size_t pshmem_ptrdiff_test_some_vector(volatile ptrdiff_t *ivar
  */
 OSHMEM_DECLSPEC  void pshmem_barrier(int PE_start, int logPE_stride, int PE_size, long *pSync);
 OSHMEM_DECLSPEC  void pshmem_barrier_all(void);
-OSHMEM_DECLSPEC  void pshmem_sync(int PE_start, int logPE_stride, int PE_size, long *pSync);
 OSHMEM_DECLSPEC  void pshmem_sync_all(void);
 OSHMEM_DECLSPEC  void pshmem_fence(void);
 OSHMEM_DECLSPEC  void pshmem_ctx_fence(shmem_ctx_t ctx);

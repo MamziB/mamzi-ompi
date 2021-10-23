@@ -85,6 +85,7 @@ mca_spml_ucx_t mca_spml_ucx = {
         .spml_test_all_vector   		= mca_spml_ucx_test_all_vector,
         .spml_test_any_vector   		= mca_spml_ucx_test_any_vector,
         .spml_test_some_vector  		= mca_spml_ucx_test_some_vector,
+        .spml_team_sync                 = mca_spml_ucx_team_sync,
         .spml_team_my_pe                = mca_spml_ucx_team_my_pe,
         .spml_team_n_pes                = mca_spml_ucx_team_n_pes,
         .spml_team_get_config           = mca_spml_ucx_team_get_config,
@@ -1562,6 +1563,12 @@ int mca_spml_ucx_test_any_vector(void *ivars, int cmp, void
 int mca_spml_ucx_test_some_vector(void *ivars, int cmp, void
         *cmp_values, size_t nelems, size_t *indices, const int *status, int
         datatype) 
+{
+    return OSHMEM_ERR_NOT_SUPPORTED;
+}
+
+/* This routine is not implemented */
+int mca_spml_ucx_team_sync(shmem_team_t team)
 {
     return OSHMEM_ERR_NOT_SUPPORTED;
 }
