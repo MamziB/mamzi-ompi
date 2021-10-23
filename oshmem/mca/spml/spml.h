@@ -334,7 +334,7 @@ typedef int (*mca_spml_base_module_put_signal_nb_fn_t) (shmem_ctx_t ctx,
  *
  *  @return             OSHMEM_SUCCESS or failure status.
  */
-typedef int mca_spml_base_module_wait_until_all_fn_t(void *ivars,
+typedef int (*mca_spml_base_module_wait_until_all_fn_t)(void *ivars,
                                                     int cmp,
                                                     void *cmp_value,
                                                     size_t nelems,
@@ -357,7 +357,7 @@ typedef int mca_spml_base_module_wait_until_all_fn_t(void *ivars,
  *
  *  @return             OSHMEM_SUCCESS or failure status.
  */
-typedef int mca_spml_base_module_wait_until_any_fn_t(void *ivars,
+typedef int (*mca_spml_base_module_wait_until_any_fn_t)(void *ivars,
                                                     int cmp,
                                                     void *cmp_value,
                                                     size_t nelems,
@@ -383,7 +383,7 @@ typedef int mca_spml_base_module_wait_until_any_fn_t(void *ivars,
  *
  *  @return             OSHMEM_SUCCESS or failure status.
  */
-typedef int mca_spml_base_module_wait_until_some_fn_t(void *ivars,
+typedef int (*mca_spml_base_module_wait_until_some_fn_t)(void *ivars,
                                                     int cmp,
                                                     void *cmp_value,
                                                     size_t nelems,
@@ -410,7 +410,7 @@ typedef int mca_spml_base_module_wait_until_some_fn_t(void *ivars,
  *
  *  @return             OSHMEM_SUCCESS or failure status.
  */
-typedef int mca_spml_base_module_wait_until_all_vector_fn_t(void *ivars,
+typedef int (*mca_spml_base_module_wait_until_all_vector_fn_t)(void *ivars,
                                                     int cmp,
                                                     void *cmp_values,
                                                     size_t nelems,
@@ -433,7 +433,7 @@ typedef int mca_spml_base_module_wait_until_all_vector_fn_t(void *ivars,
  *
  *  @return             OSHMEM_SUCCESS or failure status.
  */
-typedef int mca_spml_base_module_wait_until_any_vector_fn_t(void *ivars,
+typedef int (*mca_spml_base_module_wait_until_any_vector_fn_t)(void *ivars,
                                                     int cmp,
                                                     void *cmp_value,
                                                     size_t nelems,
@@ -460,7 +460,7 @@ typedef int mca_spml_base_module_wait_until_any_vector_fn_t(void *ivars,
  *
  *  @return             OSHMEM_SUCCESS or failure status.
  */
-typedef int mca_spml_base_module_wait_until_some_vector_fn_t(void *ivars,
+typedef int (*mca_spml_base_module_wait_until_some_vector_fn_t)(void *ivars,
                                                     int cmp,
                                                     void *cmp_value,
                                                     size_t nelems,
@@ -488,7 +488,7 @@ typedef int mca_spml_base_module_wait_until_some_vector_fn_t(void *ivars,
  */
 
 
-typedef int mca_spml_base_module_test_all_fn_t(void *ivars,
+typedef int (*mca_spml_base_module_test_all_fn_t)(void *ivars,
                                                     int cmp,
                                                     void *cmp_value,
                                                     size_t nelems,
@@ -511,7 +511,7 @@ typedef int mca_spml_base_module_test_all_fn_t(void *ivars,
  *
  *  @return             OSHMEM_SUCCESS or failure status.
  */
-typedef int mca_spml_base_module_test_any_fn_t(void *ivars,
+typedef int (*mca_spml_base_module_test_any_fn_t)(void *ivars,
                                                     int cmp,
                                                     void *cmp_value,
                                                     size_t nelems,
@@ -537,7 +537,7 @@ typedef int mca_spml_base_module_test_any_fn_t(void *ivars,
  *
  *  @return             OSHMEM_SUCCESS or failure status.
  */
-typedef int mca_spml_base_module_test_some_fn_t(void *ivars,
+typedef int (*mca_spml_base_module_test_some_fn_t)(void *ivars,
                                                     int cmp,
                                                     void *cmp_value,
                                                     size_t nelems,
@@ -564,7 +564,7 @@ typedef int mca_spml_base_module_test_some_fn_t(void *ivars,
  *
  *  @return             OSHMEM_SUCCESS or failure status.
  */
-typedef int mca_spml_base_module_test_all_vector_fn_t(void *ivars,
+typedef int (*mca_spml_base_module_test_all_vector_fn_t)(void *ivars,
                                                     int cmp,
                                                     void *cmp_values,
                                                     size_t nelems,
@@ -588,7 +588,7 @@ typedef int mca_spml_base_module_test_all_vector_fn_t(void *ivars,
  *
  *  @return             OSHMEM_SUCCESS or failure status.
  */
-typedef int mca_spml_base_module_test_any_vector_fn_t(void *ivars,
+typedef int (*mca_spml_base_module_test_any_vector_fn_t)(void *ivars,
                                                     int cmp,
                                                     void *cmp_values,
                                                     size_t nelems,
@@ -615,13 +615,27 @@ typedef int mca_spml_base_module_test_any_vector_fn_t(void *ivars,
  *
  *  @return             OSHMEM_SUCCESS or failure status.
  */
-typedef int mca_spml_base_module_test_some_vector_fn_t(void *ivars,
+typedef int (*mca_spml_base_module_test_some_vector_fn_t)(void *ivars,
                                                     int cmp,
                                                     void *cmp_values,
                                                     size_t nelems,
                                                     size_t *indices,
                                                     const int *status,
                                                     int datatype); 
+
+/*
+ *  Registers the arrival of a PE at a synchronization point. 
+ *  This routine does not return until all other PEs in a given
+ *  OpenSHMEM team or active set arrive at this synchronization point.
+ *
+ *
+ *  @param  team       An OpenSHMEM team handle.
+ *
+ *  @return            OSHMEM_SUCCESS or failure status. 
+ *                     Zero on successful local completion. Nonzero otherwise.
+ */
+typedef int (*mca_spml_base_module_team_sync_fn_t)(shmem_team_t team);
+
 
 /*
  *  Returns the number of the calling PE within a specified team.
@@ -632,7 +646,7 @@ typedef int mca_spml_base_module_test_some_vector_fn_t(void *ivars,
  *                     team, or the value -1 if the team handle compares 
  *                     equal to SHMEM_TEAM_INVALID
  */
-typedef int mca_spml_base_module_team_my_pe_fn_t(shmem_team_t team);
+typedef int (*mca_spml_base_module_team_my_pe_fn_t)(shmem_team_t team);
 
 
 /*
@@ -644,7 +658,7 @@ typedef int mca_spml_base_module_team_my_pe_fn_t(shmem_team_t team);
  *                     value -1 if the team handle compares equal to 
  *                     SHMEM_TEAM_INVALID.
  */
-typedef int mca_spml_base_module_team_n_pes_fn_t(shmem_team_t team);
+typedef int (*mca_spml_base_module_team_n_pes_fn_t)(shmem_team_t team);
 
 
 
@@ -664,7 +678,7 @@ typedef int mca_spml_base_module_team_n_pes_fn_t(shmem_team_t team);
  *  @return                 OSHMEM_SUCCESS or failure status.
  *
  */
-typedef int mca_spml_base_module_team_get_config_fn_t(shmem_team_t team, long
+typedef int (*mca_spml_base_module_team_get_config_fn_t)(shmem_team_t team, long
         config_mask, shmem_team_config_t *config);
 
 /*
@@ -680,7 +694,7 @@ typedef int mca_spml_base_module_team_get_config_fn_t(shmem_team_t team, long
  *                      of -1 if any team handle arguments are invalid or the
  *                      src_pe is not in both the source and destination teams.
  */
-typedef int mca_spml_base_module_team_translate_pe_fn_t(shmem_team_t src_team,
+typedef int (*mca_spml_base_module_team_translate_pe_fn_t)(shmem_team_t src_team,
         int src_pe, shmem_team_t dest_team);
 
 
@@ -708,7 +722,7 @@ typedef int mca_spml_base_module_team_translate_pe_fn_t(shmem_team_t src_team,
  *  @return                OSHMEM_SUCCESS or failure status.
  *  
  */
-typedef int mca_spml_base_module_team_split_strided_fn_t(shmem_team_t
+typedef int (*mca_spml_base_module_team_split_strided_fn_t)(shmem_team_t
         parent_team, int start, int stride, int size, const shmem_team_config_t
         *config, long config_mask, shmem_team_t *new_team);
 
@@ -734,7 +748,7 @@ typedef int mca_spml_base_module_team_split_strided_fn_t(shmem_team_t
  *  @return                OSHMEM_SUCCESS or failure status.
  *  
  */
-typedef int mca_spml_base_module_team_split_2d_fn_t(shmem_team_t parent_team,
+typedef int (*mca_spml_base_module_team_split_2d_fn_t)(shmem_team_t parent_team,
         int xrange, const shmem_team_config_t *xaxis_config, long xaxis_mask,
         shmem_team_t *xaxis_team, const shmem_team_config_t *yaxis_config, long
         yaxis_mask, shmem_team_t *yaxis_team);
@@ -748,7 +762,7 @@ typedef int mca_spml_base_module_team_split_2d_fn_t(shmem_team_t parent_team,
  *  @return                OSHMEM_SUCCESS or failure status.
  *  
  */
-typedef int  mca_spml_base_module_team_destroy_fn_t(shmem_team_t team);
+typedef int (*mca_spml_base_module_team_destroy_fn_t)(shmem_team_t team);
 
 /*
  *  Exchanges a fixed amount of contiguous data blocks between all pairs of 
@@ -765,7 +779,7 @@ typedef int  mca_spml_base_module_team_destroy_fn_t(shmem_team_t team);
  *  @return            OSHMEM_SUCCESS or failure status.
  *
  */
-typedef int mca_spml_base_module_team_alltoall_fn_t(shmem_team_t team, void
+typedef int (*mca_spml_base_module_team_alltoall_fn_t)(shmem_team_t team, void
         *dest, const void *source, size_t nelems, int datatype);
 
 /*
@@ -787,7 +801,7 @@ typedef int mca_spml_base_module_team_alltoall_fn_t(shmem_team_t team, void
  *  @return            OSHMEM_SUCCESS or failure status.
  *
  */
-typedef int mca_spml_base_module_team_alltoalls_fn_t(shmem_team_t team, void
+typedef int (*mca_spml_base_module_team_alltoalls_fn_t)(shmem_team_t team, void
         *dest, const void *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems,
         int datatype);
 
@@ -806,7 +820,7 @@ typedef int mca_spml_base_module_team_alltoalls_fn_t(shmem_team_t team, void
  *  @return            OSHMEM_SUCCESS or failure status.
  *
  */
-typedef int mca_spml_base_module_team_broadcast_fn_t(shmem_team_t team, void
+typedef int (*mca_spml_base_module_team_broadcast_fn_t)(shmem_team_t team, void
         *dest, const void *source, size_t nelems, int PE_root, int datatype);
 
 
@@ -825,9 +839,9 @@ typedef int mca_spml_base_module_team_broadcast_fn_t(shmem_team_t team, void
  *  @return            OSHMEM_SUCCESS or failure status.
  *
  */
-typedef int mca_spml_base_module_team_collect_fn_t(shmem_team_t team, void
+typedef int (*mca_spml_base_module_team_collect_fn_t)(shmem_team_t team, void
         *dest, const void *source, size_t nelems, int datatype);
-typedef int mca_spml_base_module_team_fcollect_fn_t(shmem_team_t team, void
+typedef int (*mca_spml_base_module_team_fcollect_fn_t)(shmem_team_t team, void
         *dest, const void *source, size_t nelems, int datatype);
 
 /*
@@ -845,7 +859,7 @@ typedef int mca_spml_base_module_team_fcollect_fn_t(shmem_team_t team, void
  *  @return            OSHMEM_SUCCESS or failure status.
  *
  */
-typedef int mca_spml_base_module_team_reduce_fn_t(shmem_team_t team, void
+typedef int (*mca_spml_base_module_team_reduce_fn_t)(shmem_team_t team, void
         *dest, const void *source, size_t nreduce, int operation, int datatype);
 
 
@@ -1015,6 +1029,7 @@ struct mca_spml_base_module_1_0_0_t {
     mca_spml_base_module_test_any_vector_fn_t        spml_test_any_vector;
     mca_spml_base_module_test_some_vector_fn_t       spml_test_some_vector;
     
+    mca_spml_base_module_team_sync_fn_t              spml_team_sync;
     mca_spml_base_module_team_my_pe_fn_t             spml_team_my_pe;
     mca_spml_base_module_team_n_pes_fn_t             spml_team_n_pes;
     mca_spml_base_module_team_get_config_fn_t        spml_team_get_config;

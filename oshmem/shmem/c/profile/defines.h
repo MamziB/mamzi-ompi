@@ -76,6 +76,7 @@
 /*
  * Team management routines
  */
+#define shmem_team_sync              pshmem_team_sync
 #define shmem_team_my_pe             pshmem_team_my_pe
 #define shmem_team_n_pes             pshmem_team_n_pes
 #define shmem_team_get_config        pshmem_team_get_config
@@ -1844,7 +1845,6 @@
  */
 #define shmem_barrier                pshmem_barrier
 #define shmem_barrier_all            pshmem_barrier_all
-#define shmem_sync                   pshmem_sync
 #define shmem_sync_all               pshmem_sync_all
 #define shmem_fence                  pshmem_fence
 #define shmem_ctx_fence              pshmem_ctx_fence

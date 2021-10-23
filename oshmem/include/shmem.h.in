@@ -3372,7 +3372,6 @@ OSHMEM_DECLSPEC  size_t shmem_ptrdiff_test_some_vector(volatile ptrdiff_t *ivars
  */
 OSHMEM_DECLSPEC  void shmem_barrier(int PE_start, int logPE_stride, int PE_size, long *pSync);
 OSHMEM_DECLSPEC  void shmem_barrier_all(void);
-OSHMEM_DECLSPEC  void shmem_sync(int PE_start, int logPE_stride, int PE_size, long *pSync);
 OSHMEM_DECLSPEC  void shmem_sync_all(void);
 OSHMEM_DECLSPEC  void shmem_fence(void);
 OSHMEM_DECLSPEC  void shmem_ctx_fence(shmem_ctx_t ctx);
@@ -3384,7 +3383,6 @@ OSHMEM_DECLSPEC  void shmem_ctx_quiet(shmem_ctx_t ctx);
  */
 OSHMEM_DECLSPEC void shmem_broadcast32(void *target, const void *source, size_t nlong, int PE_root, int PE_start, int logPE_stride, int PE_size, long *pSync);
 OSHMEM_DECLSPEC void shmem_broadcast64(void *target, const void *source, size_t nlong, int PE_root, int PE_start, int logPE_stride, int PE_size, long *pSync);
-OSHMEM_DECLSPEC void shmem_broadcast(void *target, const void *source, size_t nlong, int PE_root, int PE_start, int logPE_stride, int PE_size, long *pSync);
 OSHMEM_DECLSPEC void shmem_collect32(void *target, const void *source, size_t nlong, int PE_start, int logPE_stride, int PE_size, long *pSync);
 OSHMEM_DECLSPEC void shmem_collect64(void *target, const void *source, size_t nlong, int PE_start, int logPE_stride, int PE_size, long *pSync);
 OSHMEM_DECLSPEC void shmem_fcollect32(void *target, const void *source, size_t nlong, int PE_start, int logPE_stride, int PE_size, long *pSync);
