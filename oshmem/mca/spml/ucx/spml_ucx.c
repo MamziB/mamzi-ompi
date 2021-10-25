@@ -1623,14 +1623,14 @@ int mca_spml_ucx_team_destroy(shmem_team_t team)
 }
 
 /* This routine is not implemented */
-int mca_spml_base_module_team_alltoall_fn_t(shmem_team_t team, void
+int mca_spml_ucx_team_alltoall(shmem_team_t team, void
         *dest, const void *source, size_t nelems, int datatype)
 {
     return OSHMEM_ERR_NOT_SUPPORTED;
 }
 
 /* This routine is not implemented */
-int mca_spml_base_module_team_alltoalls_fn_t(shmem_team_t team, void
+int mca_spml_ucx_team_alltoalls(shmem_team_t team, void
         *dest, const void *source, ptrdiff_t dst, ptrdiff_t sst, size_t nelems,
         int datatype)
 {
@@ -1638,28 +1638,28 @@ int mca_spml_base_module_team_alltoalls_fn_t(shmem_team_t team, void
 }
 
 /* This routine is not implemented */
-int mca_spml_base_module_team_broadcast_fn_t(shmem_team_t team, void
+int mca_spml_ucx_team_broadcast(shmem_team_t team, void
         *dest, const void *source, size_t nelems, int PE_root, int datatype)
 {
     return OSHMEM_ERR_NOT_SUPPORTED;
 }
 
 /* This routine is not implemented */
-int mca_spml_base_module_team_collect_fn_t(shmem_team_t team, void
+int mca_spml_ucx_team_collect(shmem_team_t team, void
         *dest, const void *source, size_t nelems, int datatype)
 {
     return OSHMEM_ERR_NOT_SUPPORTED;
 }
 
 /* This routine is not implemented */
-int mca_spml_base_module_team_fcollect_fn_t(shmem_team_t team, void
+int mca_spml_ucx_team_fcollect(shmem_team_t team, void
         *dest, const void *source, size_t nelems, int datatype)
 {
     return OSHMEM_ERR_NOT_SUPPORTED;
 }
 
 /* This routine is not implemented */
-int mca_spml_base_module_team_reduce_fn_t(shmem_team_t team, void
+int mca_spml_ucx_team_reduce(shmem_team_t team, void
         *dest, const void *source, size_t nreduce, int operation, int datatype)
 {
     return OSHMEM_ERR_NOT_SUPPORTED;
