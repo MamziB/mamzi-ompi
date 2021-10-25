@@ -378,12 +378,12 @@ SHMEM_TYPE_REDUCE_OP(prod, _int64, int64_t, shmemx)
 
 
 #define SHMEM_TYPE_TEAM_REDUCE_OP(_op, type_name, type, op_code, code)                                 \
-    void shmem##type_name##_##_op##_reduce( shmem_team_t team, type *dest, const type *source, size_t nreduce)                                 \
+    int shmem##type_name##_##_op##_reduce( shmem_team_t team, type *dest, const type *source, size_t nreduce)                                 \
 {                                                                                           \
     int rc = OSHMEM_SUCCESS;                                                                \
                                                                                             \
     RUNTIME_CHECK_INIT();                                                                   \
-    RUNTIME_CHECK_ADDR_SIZE(target, nreduce);                                               \
+    RUNTIME_CHECK_ADDR_SIZE(dest, nreduce);                                               \
     RUNTIME_CHECK_ADDR_SIZE(source, nreduce);                                               \
                                                                                             \
     {                                                                                       \
