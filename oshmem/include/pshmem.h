@@ -2548,7 +2548,7 @@ OSHMEM_DECLSPEC void pshmem_uint64_atomic_fetch_and_nbi(uint64_t *fetch, uint64_
                 default:      __opshmem_datatype_ignore),               \
             unsigned int*:       pshmem_uint_atomic_fetch_and_nbi,              \
             unsigned long*:      pshmem_ulong_atomic_fetch_and_nbi,             \
-            unsigned long long*: pshmem_uint64_atomic_fetch_and_nbi)(__VA_ARGS__)
+            unsigned long long*: pshmem_ulonglong_atomic_fetch_and_nbi)(__VA_ARGS__)
 #endif
 
 /* Atomic Nonblocking Fetch and OR */
@@ -2578,7 +2578,7 @@ OSHMEM_DECLSPEC void pshmem_uint64_atomic_fetch_or_nbi(uint64_t *fetch, uint64_t
                 default:      __opshmem_datatype_ignore),               \
             unsigned int*:       pshmem_uint_atomic_fetch_or_nbi,              \
             unsigned long*:      pshmem_ulong_atomic_fetch_or_nbi,             \
-            unsigned long long*: pshmem_uint64_atomic_fetch_or_nbi)(__VA_ARGS__)
+            unsigned long long*: pshmem_ulonglong_atomic_fetch_or_nbi)(__VA_ARGS__)
 #endif
 
 
@@ -2609,7 +2609,7 @@ OSHMEM_DECLSPEC void pshmem_uint64_atomic_fetch_xor_nbi(uint64_t *fetch, uint64_
                 default:      __opshmem_datatype_ignxore),               \
             unsigned int*:       pshmem_uint_atomic_fetch_xor_nbi,              \
             unsigned long*:      pshmem_ulong_atomic_fetch_xor_nbi,             \
-            unsigned long long*: pshmem_uint64_atomic_fetch_xor_nbi)(__VA_ARGS__)
+            unsigned long long*: pshmem_ulonglong_atomic_fetch_xor_nbi)(__VA_ARGS__)
 #endif
 
 /*
@@ -2657,10 +2657,10 @@ OSHMEM_DECLSPEC  void pshmem_ptrdiff_wait_until(volatile ptrdiff_t *addr, int cm
         int*:         pshmem_int_wait_until,                 \
         long*:        pshmem_long_wait_until,                \
         long long*:   pshmem_longlong_wait_until,            \
-        unsigned short*:       pshmem_short_wait_until,      \
-        unsigned int*:         pshmem_int_wait_until,        \
-        unsigned long*:        pshmem_long_wait_until,       \
-        unsigned long long*:   pshmem_longlong_wait_until)(addr, cmp, value)
+        unsigned short*:       pshmem_ushort_wait_until,      \
+        unsigned int*:         pshmem_uint_wait_until,        \
+        unsigned long*:        pshmem_ulong_wait_until,       \
+        unsigned long long*:   pshmem_ulonglong_wait_until)(addr, cmp, value)
 #endif
 
 OSHMEM_DECLSPEC  void pshmem_int_wait_until_all(volatile int *ivars, size_t nelems, const int *status, int cmp, int value);
