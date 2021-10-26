@@ -2673,7 +2673,7 @@ OSHMEM_DECLSPEC void shmem_uint64_atomic_fetch_and_nbi(uint64_t *fetch, uint64_t
                 default:      __oshmem_datatype_ignore),               \
             unsigned int*:       shmem_uint_atomic_fetch_and_nbi,              \
             unsigned long*:      shmem_ulong_atomic_fetch_and_nbi,             \
-            unsigned long long*: shmem_uint64_atomic_fetch_and_nbi)(__VA_ARGS__)
+            unsigned long long*: shmem_ulonglong_atomic_fetch_and_nbi)(__VA_ARGS__)
 #endif
 
 /* Atomic Nonblocking Fetch and OR */
@@ -2703,7 +2703,7 @@ OSHMEM_DECLSPEC void shmem_uint64_atomic_fetch_or_nbi(uint64_t *fetch, uint64_t 
                 default:      __oshmem_datatype_ignore),               \
             unsigned int*:       shmem_uint_atomic_fetch_or_nbi,              \
             unsigned long*:      shmem_ulong_atomic_fetch_or_nbi,             \
-            unsigned long long*: shmem_uint64_atomic_fetch_or_nbi)(__VA_ARGS__)
+            unsigned long long*: shmem_ulonglong_atomic_fetch_or_nbi)(__VA_ARGS__)
 #endif
 
 
@@ -2948,10 +2948,10 @@ OSHMEM_DECLSPEC  int shmem_ptrdiff_test(volatile ptrdiff_t *addr, int cmp, ptrdi
         int*:         shmem_int_test,                 \
         long*:        shmem_long_test,                \
         long long*:   shmem_longlong_test,            \
-        unsigned short*:       shmem_short_test,      \
-        unsigned int*:         shmem_int_test,        \
-        unsigned long*:        shmem_long_test,       \
-        unsigned long long*:   shmem_longlong_test)(addr, cmp, value)
+        unsigned short*:       shmem_ushort_test,      \
+        unsigned int*:         shmem_uint_test,        \
+        unsigned long*:        shmem_ulong_test,       \
+        unsigned long long*:   shmem_ulonglong_test)(addr, cmp, value)
 #endif
 
 OSHMEM_DECLSPEC  int shmem_int_test_all(volatile int *ivars, size_t nelems, const int *status, int cmp, int value);
