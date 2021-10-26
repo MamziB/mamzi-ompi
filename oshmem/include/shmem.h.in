@@ -283,16 +283,6 @@ OSHMEM_DECLSPEC  int shmem_ptrdiff_alltoall(shmem_team_t team, ptrdiff_t *target
                 float*:       shmem_float_alltoall,              \
                 double*:      shmem_double_alltoall,             \
                 long double*: shmem_longdouble_alltoall,         \
-                int8_t*: shmem_int8_alltoall,         \
-                int16_t*: shmem_int16_alltoall,         \
-                int32_t*: shmem_int32_alltoall,         \
-                int64_t*: shmem_int64_alltoall,         \
-                uint8_t*: shmem_uint8_alltoall,         \
-                uint16_t*: shmem_uint16_alltoall,         \
-                uint32_t*: shmem_uint32_alltoall,         \
-                uint64_t*: shmem_uint64_alltoall,         \
-                size_t*: shmem_size_alltoall,         \
-                ptrdiff_t*: shmem_ptrdiff_alltoall,         \
                 default:      __oshmem_datatype_ignore))(__VA_ARGS__)
 #endif
 
@@ -341,16 +331,6 @@ OSHMEM_DECLSPEC  int shmem_ptrdiff_alltoalls(shmem_team_t team, ptrdiff_t *targe
                 float*:       shmem_float_alltoalls,              \
                 double*:      shmem_double_alltoalls,             \
                 long double*: shmem_longdouble_alltoalls,         \
-                int8_t*: shmem_int8_alltoalls,         \
-                int16_t*: shmem_int16_alltoalls,         \
-                int32_t*: shmem_int32_alltoalls,         \
-                int64_t*: shmem_int64_alltoalls,         \
-                uint8_t*: shmem_uint8_alltoalls,         \
-                uint16_t*: shmem_uint16_alltoalls,         \
-                uint32_t*: shmem_uint32_alltoalls,         \
-                uint64_t*: shmem_uint64_alltoalls,         \
-                size_t*: shmem_size_alltoalls,         \
-                ptrdiff_t*: shmem_ptrdiff_alltoalls,         \
                 default:      __oshmem_datatype_ignore))(__VA_ARGS__)
 #endif
 
@@ -400,16 +380,6 @@ OSHMEM_DECLSPEC  int shmem_ptrdiff_broadcast(shmem_team_t team, ptrdiff_t *targe
                 float*:       shmem_float_broadcast,              \
                 double*:      shmem_double_broadcast,             \
                 long double*: shmem_longdouble_broadcast,         \
-                int8_t*: shmem_int8_broadcast,         \
-                int16_t*: shmem_int16_broadcast,         \
-                int32_t*: shmem_int32_broadcast,         \
-                int64_t*: shmem_int64_broadcast,         \
-                uint8_t*: shmem_uint8_broadcast,         \
-                uint16_t*: shmem_uint16_broadcast,         \
-                uint32_t*: shmem_uint32_broadcast,         \
-                uint64_t*: shmem_uint64_broadcast,         \
-                size_t*: shmem_size_broadcast,         \
-                ptrdiff_t*: shmem_ptrdiff_broadcast,         \
                 default:      __oshmem_datatype_ignore))(__VA_ARGS__)
 #endif
 
@@ -458,16 +428,6 @@ OSHMEM_DECLSPEC  int shmem_ptrdiff_collect(shmem_team_t team, ptrdiff_t *target,
                 float*:       shmem_float_collect,              \
                 double*:      shmem_double_collect,             \
                 long double*: shmem_longdouble_collect,         \
-                int8_t*: shmem_int8_collect,         \
-                int16_t*: shmem_int16_collect,         \
-                int32_t*: shmem_int32_collect,         \
-                int64_t*: shmem_int64_collect,         \
-                uint8_t*: shmem_uint8_collect,         \
-                uint16_t*: shmem_uint16_collect,         \
-                uint32_t*: shmem_uint32_collect,         \
-                uint64_t*: shmem_uint64_collect,         \
-                size_t*: shmem_size_collect,         \
-                ptrdiff_t*: shmem_ptrdiff_collect,         \
                 default:      __oshmem_datatype_ignore))(__VA_ARGS__)
 #endif
 
@@ -517,16 +477,6 @@ OSHMEM_DECLSPEC  int shmem_ptrdiff_fcollect(shmem_team_t team, ptrdiff_t *target
                 float*:       shmem_float_fcollect,              \
                 double*:      shmem_double_fcollect,             \
                 long double*: shmem_longdouble_fcollect,         \
-                int8_t*: shmem_int8_fcollect,         \
-                int16_t*: shmem_int16_fcollect,         \
-                int32_t*: shmem_int32_fcollect,         \
-                int64_t*: shmem_int64_fcollect,         \
-                uint8_t*: shmem_uint8_fcollect,         \
-                uint16_t*: shmem_uint16_fcollect,         \
-                uint32_t*: shmem_uint32_fcollect,         \
-                uint64_t*: shmem_uint64_fcollect,         \
-                size_t*: shmem_size_fcollect,         \
-                ptrdiff_t*: shmem_ptrdiff_fcollect,         \
                 default:      __oshmem_datatype_ignore))(__VA_ARGS__)
 #endif
 
@@ -558,15 +508,6 @@ OSHMEM_DECLSPEC  int shmem_size_and_reduce(shmem_team_t team, size_t *target, co
                 unsigned int*:       shmem_uint_and_reduce,        \
                 unsigned long*:      shmem_ulong_and_reduce,       \
                 unsigned long long*: shmem_ulonglong_and_reduce,   \
-                int8_t*: shmem_int8_and_reduce,         \
-                int16_t*: shmem_int16_and_reduce,         \
-                int32_t*: shmem_int32_and_reduce,         \
-                int64_t*: shmem_int64_and_reduce,         \
-                uint8_t*: shmem_uint8_and_reduce,         \
-                uint16_t*: shmem_uint16_and_reduce,         \
-                uint32_t*: shmem_uint32_and_reduce,         \
-                uint64_t*: shmem_uint64_and_reduce,         \
-                size_t*: shmem_size_and_reduce,         \
                 default:      __oshmem_datatype_ignore))(__VA_ARGS__)
 #endif
 
@@ -595,15 +536,6 @@ OSHMEM_DECLSPEC  int shmem_size_or_reduce(shmem_team_t team, size_t *target, con
                 unsigned int*:       shmem_uint_or_reduce,        \
                 unsigned long*:      shmem_ulong_or_reduce,       \
                 unsigned long long*: shmem_ulonglong_or_reduce,   \
-                int8_t*: shmem_int8_or_reduce,         \
-                int16_t*: shmem_int16_or_reduce,         \
-                int32_t*: shmem_int32_or_reduce,         \
-                int64_t*: shmem_int64_or_reduce,         \
-                uint8_t*: shmem_uint8_or_reduce,         \
-                uint16_t*: shmem_uint16_or_reduce,         \
-                uint32_t*: shmem_uint32_or_reduce,         \
-                uint64_t*: shmem_uint64_or_reduce,         \
-                size_t*: shmem_size_or_reduce,         \
                 default:      __oshmem_datatype_ignore))(__VA_ARGS__)
 #endif
 
@@ -633,15 +565,6 @@ OSHMEM_DECLSPEC  int shmem_size_xor_reduce(shmem_team_t team, size_t *target, co
                 unsigned int*:       shmem_uint_xor_reduce,        \
                 unsigned long*:      shmem_ulong_xor_reduce,       \
                 unsigned long long*: shmem_ulonglong_xor_reduce,   \
-                int8_t*: shmem_int8_xor_reduce,         \
-                int16_t*: shmem_int16_xor_reduce,         \
-                int32_t*: shmem_int32_xor_reduce,         \
-                int64_t*: shmem_int64_xor_reduce,         \
-                uint8_t*: shmem_uint8_xor_reduce,         \
-                uint16_t*: shmem_uint16_xor_reduce,         \
-                uint32_t*: shmem_uint32_xor_reduce,         \
-                uint64_t*: shmem_uint64_xor_reduce,         \
-                size_t*: shmem_size_xor_reduce,         \
                 default:      __oshmem_datatype_ignore))(__VA_ARGS__)
 #endif
 
@@ -688,16 +611,6 @@ OSHMEM_DECLSPEC  int shmem_ptrdiff_max_reduce(shmem_team_t team, ptrdiff_t *targ
                 float*:       shmem_float_max_reduce,              \
                 double*:      shmem_double_max_reduce,             \
                 long double*: shmem_longdouble_max_reduce,         \
-                int8_t*: shmem_int8_max_reduce,         \
-                int16_t*: shmem_int16_max_reduce,         \
-                int32_t*: shmem_int32_max_reduce,         \
-                int64_t*: shmem_int64_max_reduce,         \
-                uint8_t*: shmem_uint8_max_reduce,         \
-                uint16_t*: shmem_uint16_max_reduce,         \
-                uint32_t*: shmem_uint32_max_reduce,         \
-                uint64_t*: shmem_uint64_max_reduce,         \
-                size_t*: shmem_size_max_reduce,         \
-                ptrdiff_t*: shmem_ptrdiff_max_reduce,         \
                 default:      __oshmem_datatype_ignore))(__VA_ARGS__)
 #endif
 
@@ -745,16 +658,6 @@ OSHMEM_DECLSPEC  int shmem_ptrdiff_min_reduce(shmem_team_t team, ptrdiff_t *targ
                 float*:       shmem_float_min_reduce,              \
                 double*:      shmem_double_min_reduce,             \
                 long double*: shmem_longdouble_min_reduce,         \
-                int8_t*: shmem_int8_min_reduce,         \
-                int16_t*: shmem_int16_min_reduce,         \
-                int32_t*: shmem_int32_min_reduce,         \
-                int64_t*: shmem_int64_min_reduce,         \
-                uint8_t*: shmem_uint8_min_reduce,         \
-                uint16_t*: shmem_uint16_min_reduce,         \
-                uint32_t*: shmem_uint32_min_reduce,         \
-                uint64_t*: shmem_uint64_min_reduce,         \
-                size_t*: shmem_size_min_reduce,         \
-                ptrdiff_t*: shmem_ptrdiff_min_reduce,         \
                 default:      __oshmem_datatype_ignore))(__VA_ARGS__)
 #endif
 
@@ -805,16 +708,6 @@ OSHMEM_DECLSPEC  int shmem_complexf_sum_reduce(shmem_team_t team, float _Complex
                 float*:       shmem_float_sum_reduce,              \
                 double*:      shmem_double_sum_reduce,             \
                 long double*: shmem_longdouble_sum_reduce,         \
-                int8_t*: shmem_int8_sum_reduce,         \
-                int16_t*: shmem_int16_sum_reduce,         \
-                int32_t*: shmem_int32_sum_reduce,         \
-                int64_t*: shmem_int64_sum_reduce,         \
-                uint8_t*: shmem_uint8_sum_reduce,         \
-                uint16_t*: shmem_uint16_sum_reduce,         \
-                uint32_t*: shmem_uint32_sum_reduce,         \
-                uint64_t*: shmem_uint64_sum_reduce,         \
-                size_t*: shmem_size_sum_reduce,         \
-                ptrdiff_t*: shmem_ptrdiff_sum_reduce,         \
                 double _Complex*: shmem_complexd_sum_reduce,         \
                 float _Complex*: shmem_complexf_sum_reduce,         \
                 default:      __oshmem_datatype_ignore))(__VA_ARGS__)
@@ -866,16 +759,6 @@ OSHMEM_DECLSPEC  int shmem_complexf_prod_reduce(shmem_team_t team, float _Comple
                 float*:       shmem_float_prod_reduce,              \
                 double*:      shmem_double_prod_reduce,             \
                 long double*: shmem_longdouble_prod_reduce,         \
-                int8_t*: shmem_int8_prod_reduce,         \
-                int16_t*: shmem_int16_prod_reduce,         \
-                int32_t*: shmem_int32_prod_reduce,         \
-                int64_t*: shmem_int64_prod_reduce,         \
-                uint8_t*: shmem_uint8_prod_reduce,         \
-                uint16_t*: shmem_uint16_prod_reduce,         \
-                uint32_t*: shmem_uint32_prod_reduce,         \
-                uint64_t*: shmem_uint64_prod_reduce,         \
-                size_t*: shmem_size_prod_reduce,         \
-                ptrdiff_t*: shmem_ptrdiff_prod_reduce,         \
                 double _Complex*: shmem_complexd_prod_reduce,         \
                 float _Complex*: shmem_complexf_prod_reduce,         \
                 default:      __oshmem_datatype_ignore))(__VA_ARGS__)
@@ -2555,12 +2438,6 @@ OSHMEM_DECLSPEC void shmem_ptrdiff_atomic_fetch_nbi(ptrdiff_t *fetch, const ptrd
                 unsigned long long*: shmem_ctx_ulonglong_atomic_fetch_nbi, \
                 float*:       shmem_ctx_float_atomic_fetch_nbi,            \
                 double*:      shmem_ctx_double_atomic_fetch_nbi,           \
-                int32_t*:      shmem_ctx_int32_atomic_fetch_nbi,           \
-                int64_t*:      shmem_ctx_int64_atomic_fetch_nbi,           \
-                uint32_t*:      shmem_ctx_uint32_atomic_fetch_nbi,           \
-                uint64_t*:      shmem_ctx_uint64_atomic_fetch_nbi,           \
-                size_t*:      shmem_ctx_size_atomic_fetch_nbi,           \
-                ptrdiff_t*:      shmem_ctx_ptrdiff_atomic_fetch_nbi,           \
                 default:      __oshmem_datatype_ignore),               \
             int*:        shmem_int_atomic_fetch_nbi,                       \
             long*:       shmem_long_atomic_fetch_nbi,                      \
@@ -2569,13 +2446,7 @@ OSHMEM_DECLSPEC void shmem_ptrdiff_atomic_fetch_nbi(ptrdiff_t *fetch, const ptrd
             unsigned long*:      shmem_ulong_atomic_fetch_nbi,             \
             unsigned long long*: shmem_ulonglong_atomic_fetch_nbi,         \
             float*:       shmem_float_atomic_fetch_nbi,                    \
-            double*:      shmem_double_atomic_fetch_nbi,                    \
-            int32_t*:      shmem_int32_atomic_fetch_nbi,                    \
-            int64_t*:      shmem_int64_atomic_fetch_nbi,                    \
-            uint32_t*:      shmem_uint32_atomic_fetch_nbi,                    \
-            uint64_t*:      shmem_uint64_atomic_fetch_nbi,                    \
-            size_t*:      shmem_size_atomic_fetch_nbi,                    \
-            ptrdiff_t*:      shmem_ptrdiff_atomic_fetch_nbi)(__VA_ARGS__)
+            double*:      shmem_double_atomic_fetch_nbi)(__VA_ARGS__)
 #endif
 
 
@@ -2616,25 +2487,13 @@ OSHMEM_DECLSPEC void shmem_ptrdiff_atomic_compare_swap_nbi(ptrdiff_t *fetch, ptr
                 unsigned int*:       shmem_ctx_uint_atomic_compare_swap_nbi,      \
                 unsigned long*:      shmem_ctx_ulong_atomic_compare_swap_nbi,     \
                 unsigned long long*: shmem_ctx_ulonglong_atomic_compare_swap_nbi, \
-                int32_t*:      shmem_ctx_int32_atomic_compare_swap_nbi,           \
-                int64_t*:      shmem_ctx_int64_atomic_compare_swap_nbi,           \
-                uint32_t*:      shmem_ctx_uint32_atomic_compare_swap_nbi,           \
-                uint64_t*:      shmem_ctx_uint64_atomic_compare_swap_nbi,           \
-                size_t*:      shmem_ctx_size_atomic_compare_swap_nbi,           \
-                ptrdiff_t*:      shmem_ctx_ptrdiff_atomic_compare_swap_nbi,           \
                 default:      __oshmem_datatype_ignore),               \
             int*:        shmem_int_atomic_compare_swap_nbi,                       \
             long*:       shmem_long_atomic_compare_swap_nbi,                      \
             long long*:  shmem_longlong_atomic_compare_swap_nbi,                  \
             unsigned int*:       shmem_uint_atomic_compare_swap_nbi,              \
             unsigned long*:      shmem_ulong_atomic_compare_swap_nbi,             \
-            unsigned long long*: shmem_ulonglong_atomic_compare_swap_nbi,         \
-            int32_t*:      shmem_int32_atomic_compare_swap_nbi,                    \
-            int64_t*:      shmem_int64_atomic_compare_swap_nbi,                    \
-            uint32_t*:      shmem_uint32_atomic_compare_swap_nbi,                    \
-            uint64_t*:      shmem_uint64_atomic_compare_swap_nbi,                    \
-            size_t*:      shmem_size_atomic_compare_swap_nbi,                    \
-            ptrdiff_t*:      shmem_ptrdiff_atomic_compare_swap_nbi)(__VA_ARGS__)
+            unsigned long long*: shmem_ulonglong_atomic_compare_swap_nbi)(__VA_ARGS__)
 #endif
 
 /* Atomic Nonblocking Swap */
@@ -2678,14 +2537,8 @@ OSHMEM_DECLSPEC void shmem_ptrdiff_atomic_swap_nbi(ptrdiff_t *fetch, ptrdiff_t *
                 unsigned int*:       shmem_ctx_uint_atomic_swap_nbi,      \
                 unsigned long*:      shmem_ctx_ulong_atomic_swap_nbi,     \
                 unsigned long long*: shmem_ctx_ulonglong_atomic_swap_nbi, \
-                float*:      shmem_ctx_ptrdiff_atomic_swap_nbi,           \
-                double*:      shmem_ctx_ptrdiff_atomic_swap_nbi,           \
-                int32_t*:      shmem_ctx_int32_atomic_swap_nbi,           \
-                int64_t*:      shmem_ctx_int64_atomic_swap_nbi,           \
-                uint32_t*:      shmem_ctx_uint32_atomic_swap_nbi,           \
-                uint64_t*:      shmem_ctx_uint64_atomic_swap_nbi,           \
-                size_t*:      shmem_ctx_size_atomic_swap_nbi,           \
-                ptrdiff_t*:      shmem_ctx_ptrdiff_atomic_swap_nbi,           \
+                float*:      shmem_ctx_float_atomic_swap_nbi,           \
+                double*:      shmem_ctx_double_atomic_swap_nbi,           \
                 default:      __oshmem_datatype_ignore),               \
             int*:        shmem_int_atomic_swap_nbi,                       \
             long*:       shmem_long_atomic_swap_nbi,                      \
@@ -2694,13 +2547,7 @@ OSHMEM_DECLSPEC void shmem_ptrdiff_atomic_swap_nbi(ptrdiff_t *fetch, ptrdiff_t *
             unsigned long*:      shmem_ulong_atomic_swap_nbi,             \
             unsigned long long*: shmem_ulonglong_atomic_swap_nbi,         \
             float*:      shmem_int32_atomic_swap_nbi,                    \
-            double*:      shmem_int32_atomic_swap_nbi,                    \
-            int32_t*:      shmem_int32_atomic_swap_nbi,                    \
-            int64_t*:      shmem_int64_atomic_swap_nbi,                    \
-            uint32_t*:      shmem_uint32_atomic_swap_nbi,                    \
-            uint64_t*:      shmem_uint64_atomic_swap_nbi,                    \
-            size_t*:      shmem_size_atomic_swap_nbi,                    \
-            ptrdiff_t*:      shmem_ptrdiff_atomic_swap_nbi)(__VA_ARGS__)
+            double*:     shmem_double_atomic_swap_nbi)(__VA_ARGS__)
 #endif
 
 
@@ -2742,25 +2589,13 @@ OSHMEM_DECLSPEC void shmem_ptrdiff_atomic_fetch_inc_nbi(ptrdiff_t *fetch, ptrdif
                 unsigned int*:       shmem_ctx_uint_atomic_fetch_inc_nbi,      \
                 unsigned long*:      shmem_ctx_ulong_atomic_fetch_inc_nbi,     \
                 unsigned long long*: shmem_ctx_ulonglong_atomic_fetch_inc_nbi, \
-                int32_t*:      shmem_ctx_int32_atomic_fetch_inc_nbi,           \
-                int64_t*:      shmem_ctx_int64_atomic_fetch_inc_nbi,           \
-                uint32_t*:      shmem_ctx_uint32_atomic_fetch_inc_nbi,           \
-                uint64_t*:      shmem_ctx_uint64_atomic_fetch_inc_nbi,           \
-                size_t*:      shmem_ctx_size_atomic_fetch_inc_nbi,           \
-                ptrdiff_t*:      shmem_ctx_ptrdiff_atomic_fetch_inc_nbi,           \
                 default:      __oshmem_datatype_ignore),               \
             int*:        shmem_int_atomic_fetch_inc_nbi,                       \
             long*:       shmem_long_atomic_fetch_inc_nbi,                      \
             long long*:  shmem_longlong_atomic_fetch_inc_nbi,                  \
             unsigned int*:       shmem_uint_atomic_fetch_inc_nbi,              \
             unsigned long*:      shmem_ulong_atomic_fetch_inc_nbi,             \
-            unsigned long long*: shmem_ulonglong_atomic_fetch_inc_nbi,         \
-            int32_t*:      shmem_int32_atomic_fetch_inc_nbi,                    \
-            int64_t*:      shmem_int64_atomic_fetch_inc_nbi,                    \
-            uint32_t*:      shmem_uint32_atomic_fetch_inc_nbi,                    \
-            uint64_t*:      shmem_uint64_atomic_fetch_inc_nbi,                    \
-            size_t*:      shmem_size_atomic_fetch_inc_nbi,                    \
-            ptrdiff_t*:      shmem_ptrdiff_atomic_fetch_inc_nbi)(__VA_ARGS__)
+            unsigned long long*: shmem_ulonglong_atomic_fetch_inc_nbi)(__VA_ARGS__)
 #endif
 
 
@@ -2801,25 +2636,13 @@ OSHMEM_DECLSPEC void shmem_ptrdiff_atomic_fetch_add_nbi(ptrdiff_t *fetch, ptrdif
                 unsigned int*:       shmem_ctx_uint_atomic_fetch_add_nbi,      \
                 unsigned long*:      shmem_ctx_ulong_atomic_fetch_add_nbi,     \
                 unsigned long long*: shmem_ctx_ulonglong_atomic_fetch_add_nbi, \
-                int32_t*:      shmem_ctx_int32_atomic_fetch_add_nbi,           \
-                int64_t*:      shmem_ctx_int64_atomic_fetch_add_nbi,           \
-                uint32_t*:      shmem_ctx_uint32_atomic_fetch_add_nbi,           \
-                uint64_t*:      shmem_ctx_uint64_atomic_fetch_add_nbi,           \
-                size_t*:      shmem_ctx_size_atomic_fetch_add_nbi,           \
-                ptrdiff_t*:      shmem_ctx_ptrdiff_atomic_fetch_add_nbi,           \
                 default:      __oshmem_datatype_ignore),               \
             int*:        shmem_int_atomic_fetch_add_nbi,                       \
             long*:       shmem_long_atomic_fetch_add_nbi,                      \
             long long*:  shmem_longlong_atomic_fetch_add_nbi,                  \
             unsigned int*:       shmem_uint_atomic_fetch_add_nbi,              \
             unsigned long*:      shmem_ulong_atomic_fetch_add_nbi,             \
-            unsigned long long*: shmem_ulonglong_atomic_fetch_add_nbi,         \
-            int32_t*:      shmem_int32_atomic_fetch_add_nbi,                    \
-            int64_t*:      shmem_int64_atomic_fetch_add_nbi,                    \
-            uint32_t*:      shmem_uint32_atomic_fetch_add_nbi,                    \
-            uint64_t*:      shmem_uint64_atomic_fetch_add_nbi,                    \
-            size_t*:      shmem_size_atomic_fetch_add_nbi,                    \
-            ptrdiff_t*:      shmem_ptrdiff_atomic_fetch_add_nbi)(__VA_ARGS__)
+            unsigned long long*: shmem_ulonglong_atomic_fetch_add_nbi)(__VA_ARGS__)
 #endif
 
 
@@ -2847,18 +2670,10 @@ OSHMEM_DECLSPEC void shmem_uint64_atomic_fetch_and_nbi(uint64_t *fetch, uint64_t
                 unsigned int*:       shmem_ctx_uint_atomic_fetch_and_nbi,      \
                 unsigned long*:      shmem_ctx_ulong_atomic_fetch_and_nbi,     \
                 unsigned long long*: shmem_ctx_ulonglong_atomic_fetch_and_nbi, \
-                int32_t*:      shmem_ctx_int32_atomic_fetch_and_nbi,           \
-                int64_t*:      shmem_ctx_int64_atomic_fetch_and_nbi,           \
-                uint32_t*:      shmem_ctx_uint32_atomic_fetch_and_nbi,           \
-                uint64_t*:      shmem_ctx_uint64_atomic_fetch_and_nbi,           \
                 default:      __oshmem_datatype_ignore),               \
             unsigned int*:       shmem_uint_atomic_fetch_and_nbi,              \
             unsigned long*:      shmem_ulong_atomic_fetch_and_nbi,             \
-            unsigned long long*: shmem_ulonglong_atomic_fetch_and_nbi,         \
-            int32_t*:      shmem_int32_atomic_fetch_and_nbi,                    \
-            int64_t*:      shmem_int64_atomic_fetch_and_nbi,                    \
-            uint32_t*:      shmem_uint32_atomic_fetch_and_nbi,                    \
-            uint64_t*:      shmem_uint64_atomic_fetch_and_nbi)(__VA_ARGS__)
+            unsigned long long*: shmem_uint64_atomic_fetch_and_nbi)(__VA_ARGS__)
 #endif
 
 /* Atomic Nonblocking Fetch and OR */
@@ -2885,18 +2700,10 @@ OSHMEM_DECLSPEC void shmem_uint64_atomic_fetch_or_nbi(uint64_t *fetch, uint64_t 
                 unsigned int*:       shmem_ctx_uint_atomic_fetch_or_nbi,      \
                 unsigned long*:      shmem_ctx_ulong_atomic_fetch_or_nbi,     \
                 unsigned long long*: shmem_ctx_ulonglong_atomic_fetch_or_nbi, \
-                int32_t*:      shmem_ctx_int32_atomic_fetch_or_nbi,           \
-                int64_t*:      shmem_ctx_int64_atomic_fetch_or_nbi,           \
-                uint32_t*:      shmem_ctx_uint32_atomic_fetch_or_nbi,           \
-                uint64_t*:      shmem_ctx_uint64_atomic_fetch_or_nbi,           \
                 default:      __oshmem_datatype_ignore),               \
             unsigned int*:       shmem_uint_atomic_fetch_or_nbi,              \
             unsigned long*:      shmem_ulong_atomic_fetch_or_nbi,             \
-            unsigned long long*: shmem_ulonglong_atomic_fetch_or_nbi,         \
-            int32_t*:      shmem_int32_atomic_fetch_or_nbi,                    \
-            int64_t*:      shmem_int64_atomic_fetch_or_nbi,                    \
-            uint32_t*:      shmem_uint32_atomic_fetch_or_nbi,                    \
-            uint64_t*:      shmem_uint64_atomic_fetch_or_nbi)(__VA_ARGS__)
+            unsigned long long*: shmem_uint64_atomic_fetch_or_nbi)(__VA_ARGS__)
 #endif
 
 
@@ -2924,18 +2731,10 @@ OSHMEM_DECLSPEC void shmem_uint64_atomic_fetch_xor_nbi(uint64_t *fetch, uint64_t
                 unsigned int*:       shmem_ctx_uint_atomic_fetch_xor_nbi,      \
                 unsigned long*:      shmem_ctx_ulong_atomic_fetch_xor_nbi,     \
                 unsigned long long*: shmem_ctx_ulonglong_atomic_fetch_xor_nbi, \
-                int32_t*:      shmem_ctx_int32_atomic_fetch_xor_nbi,           \
-                int64_t*:      shmem_ctx_int64_atomic_fetch_xor_nbi,           \
-                uint32_t*:      shmem_ctx_uint32_atomic_fetch_xor_nbi,           \
-                uint64_t*:      shmem_ctx_uint64_atomic_fetch_xor_nbi,           \
                 default:      __oshmem_datatype_ignxore),               \
             unsigned int*:       shmem_uint_atomic_fetch_xor_nbi,              \
             unsigned long*:      shmem_ulong_atomic_fetch_xor_nbi,             \
-            unsigned long long*: shmem_ulonglong_atomic_fetch_xor_nbi,         \
-            int32_t*:      shmem_int32_atomic_fetch_xor_nbi,                    \
-            int64_t*:      shmem_int64_atomic_fetch_xor_nbi,                    \
-            uint32_t*:      shmem_uint32_atomic_fetch_xor_nbi,                    \
-            uint64_t*:      shmem_uint64_atomic_fetch_xor_nbi)(__VA_ARGS__)
+            unsigned long long*: shmem_uint64_atomic_fetch_xor_nbi)(__VA_ARGS__)
 #endif
 
 /*
@@ -3008,13 +2807,7 @@ OSHMEM_DECLSPEC  void shmem_ptrdiff_wait_until_all(volatile ptrdiff_t *ivars, si
         long long*:            shmem_longlong_wait_until_all,            \
         unsigned int*:         shmem_uint_wait_until_all,                \
         unsigned long*:        shmem_ulong_wait_until_all,               \
-        unsigned long long*:   shmem_ulonglong_wait_until_all,           \
-        int32_t*:              shmem_int32_wait_until_all,               \
-        int64_t*:              shmem_int64_wait_until_all,               \
-        uint32_t*:             shmem_uint32_wait_until_all,              \
-        uint64_t*:             shmem_uint64_wait_until_all,              \
-        size_t*:               shmem_size_wait_until_all,                \
-        ptrdiff_t*:            shmem_ptrdiff_wait_until_all)(ivars, nelems, status, cmp, value)
+        unsigned long long*:   shmem_ulonglong_wait_until_all)(ivars, nelems, status, cmp, value)
 #endif
 
 OSHMEM_DECLSPEC  size_t shmem_int_wait_until_any(volatile int *ivars, size_t nelems, const int *status, int cmp, int value);
@@ -3037,13 +2830,7 @@ OSHMEM_DECLSPEC  size_t shmem_ptrdiff_wait_until_any(volatile ptrdiff_t *ivars, 
         long long*:            shmem_longlong_wait_until_any,            \
         unsigned int*:         shmem_uint_wait_until_any,                \
         unsigned long*:        shmem_ulong_wait_until_any,               \
-        unsigned long long*:   shmem_ulonglong_wait_until_any,           \
-        int32_t*:              shmem_int32_wait_until_any,               \
-        int64_t*:              shmem_int64_wait_until_any,               \
-        uint32_t*:             shmem_uint32_wait_until_any,              \
-        uint64_t*:             shmem_uint64_wait_until_any,              \
-        size_t*:               shmem_size_wait_until_any,                \
-        ptrdiff_t*:            shmem_ptrdiff_wait_until_any)(ivars, nelems, status, cmp, value)
+        unsigned long long*:   shmem_ulonglong_wait_until_any)(ivars, nelems, status, cmp, value)
 #endif
 
 OSHMEM_DECLSPEC  size_t shmem_int_wait_until_some(volatile int *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int value);
@@ -3066,13 +2853,7 @@ OSHMEM_DECLSPEC  size_t shmem_ptrdiff_wait_until_some(volatile ptrdiff_t *ivars,
         long long*:            shmem_longlong_wait_until_some,            \
         unsigned int*:         shmem_uint_wait_until_some,                \
         unsigned long*:        shmem_ulong_wait_until_some,               \
-        unsigned long long*:   shmem_ulonglong_wait_until_some,           \
-        int32_t*:              shmem_int32_wait_until_some,               \
-        int64_t*:              shmem_int64_wait_until_some,               \
-        uint32_t*:             shmem_uint32_wait_until_some,              \
-        uint64_t*:             shmem_uint64_wait_until_some,              \
-        size_t*:               shmem_size_wait_until_some,                \
-        ptrdiff_t*:            shmem_ptrdiff_wait_until_some)(ivars, nelems, indices, status, cmp, value)
+        unsigned long long*:   shmem_ulonglong_wait_until_some)(ivars, nelems, indices, status, cmp, value)
 #endif
 
 OSHMEM_DECLSPEC  void shmem_int_wait_until_all_vector(volatile int *ivars, size_t nelems, const int *status, int cmp, int *values);
@@ -3095,13 +2876,7 @@ OSHMEM_DECLSPEC  void shmem_ptrdiff_wait_until_all_vector(volatile ptrdiff_t *iv
         long long*:            shmem_longlong_wait_until_all_vector,            \
         unsigned int*:         shmem_uint_wait_until_all_vector,                \
         unsigned long*:        shmem_ulong_wait_until_all_vector,               \
-        unsigned long long*:   shmem_ulonglong_wait_until_all_vector,           \
-        int32_t*:              shmem_int32_wait_until_all_vector,               \
-        int64_t*:              shmem_int64_wait_until_all_vector,               \
-        uint32_t*:             shmem_uint32_wait_until_all_vector,              \
-        uint64_t*:             shmem_uint64_wait_until_all_vector,              \
-        size_t*:               shmem_size_wait_until_all_vector,                \
-        ptrdiff_t*:            shmem_ptrdiff_wait_until_all_vector)(ivars, nelems, status, cmp, values)
+        unsigned long long*:   shmem_ulonglong_wait_until_all_vector)(ivars, nelems, status, cmp, values)
 #endif
 
 
@@ -3125,13 +2900,7 @@ OSHMEM_DECLSPEC  size_t shmem_ptrdiff_wait_until_any_vector(volatile ptrdiff_t *
         long long*:            shmem_longlong_wait_until_any_vector,            \
         unsigned int*:         shmem_uint_wait_until_any_vector,                \
         unsigned long*:        shmem_ulong_wait_until_any_vector,               \
-        unsigned long long*:   shmem_ulonglong_wait_until_any_vector,           \
-        int32_t*:              shmem_int32_wait_until_any_vector,               \
-        int64_t*:              shmem_int64_wait_until_any_vector,               \
-        uint32_t*:             shmem_uint32_wait_until_any_vector,              \
-        uint64_t*:             shmem_uint64_wait_until_any_vector,              \
-        size_t*:               shmem_size_wait_until_any_vector,                \
-        ptrdiff_t*:            shmem_ptrdiff_wait_until_any_vector)(ivars, nelems, status, cmp, values)
+        unsigned long long*:   shmem_ulonglong_wait_until_any_vector)(ivars, nelems, status, cmp, values)
 #endif
 
 
@@ -3155,13 +2924,7 @@ OSHMEM_DECLSPEC  size_t shmem_ptrdiff_wait_until_some_vector(volatile ptrdiff_t 
         long long*:            shmem_longlong_wait_until_some_vector,            \
         unsigned int*:         shmem_uint_wait_until_some_vector,                \
         unsigned long*:        shmem_ulong_wait_until_some_vector,               \
-        unsigned long long*:   shmem_ulonglong_wait_until_some_vector,           \
-        int32_t*:              shmem_int32_wait_until_some_vector,               \
-        int64_t*:              shmem_int64_wait_until_some_vector,               \
-        uint32_t*:             shmem_uint32_wait_until_some_vector,              \
-        uint64_t*:             shmem_uint64_wait_until_some_vector,              \
-        size_t*:               shmem_size_wait_until_some_vector,                \
-        ptrdiff_t*:            shmem_ptrdiff_wait_until_some_vector)(ivars, nelems, indices, status, cmp, values)
+        unsigned long long*:   shmem_ulonglong_wait_until_some_vector)(ivars, nelems, indices, status, cmp, values)
 #endif
 
 OSHMEM_DECLSPEC  int shmem_short_test(volatile short *addr, int cmp, short value);
@@ -3211,13 +2974,7 @@ OSHMEM_DECLSPEC  int shmem_ptrdiff_test_all(volatile ptrdiff_t *ivars, size_t ne
         long long*:            shmem_longlong_test_all,            \
         unsigned int*:         shmem_uint_test_all,                \
         unsigned long*:        shmem_ulong_test_all,               \
-        unsigned long long*:   shmem_ulonglong_test_all,           \
-        int32_t*:              shmem_int32_test_all,               \
-        int64_t*:              shmem_int64_test_all,               \
-        uint32_t*:             shmem_uint32_test_all,              \
-        uint64_t*:             shmem_uint64_test_all,              \
-        size_t*:               shmem_size_test_all,                \
-        ptrdiff_t*:            shmem_ptrdiff_test_all)(ivars, nelems, status, cmp, value)
+        unsigned long long*:   shmem_ulonglong_test_all)(ivars, nelems, status, cmp, value)
 #endif
 
 OSHMEM_DECLSPEC  size_t shmem_int_test_any(volatile int *ivars, size_t nelems, const int *status, int cmp, int value);
@@ -3240,13 +2997,7 @@ OSHMEM_DECLSPEC  size_t shmem_ptrdiff_test_any(volatile ptrdiff_t *ivars, size_t
         long long*:            shmem_longlong_test_any,            \
         unsigned int*:         shmem_uint_test_any,                \
         unsigned long*:        shmem_ulong_test_any,               \
-        unsigned long long*:   shmem_ulonglong_test_any,           \
-        int32_t*:              shmem_int32_test_any,               \
-        int64_t*:              shmem_int64_test_any,               \
-        uint32_t*:             shmem_uint32_test_any,              \
-        uint64_t*:             shmem_uint64_test_any,              \
-        size_t*:               shmem_size_test_any,                \
-        ptrdiff_t*:            shmem_ptrdiff_test_any)(ivars, nelems, status, cmp, value)
+        unsigned long long*:   shmem_ulonglong_test_any)(ivars, nelems, status, cmp, value)
 #endif
 
 OSHMEM_DECLSPEC  size_t shmem_int_test_some(volatile int *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int value);
@@ -3269,13 +3020,7 @@ OSHMEM_DECLSPEC  size_t shmem_ptrdiff_test_some(volatile ptrdiff_t *ivars, size_
         long long*:            shmem_longlong_test_some,            \
         unsigned int*:         shmem_uint_test_some,                \
         unsigned long*:        shmem_ulong_test_some,               \
-        unsigned long long*:   shmem_ulonglong_test_some,           \
-        int32_t*:              shmem_int32_test_some,               \
-        int64_t*:              shmem_int64_test_some,               \
-        uint32_t*:             shmem_uint32_test_some,              \
-        uint64_t*:             shmem_uint64_test_some,              \
-        size_t*:               shmem_size_test_some,                \
-        ptrdiff_t*:            shmem_ptrdiff_test_some)(ivars, nelems, indices, status, cmp, value)
+        unsigned long long*:   shmem_ulonglong_test_some)(ivars, nelems, indices, status, cmp, value)
 #endif
 
 OSHMEM_DECLSPEC  int shmem_int_test_all_vector(volatile int *ivars, size_t nelems, const int *status, int cmp, int *values);
@@ -3298,13 +3043,7 @@ OSHMEM_DECLSPEC  int shmem_ptrdiff_test_all_vector(volatile ptrdiff_t *ivars, si
         long long*:            shmem_longlong_test_all_vector,            \
         unsigned int*:         shmem_uint_test_all_vector,                \
         unsigned long*:        shmem_ulong_test_all_vector,               \
-        unsigned long long*:   shmem_ulonglong_test_all_vector,           \
-        int32_t*:              shmem_int32_test_all_vector,               \
-        int64_t*:              shmem_int64_test_all_vector,               \
-        uint32_t*:             shmem_uint32_test_all_vector,              \
-        uint64_t*:             shmem_uint64_test_all_vector,              \
-        size_t*:               shmem_size_test_all_vector,                \
-        ptrdiff_t*:            shmem_ptrdiff_test_all_vector)(ivars, nelems, status, cmp, values)
+        unsigned long long*:   shmem_ulonglong_test_all_vector)(ivars, nelems, status, cmp, values)
 #endif
 
 
@@ -3328,13 +3067,7 @@ OSHMEM_DECLSPEC  size_t shmem_ptrdiff_test_any_vector(volatile ptrdiff_t *ivars,
         long long*:            shmem_longlong_test_any_vector,            \
         unsigned int*:         shmem_uint_test_any_vector,                \
         unsigned long*:        shmem_ulong_test_any_vector,               \
-        unsigned long long*:   shmem_ulonglong_test_any_vector,           \
-        int32_t*:              shmem_int32_test_any_vector,               \
-        int64_t*:              shmem_int64_test_any_vector,               \
-        uint32_t*:             shmem_uint32_test_any_vector,              \
-        uint64_t*:             shmem_uint64_test_any_vector,              \
-        size_t*:               shmem_size_test_any_vector,                \
-        ptrdiff_t*:            shmem_ptrdiff_test_any_vector)(ivars, nelems, status, cmp, values)
+        unsigned long long*:   shmem_ulonglong_test_any_vector)(ivars, nelems, status, cmp, values)
 #endif
 
 
@@ -3358,13 +3091,7 @@ OSHMEM_DECLSPEC  size_t shmem_ptrdiff_test_some_vector(volatile ptrdiff_t *ivars
         long long*:            shmem_longlong_test_some_vector,            \
         unsigned int*:         shmem_uint_test_some_vector,                \
         unsigned long*:        shmem_ulong_test_some_vector,               \
-        unsigned long long*:   shmem_ulonglong_test_some_vector,           \
-        int32_t*:              shmem_int32_test_some_vector,               \
-        int64_t*:              shmem_int64_test_some_vector,               \
-        uint32_t*:             shmem_uint32_test_some_vector,              \
-        uint64_t*:             shmem_uint64_test_some_vector,              \
-        size_t*:               shmem_size_test_some_vector,                \
-        ptrdiff_t*:            shmem_ptrdiff_test_some_vector)(ivars, nelems, indices, status, cmp, values)
+        unsigned long long*:   shmem_ulonglong_test_some_vector)(ivars, nelems, indices, status, cmp, values)
 #endif
 
 /*
