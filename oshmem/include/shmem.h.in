@@ -2546,7 +2546,7 @@ OSHMEM_DECLSPEC void shmem_ptrdiff_atomic_swap_nbi(ptrdiff_t *fetch, ptrdiff_t *
             unsigned int*:       shmem_uint_atomic_swap_nbi,              \
             unsigned long*:      shmem_ulong_atomic_swap_nbi,             \
             unsigned long long*: shmem_ulonglong_atomic_swap_nbi,         \
-            float*:      shmem_int32_atomic_swap_nbi,                    \
+            float*:      shmem_float_atomic_swap_nbi,                    \
             double*:     shmem_double_atomic_swap_nbi)(__VA_ARGS__)
 #endif
 
@@ -2670,9 +2670,13 @@ OSHMEM_DECLSPEC void shmem_uint64_atomic_fetch_and_nbi(uint64_t *fetch, uint64_t
                 unsigned int*:       shmem_ctx_uint_atomic_fetch_and_nbi,      \
                 unsigned long*:      shmem_ctx_ulong_atomic_fetch_and_nbi,     \
                 unsigned long long*: shmem_ctx_ulonglong_atomic_fetch_and_nbi, \
+                int32_t*: shmem_ctx_int32_atomic_fetch_and_nbi, \
+                int64_t*: shmem_ctx_int64_atomic_fetch_and_nbi, \
                 default:      __oshmem_datatype_ignore),               \
             unsigned int*:       shmem_uint_atomic_fetch_and_nbi,              \
             unsigned long*:      shmem_ulong_atomic_fetch_and_nbi,             \
+            int32_t*: shmem_int32_atomic_fetch_and_nbi,                         \
+            int64_t*: shmem_int64_atomic_fetch_and_nbi,                         \
             unsigned long long*: shmem_ulonglong_atomic_fetch_and_nbi)(__VA_ARGS__)
 #endif
 
@@ -2700,9 +2704,13 @@ OSHMEM_DECLSPEC void shmem_uint64_atomic_fetch_or_nbi(uint64_t *fetch, uint64_t 
                 unsigned int*:       shmem_ctx_uint_atomic_fetch_or_nbi,      \
                 unsigned long*:      shmem_ctx_ulong_atomic_fetch_or_nbi,     \
                 unsigned long long*: shmem_ctx_ulonglong_atomic_fetch_or_nbi, \
+                int32_t*: shmem_ctx_int32_atomic_fetch_or_nbi, \
+                int64_t*: shmem_ctx_int64_atomic_fetch_or_nbi, \
                 default:      __oshmem_datatype_ignore),               \
             unsigned int*:       shmem_uint_atomic_fetch_or_nbi,              \
             unsigned long*:      shmem_ulong_atomic_fetch_or_nbi,             \
+            int32_t*: shmem_int32_atomic_fetch_or_nbi,                        \
+            int64_t*: shmem_int64_atomic_fetch_or_nbi,                        \
             unsigned long long*: shmem_ulonglong_atomic_fetch_or_nbi)(__VA_ARGS__)
 #endif
 
@@ -2731,10 +2739,14 @@ OSHMEM_DECLSPEC void shmem_uint64_atomic_fetch_xor_nbi(uint64_t *fetch, uint64_t
                 unsigned int*:       shmem_ctx_uint_atomic_fetch_xor_nbi,      \
                 unsigned long*:      shmem_ctx_ulong_atomic_fetch_xor_nbi,     \
                 unsigned long long*: shmem_ctx_ulonglong_atomic_fetch_xor_nbi, \
+                int32_t*: shmem_ctx_int32_atomic_fetch_xor_nbi, \
+                int64_t*: shmem_ctx_int64_atomic_fetch_xor_nbi, \
                 default:      __oshmem_datatype_ignore),               \
-            unsigned int*:       shmem_uint_atomic_fetch_xor_nbi,              \
-            unsigned long*:      shmem_ulong_atomic_fetch_xor_nbi,             \
-            unsigned long long*: shmem_uint64_atomic_fetch_xor_nbi)(__VA_ARGS__)
+            unsigned int*:       shmem_uint_atomic_fetch_xor_nbi,               \
+            unsigned long*:      shmem_ulong_atomic_fetch_xor_nbi,              \
+            int32_t*: shmem_int32_atomic_fetch_xor_nbi,                         \
+            int64_t*: shmem_int64_atomic_fetch_xor_nbi,                         \
+            unsigned long long*: shmem_ulonglong_atomic_fetch_xor_nbi)(__VA_ARGS__)
 #endif
 
 /*
