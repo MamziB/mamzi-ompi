@@ -45,7 +45,7 @@
     void shmem##type_name##_put_signal(type *dest, const type *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe)\
     {                                                               \
         DO_SHMEM_TYPE_PUT_SIGNAL(oshmem_ctx_default, type, dest,          \
-                          source, nelems, sig_addr, signal, sig_op pe);                         \
+                          source, nelems, sig_addr, signal, sig_op, pe);                         \
         return ;                                                    \
     }
 

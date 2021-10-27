@@ -46,21 +46,21 @@
     } while (0)
 
 #define SHMEM_CTX_TYPE_ATOMIC_FETCH_ADD_NBI(type_name, type, prefix)            \
-    type prefix##_ctx##type_name##_atomic_fetch_add_nbi(shmem_ctx_t ctx, type *fetch, type *target, type value, int pe) \
+    void prefix##_ctx##type_name##_atomic_fetch_add_nbi(shmem_ctx_t ctx, type *fetch, type *target, type value, int pe) \
     {                                                                           \
         type out_value;                                                         \
         DO_SHMEM_TYPE_ATOMIC_FETCH_ADD_NBI(ctx, type_name, type, fetch, target, \
                                   value, pe, out_value);                               \
-        return out_value;                                                       \
+        return ;                                                       \
     }
 
 #define SHMEM_TYPE_ATOMIC_FETCH_ADD_NBI(type_name, type, prefix)                \
-    type prefix##type_name##_atomic_fetch_add_nbi(type *fetch, type *target, type value, int pe) \
+    void prefix##type_name##_atomic_fetch_add_nbi(type *fetch, type *target, type value, int pe) \
     {                                                                           \
         type out_value;                                                         \
         DO_SHMEM_TYPE_ATOMIC_FETCH_ADD_NBI(oshmem_ctx_default, type_name,       \
                                   type, fetch, target, value, pe, out_value);          \
-        return out_value;                                                       \
+        return ;                                                       \
     }
 
 #if OSHMEM_PROFILING
