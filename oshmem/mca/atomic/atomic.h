@@ -125,18 +125,18 @@ BEGIN_C_DECLS
             pe));                                                                   \
         RUNTIME_CHECK_RC(rc);                                                       \
                                                                                     \
-        return out_value;                                                           \
+        return ;                                                           \
     } while (0)
 
 #define OSHMEM_TYPE_FOP_NBI(type_name, type, prefix, op)                                \
-    type prefix##_##type_name##_atomic_fetch_##op##_nbi(type *fetch, type *target, type value, int pe) \
+    void prefix##_##type_name##_atomic_fetch_##op##_nbi(type *fetch, type *target, type value, int pe) \
     {                                                                                   \
         DO_OSHMEM_TYPE_FOP_NBI(oshmem_ctx_default, type_name, type, op,                 \
                            fetch, target, value, pe);                                   \
     }
 
 #define OSHMEM_CTX_TYPE_FOP_NBI(type_name, type, prefix, op)                            \
-    type prefix##_ctx_##type_name##_atomic_fetch_##op##_nbi(shmem_ctx_t ctx, type *fetch, type *target, type value, int pe) \
+    void prefix##_ctx_##type_name##_atomic_fetch_##op##_nbi(shmem_ctx_t ctx, type *fetch, type *target, type value, int pe) \
     {                                                                                   \
         DO_OSHMEM_TYPE_FOP_NBI(ctx, type_name, type, op,                                \
                            fetch, target, value, pe);                                   \
