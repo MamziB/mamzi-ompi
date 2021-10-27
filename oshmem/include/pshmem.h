@@ -2606,7 +2606,7 @@ OSHMEM_DECLSPEC void pshmem_uint64_atomic_fetch_xor_nbi(uint64_t *fetch, uint64_
                 unsigned int*:       pshmem_ctx_uint_atomic_fetch_xor_nbi,      \
                 unsigned long*:      pshmem_ctx_ulong_atomic_fetch_xor_nbi,     \
                 unsigned long long*: pshmem_ctx_ulonglong_atomic_fetch_xor_nbi, \
-                default:      __opshmem_datatype_ignxore),               \
+                default:      __opshmem_datatype_ignore),               \
             unsigned int*:       pshmem_uint_atomic_fetch_xor_nbi,              \
             unsigned long*:      pshmem_ulong_atomic_fetch_xor_nbi,             \
             unsigned long long*: pshmem_ulonglong_atomic_fetch_xor_nbi)(__VA_ARGS__)

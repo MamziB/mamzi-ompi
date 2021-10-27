@@ -18,7 +18,24 @@
 
 #include "oshmem/mca/spml/spml.h"
 
-int shmem_team_sync(shmem_team_t team) 
+#if OSHMEM_PROFILING
+#include "oshmem/include/pshmem.h"
+/*
+ * Team management routines
+ */
+#pragma weak shmem_team_sync             		= pshmem_team_sync
+#pragma weak shmem_team_my_pe             		= pshmem_team_my_pe
+#pragma weak shmem_team_n_pes             		= pshmem_team_n_pes
+#pragma weak shmem_team_get_config        		= pshmem_team_get_config
+#pragma weak shmem_team_translate_pe      		= pshmem_team_translate_pe
+#pragma weak shmem_team_split_strided     		= pshmem_team_split_strided
+#pragma weak shmem_team_split_2d          		= pshmem_team_split_2d
+#pragma weak shmem_team_destroy           		= pshmem_team_destroy
+
+#include "oshmem/shmem/c/profile/defines.h"
+#endif
+
+void shmem_team_sync(shmem_team_t team) 
 {                                                               
     int rc = 0;                                    
                                                                 
@@ -27,7 +44,7 @@ int shmem_team_sync(shmem_team_t team)
     rc = MCA_SPML_CALL(team_sync(team));                                                 
     RUNTIME_TEAM_MANAGMENT_CHECK_RC(rc);                                       
                                                                 
-    return rc;                                                    
+    return ;                                                    
 }
 
 int shmem_team_my_pe(shmem_team_t team) 
@@ -117,28 +134,4 @@ void shmem_team_destroy(shmem_team_t team)
                                                                 
     return ;                                                    
 }
-
-
-
-#if OSHMEM_PROFILING
-#include "oshmem/include/pshmem.h"
-
-/*
- * Team management routines
- */
-#pragma weak shmem_team_sync             		= pshmem_team_sync
-#pragma weak shmem_team_my_pe             		= pshmem_team_my_pe
-#pragma weak shmem_team_n_pes             		= pshmem_team_n_pes
-#pragma weak shmem_team_get_config        		= pshmem_team_get_config
-#pragma weak shmem_team_translate_pe      		= pshmem_team_translate_pe
-#pragma weak shmem_team_split_strided     		= pshmem_team_split_strided
-#pragma weak shmem_team_split_2d          		= pshmem_team_split_2d
-#pragma weak shmem_team_destroy           		= pshmem_team_destroy
-
-/*
- * Teams-based Collectives
- */
-
-#include "oshmem/shmem/c/profile/defines.h"
-#endif
 

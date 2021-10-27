@@ -21,17 +21,18 @@
 #include "oshmem/proc/proc.h"
 
 
-
-void shmem_pcontrol(int level, ...) 
-{
-    return OSHMEM_ERR_NOT_SUPPORTED;
-}
-
-
 #if OSHMEM_PROFILING
 #include "oshmem/include/pshmem.h"
 
 #pragma weak shmem_pcontrol    = pshmem_pcontrol
 #include "oshmem/shmem/c/profile/defines.h"
 #endif
+
+
+
+
+void shmem_pcontrol(int level, ...) 
+{
+    return OSHMEM_ERR_NOT_SUPPORTED;
+}
 
