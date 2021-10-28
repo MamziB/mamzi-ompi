@@ -69,6 +69,7 @@ OSHMEM_API_SOURCES = \
 	shmem_clear_lock.c \
 	shmem_set_lock.c \
 	shmem_test_lock.c \
+	shmem_test_ivars.c \
 	shmem_global_exit.c \
 	shmem_cswap_nb.c  \
 	shmem_fadd_nb.c \
