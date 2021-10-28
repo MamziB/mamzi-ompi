@@ -344,6 +344,7 @@ OSHMEM_DECLSPEC  int pshmem_ushort_and_reduce(shmem_team_t team, unsigned short 
 OSHMEM_DECLSPEC  int pshmem_uint_and_reduce(shmem_team_t team, unsigned int *target, const unsigned int *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_ulong_and_reduce(shmem_team_t team, unsigned long *target, const unsigned long *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_ulonglong_and_reduce(shmem_team_t team, unsigned long long *target, const unsigned long long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_longlong_and_reduce(shmem_team_t team, long long *target, const long long *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_int8_and_reduce(shmem_team_t team, int8_t *target, const int8_t *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_int16_and_reduce(shmem_team_t team, int16_t *target, const int16_t *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_int32_and_reduce(shmem_team_t team, int32_t *target, const int32_t *source, size_t nreduce);
@@ -362,6 +363,11 @@ OSHMEM_DECLSPEC  int pshmem_size_and_reduce(shmem_team_t team, size_t *target, c
                 unsigned int*:       pshmem_uint_and_reduce,        \
                 unsigned long*:      pshmem_ulong_and_reduce,       \
                 unsigned long long*: pshmem_ulonglong_and_reduce,   \
+                int8_t*: pshmem_int8_and_reduce,                    \
+                int16_t*: pshmem_int16_and_reduce,                  \
+                int32_t*: pshmem_int32_and_reduce,                  \
+                int64_t*: pshmem_int64_and_reduce,                  \
+                long long*: pshmem_longlong_and_reduce,                    \
                 default:      __opshmem_datatype_ignore))(__VA_ARGS__)
 #endif
 
@@ -372,6 +378,7 @@ OSHMEM_DECLSPEC  int pshmem_ushort_or_reduce(shmem_team_t team, unsigned short *
 OSHMEM_DECLSPEC  int pshmem_uint_or_reduce(shmem_team_t team, unsigned int *target, const unsigned int *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_ulong_or_reduce(shmem_team_t team, unsigned long *target, const unsigned long *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_ulonglong_or_reduce(shmem_team_t team, unsigned long long *target, const unsigned long long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_longlong_or_reduce(shmem_team_t team, long long *target, const long long *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_int8_or_reduce(shmem_team_t team, int8_t *target, const int8_t *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_int16_or_reduce(shmem_team_t team, int16_t *target, const int16_t *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_int32_or_reduce(shmem_team_t team, int32_t *target, const int32_t *source, size_t nreduce);
@@ -390,6 +397,11 @@ OSHMEM_DECLSPEC  int pshmem_size_or_reduce(shmem_team_t team, size_t *target, co
                 unsigned int*:       pshmem_uint_or_reduce,        \
                 unsigned long*:      pshmem_ulong_or_reduce,       \
                 unsigned long long*: pshmem_ulonglong_or_reduce,   \
+                int8_t*: pshmem_int8_or_reduce,                    \
+                int16_t*: pshmem_int16_or_reduce,                  \
+                int32_t*: pshmem_int32_or_reduce,                  \
+                int64_t*: pshmem_int64_or_reduce,                  \
+                long long*: pshmem_longlong_or_reduce,             \
                 default:      __opshmem_datatype_ignore))(__VA_ARGS__)
 #endif
 
@@ -401,6 +413,7 @@ OSHMEM_DECLSPEC  int pshmem_ushort_xor_reduce(shmem_team_t team, unsigned short 
 OSHMEM_DECLSPEC  int pshmem_uint_xor_reduce(shmem_team_t team, unsigned int *target, const unsigned int *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_ulong_xor_reduce(shmem_team_t team, unsigned long *target, const unsigned long *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_ulonglong_xor_reduce(shmem_team_t team, unsigned long long *target, const unsigned long long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_longlong_xor_reduce(shmem_team_t team, long long *target, const long long *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_int8_xor_reduce(shmem_team_t team, int8_t *target, const int8_t *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_int16_xor_reduce(shmem_team_t team, int16_t *target, const int16_t *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_int32_xor_reduce(shmem_team_t team, int32_t *target, const int32_t *source, size_t nreduce);
@@ -419,6 +432,11 @@ OSHMEM_DECLSPEC  int pshmem_size_xor_reduce(shmem_team_t team, size_t *target, c
                 unsigned int*:       pshmem_uint_xor_reduce,        \
                 unsigned long*:      pshmem_ulong_xor_reduce,       \
                 unsigned long long*: pshmem_ulonglong_xor_reduce,   \
+                int8_t*: pshmem_int8_xor_reduce,                    \
+                int16_t*: pshmem_int16_xor_reduce,                  \
+                int32_t*: pshmem_int32_xor_reduce,                  \
+                int64_t*: pshmem_int64_xor_reduce,                  \
+                long long*: pshmem_longlong_xor_reduce,             \
                 default:      __opshmem_datatype_ignore))(__VA_ARGS__)
 #endif
 
@@ -2675,6 +2693,8 @@ OSHMEM_DECLSPEC  void pshmem_ptrdiff_wait_until(volatile ptrdiff_t *addr, int cm
         unsigned long long*:   pshmem_ulonglong_wait_until)(addr, cmp, value)
 #endif
 
+OSHMEM_DECLSPEC  void pshmem_short_wait_until_all(volatile short *ivars, size_t nelems, const int *status, int cmp, short value);
+OSHMEM_DECLSPEC  void pshmem_ushort_wait_until_all(volatile unsigned short *ivars, size_t nelems, const int *status, int cmp, unsigned short value);
 OSHMEM_DECLSPEC  void pshmem_int_wait_until_all(volatile int *ivars, size_t nelems, const int *status, int cmp, int value);
 OSHMEM_DECLSPEC  void pshmem_long_wait_until_all(volatile long *ivars, size_t nelems, const int *status, int cmp, long value);
 OSHMEM_DECLSPEC  void pshmem_longlong_wait_until_all(volatile long long *ivars, size_t nelems, const int *status, int cmp, long long value);
@@ -2690,6 +2710,8 @@ OSHMEM_DECLSPEC  void pshmem_ptrdiff_wait_until_all(volatile ptrdiff_t *ivars, s
 #if OSHMEM_HAVE_C11
 #define pshmem_wait_until_all(ivars, nelems, status, cmp, value)          \
     _Generic(&*(ivars),                                                   \
+        short*:                pshmem_short_wait_until_all,               \
+        unsigned short*:       pshmem_ushort_wait_until_all,              \
         int*:                  pshmem_int_wait_until_all,                 \
         long*:                 pshmem_long_wait_until_all,                \
         long long*:            pshmem_longlong_wait_until_all,            \
@@ -2698,6 +2720,8 @@ OSHMEM_DECLSPEC  void pshmem_ptrdiff_wait_until_all(volatile ptrdiff_t *ivars, s
         unsigned long long*:   pshmem_ulonglong_wait_until_all)(ivars, nelems, status, cmp, value)
 #endif
 
+OSHMEM_DECLSPEC  size_t pshmem_short_wait_until_any(volatile short *ivars, size_t nelems, const int *status, int cmp, short value);
+OSHMEM_DECLSPEC  size_t pshmem_ushort_wait_until_any(volatile unsigned short *ivars, size_t nelems, const int *status, int cmp, unsigned short value);
 OSHMEM_DECLSPEC  size_t pshmem_int_wait_until_any(volatile int *ivars, size_t nelems, const int *status, int cmp, int value);
 OSHMEM_DECLSPEC  size_t pshmem_long_wait_until_any(volatile long *ivars, size_t nelems, const int *status, int cmp, long value);
 OSHMEM_DECLSPEC  size_t pshmem_longlong_wait_until_any(volatile long long *ivars, size_t nelems, const int *status, int cmp, long long value);
@@ -2713,6 +2737,8 @@ OSHMEM_DECLSPEC  size_t pshmem_ptrdiff_wait_until_any(volatile ptrdiff_t *ivars,
 #if OSHMEM_HAVE_C11
 #define pshmem_wait_until_any(ivars, nelems, status, cmp, value)          \
     _Generic(&*(ivars),                                                   \
+        short*:                pshmem_short_wait_until_any,               \
+        unsigned short*:       pshmem_ushort_wait_until_any,              \
         int*:                  pshmem_int_wait_until_any,                 \
         long*:                 pshmem_long_wait_until_any,                \
         long long*:            pshmem_longlong_wait_until_any,            \
@@ -2721,6 +2747,8 @@ OSHMEM_DECLSPEC  size_t pshmem_ptrdiff_wait_until_any(volatile ptrdiff_t *ivars,
         unsigned long long*:   pshmem_ulonglong_wait_until_any)(ivars, nelems, status, cmp, value)
 #endif
 
+OSHMEM_DECLSPEC  size_t pshmem_short_wait_until_some(volatile short *ivars, size_t nelems,  size_t *indices, const int *status, int cmp, short value);
+OSHMEM_DECLSPEC  size_t pshmem_ushort_wait_until_some(volatile unsigned short *ivars, size_t nelems,  size_t *indices, const int *status, int cmp, unsigned short value);
 OSHMEM_DECLSPEC  size_t pshmem_int_wait_until_some(volatile int *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int value);
 OSHMEM_DECLSPEC  size_t pshmem_long_wait_until_some(volatile long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, long value);
 OSHMEM_DECLSPEC  size_t pshmem_longlong_wait_until_some(volatile long long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, long long value);
@@ -2736,6 +2764,8 @@ OSHMEM_DECLSPEC  size_t pshmem_ptrdiff_wait_until_some(volatile ptrdiff_t *ivars
 #if OSHMEM_HAVE_C11
 #define pshmem_wait_until_some(ivars, nelems, indices, status, cmp, value)          \
     _Generic(&*(ivars),                                                    \
+        short*:                pshmem_short_wait_until_some,               \
+        unsigned short*:       pshmem_ushort_wait_until_some,              \
         int*:                  pshmem_int_wait_until_some,                 \
         long*:                 pshmem_long_wait_until_some,                \
         long long*:            pshmem_longlong_wait_until_some,            \
@@ -2744,6 +2774,8 @@ OSHMEM_DECLSPEC  size_t pshmem_ptrdiff_wait_until_some(volatile ptrdiff_t *ivars
         unsigned long long*:   pshmem_ulonglong_wait_until_some)(ivars, nelems, indices, status, cmp, value)
 #endif
 
+OSHMEM_DECLSPEC  void pshmem_short_wait_until_all_vector(volatile short *ivars, size_t nelems, const int *status, int cmp, short *values);
+OSHMEM_DECLSPEC  void pshmem_ushort_wait_until_all_vector(volatile unsigned short *ivars, size_t nelems, const int *status, int cmp, unsigned short *values);
 OSHMEM_DECLSPEC  void pshmem_int_wait_until_all_vector(volatile int *ivars, size_t nelems, const int *status, int cmp, int *values);
 OSHMEM_DECLSPEC  void pshmem_long_wait_until_all_vector(volatile long *ivars, size_t nelems, const int *status, int cmp, long *values);
 OSHMEM_DECLSPEC  void pshmem_longlong_wait_until_all_vector(volatile long long *ivars, size_t nelems, const int *status, int cmp, long long *values);
@@ -2759,6 +2791,8 @@ OSHMEM_DECLSPEC  void pshmem_ptrdiff_wait_until_all_vector(volatile ptrdiff_t *i
 #if OSHMEM_HAVE_C11
 #define pshmem_wait_until_all_vector(ivars, nelems, status, cmp, values)          \
     _Generic(&*(ivars),                                                   \
+        short*:                pshmem_short_wait_until_all_vector,               \
+        unsigned short*:       pshmem_ushort_wait_until_all_vector,              \
         int*:                  pshmem_int_wait_until_all_vector,                 \
         long*:                 pshmem_long_wait_until_all_vector,                \
         long long*:            pshmem_longlong_wait_until_all_vector,            \
@@ -2768,6 +2802,8 @@ OSHMEM_DECLSPEC  void pshmem_ptrdiff_wait_until_all_vector(volatile ptrdiff_t *i
 #endif
 
 
+OSHMEM_DECLSPEC  size_t pshmem_short_wait_until_any_vector(volatile short *ivars, size_t nelems, const int *status, int cmp, short *values);
+OSHMEM_DECLSPEC  size_t pshmem_ushort_wait_until_any_vector(volatile unsigned short *ivars, size_t nelems, const int *status, int cmp, unsigned short *values);
 OSHMEM_DECLSPEC  size_t pshmem_int_wait_until_any_vector(volatile int *ivars, size_t nelems, const int *status, int cmp, int *values);
 OSHMEM_DECLSPEC  size_t pshmem_long_wait_until_any_vector(volatile long *ivars, size_t nelems, const int *status, int cmp, long *values);
 OSHMEM_DECLSPEC  size_t pshmem_longlong_wait_until_any_vector(volatile long long *ivars, size_t nelems, const int *status, int cmp, long long *values);
@@ -2783,6 +2819,8 @@ OSHMEM_DECLSPEC  size_t pshmem_ptrdiff_wait_until_any_vector(volatile ptrdiff_t 
 #if OSHMEM_HAVE_C11
 #define pshmem_wait_until_any_vector(ivars, nelems, status, cmp, values)          \
     _Generic(&*(ivars),                                                   \
+        short*:                pshmem_short_wait_until_any_vector,               \
+        unsigned short*:       pshmem_ushort_wait_until_any_vector,              \
         int*:                  pshmem_int_wait_until_any_vector,                 \
         long*:                 pshmem_long_wait_until_any_vector,                \
         long long*:            pshmem_longlong_wait_until_any_vector,            \
@@ -2792,6 +2830,8 @@ OSHMEM_DECLSPEC  size_t pshmem_ptrdiff_wait_until_any_vector(volatile ptrdiff_t 
 #endif
 
 
+OSHMEM_DECLSPEC  size_t pshmem_short_wait_until_some_vector(volatile short *ivars, size_t nelems, size_t *indices, const int *status, int cmp, short *values);
+OSHMEM_DECLSPEC  size_t pshmem_ushort_wait_until_some_vector(volatile unsigned short *ivars, size_t nelems, size_t *indices, const int *status, int cmp, unsigned short *values);
 OSHMEM_DECLSPEC  size_t pshmem_int_wait_until_some_vector(volatile int *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int *values);
 OSHMEM_DECLSPEC  size_t pshmem_long_wait_until_some_vector(volatile long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, long *values);
 OSHMEM_DECLSPEC  size_t pshmem_longlong_wait_until_some_vector(volatile long long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, long long *values);
@@ -2807,6 +2847,8 @@ OSHMEM_DECLSPEC  size_t pshmem_ptrdiff_wait_until_some_vector(volatile ptrdiff_t
 #if OSHMEM_HAVE_C11
 #define pshmem_wait_until_some_vector(ivars, nelems, indices, status, cmp, values)          \
     _Generic(&*(ivars),                                                    \
+        short*:                pshmem_short_wait_until_some_vector,               \
+        unsigned short*:       pshmem_ushort_wait_until_some_vector,              \
         int*:                  pshmem_int_wait_until_some_vector,                 \
         long*:                 pshmem_long_wait_until_some_vector,                \
         long long*:            pshmem_longlong_wait_until_some_vector,            \
@@ -2842,6 +2884,8 @@ OSHMEM_DECLSPEC  int pshmem_ptrdiff_test(volatile ptrdiff_t *addr, int cmp, ptrd
         unsigned long long*:   pshmem_longlong_test)(addr, cmp, value)
 #endif
 
+OSHMEM_DECLSPEC  int pshmem_short_test_all(volatile short *ivars, size_t nelems, const int *status, int cmp, short value);
+OSHMEM_DECLSPEC  int pshmem_ushort_test_all(volatile unsigned short *ivars, size_t nelems, const int *status, int cmp, unsigned short value);
 OSHMEM_DECLSPEC  int pshmem_int_test_all(volatile int *ivars, size_t nelems, const int *status, int cmp, int value);
 OSHMEM_DECLSPEC  int pshmem_long_test_all(volatile long *ivars, size_t nelems, const int *status, int cmp, long value);
 OSHMEM_DECLSPEC  int pshmem_longlong_test_all(volatile long long *ivars, size_t nelems, const int *status, int cmp, long long value);
@@ -2857,6 +2901,8 @@ OSHMEM_DECLSPEC  int pshmem_ptrdiff_test_all(volatile ptrdiff_t *ivars, size_t n
 #if OSHMEM_HAVE_C11
 #define pshmem_test_all(ivars, nelems, status, cmp, value)          \
     _Generic(&*(ivars),                                                   \
+        short*:                pshmem_short_test_all,               \
+        unsigned short*:       pshmem_ushort_test_all,              \
         int*:                  pshmem_int_test_all,                 \
         long*:                 pshmem_long_test_all,                \
         long long*:            pshmem_longlong_test_all,            \
@@ -2865,6 +2911,8 @@ OSHMEM_DECLSPEC  int pshmem_ptrdiff_test_all(volatile ptrdiff_t *ivars, size_t n
         unsigned long long*:   pshmem_ulonglong_test_all)(ivars, nelems, status, cmp, value)
 #endif
 
+OSHMEM_DECLSPEC  size_t pshmem_short_test_any(volatile short *ivars, size_t nelems, const int *status, int cmp, short value);
+OSHMEM_DECLSPEC  size_t pshmem_ushort_test_any(volatile unsigned short *ivars, size_t nelems, const int *status, int cmp, unsigned short value);
 OSHMEM_DECLSPEC  size_t pshmem_int_test_any(volatile int *ivars, size_t nelems, const int *status, int cmp, int value);
 OSHMEM_DECLSPEC  size_t pshmem_long_test_any(volatile long *ivars, size_t nelems, const int *status, int cmp, long value);
 OSHMEM_DECLSPEC  size_t pshmem_longlong_test_any(volatile long long *ivars, size_t nelems, const int *status, int cmp, long long value);
@@ -2880,6 +2928,8 @@ OSHMEM_DECLSPEC  size_t pshmem_ptrdiff_test_any(volatile ptrdiff_t *ivars, size_
 #if OSHMEM_HAVE_C11
 #define pshmem_test_any(ivars, nelems, status, cmp, value)          \
     _Generic(&*(ivars),                                                   \
+        short*:                pshmem_short_test_any,               \
+        unsigned short*:       pshmem_ushort_test_any,              \
         int*:                  pshmem_int_test_any,                 \
         long*:                 pshmem_long_test_any,                \
         long long*:            pshmem_longlong_test_any,            \
@@ -2888,6 +2938,8 @@ OSHMEM_DECLSPEC  size_t pshmem_ptrdiff_test_any(volatile ptrdiff_t *ivars, size_
         unsigned long long*:   pshmem_ulonglong_test_any)(ivars, nelems, status, cmp, value)
 #endif
 
+OSHMEM_DECLSPEC  size_t pshmem_short_test_some(volatile short *ivars, size_t nelems, size_t *indices, const int *status, int cmp, short value);
+OSHMEM_DECLSPEC  size_t pshmem_ushort_test_some(volatile unsigned short *ivars, size_t nelems, size_t *indices, const int *status, int cmp, unsigned short value);
 OSHMEM_DECLSPEC  size_t pshmem_int_test_some(volatile int *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int value);
 OSHMEM_DECLSPEC  size_t pshmem_long_test_some(volatile long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, long value);
 OSHMEM_DECLSPEC  size_t pshmem_longlong_test_some(volatile long long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, long long value);
@@ -2903,6 +2955,8 @@ OSHMEM_DECLSPEC  size_t pshmem_ptrdiff_test_some(volatile ptrdiff_t *ivars, size
 #if OSHMEM_HAVE_C11
 #define pshmem_test_some(ivars, nelems, indices, status, cmp, value)          \
     _Generic(&*(ivars),                                                    \
+        short*:                pshmem_short_test_some,               \
+        unsigned short*:       pshmem_ushort_test_some,              \
         int*:                  pshmem_int_test_some,                 \
         long*:                 pshmem_long_test_some,                \
         long long*:            pshmem_longlong_test_some,            \
@@ -2911,6 +2965,8 @@ OSHMEM_DECLSPEC  size_t pshmem_ptrdiff_test_some(volatile ptrdiff_t *ivars, size
         unsigned long long*:   pshmem_ulonglong_test_some)(ivars, nelems, indices, status, cmp, value)
 #endif
 
+OSHMEM_DECLSPEC  int pshmem_short_test_all_vector(volatile short *ivars, size_t nelems, const int *status, int cmp, short *values);
+OSHMEM_DECLSPEC  int pshmem_ushort_test_all_vector(volatile unsigned short *ivars, size_t nelems, const int *status, int cmp, unsigned short *values);
 OSHMEM_DECLSPEC  int pshmem_int_test_all_vector(volatile int *ivars, size_t nelems, const int *status, int cmp, int *values);
 OSHMEM_DECLSPEC  int pshmem_long_test_all_vector(volatile long *ivars, size_t nelems, const int *status, int cmp, long *values);
 OSHMEM_DECLSPEC  int pshmem_longlong_test_all_vector(volatile long long *ivars, size_t nelems, const int *status, int cmp, long long *values);
@@ -2926,6 +2982,8 @@ OSHMEM_DECLSPEC  int pshmem_ptrdiff_test_all_vector(volatile ptrdiff_t *ivars, s
 #if OSHMEM_HAVE_C11
 #define pshmem_test_all_vector(ivars, nelems, status, cmp, values)          \
     _Generic(&*(ivars),                                                   \
+        short*:                pshmem_short_test_all_vector,               \
+        unsigned short*:       pshmem_ushort_test_all_vector,              \
         int*:                  pshmem_int_test_all_vector,                 \
         long*:                 pshmem_long_test_all_vector,                \
         long long*:            pshmem_longlong_test_all_vector,            \
@@ -2935,6 +2993,8 @@ OSHMEM_DECLSPEC  int pshmem_ptrdiff_test_all_vector(volatile ptrdiff_t *ivars, s
 #endif
 
 
+OSHMEM_DECLSPEC  size_t pshmem_short_test_any_vector(volatile short *ivars, size_t nelems, const int *status, int cmp, short *values);
+OSHMEM_DECLSPEC  size_t pshmem_ushort_test_any_vector(volatile unsigned short *ivars, size_t nelems, const int *status, int cmp, unsigned short *values);
 OSHMEM_DECLSPEC  size_t pshmem_int_test_any_vector(volatile int *ivars, size_t nelems, const int *status, int cmp, int *values);
 OSHMEM_DECLSPEC  size_t pshmem_long_test_any_vector(volatile long *ivars, size_t nelems, const int *status, int cmp, long *values);
 OSHMEM_DECLSPEC  size_t pshmem_longlong_test_any_vector(volatile long long *ivars, size_t nelems, const int *status, int cmp, long long *values);
@@ -2950,6 +3010,8 @@ OSHMEM_DECLSPEC  size_t pshmem_ptrdiff_test_any_vector(volatile ptrdiff_t *ivars
 #if OSHMEM_HAVE_C11
 #define pshmem_test_any_vector(ivars, nelems, status, cmp, values)          \
     _Generic(&*(ivars),                                                   \
+        short*:                pshmem_short_test_any_vector,               \
+        unsigned short*:       pshmem_ushort_test_any_vector,              \
         int*:                  pshmem_int_test_any_vector,                 \
         long*:                 pshmem_long_test_any_vector,                \
         long long*:            pshmem_longlong_test_any_vector,            \
@@ -2959,6 +3021,8 @@ OSHMEM_DECLSPEC  size_t pshmem_ptrdiff_test_any_vector(volatile ptrdiff_t *ivars
 #endif
 
 
+OSHMEM_DECLSPEC  size_t pshmem_short_test_some_vector(volatile short *ivars, size_t nelems, size_t *indices, const int *status, int cmp, short *values);
+OSHMEM_DECLSPEC  size_t pshmem_ushort_test_some_vector(volatile unsigned short *ivars, size_t nelems, size_t *indices, const int *status, int cmp, unsigned short *values);
 OSHMEM_DECLSPEC  size_t pshmem_int_test_some_vector(volatile int *ivars, size_t nelems, size_t *indices, const int *status, int cmp, int *values);
 OSHMEM_DECLSPEC  size_t pshmem_long_test_some_vector(volatile long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, long *values);
 OSHMEM_DECLSPEC  size_t pshmem_longlong_test_some_vector(volatile long long *ivars, size_t nelems, size_t *indices, const int *status, int cmp, long long *values);
@@ -2974,6 +3038,8 @@ OSHMEM_DECLSPEC  size_t pshmem_ptrdiff_test_some_vector(volatile ptrdiff_t *ivar
 #if OSHMEM_HAVE_C11
 #define pshmem_test_some_vector(ivars, nelems, indices, status, cmp, values)          \
     _Generic(&*(ivars),                                                    \
+        short*:                pshmem_short_test_some_vector,               \
+        unsigned short*:       pshmem_ushort_test_some_vector,              \
         int*:                  pshmem_int_test_some_vector,                 \
         long*:                 pshmem_long_test_some_vector,                \
         long long*:            pshmem_longlong_test_some_vector,            \

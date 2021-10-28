@@ -216,6 +216,8 @@
 
 
 
+SHMEM_TYPE_WAIT_UNTIL_ALL(_short,  short, SHMEM_SHORT, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL(_ushort,  unsigned short, SHMEM_USHORT, shmem)
 SHMEM_TYPE_WAIT_UNTIL_ALL(_int,  int, SHMEM_INT, shmem)
 SHMEM_TYPE_WAIT_UNTIL_ALL(_long,  long, SHMEM_LONG, shmem)
 SHMEM_TYPE_WAIT_UNTIL_ALL(_longlong,  long long, SHMEM_LLONG, shmem)
@@ -229,6 +231,8 @@ SHMEM_TYPE_WAIT_UNTIL_ALL(_uint64,  uint64_t, SHMEM_INT64_T, shmem)
 SHMEM_TYPE_WAIT_UNTIL_ALL(_size,  size_t, SHMEM_SIZE_T, shmem)
 SHMEM_TYPE_WAIT_UNTIL_ALL(_ptrdiff,  ptrdiff_t, SHMEM_PTRDIFF_T, shmem)
 
+SHMEM_TYPE_WAIT_UNTIL_ANY(_short,  short, SHMEM_SHORT, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY(_ushort,  unsigned short, SHMEM_USHORT, shmem)
 SHMEM_TYPE_WAIT_UNTIL_ANY(_int,  int, SHMEM_INT, shmem)
 SHMEM_TYPE_WAIT_UNTIL_ANY(_long,  long, SHMEM_LONG, shmem)
 SHMEM_TYPE_WAIT_UNTIL_ANY(_longlong,  long long, SHMEM_LLONG, shmem)
@@ -243,6 +247,8 @@ SHMEM_TYPE_WAIT_UNTIL_ANY(_size,  size_t, SHMEM_SIZE_T, shmem)
 SHMEM_TYPE_WAIT_UNTIL_ANY(_ptrdiff,  ptrdiff_t, SHMEM_PTRDIFF_T, shmem)
 
 
+SHMEM_TYPE_WAIT_UNTIL_SOME(_short,  short, SHMEM_SHORT, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME(_ushort,  unsigned short, SHMEM_USHORT, shmem)
 SHMEM_TYPE_WAIT_UNTIL_SOME(_int,  int, SHMEM_INT, shmem)
 SHMEM_TYPE_WAIT_UNTIL_SOME(_long,  long, SHMEM_LONG, shmem)
 SHMEM_TYPE_WAIT_UNTIL_SOME(_longlong,  long long, SHMEM_LLONG, shmem)
@@ -257,6 +263,8 @@ SHMEM_TYPE_WAIT_UNTIL_SOME(_size,  size_t, SHMEM_SIZE_T, shmem)
 SHMEM_TYPE_WAIT_UNTIL_SOME(_ptrdiff,  ptrdiff_t, SHMEM_PTRDIFF_T, shmem)
 
 
+SHMEM_TYPE_WAIT_UNTIL_ALL_VECTOR(_short,  short, SHMEM_SHORT, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ALL_VECTOR(_ushort,  unsigned short, SHMEM_USHORT, shmem)
 SHMEM_TYPE_WAIT_UNTIL_ALL_VECTOR(_int,  int, SHMEM_INT, shmem)
 SHMEM_TYPE_WAIT_UNTIL_ALL_VECTOR(_long,  long, SHMEM_LONG, shmem)
 SHMEM_TYPE_WAIT_UNTIL_ALL_VECTOR(_longlong,  long long, SHMEM_LLONG, shmem)
@@ -272,6 +280,8 @@ SHMEM_TYPE_WAIT_UNTIL_ALL_VECTOR(_ptrdiff,  ptrdiff_t, SHMEM_PTRDIFF_T, shmem)
 
 
 
+SHMEM_TYPE_WAIT_UNTIL_ANY_VECTOR(_short,  short, SHMEM_SHORT, shmem)
+SHMEM_TYPE_WAIT_UNTIL_ANY_VECTOR(_ushort,  unsigned short, SHMEM_USHORT, shmem)
 SHMEM_TYPE_WAIT_UNTIL_ANY_VECTOR(_int,  int, SHMEM_INT, shmem)
 SHMEM_TYPE_WAIT_UNTIL_ANY_VECTOR(_long,  long, SHMEM_LONG, shmem)
 SHMEM_TYPE_WAIT_UNTIL_ANY_VECTOR(_longlong,  long long, SHMEM_LLONG, shmem)
@@ -287,6 +297,8 @@ SHMEM_TYPE_WAIT_UNTIL_ANY_VECTOR(_ptrdiff,  ptrdiff_t, SHMEM_PTRDIFF_T, shmem)
 
 
 
+SHMEM_TYPE_WAIT_UNTIL_SOME_VECTOR(_short,  short, SHMEM_SHORT, shmem)
+SHMEM_TYPE_WAIT_UNTIL_SOME_VECTOR(_ushort,  unsigned short, SHMEM_USHORT, shmem)
 SHMEM_TYPE_WAIT_UNTIL_SOME_VECTOR(_int,  int, SHMEM_INT, shmem)
 SHMEM_TYPE_WAIT_UNTIL_SOME_VECTOR(_long,  long, SHMEM_LONG, shmem)
 SHMEM_TYPE_WAIT_UNTIL_SOME_VECTOR(_longlong,  long long, SHMEM_LLONG, shmem)
