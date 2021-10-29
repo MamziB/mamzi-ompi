@@ -69,7 +69,6 @@ OSHMEM_API_SOURCES = \
 	shmem_clear_lock.c \
 	shmem_set_lock.c \
 	shmem_test_lock.c \
-	shmem_test_ivars.c \
 	shmem_global_exit.c \
 	shmem_cswap_nb.c  \
 	shmem_fadd_nb.c \
@@ -84,6 +83,7 @@ OSHMEM_API_SOURCES = \
 	shmem_swap_nb.c \
 	shmem_team.c \
 	shmem_wait_ivars.c \
+	shmem_test_ivars.c \
 	shmem_info.c
 
 AM_CPPFLAGS     = -DOSHMEM_PROFILING=0

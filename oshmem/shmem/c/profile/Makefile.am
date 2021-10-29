@@ -95,6 +95,7 @@ OSHMEM_API_SOURCES = \
 	pshmem_swap_nb.c \
 	pshmem_team.c \
 	pshmem_wait_ivars.c \
+	pshmem_test_ivars.c \
 	pshmem_info.c
 
 nodist_liboshmem_c_pshmem_la_SOURCES = \
