@@ -560,8 +560,8 @@ OSHMEM_DECLSPEC  int pshmem_uint32_sum_reduce(shmem_team_t team, uint32_t *targe
 OSHMEM_DECLSPEC  int pshmem_uint64_sum_reduce(shmem_team_t team, uint64_t *target, const uint64_t *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_size_sum_reduce(shmem_team_t team, size_t *target, const size_t *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_ptrdiff_sum_reduce(shmem_team_t team, ptrdiff_t *target, const ptrdiff_t *source, size_t nreduce);
-OSHMEM_DECLSPEC  int pshmem_complexd_sum_reduce(shmem_team_t team, double _Complex *target, const double _Complex *source, size_t nreduce);
-OSHMEM_DECLSPEC  int pshmem_complexf_sum_reduce(shmem_team_t team, float _Complex *target, const float _Complex *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_complexd_sum_reduce(shmem_team_t team, OSHMEM_COMPLEX_TYPE(double) *target, const OSHMEM_COMPLEX_TYPE(double) *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_complexf_sum_reduce(shmem_team_t team, OSHMEM_COMPLEX_TYPE(float) *target, const OSHMEM_COMPLEX_TYPE(float) *source, size_t nreduce);
 #if OSHMEM_HAVE_C11
 #define pshmem_sum_reduce(...)                                          \
     _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                     \
@@ -580,8 +580,8 @@ OSHMEM_DECLSPEC  int pshmem_complexf_sum_reduce(shmem_team_t team, float _Comple
                 float*:       pshmem_float_sum_reduce,              \
                 double*:      pshmem_double_sum_reduce,             \
                 long double*: pshmem_longdouble_sum_reduce,         \
-                double _Complex*: pshmem_complexd_sum_reduce,         \
-                float _Complex*: pshmem_complexf_sum_reduce,         \
+                OSHMEM_COMPLEX_TYPE(double)*: pshmem_complexd_sum_reduce,         \
+                OSHMEM_COMPLEX_TYPE(float)*: pshmem_complexf_sum_reduce,         \
                 default:      __opshmem_datatype_ignore))(__VA_ARGS__)
 #endif
 
@@ -611,8 +611,8 @@ OSHMEM_DECLSPEC  int pshmem_uint32_prod_reduce(shmem_team_t team, uint32_t *targ
 OSHMEM_DECLSPEC  int pshmem_uint64_prod_reduce(shmem_team_t team, uint64_t *target, const uint64_t *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_size_prod_reduce(shmem_team_t team, size_t *target, const size_t *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_ptrdiff_prod_reduce(shmem_team_t team, ptrdiff_t *target, const ptrdiff_t *source, size_t nreduce);
-OSHMEM_DECLSPEC  int pshmem_complexd_prod_reduce(shmem_team_t team, double _Complex *target, const double _Complex *source, size_t nreduce);
-OSHMEM_DECLSPEC  int pshmem_complexf_prod_reduce(shmem_team_t team, float _Complex *target, const float _Complex *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_complexd_prod_reduce(shmem_team_t team, OSHMEM_COMPLEX_TYPE(double) *target, const OSHMEM_COMPLEX_TYPE(double) *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_complexf_prod_reduce(shmem_team_t team, OSHMEM_COMPLEX_TYPE(float) *target, const OSHMEM_COMPLEX_TYPE(float) *source, size_t nreduce);
 #if OSHMEM_HAVE_C11
 #define pshmem_prod_reduce(...)                                          \
     _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                     \
@@ -631,8 +631,8 @@ OSHMEM_DECLSPEC  int pshmem_complexf_prod_reduce(shmem_team_t team, float _Compl
                 float*:       pshmem_float_prod_reduce,              \
                 double*:      pshmem_double_prod_reduce,             \
                 long double*: pshmem_longdouble_prod_reduce,         \
-                double _Complex*: pshmem_complexd_prod_reduce,         \
-                float _Complex*: pshmem_complexf_prod_reduce,         \
+                OSHMEM_COMPLEX_TYPE(double)*: pshmem_complexd_prod_reduce,         \
+                OSHMEM_COMPLEX_TYPE(float)*: pshmem_complexf_prod_reduce,         \
                 default:      __opshmem_datatype_ignore))(__VA_ARGS__)
 #endif
 
