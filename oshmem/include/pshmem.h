@@ -89,10 +89,7 @@ OSHMEM_DECLSPEC void pshmem_team_destroy(shmem_team_t team);
 
 /* Teams sync */
 OSHMEM_DECLSPEC  void pshmem_team_sync(shmem_team_t team);
-#if OSHMEM_HAVE_C11
-#define pshmem_sync(team)               \
-            pshmem_team_sync(team)
-#endif
+
 
 /* Teams alltoall */
 OSHMEM_DECLSPEC  int pshmem_char_alltoall(shmem_team_t team, char *target, const char *source, size_t nelems);
@@ -344,6 +341,7 @@ OSHMEM_DECLSPEC  int pshmem_ushort_and_reduce(shmem_team_t team, unsigned short 
 OSHMEM_DECLSPEC  int pshmem_uint_and_reduce(shmem_team_t team, unsigned int *target, const unsigned int *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_ulong_and_reduce(shmem_team_t team, unsigned long *target, const unsigned long *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_ulonglong_and_reduce(shmem_team_t team, unsigned long long *target, const unsigned long long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int_and_reduce(shmem_team_t team, int *target, const int *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_longlong_and_reduce(shmem_team_t team, long long *target, const long long *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_int8_and_reduce(shmem_team_t team, int8_t *target, const int8_t *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_int16_and_reduce(shmem_team_t team, int16_t *target, const int16_t *source, size_t nreduce);
@@ -378,6 +376,7 @@ OSHMEM_DECLSPEC  int pshmem_ushort_or_reduce(shmem_team_t team, unsigned short *
 OSHMEM_DECLSPEC  int pshmem_uint_or_reduce(shmem_team_t team, unsigned int *target, const unsigned int *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_ulong_or_reduce(shmem_team_t team, unsigned long *target, const unsigned long *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_ulonglong_or_reduce(shmem_team_t team, unsigned long long *target, const unsigned long long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int_or_reduce(shmem_team_t team, int *target, const int *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_longlong_or_reduce(shmem_team_t team, long long *target, const long long *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_int8_or_reduce(shmem_team_t team, int8_t *target, const int8_t *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_int16_or_reduce(shmem_team_t team, int16_t *target, const int16_t *source, size_t nreduce);
@@ -413,6 +412,7 @@ OSHMEM_DECLSPEC  int pshmem_ushort_xor_reduce(shmem_team_t team, unsigned short 
 OSHMEM_DECLSPEC  int pshmem_uint_xor_reduce(shmem_team_t team, unsigned int *target, const unsigned int *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_ulong_xor_reduce(shmem_team_t team, unsigned long *target, const unsigned long *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_ulonglong_xor_reduce(shmem_team_t team, unsigned long long *target, const unsigned long long *source, size_t nreduce);
+OSHMEM_DECLSPEC  int pshmem_int_xor_reduce(shmem_team_t team, int *target, const int *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_longlong_xor_reduce(shmem_team_t team, long long *target, const long long *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_int8_xor_reduce(shmem_team_t team, int8_t *target, const int8_t *source, size_t nreduce);
 OSHMEM_DECLSPEC  int pshmem_int16_xor_reduce(shmem_team_t team, int16_t *target, const int16_t *source, size_t nreduce);
@@ -1230,6 +1230,10 @@ OSHMEM_DECLSPEC void pshmem_ctx_put128_signal_nbi(shmem_ctx_t ctx, void *dest, c
 
 OSHMEM_DECLSPEC void pshmem_putmem_signal_nbi(void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
 OSHMEM_DECLSPEC void pshmem_ctx_putmem_signal_nbi(shmem_ctx_t ctx, void *dest, const void *source, size_t nelems, uint64_t *sig_addr, uint64_t signal, int sig_op, int pe);
+
+
+OSHMEM_DECLSPEC uint64_t pshmem_signal_fetch(const uint64_t *sig_addr);
+
 
 /*
  * Elemental get routines
@@ -3053,12 +3057,19 @@ OSHMEM_DECLSPEC  size_t pshmem_ptrdiff_test_some_vector(volatile ptrdiff_t *ivar
  */
 OSHMEM_DECLSPEC  void pshmem_barrier(int PE_start, int logPE_stride, int PE_size, long *pSync);
 OSHMEM_DECLSPEC  void pshmem_barrier_all(void);
+OSHMEM_DECLSPEC  void pshmem_sync_deprecated(int PE_start, int logPE_stride, int PE_size, long *pSync);
 OSHMEM_DECLSPEC  void pshmem_sync_all(void);
 OSHMEM_DECLSPEC  void pshmem_fence(void);
 OSHMEM_DECLSPEC  void pshmem_ctx_fence(shmem_ctx_t ctx);
 OSHMEM_DECLSPEC  void pshmem_quiet(void);
 OSHMEM_DECLSPEC  void pshmem_ctx_quiet(shmem_ctx_t ctx);
 
+#if OSHMEM_HAVE_C11
+#define pshmem_sync(...)               \
+    _Generic((__OSHMEM_VAR_ARG1(__VA_ARGS__)),                        \
+            shmem_team_t: pshmem_team_sync,                       \
+            int:          pshmem_sync_deprecated)(__VA_ARGS__)
+#endif
 
 /*
  * Collective routines

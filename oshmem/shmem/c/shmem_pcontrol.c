@@ -33,6 +33,6 @@
 
 void shmem_pcontrol(int level, ...) 
 {
-    return OSHMEM_ERR_NOT_SUPPORTED;
+    return ;
 }
 

@@ -117,6 +117,8 @@
 #pragma weak shmem_ctx_putmem_signal              = pshmem_ctx_putmem_signal
 
 
+#pragma weak shmem_signal_fetch                   = pshmem_signal_fetch
+
 
 
 
@@ -219,4 +221,10 @@ SHMEM_TYPE_PUTMEM_SIGNAL(_put16_signal, 2, shmem)
 SHMEM_TYPE_PUTMEM_SIGNAL(_put32_signal, 4, shmem)
 SHMEM_TYPE_PUTMEM_SIGNAL(_put64_signal, 8, shmem)
 SHMEM_TYPE_PUTMEM_SIGNAL(_put128_signal, 16, shmem)
+
+
+uint64_t shmem_signal_fetch(const uint64_t *sig_addr) 
+{
+    return OSHMEM_ERR_NOT_SUPPORTED;
+}
 

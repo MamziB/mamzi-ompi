@@ -240,6 +240,8 @@
 #define shmem_uint_and_reduce           pshmem_uint_and_reduce
 #define shmem_ulong_and_reduce          pshmem_ulong_and_reduce
 #define shmem_ulonglong_and_reduce      pshmem_ulonglong_and_reduce
+#define shmem_int_and_reduce            pshmem_int_and_reduce
+#define shmem_longlong_and_reduce       pshmem_longlong_and_reduce
 #define shmem_int8_and_reduce           pshmem_int8_and_reduce
 #define shmem_int16_and_reduce          pshmem_int16_and_reduce
 #define shmem_int32_and_reduce          pshmem_int32_and_reduce
@@ -589,6 +591,7 @@
 #define shmem_putmem_signal_nbi                  pshmem_putmem_signal_nbi
 #define shmem_ctx_putmem_signal_nbi              pshmem_ctx_putmem_signal_nbi
 
+#define shmem_signal_fetch                       pshmem_signal_fetch
 
 /*
  * Block data put routines
@@ -1846,6 +1849,7 @@
 #define shmem_barrier                pshmem_barrier
 #define shmem_barrier_all            pshmem_barrier_all
 #define shmem_sync_all               pshmem_sync_all
+#define shmem_sync_deprecated        pshmem_sync_deprecated
 #define shmem_fence                  pshmem_fence
 #define shmem_ctx_fence              pshmem_ctx_fence
 #define shmem_quiet                  pshmem_quiet

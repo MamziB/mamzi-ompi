@@ -144,6 +144,8 @@
 #pragma weak shmem_uint_and_reduce           		= pshmem_uint_and_reduce
 #pragma weak shmem_ulong_and_reduce          		= pshmem_ulong_and_reduce
 #pragma weak shmem_ulonglong_and_reduce      		= pshmem_ulonglong_and_reduce
+#pragma weak shmem_int_and_reduce                   = pshmem_int_and_reduce
+#pragma weak shmem_longlong_and_reduce              = pshmem_longlong_and_reduce
 #pragma weak shmem_int8_and_reduce           		= pshmem_int8_and_reduce
 #pragma weak shmem_int16_and_reduce          		= pshmem_int16_and_reduce
 #pragma weak shmem_int32_and_reduce          		= pshmem_int32_and_reduce
@@ -408,6 +410,8 @@ SHMEM_TYPE_TEAM_REDUCE_OP(and, _ushort, unsigned short, OSHMEM_OP_AND, SHMEM_USH
 SHMEM_TYPE_TEAM_REDUCE_OP(and, _uint, unsigned int, OSHMEM_OP_AND, SHMEM_UINT)
 SHMEM_TYPE_TEAM_REDUCE_OP(and, _ulong, unsigned long, OSHMEM_OP_AND, SHMEM_ULONG)
 SHMEM_TYPE_TEAM_REDUCE_OP(and, _ulonglong, unsigned long long, OSHMEM_OP_AND, SHMEM_ULLONG)
+SHMEM_TYPE_TEAM_REDUCE_OP(and, _int, int, OSHMEM_OP_AND, SHMEM_INT)
+SHMEM_TYPE_TEAM_REDUCE_OP(and, _longlong, long long, OSHMEM_OP_AND, SHMEM_LLONG)
 SHMEM_TYPE_TEAM_REDUCE_OP(and, _int8, int8_t, OSHMEM_OP_AND, SHMEM_INT8_T)
 SHMEM_TYPE_TEAM_REDUCE_OP(and, _int16, int16_t, OSHMEM_OP_AND, SHMEM_INT16_T)
 SHMEM_TYPE_TEAM_REDUCE_OP(and, _int32, int32_t, OSHMEM_OP_AND, SHMEM_INT32_T)
@@ -423,6 +427,8 @@ SHMEM_TYPE_TEAM_REDUCE_OP(or, _ushort, unsigned short, OSHMEM_OP_OR, SHMEM_USHOR
 SHMEM_TYPE_TEAM_REDUCE_OP(or, _uint, unsigned int, OSHMEM_OP_OR, SHMEM_UINT)
 SHMEM_TYPE_TEAM_REDUCE_OP(or, _ulong, unsigned long, OSHMEM_OP_OR, SHMEM_ULONG)
 SHMEM_TYPE_TEAM_REDUCE_OP(or, _ulonglong, unsigned long long, OSHMEM_OP_OR, SHMEM_ULLONG)
+SHMEM_TYPE_TEAM_REDUCE_OP(or, _int, int, OSHMEM_OP_OR, SHMEM_INT)
+SHMEM_TYPE_TEAM_REDUCE_OP(or, _longlong, long long, OSHMEM_OP_OR, SHMEM_LLONG)
 SHMEM_TYPE_TEAM_REDUCE_OP(or, _int8, int8_t, OSHMEM_OP_OR, SHMEM_INT8_T)
 SHMEM_TYPE_TEAM_REDUCE_OP(or, _int16, int16_t, OSHMEM_OP_OR, SHMEM_INT16_T)
 SHMEM_TYPE_TEAM_REDUCE_OP(or, _int32, int32_t, OSHMEM_OP_OR, SHMEM_INT32_T)
@@ -438,6 +444,8 @@ SHMEM_TYPE_TEAM_REDUCE_OP(xor, _ushort, unsigned short, OSHMEM_OP_XOR, SHMEM_USH
 SHMEM_TYPE_TEAM_REDUCE_OP(xor, _uint, unsigned int, OSHMEM_OP_XOR, SHMEM_UINT)
 SHMEM_TYPE_TEAM_REDUCE_OP(xor, _ulong, unsigned long, OSHMEM_OP_XOR, SHMEM_ULONG)
 SHMEM_TYPE_TEAM_REDUCE_OP(xor, _ulonglong, unsigned long long, OSHMEM_OP_XOR, SHMEM_ULLONG)
+SHMEM_TYPE_TEAM_REDUCE_OP(xor, _int, int, OSHMEM_OP_XOR, SHMEM_INT)
+SHMEM_TYPE_TEAM_REDUCE_OP(xor, _longlong, long long, OSHMEM_OP_XOR, SHMEM_LLONG)
 SHMEM_TYPE_TEAM_REDUCE_OP(xor, _int8, int8_t, OSHMEM_OP_XOR, SHMEM_INT8_T)
 SHMEM_TYPE_TEAM_REDUCE_OP(xor, _int16, int16_t, OSHMEM_OP_XOR, SHMEM_INT16_T)
 SHMEM_TYPE_TEAM_REDUCE_OP(xor, _int32, int32_t, OSHMEM_OP_XOR, SHMEM_INT32_T)
