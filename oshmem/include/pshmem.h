@@ -82,6 +82,7 @@ OSHMEM_DECLSPEC int pshmem_team_translate_pe(shmem_team_t src_team, int src_pe, 
 OSHMEM_DECLSPEC int pshmem_team_split_strided(shmem_team_t parent_team, int start, int stride, int size, const shmem_team_config_t *config, long config_mask, shmem_team_t *new_team);
 OSHMEM_DECLSPEC int pshmem_team_split_2d(shmem_team_t parent_team, int xrange, const shmem_team_config_t *xaxis_config, long xaxis_mask, shmem_team_t *xaxis_team, const shmem_team_config_t *yaxis_config, long yaxis_mask, shmem_team_t *yaxis_team);
 OSHMEM_DECLSPEC void pshmem_team_destroy(shmem_team_t team);
+OSHMEM_DECLSPEC int pshmem_team_create_ctx(shmem_team_t team, long options, shmem_ctx_t *ctx);
 
 /*
  * Teams-based Collectives

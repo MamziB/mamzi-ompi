@@ -765,6 +765,18 @@ typedef int (*mca_spml_base_module_team_split_2d_fn_t)(shmem_team_t parent_team,
 typedef int (*mca_spml_base_module_team_destroy_fn_t)(shmem_team_t team);
 
 /*
+ *  Create a communication context from a team.
+ *
+ *  @param  team           An OpenSHMEM team handle.
+ *  @param  options        The set of options requested for the given context.
+ *  @param  ctx            A handle to the newly created context.
+ *
+ *  @return                OSHMEM_SUCCESS or failure status.
+ *  
+ */
+typedef int (*mca_spml_base_module_team_create_ctx_fn_t)(shmem_team_t team, long options, shmem_ctx_t *ctx);
+
+/*
  *  Exchanges a fixed amount of contiguous data blocks between all pairs of 
  *  PEs participating in the collective routine..
  *
@@ -1037,6 +1049,7 @@ struct mca_spml_base_module_1_0_0_t {
     mca_spml_base_module_team_split_strided_fn_t     spml_team_split_strided;
     mca_spml_base_module_team_split_2d_fn_t          spml_team_split_2d;
     mca_spml_base_module_team_destroy_fn_t           spml_team_destroy;
+    mca_spml_base_module_team_create_ctx_fn_t        spml_team_create_ctx;
 
     mca_spml_base_module_team_alltoall_fn_t          spml_team_alltoall;
     mca_spml_base_module_team_alltoalls_fn_t         spml_team_alltoalls;

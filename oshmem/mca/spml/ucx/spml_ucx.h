@@ -257,6 +257,7 @@ extern int mca_spml_ucx_team_split_2d(shmem_team_t parent_team, int xrange, cons
         *xaxis_team, const shmem_team_config_t *yaxis_config, long yaxis_mask,
         shmem_team_t *yaxis_team);
 extern int mca_spml_ucx_team_destroy(shmem_team_t team);
+extern int mca_spml_ucx_team_create_ctx(shmem_team_t team, long options, shmem_ctx_t *ctx);
 extern int mca_spml_ucx_team_alltoall(shmem_team_t team, void
         *dest, const void *source, size_t nelems, int datatype);
 extern int mca_spml_ucx_team_alltoalls(shmem_team_t team, void

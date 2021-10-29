@@ -84,6 +84,7 @@
 #define shmem_team_split_strided     pshmem_team_split_strided
 #define shmem_team_split_2d          pshmem_team_split_2d
 #define shmem_team_destroy           pshmem_team_destroy
+#define shmem_team_create_ctx        pshmem_team_create_ctx
 
 /*
  * Teams-based Collectives
