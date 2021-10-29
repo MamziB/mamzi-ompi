@@ -93,6 +93,7 @@ mca_spml_ucx_t mca_spml_ucx = {
         .spml_team_split_strided        = mca_spml_ucx_team_split_strided,
         .spml_team_split_2d             = mca_spml_ucx_team_split_2d,
         .spml_team_destroy              = mca_spml_ucx_team_destroy,
+        .spml_team_create_ctx           = mca_spml_ucx_team_create_ctx,
         .spml_team_alltoall             = mca_spml_ucx_team_alltoall,
         .spml_team_alltoalls            = mca_spml_ucx_team_alltoalls,
         .spml_team_broadcast            = mca_spml_ucx_team_broadcast,
@@ -1618,6 +1619,12 @@ int mca_spml_ucx_team_split_2d(shmem_team_t parent_team, int xrange, const
 
 /* This routine is not implemented */
 int mca_spml_ucx_team_destroy(shmem_team_t team)
+{
+    return OSHMEM_ERR_NOT_SUPPORTED;
+}
+
+/* This routine is not implemented */
+int mca_spml_ucx_team_create_ctx(shmem_team_t team, long options, shmem_ctx_t *ctx)
 {
     return OSHMEM_ERR_NOT_SUPPORTED;
 }
