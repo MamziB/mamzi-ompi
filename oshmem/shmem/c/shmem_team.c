@@ -88,7 +88,7 @@ int shmem_team_translate_pe(shmem_team_t src_team, int src_pe, shmem_team_t dest
                                                                 
     RUNTIME_CHECK_INIT();                                       
                                                                 
-    rc = MCA_SPML_CALL(team_get_config(src_team, src_pe, dest_team));                                                 
+    rc = MCA_SPML_CALL(team_translate_pe(src_team, src_pe, dest_team));                                                 
     RUNTIME_TEAM_MANAGMENT_CHECK_RC(rc);                                       
                                                                 
     return rc;                                                    

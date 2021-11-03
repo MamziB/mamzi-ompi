@@ -1661,6 +1661,8 @@
 #define shmemx_int32_wait_until      pshmemx_int32_wait_until
 #define shmemx_int64_wait_until      pshmemx_int64_wait_until
 
+#define shmem_short_wait_until_all       pshmem_short_wait_until_all
+#define shmem_ushort_wait_until_all      pshmem_ushort_wait_until_all
 #define shmem_int_wait_until_all         pshmem_int_wait_until_all
 #define shmem_long_wait_until_all        pshmem_long_wait_until_all
 #define shmem_longlong_wait_until_all    pshmem_longlong_wait_until_all
@@ -1675,6 +1677,8 @@
 #define shmem_ptrdiff_wait_until_all     pshmem_ptrdiff_wait_until_all
 
 
+#define shmem_short_wait_until_any       pshmem_short_wait_until_any
+#define shmem_ushort_wait_until_any      pshmem_ushort_wait_until_any
 #define shmem_int_wait_until_any         pshmem_int_wait_until_any
 #define shmem_long_wait_until_any        pshmem_long_wait_until_any
 #define shmem_longlong_wait_until_any    pshmem_longlong_wait_until_any
@@ -1689,6 +1693,8 @@
 #define shmem_ptrdiff_wait_until_any     pshmem_ptrdiff_wait_until_any
 
 
+#define shmem_short_wait_until_some       pshmem_short_wait_until_some
+#define shmem_ushort_wait_until_some      pshmem_ushort_wait_until_some
 #define shmem_int_wait_until_some         pshmem_int_wait_until_some
 #define shmem_long_wait_until_some        pshmem_long_wait_until_some
 #define shmem_longlong_wait_until_some    pshmem_longlong_wait_until_some
@@ -1703,6 +1709,8 @@
 #define shmem_ptrdiff_wait_until_some     pshmem_ptrdiff_wait_until_some
 
 
+#define shmem_short_wait_until_all_vector       pshmem_short_wait_until_all_vector
+#define shmem_ushort_wait_until_all_vector      pshmem_ushort_wait_until_all_vector
 #define shmem_int_wait_until_all_vector         pshmem_int_wait_until_all_vector
 #define shmem_long_wait_until_all_vector        pshmem_long_wait_until_all_vector
 #define shmem_longlong_wait_until_all_vector    pshmem_longlong_wait_until_all_vector
@@ -1717,6 +1725,8 @@
 #define shmem_ptrdiff_wait_until_all_vector     pshmem_ptrdiff_wait_until_all_vector
 
 
+#define shmem_short_wait_until_any_vector       pshmem_short_wait_until_any_vector
+#define shmem_ushort_wait_until_any_vector      pshmem_ushort_wait_until_any_vector
 #define shmem_int_wait_until_any_vector         pshmem_int_wait_until_any_vector
 #define shmem_long_wait_until_any_vector        pshmem_long_wait_until_any_vector
 #define shmem_longlong_wait_until_any_vector    pshmem_longlong_wait_until_any_vector
@@ -1731,6 +1741,8 @@
 #define shmem_ptrdiff_wait_until_any_vector     pshmem_ptrdiff_wait_until_any_vector
 
 
+#define shmem_short_wait_until_some_vector       pshmem_short_wait_until_some_vector
+#define shmem_ushort_wait_until_some_vector      pshmem_ushort_wait_until_some_vector
 #define shmem_int_wait_until_some_vector         pshmem_int_wait_until_some_vector
 #define shmem_long_wait_until_some_vector        pshmem_long_wait_until_some_vector
 #define shmem_longlong_wait_until_some_vector    pshmem_longlong_wait_until_some_vector
@@ -1761,6 +1773,8 @@
 #define shmem_ptrdiff_test           pshmem_ptrdiff_test
 
 
+#define shmem_short_test_all       pshmem_short_test_all
+#define shmem_ushort_test_all      pshmem_ushort_test_all
 #define shmem_int_test_all         pshmem_int_test_all
 #define shmem_long_test_all        pshmem_long_test_all
 #define shmem_longlong_test_all    pshmem_longlong_test_all
@@ -1775,6 +1789,8 @@
 #define shmem_ptrdiff_test_all     pshmem_ptrdiff_test_all
 
 
+#define shmem_short_test_any       pshmem_short_test_any
+#define shmem_ushort_test_any      pshmem_ushort_test_any
 #define shmem_int_test_any         pshmem_int_test_any
 #define shmem_long_test_any        pshmem_long_test_any
 #define shmem_longlong_test_any    pshmem_longlong_test_any
@@ -1789,6 +1805,9 @@
 #define shmem_ptrdiff_test_any     pshmem_ptrdiff_test_any
 
 
+
+#define shmem_short_test_some       pshmem_short_test_some
+#define shmem_ushort_test_some      pshmem_ushort_test_some
 #define shmem_int_test_some         pshmem_int_test_some
 #define shmem_long_test_some        pshmem_long_test_some
 #define shmem_longlong_test_some    pshmem_longlong_test_some
@@ -1803,6 +1822,8 @@
 #define shmem_ptrdiff_test_some     pshmem_ptrdiff_test_some
 
 
+#define shmem_short_test_all_vector       pshmem_short_test_all_vector
+#define shmem_ushort_test_all_vector      pshmem_ushort_test_all_vector
 #define shmem_int_test_all_vector         pshmem_int_test_all_vector
 #define shmem_long_test_all_vector        pshmem_long_test_all_vector
 #define shmem_longlong_test_all_vector    pshmem_longlong_test_all_vector
@@ -1817,6 +1838,8 @@
 #define shmem_ptrdiff_test_all_vector     pshmem_ptrdiff_test_all_vector
 
 
+#define shmem_short_test_any_vector       pshmem_short_test_any_vector
+#define shmem_ushort_test_any_vector      pshmem_ushort_test_any_vector
 #define shmem_int_test_any_vector         pshmem_int_test_any_vector
 #define shmem_long_test_any_vector        pshmem_long_test_any_vector
 #define shmem_longlong_test_any_vector    pshmem_longlong_test_any_vector
@@ -1831,6 +1854,8 @@
 #define shmem_ptrdiff_test_any_vector     pshmem_ptrdiff_test_any_vector
 
 
+#define shmem_short_test_some_vector       pshmem_short_test_some_vector
+#define shmem_ushort_test_some_vector      pshmem_ushort_test_some_vector
 #define shmem_int_test_some_vector         pshmem_int_test_some_vector
 #define shmem_long_test_some_vector        pshmem_long_test_some_vector
 #define shmem_longlong_test_some_vector    pshmem_longlong_test_some_vector
