@@ -1062,6 +1062,12 @@
 #define shmem_ctx_uint_atomic_swap   pshmem_ctx_uint_atomic_swap
 #define shmem_ctx_ulong_atomic_swap  pshmem_ctx_ulong_atomic_swap
 #define shmem_ctx_ulonglong_atomic_swap pshmem_ctx_ulonglong_atomic_swap
+#define shmem_ctx_int32_atomic_swap    pshmem_ctx_int32_atomic_swap
+#define shmem_ctx_int64_atomic_swap    pshmem_ctx_int64_atomic_swap
+#define shmem_ctx_uint32_atomic_swap    pshmem_ctx_uint32_atomic_swap
+#define shmem_ctx_uint64_atomic_swap    pshmem_ctx_uint64_atomic_swap
+#define shmem_ctx_size_atomic_swap    pshmem_ctx_size_atomic_swap
+#define shmem_ctx_ptrdiff_atomic_swap    pshmem_ctx_ptrdiff_atomic_swap
 
 #define shmem_double_atomic_swap     pshmem_double_atomic_swap
 #define shmem_float_atomic_swap      pshmem_float_atomic_swap
@@ -1071,6 +1077,12 @@
 #define shmem_uint_atomic_swap       pshmem_uint_atomic_swap
 #define shmem_ulong_atomic_swap      pshmem_ulong_atomic_swap
 #define shmem_ulonglong_atomic_swap  pshmem_ulonglong_atomic_swap
+#define shmem_int32_atomic_swap    pshmem_int32_atomic_swap
+#define shmem_int64_atomic_swap    pshmem_int64_atomic_swap
+#define shmem_uint32_atomic_swap    pshmem_uint32_atomic_swap
+#define shmem_uint64_atomic_swap    pshmem_uint64_atomic_swap
+#define shmem_size_atomic_swap    pshmem_size_atomic_swap
+#define shmem_ptrdiff_atomic_swap    pshmem_ptrdiff_atomic_swap
 
 #define shmem_double_swap            pshmem_double_swap
 #define shmem_float_swap             pshmem_float_swap
@@ -1356,6 +1368,12 @@
 #define shmem_ctx_uint_atomic_add    pshmem_ctx_uint_atomic_add
 #define shmem_ctx_ulong_atomic_add   pshmem_ctx_ulong_atomic_add
 #define shmem_ctx_ulonglong_atomic_add pshmem_ctx_ulonglong_atomic_add
+#define shmem_ctx_int32_atomic_add     pshmem_ctx_int32_atomic_add
+#define shmem_ctx_int64_atomic_add     pshmem_ctx_int64_atomic_add
+#define shmem_ctx_uint32_atomic_add     pshmem_ctx_uint32_atomic_add
+#define shmem_ctx_uint64_atomic_add     pshmem_ctx_uint64_atomic_add
+#define shmem_ctx_size_atomic_add     pshmem_ctx_size_atomic_add
+#define shmem_ctx_ptrdiff_atomic_add     pshmem_ctx_ptrdiff_atomic_add
 
 #define shmem_int_atomic_add         pshmem_int_atomic_add
 #define shmem_long_atomic_add        pshmem_long_atomic_add
@@ -1363,6 +1381,12 @@
 #define shmem_uint_atomic_add        pshmem_uint_atomic_add
 #define shmem_ulong_atomic_add       pshmem_ulong_atomic_add
 #define shmem_ulonglong_atomic_add   pshmem_ulonglong_atomic_add
+#define shmem_int32_atomic_add     pshmem_int32_atomic_add
+#define shmem_int64_atomic_add     pshmem_int64_atomic_add
+#define shmem_uint32_atomic_add     pshmem_uint32_atomic_add
+#define shmem_uint64_atomic_add     pshmem_uint64_atomic_add
+#define shmem_size_atomic_add     pshmem_size_atomic_add
+#define shmem_ptrdiff_atomic_add     pshmem_ptrdiff_atomic_add
 
 #define shmem_int_add                pshmem_int_add
 #define shmem_long_add               pshmem_long_add
@@ -1465,6 +1489,12 @@
 #define shmem_ctx_uint_atomic_inc    pshmem_ctx_uint_atomic_inc
 #define shmem_ctx_ulong_atomic_inc   pshmem_ctx_ulong_atomic_inc
 #define shmem_ctx_ulonglong_atomic_inc pshmem_ctx_ulonglong_atomic_inc
+#define shmem_ctx_int32_atomic_inc     pshmem_ctx_int32_atomic_inc
+#define shmem_ctx_int64_atomic_inc     pshmem_ctx_int64_atomic_inc
+#define shmem_ctx_uint32_atomic_inc     pshmem_ctx_uint32_atomic_inc
+#define shmem_ctx_uint64_atomic_inc     pshmem_ctx_uint64_atomic_inc
+#define shmem_ctx_size_atomic_inc     pshmem_ctx_size_atomic_inc
+#define shmem_ctx_ptrdiff_atomic_inc     pshmem_ctx_ptrdiff_atomic_inc
 
 #define shmem_int_atomic_inc         pshmem_int_atomic_inc
 #define shmem_long_atomic_inc        pshmem_long_atomic_inc
@@ -1472,6 +1502,12 @@
 #define shmem_uint_atomic_inc        pshmem_uint_atomic_inc
 #define shmem_ulong_atomic_inc       pshmem_ulong_atomic_inc
 #define shmem_ulonglong_atomic_inc   pshmem_ulonglong_atomic_inc
+#define shmem_int32_atomic_inc     pshmem_int32_atomic_inc
+#define shmem_int64_atomic_inc     pshmem_int64_atomic_inc
+#define shmem_uint32_atomic_inc     pshmem_uint32_atomic_inc
+#define shmem_uint64_atomic_inc     pshmem_uint64_atomic_inc
+#define shmem_size_atomic_inc     pshmem_size_atomic_inc
+#define shmem_ptrdiff_atomic_inc     pshmem_ptrdiff_atomic_inc
 
 #define shmem_int_inc                pshmem_int_inc
 #define shmem_long_inc               pshmem_long_inc

@@ -2101,7 +2101,6 @@ OSHMEM_DECLSPEC long long pshmem_ctx_longlong_atomic_fetch_inc(shmem_ctx_t ctx, 
 OSHMEM_DECLSPEC unsigned int pshmem_ctx_uint_atomic_fetch_inc(shmem_ctx_t ctx, unsigned int *target, int pe);
 OSHMEM_DECLSPEC unsigned long pshmem_ctx_ulong_atomic_fetch_inc(shmem_ctx_t ctx, unsigned long *target, int pe);
 OSHMEM_DECLSPEC unsigned long long pshmem_ctx_ulonglong_atomic_fetch_inc(shmem_ctx_t ctx, unsigned long long *target, int pe);
-
 OSHMEM_DECLSPEC int32_t pshmem_ctx_int32_atomic_fetch_inc(shmem_ctx_t ctx, int32_t *target, int pe);
 OSHMEM_DECLSPEC int64_t pshmem_ctx_int64_atomic_fetch_inc(shmem_ctx_t ctx, int64_t *target, int pe);
 OSHMEM_DECLSPEC uint32_t pshmem_ctx_uint32_atomic_fetch_inc(shmem_ctx_t ctx, uint32_t *target, int pe);
@@ -2115,7 +2114,6 @@ OSHMEM_DECLSPEC long long pshmem_longlong_atomic_fetch_inc(long long *target, in
 OSHMEM_DECLSPEC unsigned int pshmem_uint_atomic_fetch_inc(unsigned int *target, int pe);
 OSHMEM_DECLSPEC unsigned long pshmem_ulong_atomic_fetch_inc(unsigned long *target, int pe);
 OSHMEM_DECLSPEC unsigned long long pshmem_ulonglong_atomic_fetch_inc(unsigned long long *target, int pe);
-
 OSHMEM_DECLSPEC int32_t pshmem_int32_atomic_fetch_inc(int32_t *target, int pe);
 OSHMEM_DECLSPEC int64_t pshmem_int64_atomic_fetch_inc(int64_t *target, int pe);
 OSHMEM_DECLSPEC uint32_t pshmem_uint32_atomic_fetch_inc(uint32_t *target, int pe);
@@ -2160,6 +2158,12 @@ OSHMEM_DECLSPEC void pshmem_ctx_longlong_atomic_add(shmem_ctx_t ctx, long long *
 OSHMEM_DECLSPEC void pshmem_ctx_uint_atomic_add(shmem_ctx_t ctx, unsigned int *target, unsigned int value, int pe);
 OSHMEM_DECLSPEC void pshmem_ctx_ulong_atomic_add(shmem_ctx_t ctx, unsigned long *target, unsigned long value, int pe);
 OSHMEM_DECLSPEC void pshmem_ctx_ulonglong_atomic_add(shmem_ctx_t ctx, unsigned long long *target, unsigned long long value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int32_atomic_add(shmem_ctx_t ctx, int32_t *target, int32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int64_atomic_add(shmem_ctx_t ctx, int64_t *target, int64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint32_atomic_add(shmem_ctx_t ctx, uint32_t *target, uint32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint64_atomic_add(shmem_ctx_t ctx, uint64_t *target, uint64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_size_atomic_add(shmem_ctx_t ctx, size_t *target, size_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ptrdiff_atomic_add(shmem_ctx_t ctx, ptrdiff_t *target, ptrdiff_t value, int pe);
 
 OSHMEM_DECLSPEC void pshmem_int_atomic_add(int *target, int value, int pe);
 OSHMEM_DECLSPEC void pshmem_long_atomic_add(long *target, long value, int pe);
@@ -2167,6 +2171,13 @@ OSHMEM_DECLSPEC void pshmem_longlong_atomic_add(long long *target, long long val
 OSHMEM_DECLSPEC void pshmem_uint_atomic_add(unsigned int *target, unsigned int value, int pe);
 OSHMEM_DECLSPEC void pshmem_ulong_atomic_add(unsigned long *target, unsigned long value, int pe);
 OSHMEM_DECLSPEC void pshmem_ulonglong_atomic_add(unsigned long long *target, unsigned long long value, int pe);
+OSHMEM_DECLSPEC void pshmem_int32_atomic_add(sint32_t *target, int32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_int64_atomic_add(sint64_t *target, int64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_uint32_atomic_add(suint32_t *target, uint32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_uint64_atomic_add(suint64_t *target, uint64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_size_atomic_add(ssize_t *target, size_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ptrdiff_atomic_add(sptrdiff_t *target, ptrdiff_t value, int pe);
+
 #if OSHMEM_HAVE_C11
 #define pshmem_atomic_add(...)                                        \
     _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                      \
@@ -2327,6 +2338,12 @@ OSHMEM_DECLSPEC void pshmem_ctx_longlong_atomic_inc(shmem_ctx_t ctx, long long *
 OSHMEM_DECLSPEC void pshmem_ctx_uint_atomic_inc(shmem_ctx_t ctx, unsigned int *target, int pe);
 OSHMEM_DECLSPEC void pshmem_ctx_ulong_atomic_inc(shmem_ctx_t ctx, unsigned long *target, int pe);
 OSHMEM_DECLSPEC void pshmem_ctx_ulonglong_atomic_inc(shmem_ctx_t ctx, unsigned long long *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int32_atomic_inc(shmem_ctx_t ctx, int32_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int64_atomic_inc(shmem_ctx_t ctx, int64_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint32_atomic_inc(shmem_ctx_t ctx, uint32_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint64_atomic_inc(shmem_ctx_t ctx, uint64_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_size_atomic_inc(shmem_ctx_t ctx, size_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ptrdiff_atomic_inc(shmem_ctx_t ctx, ptrdiff_t *target, int pe);
 
 OSHMEM_DECLSPEC void pshmem_int_atomic_inc(int *target, int pe);
 OSHMEM_DECLSPEC void pshmem_long_atomic_inc(long *target, int pe);
@@ -2334,6 +2351,13 @@ OSHMEM_DECLSPEC void pshmem_longlong_atomic_inc(long long *target, int pe);
 OSHMEM_DECLSPEC void pshmem_uint_atomic_inc(unsigned int *target, int pe);
 OSHMEM_DECLSPEC void pshmem_ulong_atomic_inc(unsigned long *target, int pe);
 OSHMEM_DECLSPEC void pshmem_ulonglong_atomic_inc(unsigned long long *target, int pe);
+OSHMEM_DECLSPEC void pshmem_int32_atomic_inc(int32_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_int64_atomic_inc(int64_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_uint32_atomic_inc(uint32_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_uint64_atomic_inc(uint64_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_size_atomic_inc(size_t *target, int pe);
+OSHMEM_DECLSPEC void pshmem_ptrdiff_atomic_inc(ptrdiff_t *target, int pe);
+
 #if OSHMEM_HAVE_C11
 #define pshmem_atomic_inc(...)                                       \
     _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                     \
