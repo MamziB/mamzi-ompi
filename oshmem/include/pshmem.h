@@ -2171,12 +2171,12 @@ OSHMEM_DECLSPEC void pshmem_longlong_atomic_add(long long *target, long long val
 OSHMEM_DECLSPEC void pshmem_uint_atomic_add(unsigned int *target, unsigned int value, int pe);
 OSHMEM_DECLSPEC void pshmem_ulong_atomic_add(unsigned long *target, unsigned long value, int pe);
 OSHMEM_DECLSPEC void pshmem_ulonglong_atomic_add(unsigned long long *target, unsigned long long value, int pe);
-OSHMEM_DECLSPEC void pshmem_int32_atomic_add(sint32_t *target, int32_t value, int pe);
-OSHMEM_DECLSPEC void pshmem_int64_atomic_add(sint64_t *target, int64_t value, int pe);
-OSHMEM_DECLSPEC void pshmem_uint32_atomic_add(suint32_t *target, uint32_t value, int pe);
-OSHMEM_DECLSPEC void pshmem_uint64_atomic_add(suint64_t *target, uint64_t value, int pe);
-OSHMEM_DECLSPEC void pshmem_size_atomic_add(ssize_t *target, size_t value, int pe);
-OSHMEM_DECLSPEC void pshmem_ptrdiff_atomic_add(sptrdiff_t *target, ptrdiff_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_int32_atomic_add(int32_t *target, int32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_int64_atomic_add(int64_t *target, int64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_uint32_atomic_add(uint32_t *target, uint32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_uint64_atomic_add(uint64_t *target, uint64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_size_atomic_add(size_t *target, size_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ptrdiff_atomic_add(ptrdiff_t *target, ptrdiff_t value, int pe);
 
 #if OSHMEM_HAVE_C11
 #define pshmem_atomic_add(...)                                        \
