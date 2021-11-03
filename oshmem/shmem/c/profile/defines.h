@@ -1246,6 +1246,12 @@
 #define shmem_ctx_uint_atomic_fetch   pshmem_ctx_uint_atomic_fetch
 #define shmem_ctx_ulong_atomic_fetch  pshmem_ctx_ulong_atomic_fetch
 #define shmem_ctx_ulonglong_atomic_fetch pshmem_ctx_ulonglong_atomic_fetch
+#define shmem_ctx_int32_atomic_fetch    pshmem_ctx_int32_atomic_fetch
+#define shmem_ctx_int64_atomic_fetch    pshmem_ctx_int64_atomic_fetch
+#define shmem_ctx_uint32_atomic_fetch    pshmem_ctx_uint32_atomic_fetch
+#define shmem_ctx_uint64_atomic_fetch    pshmem_ctx_uint64_atomic_fetch
+#define shmem_ctx_size_atomic_fetch    pshmem_ctx_size_atomic_fetch
+#define shmem_ctx_ptrdiff_atomic_fetch    pshmem_ctx_ptrdiff_atomic_fetch
 
 #define shmem_double_atomic_fetch     pshmem_double_atomic_fetch
 #define shmem_float_atomic_fetch      pshmem_float_atomic_fetch
@@ -1255,6 +1261,12 @@
 #define shmem_uint_atomic_fetch       pshmem_uint_atomic_fetch
 #define shmem_ulong_atomic_fetch      pshmem_ulong_atomic_fetch
 #define shmem_ulonglong_atomic_fetch  pshmem_ulonglong_atomic_fetch
+#define shmem_int32_atomic_fetch    pshmem_int32_atomic_fetch
+#define shmem_int64_atomic_fetch    pshmem_int64_atomic_fetch
+#define shmem_uint32_atomic_fetch    pshmem_uint32_atomic_fetch
+#define shmem_uint64_atomic_fetch    pshmem_uint64_atomic_fetch
+#define shmem_size_atomic_fetch    pshmem_size_atomic_fetch
+#define shmem_ptrdiff_atomic_fetch    pshmem_ptrdiff_atomic_fetch
 
 #define shmem_double_fetch            pshmem_double_fetch
 #define shmem_float_fetch             pshmem_float_fetch
@@ -1272,6 +1284,12 @@
 #define shmem_ctx_uint_atomic_fetch_inc    pshmem_ctx_uint_atomic_fetch_inc
 #define shmem_ctx_ulong_atomic_fetch_inc   pshmem_ctx_ulong_atomic_fetch_inc
 #define shmem_ctx_ulonglong_atomic_fetch_inc pshmem_ctx_ulonglong_atomic_fetch_inc
+#define shmem_ctx_int32_atomic_fetch_inc    pshmem_ctx_int32_atomic_fetch_inc
+#define shmem_ctx_int64_atomic_fetch_inc    pshmem_ctx_int64_atomic_fetch_inc
+#define shmem_ctx_uint32_atomic_fetch_inc    pshmem_ctx_uint32_atomic_fetch_inc
+#define shmem_ctx_uint64_atomic_fetch_inc    pshmem_ctx_uint64_atomic_fetch_inc
+#define shmem_ctx_size_atomic_fetch_inc    pshmem_ctx_size_atomic_fetch_inc
+#define shmem_ctx_ptrdiff_atomic_fetch_inc    pshmem_ctx_ptrdiff_atomic_fetch_inc
 
 #define shmem_uint_atomic_fetch_inc        pshmem_uint_atomic_fetch_inc
 #define shmem_ulong_atomic_fetch_inc       pshmem_ulong_atomic_fetch_inc
@@ -1279,6 +1297,14 @@
 #define shmem_int_atomic_fetch_inc        pshmem_int_atomic_fetch_inc
 #define shmem_long_atomic_fetch_inc       pshmem_long_atomic_fetch_inc
 #define shmem_longlong_atomic_fetch_inc   pshmem_longlong_atomic_fetch_inc
+#define shmem_int32_atomic_fetch_inc    pshmem_int32_atomic_fetch_inc
+#define shmem_int64_atomic_fetch_inc    pshmem_int64_atomic_fetch_inc
+#define shmem_uint32_atomic_fetch_inc    pshmem_uint32_atomic_fetch_inc
+#define shmem_uint64_atomic_fetch_inc    pshmem_uint64_atomic_fetch_inc
+#define shmem_size_atomic_fetch_inc    pshmem_size_atomic_fetch_inc
+#define shmem_ptrdiff_atomic_fetch_inc    pshmem_ptrdiff_atomic_fetch_inc
+
+
 
 #define shmem_int_finc               pshmem_int_finc
 #define shmem_long_finc              pshmem_long_finc
