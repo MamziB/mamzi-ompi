@@ -1090,6 +1090,12 @@
 #define shmem_ctx_uint_atomic_set   pshmem_ctx_uint_atomic_set
 #define shmem_ctx_ulong_atomic_set  pshmem_ctx_ulong_atomic_set
 #define shmem_ctx_ulonglong_atomic_set pshmem_ctx_ulonglong_atomic_set
+#define shmem_ctx_int32_atomic_set  pshmem_ctx_int32_atomic_set 
+#define shmem_ctx_int64_atomic_set  pshmem_ctx_int64_atomic_set 
+#define shmem_ctx_uint32_atomic_set  pshmem_ctx_uint32_atomic_set 
+#define shmem_ctx_uint64_atomic_set  pshmem_ctx_uint64_atomic_set 
+#define shmem_ctx_size_atomic_set  pshmem_ctx_size_atomic_set 
+#define shmem_ctx_ptrdiff_atomic_set  pshmem_ctx_ptrdiff_atomic_set 
 
 #define shmem_double_atomic_set     pshmem_double_atomic_set
 #define shmem_float_atomic_set      pshmem_float_atomic_set
@@ -1099,6 +1105,12 @@
 #define shmem_uint_atomic_set       pshmem_uint_atomic_set
 #define shmem_ulong_atomic_set      pshmem_ulong_atomic_set
 #define shmem_ulonglong_atomic_set  pshmem_ulonglong_atomic_set
+#define shmem_int32_atomic_set      pshmem_int32_atomic_set 
+#define shmem_int64_atomic_set      pshmem_int64_atomic_set 
+#define shmem_uint32_atomic_set     pshmem_uint32_atomic_set 
+#define shmem_uint64_atomic_set     pshmem_uint64_atomic_set 
+#define shmem_size_atomic_set       pshmem_size_atomic_set 
+#define shmem_ptrdiff_atomic_set    pshmem_ptrdiff_atomic_set 
 
 #define shmem_double_set            pshmem_double_set
 #define shmem_float_set             pshmem_float_set

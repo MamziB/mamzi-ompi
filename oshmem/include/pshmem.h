@@ -1692,6 +1692,12 @@ OSHMEM_DECLSPEC void pshmem_ctx_ulong_atomic_set(shmem_ctx_t ctx, unsigned long 
 OSHMEM_DECLSPEC void pshmem_ctx_ulonglong_atomic_set(shmem_ctx_t ctx, unsigned long long *target, unsigned long long value, int pe);
 OSHMEM_DECLSPEC void pshmem_ctx_float_atomic_set(shmem_ctx_t ctx, float *target, float value, int pe);
 OSHMEM_DECLSPEC void pshmem_ctx_double_atomic_set(shmem_ctx_t ctx, double *target, double value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int32_atomic_set(shmem_ctx_t ctx, int32_t *target, int32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_int64_atomic_set(shmem_ctx_t ctx, int64_t *target, int64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint32_atomic_set(shmem_ctx_t ctx, uint32_t *target, uint32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_uint64_atomic_set(shmem_ctx_t ctx, uint64_t *target, uint64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_size_atomic_set(shmem_ctx_t ctx, size_t *target, size_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ctx_ptrdiff_atomic_set(shmem_ctx_t ctx, ptrdiff_t *target, ptrdiff_t value, int pe);
 
 OSHMEM_DECLSPEC void pshmem_int_atomic_set(int *target, int value, int pe);
 OSHMEM_DECLSPEC void pshmem_long_atomic_set(long *target, long value, int pe);
@@ -1701,6 +1707,13 @@ OSHMEM_DECLSPEC void pshmem_ulong_atomic_set(unsigned long *target, unsigned lon
 OSHMEM_DECLSPEC void pshmem_ulonglong_atomic_set(unsigned long long *target, unsigned long long value, int pe);
 OSHMEM_DECLSPEC void pshmem_float_atomic_set(float *target, float value, int pe);
 OSHMEM_DECLSPEC void pshmem_double_atomic_set(double *target, double value, int pe);
+OSHMEM_DECLSPEC void pshmem_int32_atomic_set(int32_t *target, int32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_int64_atomic_set(int64_t *target, int64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_uint32_atomic_set(uint32_t *target, uint32_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_uint64_atomic_set(uint64_t *target, uint64_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_size_atomic_set(size_t *target, size_t value, int pe);
+OSHMEM_DECLSPEC void pshmem_ptrdiff_atomic_set(ptrdiff_t *target, ptrdiff_t value, int pe);
+
 #if OSHMEM_HAVE_C11
 #define pshmem_atomic_set(...)                                       \
     _Generic(&*(__OSHMEM_VAR_ARG1(__VA_ARGS__)),                     \
