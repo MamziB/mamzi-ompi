@@ -25,6 +25,8 @@
 #pragma weak shmem_calloc            = pshmem_calloc
 #pragma weak shmalloc                = pshmalloc
 #pragma weak shmemx_malloc_with_hint = pshmemx_malloc_with_hint
+#pragma weak shmem_malloc_with_hints = pshmem_malloc_with_hints
+
 #include "oshmem/shmem/c/profile/defines.h"
 #endif
 
@@ -104,4 +106,10 @@ void* shmemx_malloc_with_hint(size_t size, long hint)
     shmem_barrier_all();
 #endif
     return pBuff;
+}
+
+
+void* shmem_malloc_with_hints(size_t size, long hints)
+{
+    return OSHMEM_ERR_NOT_IMPLEMENTED;
 }
