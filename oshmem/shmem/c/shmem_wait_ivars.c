@@ -22,6 +22,8 @@
 #if OSHMEM_PROFILING
 #include "oshmem/include/pshmem.h"
 
+#pragma weak shmem_short_wait_until_all       = pshmem_short_wait_until_all
+#pragma weak shmem_ushort_wait_until_all      = pshmem_ushort_wait_until_all
 #pragma weak shmem_int_wait_until_all         = pshmem_int_wait_until_all
 #pragma weak shmem_long_wait_until_all        = pshmem_long_wait_until_all
 #pragma weak shmem_longlong_wait_until_all    = pshmem_longlong_wait_until_all
@@ -36,6 +38,8 @@
 #pragma weak shmem_ptrdiff_wait_until_all     = pshmem_ptrdiff_wait_until_all
 
 
+#pragma weak shmem_short_wait_until_any       = pshmem_short_wait_until_any
+#pragma weak shmem_ushort_wait_until_any      = pshmem_ushort_wait_until_any
 #pragma weak shmem_int_wait_until_any         = pshmem_int_wait_until_any
 #pragma weak shmem_long_wait_until_any        = pshmem_long_wait_until_any
 #pragma weak shmem_longlong_wait_until_any    = pshmem_longlong_wait_until_any
@@ -50,6 +54,8 @@
 #pragma weak shmem_ptrdiff_wait_until_any     = pshmem_ptrdiff_wait_until_any
 
 
+#pragma weak shmem_short_wait_until_some       = pshmem_short_wait_until_some
+#pragma weak shmem_ushort_wait_until_some      = pshmem_ushort_wait_until_some
 #pragma weak shmem_int_wait_until_some         = pshmem_int_wait_until_some
 #pragma weak shmem_long_wait_until_some        = pshmem_long_wait_until_some
 #pragma weak shmem_longlong_wait_until_some    = pshmem_longlong_wait_until_some
@@ -64,6 +70,8 @@
 #pragma weak shmem_ptrdiff_wait_until_some     = pshmem_ptrdiff_wait_until_some
 
 
+#pragma weak shmem_short_wait_until_all_vector       = pshmem_short_wait_until_all_vector
+#pragma weak shmem_ushort_wait_until_all_vector      = pshmem_ushort_wait_until_all_vector
 #pragma weak shmem_int_wait_until_all_vector         = pshmem_int_wait_until_all_vector
 #pragma weak shmem_long_wait_until_all_vector        = pshmem_long_wait_until_all_vector
 #pragma weak shmem_longlong_wait_until_all_vector    = pshmem_longlong_wait_until_all_vector
@@ -78,6 +86,8 @@
 #pragma weak shmem_ptrdiff_wait_until_all_vector     = pshmem_ptrdiff_wait_until_all_vector
 
 
+#pragma weak shmem_short_wait_until_any_vector       = pshmem_short_wait_until_any_vector
+#pragma weak shmem_ushort_wait_until_any_vector      = pshmem_ushort_wait_until_any_vector
 #pragma weak shmem_int_wait_until_any_vector         = pshmem_int_wait_until_any_vector
 #pragma weak shmem_long_wait_until_any_vector        = pshmem_long_wait_until_any_vector
 #pragma weak shmem_longlong_wait_until_any_vector    = pshmem_longlong_wait_until_any_vector
@@ -92,6 +102,8 @@
 #pragma weak shmem_ptrdiff_wait_until_any_vector     = pshmem_ptrdiff_wait_until_any_vector
 
 
+#pragma weak shmem_short_wait_until_some_vector       = pshmem_short_wait_until_some_vector
+#pragma weak shmem_ushort_wait_until_some_vector      = pshmem_ushort_wait_until_some_vector
 #pragma weak shmem_int_wait_until_some_vector         = pshmem_int_wait_until_some_vector
 #pragma weak shmem_long_wait_until_some_vector        = pshmem_long_wait_until_some_vector
 #pragma weak shmem_longlong_wait_until_some_vector    = pshmem_longlong_wait_until_some_vector
