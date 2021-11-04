@@ -79,12 +79,12 @@ mca_spml_ucx_t mca_spml_ucx = {
         .spml_wait_until_any_vector     = mca_spml_ucx_wait_until_any_vector,
         .spml_wait_until_some_vector    = mca_spml_ucx_wait_until_some_vector,
         .spml_test                      = mca_spml_base_test,
-        .spml_test_all          	 = mca_spml_ucx_test_all,
-        .spml_test_any          	 = mca_spml_ucx_test_any,
-        .spml_test_some         	 = mca_spml_ucx_test_some,
-        .spml_test_all_vector   	 = mca_spml_ucx_test_all_vector,
-        .spml_test_any_vector   	 = mca_spml_ucx_test_any_vector,
-        .spml_test_some_vector  	 = mca_spml_ucx_test_some_vector,
+        .spml_test_all          	= mca_spml_ucx_test_all,
+        .spml_test_any          	= mca_spml_ucx_test_any,
+        .spml_test_some         	= mca_spml_ucx_test_some,
+        .spml_test_all_vector   	= mca_spml_ucx_test_all_vector,
+        .spml_test_any_vector   	= mca_spml_ucx_test_any_vector,
+        .spml_test_some_vector  	= mca_spml_ucx_test_some_vector,
         .spml_team_sync                 = mca_spml_ucx_team_sync,
         .spml_team_my_pe                = mca_spml_ucx_team_my_pe,
         .spml_team_n_pes                = mca_spml_ucx_team_n_pes,
@@ -93,6 +93,7 @@ mca_spml_ucx_t mca_spml_ucx = {
         .spml_team_split_strided        = mca_spml_ucx_team_split_strided,
         .spml_team_split_2d             = mca_spml_ucx_team_split_2d,
         .spml_team_destroy              = mca_spml_ucx_team_destroy,
+        .spml_team_get                  = mca_spml_ucx_team_get,
         .spml_team_create_ctx           = mca_spml_ucx_team_create_ctx,
         .spml_team_alltoall             = mca_spml_ucx_team_alltoall,
         .spml_team_alltoalls            = mca_spml_ucx_team_alltoalls,
@@ -1619,6 +1620,12 @@ int mca_spml_ucx_team_split_2d(shmem_team_t parent_team, int xrange, const
 
 /* This routine is not implemented */
 int mca_spml_ucx_team_destroy(shmem_team_t team)
+{
+    return OSHMEM_ERR_NOT_IMPLEMENTED;
+}
+
+/* This routine is not implemented */
+int mca_spml_ucx_team_get(shmem_ctx_t ctx, shmem_team_t *team)
 {
     return OSHMEM_ERR_NOT_IMPLEMENTED;
 }

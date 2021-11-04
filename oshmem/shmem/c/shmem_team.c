@@ -31,7 +31,8 @@
 #pragma weak shmem_team_split_strided     		= pshmem_team_split_strided
 #pragma weak shmem_team_split_2d          		= pshmem_team_split_2d
 #pragma weak shmem_team_destroy           		= pshmem_team_destroy
-#pragma weak shmem_team_create_ctx                     = pshmem_team_create_ctx
+#pragma weak shmem_ctx_get_team           		= pshmem_ctx_get_team
+#pragma weak shmem_team_create_ctx                      = pshmem_team_create_ctx
 
 #include "oshmem/shmem/c/profile/defines.h"
 #endif
@@ -134,6 +135,18 @@ void shmem_team_destroy(shmem_team_t team)
     RUNTIME_CHECK_RC(rc);
 
     return ;
+}
+
+int shmem_ctx_get_team(shmem_ctx_t ctx, shmem_team_t *team)
+{
+    int rc = 0;
+
+    RUNTIME_CHECK_INIT();
+
+    rc = MCA_SPML_CALL(team_get(ctx, team));
+    RUNTIME_CHECK_RC(rc);
+
+    return rc;
 }
 
 int shmem_team_create_ctx(shmem_team_t team, long options, shmem_ctx_t *ctx)
