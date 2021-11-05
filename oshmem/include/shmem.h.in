@@ -113,9 +113,6 @@ enum {
 #define SHMEM_TEAM_INVALID              NULL
 #define SHMEM_TEAM_NUM_CONTEXTS         (1<<0)
 
-#define SHMEM_MALLOC_ATOMICS_REMOTE     (1<<0)
-#define SHMEM_MALLOC_SIGNAL_REMOTE      (1<<1)
-
 /*
  * Deprecated (but still valid) names
  */
