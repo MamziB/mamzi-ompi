@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2018 Mellanox Technologies, Inc.
+ * Copyright (c) 2021      NVIDIA Corporation.
  *                         All rights reserved.
  * Copyright (c) 2019      Research Organization for Information Science
  *                         and Technology (RIST).  All rights reserved.
